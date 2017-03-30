@@ -5,6 +5,7 @@
 #include <QWidget>
 #include <QGraphicsView>
 #include <QGraphicsScene>
+#include <QTimer>
 
 #include <memory>
 #include <stack>
@@ -27,10 +28,12 @@ class Othellier : public QGraphicsView {
         std::vector<std::vector<GPion*>> m_pions;
         std::stack<Etat> m_historique;
 
+        QTimer* m_timer_ia;
         std::shared_ptr<IA> m_ia;
 
         // Méthodes
         void exec_coup(Pion const& p);
+        void start_ia();
 
     public:
         // Constructeur

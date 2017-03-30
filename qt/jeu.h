@@ -10,7 +10,7 @@
 #include "src/pion.h"
 
 // Classe
-class FPrincipale : public QMainWindow {
+class Jeu : public QMainWindow {
     Q_OBJECT
 
     private:
@@ -21,7 +21,7 @@ class FPrincipale : public QMainWindow {
 
     public:
         // Constructeur
-        explicit FPrincipale(QWidget *parent = nullptr);
+        explicit Jeu(QWidget *parent = nullptr);
 
     signals:
 

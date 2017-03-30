@@ -14,7 +14,6 @@ Pion RandomIA::jouer(Etat const& plateau) {
 
     // Tirage aléatoire !
     int r = rand() % coups.size();
-    std::cout << r;
 
     // Récupération du coup
     auto it = coups.begin();

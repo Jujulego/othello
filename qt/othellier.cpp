@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QGraphicsScene>
 #include <QPoint>
+#include <QTimer>
 
 #include <functional>
 #include <memory>
@@ -15,6 +16,8 @@
 #include "src/ia.h"
 
 // Macros
+#define TEMP_IA 1000
+
 #define ENTDIV(D, d) ((qFloor(D) - (qFloor(D) % qFloor(d))) / qFloor(d))
 
 // Constructeur
@@ -61,8 +64,19 @@ void Othellier::exec_coup(Pion const&p) {
         if (test_fin()) emit fin((m_score_noir >= m_score_blanc) ? NOIR : BLANC);
 
         // Exec IA
-        if ((m_ia != nullptr) && (m_joueur == NOIR)) jouer_ia();
+        start_ia();
     }
+}
+
+void Othellier::start_ia() {
+    // Gardien (c'est bien le tour de l'IA ?)
+    if ((m_ia == nullptr) || (m_joueur == BLANC)) return;
+
+    // Lancement timer
+    m_timer_ia = new QTimer(this);
+    connect(m_timer_ia, &QTimer::timeout, this, &Othellier::jouer_ia);
+    connect(this, &Othellier::chg_joueur, m_timer_ia, &QTimer::stop);
+    m_timer_ia->start(TEMP_IA);
 }
 
 Etat Othellier::get_etat() const {
@@ -101,6 +115,9 @@ void Othellier::set_etat(Etat const& etat) {
     // Mise à jour joueur
     m_joueur = etat.joueur;
     emit chg_joueur(m_joueur);
+
+    // Exec IA
+    start_ia();
 
     // Mise à jour du plateau
     scene()->clear();

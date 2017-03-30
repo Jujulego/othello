@@ -38,7 +38,7 @@ int main(int argc, char* argv[]) {
     app.installTranslator(&translator);
 
     // Execution
-    FPrincipale f;
+    Jeu f;
     f.show();
 
     return app.exec();
