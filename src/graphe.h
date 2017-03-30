@@ -13,8 +13,6 @@
 #include <set>
 #include <string>
 
-namespace graphe {
-
 // Foncteur
 template<typename T>
 struct WeakComp {
@@ -53,9 +51,9 @@ class Graphe {
 				
 				Wptr m_self;
 				std::set<typename Graphe<D>::Arc::Wptr,WeakComp<typename Graphe<D>::Arc>> m_preds;	/**< Liste des prédécesseurs du sommet */
-				std::set<typename Graphe<D>::Arc::Sptr> m_succs;						/**< Liste des successeurs du sommet */
+                std::set<typename Graphe<D>::Arc::Sptr> m_succs;    /**< Liste des successeurs du sommet */
 				
-				// Méthodes privées
+                // Méthodes privées : gestion des prédécesseurs
 				void add_pred(typename Graphe<D>::Arc::Wptr const& a) {
 					m_preds.insert(a);
 				}
@@ -80,6 +78,7 @@ class Graphe {
 				}
 				
 				// Méthodes
+                // calcul du degrés d'un sommet
 				unsigned degres() const {
 					return degres_int() + degres_ext();
 				}
@@ -92,22 +91,26 @@ class Graphe {
 					return m_succs.size();
 				}
 				
+                // Test d'adjacence (prédécesseur & successeur)
 				bool est_voisin(Sptr const& s) {
 					for (auto a : m_succs) if (a->s2() == s) return true;
 					for (auto a : m_preds) if (Arc::Sptr(a)->s1() == s) return true;
 					return false;
 				}
 				
+                // Ajout d'un successeur par sommet et poids
 				void add_succ(Sptr& s, int poids = 1) {
 					typename Arc::Sptr a((new Arc(pt(), s, poids))->pt());
 					m_succs.insert(a);
 					s->add_pred(typename Arc::Wptr(a));
 				}
 				
+                // Suppression de tout lien (succession) avec le noeud donné
 				void rem_succ(Sptr& s) {
 					for (auto a : m_succs) if (a->s2() == s) m_succs.erase(a);
 				}
 				
+                // Suppression de l'arc donné
 				void rem_succ(typename Graphe<D>::Arc::Sptr& a) {
 					m_succs.erase(a);
 					a->s1()->rem_pred(a);
@@ -122,6 +125,7 @@ class Graphe {
 					m_val = val;
 				}
 				
+                // renvoie un pointeur sur l'objet (un shared_ptr)
 				Sptr pt() {
 					Sptr pt;
 					
@@ -135,6 +139,7 @@ class Graphe {
 					return pt;
 				}
 				
+                // renvoie l'ensemble des voisins (Sommets) du noeud
 				std::set<Sptr,SommetComp> voisins() const {
 					// Déclaration
 					std::set<Sommet::Sptr,Sommet::SommetComp> voisins;
@@ -146,6 +151,7 @@ class Graphe {
 					return voisins;
 				}
 				
+                // renvoie l'ensemble des prédésecceurs (Arcs) du noeud
 				std::set<typename Graphe<D>::Arc::Sptr> preds() const {
 					// Déclaration
 					std::set<typename Arc::Sptr> preds;
@@ -154,7 +160,8 @@ class Graphe {
 					for (auto a : m_preds) preds.insert(Arc::Sptr(a));
 					return preds;
 				}
-				
+
+                // renvoie l'ensemble des successeurs (Arcs) du noeud
 				std::set<typename Graphe<D>::Arc::Sptr> succs() const {
 					return m_succs;
 				}
@@ -189,6 +196,7 @@ class Graphe {
 					return pt();
 				}
 				
+                // egalité de 2 arc : les 2 couples (non ordonné) de sommet sont égaux ainsi que le poids des arcs
 				bool operator == (Arc const& a) {
 					typename Sommet::Sptr min_pt = (s1() < s2()) ? s1() : s2();
 					typename Sommet::Sptr max_pt = (s1() < s2()) ? s2() : s1();
@@ -199,6 +207,7 @@ class Graphe {
 					return (min_pt == min_a_pt) && (max_pt == max_a_pt) && (m_poids == a.m_poids) && (m_nom == a.m_nom);
 				}
 				
+                // ordre sur la base du poids puis des sommets (adresses mémoires) (par couples non ordonés)
 				bool operator <  (Arc const& a) {
 					if (m_poids == a.m_poids) {
 						typename Sommet::Sptr min_pt = (s1() < s2()) ? s1() : s2();
@@ -216,7 +225,8 @@ class Graphe {
 					}
 					return m_poids < a.m_poids;
 				}
-				
+
+                // pareil qu'au dessus ...
 				bool operator >  (Arc const& a) {
 					if (m_poids == a.m_poids) {
 						typename Sommet::Sptr min_pt = (s1() < s2()) ? s1() : s2();
@@ -243,7 +253,8 @@ class Graphe {
 				std::string nom() const {
 					return m_nom;
 				}
-				
+
+                // renvoie un pointeur sur l'objet (un shared_ptr)
 				Sptr pt() {
 					Sptr pt;
 					
@@ -295,6 +306,12 @@ class Graphe {
 			return m_sommets.size();
 		}
 		
+        /** Les fonctions suivantes permmettent l'utilisation de la boucle for-each :
+         *
+         * for (auto s : g) { // où g est un Graphe<T> ...
+         *     blabla ...     // ... s est un Graphe<T>::Sommet::SPtr (en gros un pointeur sur Sommet)
+         * }
+         */
 		iterateur begin() {
 			return m_sommets.begin();
 		}
@@ -311,6 +328,7 @@ class Graphe {
 			return m_sommets.cend();
 		}
 		
+        // Renvoie le 1er sommet ayant une valeur correspondante (necessite ==)
 		typename Sommet::Sptr find_sommet(D const& val) const {
 			// Parcours du graphe
 			auto it = std::find_if(begin(), end(),
@@ -322,6 +340,7 @@ class Graphe {
 			return *it;
 		}
 		
+        // Recrée un sommet ayant la même valeur que celui donné
 		typename Sommet::Sptr add_sommet(typename Sommet::Sptr const& s) {
 			auto pt = Sommet::creer(s->val());
 			m_sommets.insert(pt);
@@ -329,6 +348,7 @@ class Graphe {
 			return pt;
 		}
 		
+        // Crée un sommet avec la valeur donnée
 		typename Sommet::Sptr add_sommet(D const& val = D()) {
 			auto pt = Sommet::creer(val);
 			m_sommets.insert(pt);
@@ -336,17 +356,25 @@ class Graphe {
 			return pt;
 		}
 		
+        /** Ajoute tous les sommets entre les 2 itérateurs. (avec add_sommet)
+         *  ATTENTION : le conteneur doit contenir des pointeurs sur sommet du même type que le graphe !
+         *
+         *  Exemple:
+         *  std::vector<Graphe<int>::Sommet::SPtr> sommets; // Fonctionne avec tous les conteneurs !
+         *                                                  // Même avec un autre graphe (type du graphe : Graphe<int>) !
+         *  Graphe<int> g;
+         *
+         *  ...
+         *
+         *  g.add_sommets(sommets.begin(), sommets.end());
+         */
 		template<typename I>
 		void add_sommets(I dep, I fin) {
 			for (; dep != fin; dep++) m_sommets.insert(*dep);
-		}
-		
-		template<typename A>
-		Graphe algo(typename Sommet::Sptr dep, A a = A()) {
-			return a(*this, dep);
-		}
+        }
 		
 		// Accesseurs
+        // Renvoie un tableau d'arcs triés (cf classe Arc)
 		typename std::set<typename Arc::Sptr,OrdreArretes> arretes() const {
 			// Déclarations
 			std::set<typename Arc::Sptr,OrdreArretes> arretes;
@@ -360,11 +388,10 @@ class Graphe {
 			return arretes;
 		}
 		
+        // Renvoie l'ensemble des sommets
 		typename std::set<typename Sommet::Sptr> sommets() const {
 			return m_sommets;
 		}
 };
-
-}
 
 #endif // __GRAPHE_GRAPHE
