@@ -31,6 +31,8 @@ class Othellier : public QGraphicsView {
 
         // Méthodes
         Etat get_etat() const;
+        void set_etat(Etat const& etat);
+
         bool test_fin() const;
         std::vector<Pion*> test_pos(QPoint pos) const;
 
@@ -51,6 +53,7 @@ class Othellier : public QGraphicsView {
     public slots:
         // Slots
         void reset();
+        void annuler();
 };
 
 #endif // OTHELLIER_H

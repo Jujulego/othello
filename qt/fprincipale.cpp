@@ -25,8 +25,15 @@ FPrincipale::FPrincipale(QWidget *parent) : QMainWindow(parent) {
     connect(action_recommencer, &QAction::triggered, m_othellier, &Othellier::reset);
     addAction(action_recommencer);
 
+    QAction* action_annuler = new QAction("Annuler", this);
+    action_annuler->setShortcuts(QKeySequence::Undo);
+    action_annuler->setIcon(QIcon::fromTheme("edit-undo"));
+    connect(action_annuler, &QAction::triggered, m_othellier, &Othellier::annuler);
+    addAction(action_annuler);
+
     // Menus
     QMenu* menu_jouer = menuBar()->addMenu("&Jouer");
+    menu_jouer->addAction(action_annuler);
     menu_jouer->addAction(action_recommencer);
 
     // Status bar

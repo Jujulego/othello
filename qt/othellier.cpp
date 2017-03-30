@@ -32,6 +32,7 @@ Othellier::Othellier(QWidget *parent) : QGraphicsView(parent) {
     connect(scene(), &QGraphicsScene::selectionChanged, this, &Othellier::jouer);
 
     // Ajout des cases
+    m_pions = std::vector<std::vector<Pion*>>(8, std::vector<Pion*>(8, nullptr));
     reset();
 }
 
@@ -52,6 +53,26 @@ Etat Othellier::get_etat() const {
     }
 
     return {m_joueur, m_score_blanc, m_score_noir, mat};
+}
+
+void Othellier::set_etat(Etat const& etat) {
+    // Mise à jour du score
+    m_score_blanc = etat.score_blanc;
+    m_score_noir  = etat.score_noir;
+    emit chg_scores(m_score_blanc, m_score_noir);
+
+    // Mise à jour joueur
+    m_joueur = etat.joueur;
+    emit chg_joueur(m_joueur);
+
+    // Mise à jour du plateau
+    scene()->clear();
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            m_pions[i][j] = new Pion(QPoint(i, j), etat.othellier[i][j]);
+            scene()->addItem(m_pions[i][j]);
+        }
+    }
 }
 
 std::vector<Pion*> Othellier::test_pos(QPoint pos) const {
@@ -125,6 +146,9 @@ void Othellier::jouer() {
 
         // Mouvement valide
         if (nb > 0) {
+            // Sauvegarde dans l'historique
+            m_historique.push(get_etat());
+
             // On retourne les pions
             for (auto p : pions) p->couleur(m_joueur);
 
@@ -169,7 +193,6 @@ void Othellier::reset() {
     emit chg_scores(m_score_blanc, m_score_noir);
 
     // Ajout des cases
-    m_pions = std::vector<std::vector<Pion*>>(8, std::vector<Pion*>(8, nullptr));
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             m_pions[i][j] = new Pion(QPoint(i, j));
@@ -182,6 +205,11 @@ void Othellier::reset() {
     m_pions[4][4]->couleur(BLANC);
     m_pions[3][4]->couleur(NOIR);
     m_pions[4][3]->couleur(NOIR);
+}
+
+void Othellier::annuler() {
+    set_etat(m_historique.top());
+    m_historique.pop();
 }
 
 // Accesseurs

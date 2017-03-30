@@ -4,7 +4,8 @@ HEADERS += \
     qt/fprincipale.h \
     qt/pion.h \
     qt/othellier.h \
-    src/etat.h
+    src/etat.h \
+    src/graphe.h
 
 SOURCES += \
     qt/fprincipale.cpp \
