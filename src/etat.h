@@ -10,19 +10,19 @@
 #define ETAT_H
 
 // Dépendances
+#include <map>
 #include <vector>
 
-// Enumération
-enum COULEUR { VIDE, NOIR, BLANC };
+#include "pion.h"
 
 // Structure
 struct Etat {
-    // Attributs
-    COULEUR joueur;
+    // Infos joueurs
+    COULEUR joueur; // qui doit jouer
+    std::map<COULEUR,int> scores;
+    std::map<COULEUR,std::vector<Pion>> pions;
 
-    int score_blanc;
-    int score_noir;
-
+    // Représentation générale du plateau
     std::vector<std::vector<COULEUR>> othellier;
 };
 

@@ -7,6 +7,7 @@
 
 #include "othellier.h"
 #include "pion.h"
+#include "src/pion.h"
 
 // Classe
 class FPrincipale : public QMainWindow {

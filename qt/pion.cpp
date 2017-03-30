@@ -6,20 +6,21 @@
 #include <QPoint>
 
 #include "pion.h"
+#include "src/pion.h"
 
 // Constructeur
-Pion::Pion(QPoint pos, COULEUR couleur, QGraphicsItem* parent) : QGraphicsItem(parent), m_couleur(couleur) {
+GPion::GPion(QPoint pos, COULEUR couleur, QGraphicsItem* parent) : QGraphicsItem(parent), m_couleur(couleur) {
     // Préparation
     setPos(pos.x()*TAILLE_CASE, pos.y()*TAILLE_CASE);
     setFlag(QGraphicsItem::ItemIsSelectable);
 }
 
 // Méthodes
-QRectF Pion::boundingRect() const {
+QRectF GPion::boundingRect() const {
     return QRectF(-TAILLE_CASE/2, -TAILLE_CASE/2, TAILLE_CASE, TAILLE_CASE);
 }
 
-void Pion::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+void GPion::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
     Q_UNUSED(option);
     Q_UNUSED(widget);
 
@@ -39,11 +40,11 @@ void Pion::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
 }
 
 // Accesseurs
-COULEUR Pion::couleur() const {
+COULEUR GPion::couleur() const {
     return m_couleur;
 }
 
-void Pion::couleur(COULEUR couleur) {
+void GPion::couleur(COULEUR couleur) {
     m_couleur = couleur;
     update();
 }

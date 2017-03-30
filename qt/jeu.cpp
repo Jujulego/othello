@@ -6,14 +6,18 @@
 #include <QStatusBar>
 #include <QMessageBox>
 
-#include "fprincipale.h"
+#include <memory>
+
+#include "jeu.h"
 #include "othellier.h"
 #include "pion.h"
+
+#include "src/randomia.h"
 
 // Constructeur
 FPrincipale::FPrincipale(QWidget *parent) : QMainWindow(parent) {
     // Création de l'othellier
-    m_othellier = new Othellier(this);
+    m_othellier = new Othellier(std::shared_ptr<IA>(new RandomIA), this);
     setCentralWidget(m_othellier);
     setMinimumSize(TAILLE_CASE*8 + 3, TAILLE_CASE*8 + 25);
     connect(m_othellier, &Othellier::fin, this, &FPrincipale::fin_jeu);

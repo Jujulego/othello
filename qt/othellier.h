@@ -6,11 +6,13 @@
 #include <QGraphicsView>
 #include <QGraphicsScene>
 
+#include <memory>
 #include <stack>
 #include <vector>
 
 #include "etat.h"
 #include "pion.h"
+#include "src/ia.h"
 
 // Classe
 class Othellier : public QGraphicsView {
@@ -22,19 +24,24 @@ class Othellier : public QGraphicsView {
         int m_score_noir = 0;
 
         COULEUR m_joueur = BLANC;
-        std::vector<std::vector<Pion*>> m_pions;
+        std::vector<std::vector<GPion*>> m_pions;
         std::stack<Etat> m_historique;
+
+        std::shared_ptr<IA> m_ia;
+
+        // Méthodes
+        void exec_coup(Pion const& p);
 
     public:
         // Constructeur
-        Othellier(QWidget* parent = nullptr);
+        Othellier(std::shared_ptr<IA> ia = nullptr, QWidget* parent = nullptr);
 
         // Méthodes
         Etat get_etat() const;
         void set_etat(Etat const& etat);
 
         bool test_fin() const;
-        std::vector<Pion*> test_pos(QPoint pos) const;
+        std::vector<GPion*> test_pos(QPoint pos) const;
 
         // Accesseurs
         int score_blanc() const;
@@ -49,6 +56,7 @@ class Othellier : public QGraphicsView {
     private slots:
         // Slots
         void jouer();
+        void jouer_ia();
 
     public slots:
         // Slots

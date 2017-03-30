@@ -13,14 +13,14 @@
 #define TAILLE_CASE 50.0f
 
 // Classe
-class Pion : public QGraphicsItem {
+class GPion : public QGraphicsItem {
     private:
         // Attributs
         COULEUR m_couleur;
 
     public:
         // Constructeur
-        Pion(QPoint pos, COULEUR couleur = VIDE, QGraphicsItem* parent = nullptr);
+        GPion(QPoint pos, COULEUR couleur = VIDE, QGraphicsItem* parent = nullptr);
 
         // Méthodes
         QRectF boundingRect() const override;

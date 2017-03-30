@@ -6,11 +6,12 @@
 #include <QString>
 
 #include <iostream>
+#include <ctime>
 
 #include <utils/debug.h>
 #include <utils/signaux.h>
 
-#include "fprincipale.h"
+#include "jeu.h"
 
 // Main
 int main(int argc, char* argv[]) {
@@ -20,7 +21,11 @@ int main(int argc, char* argv[]) {
 
     utils::set_niveau("DEBUG");
 
+    // Pratique :
     std::cout << std::boolalpha;
+
+    // Init random
+    srand(time(nullptr));
 
     // Définition de l'application
     QApplication app(argc, argv);
