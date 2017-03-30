@@ -7,8 +7,8 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/othello" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
+				<Option output="build/cb-debug/othello" prefix_auto="1" extension_auto="1" />
+				<Option object_output="build/cb-debug/" />
 				<Option type= "1" />
 				<Option compiler="gcc" />
 				<Compiler>
@@ -19,8 +19,8 @@
 				</Compiler>
 			</Target>
 			<Target title="Release">
-				<Option output="bin/Release/othello" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Release/" />
+				<Option output="build/cb-release/othello" prefix_auto="1" extension_auto="1" />
+				<Option object_output="build/cb-release/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
