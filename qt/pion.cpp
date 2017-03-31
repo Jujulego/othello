@@ -5,6 +5,8 @@
 #include <QRectF>
 #include <QPoint>
 
+#include <iostream>
+
 #include "pion.h"
 #include "src/pion.h"
 

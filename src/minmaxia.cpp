@@ -1,5 +1,6 @@
 // Importations
 #include <memory>
+#include <iostream>
 #include <set>
 
 #include "arbre.h"
@@ -9,7 +10,7 @@
 #include "minmaxia.h"
 
 // Constructeur
-MinMaxIA::MinMaxIA(unsigned prof) : IA(), m_prof(prof),
+MinMaxIA::MinMaxIA(unsigned prof) : IA(), m_prof(prof-1),
     m_algo([this] (CE const& ce) -> unsigned { return ce.etat.pions.at(this->m_couleur).size(); }) {
 }
 
@@ -31,8 +32,13 @@ Pion MinMaxIA::jouer(Etat const& plateau) {
             for (auto c : get_coups(p->val().etat)) {
                 Etat e(p->val().etat); // Copie de l'état
                 e.appliquer_coup(c);
-                noeuds.insert(arbre.add_noeud({e, c}, p));
+                auto n = arbre.add_noeud({e, c}, p);
+                noeuds.insert(n);
+
+                std::cout << p << " >> " << n << std::endl;
             }
+
+            std::cout << std::endl;
         }
     }
 

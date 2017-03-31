@@ -17,7 +17,7 @@
 #include "src/ia.h"
 
 // Macros
-#define TEMP_IA 1000
+#define TEMP_IA 1
 
 #define ENTDIV(D, d) ((qFloor(D) - (qFloor(D) % qFloor(d))) / qFloor(d))
 
@@ -88,15 +88,15 @@ Etat Othellier::get_etat() const {
     etat.scores[BLANC] = m_score_blanc;
 
     // Ajout des couleurs
+    etat.othellier = std::vector<std::vector<COULEUR>>(8, std::vector<COULEUR>(8, VIDE));
     COULEUR c;
-    for (int i = 0; i < 8; i++) {
-        etat.othellier.push_back(std::vector<COULEUR>());
 
+    for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             c = m_pions[i][j]->couleur();
 
             // Ajout matrice
-            etat.othellier[i].push_back(c);
+            etat.othellier[i][j] = c;
 
             // Ajout aux tableaux / joueurs
             if (c == VIDE) continue;
@@ -131,10 +131,12 @@ void Othellier::set_etat(Etat const& etat) {
 }
 
 std::vector<GPion*> Othellier::test_pos(QPoint pos) const {
+    // Initialisation
     COULEUR ennemi = (m_joueur == BLANC) ? NOIR : BLANC;
     std::vector<GPion*> pions, tmp;
     bool ok = false;
 
+    // Recherche dans les 8 directions
     for (std::function<void(int&,int&)> f : DIRECTIONS) {
         // Init
         tmp.clear();

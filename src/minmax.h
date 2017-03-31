@@ -4,6 +4,7 @@
 // Dépandances
 #include <functional>
 #include <limits>
+#include <iostream>
 #include <map>
 #include <memory>
 #include <set>
@@ -30,12 +31,16 @@ class AlgoMinMax {
 
             // Application de l'heuristique sur les feuilles (elles n'ont pas de fils !) + récup de leurs pères
             std::set<std::shared_ptr<typename Arbre<D>::Noeud>> peres;
-            for (auto p : noeuds) {
-                if (p.first->fils().size() == 0) {
-                    noeuds[p.first] = m_heuristique(p.first->val());
-                    peres.insert(p.first->pere());
+            for (auto p : arbre.noeuds()) {
+                if (p->fils().size() == 0) {
+                    noeuds[p] = m_heuristique(p->val());
+                    if (p->pere() != nullptr) peres.insert(p->pere());
+
+                    std::cout << p << " (" << noeuds[p] << ")" << std::endl;
                 }
             }
+
+            std::cout << std::endl;
 
             // MinMax !
             std::set<std::shared_ptr<typename Arbre<D>::Noeud>> feuilles;
@@ -49,7 +54,7 @@ class AlgoMinMax {
                 i = (i + 1) % 2;
 
                 // Parcours des noeuds
-                for (auto n : peres) {
+                for (auto n : feuilles) {
                     // Sélection de la valeur
                     if (i == 0) {
                         // i = 0 => moi => max !
@@ -59,6 +64,7 @@ class AlgoMinMax {
                             if (noeuds[f] > val) {
                                 val = noeuds[f];
                                 preds[n] = f;
+                                std::cout << "max " << n << " << " << f << " (" << noeuds[f] << ")" << std::endl;
                             }
                         }
                     } else {
@@ -69,6 +75,7 @@ class AlgoMinMax {
                             if (noeuds[f] < val) {
                                 val = noeuds[f];
                                 preds[n] = f;
+                                std::cout << "min " << n << " << " << f << " (" << noeuds[f] << ")" << std::endl;
                             }
                         }
                     }
@@ -77,11 +84,12 @@ class AlgoMinMax {
                     noeuds[n] = val;
 
                     // Ajout du père au prochains pères
-                    peres.insert(n->pere());
+                    if (n->pere() != nullptr) peres.insert(n->pere());
                 }
             }
 
             // Fini !
+            std::cout << std::endl;
             return preds[arbre.racine()]->val();
         }
 };

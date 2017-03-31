@@ -64,16 +64,16 @@ void Jeu::init_menu() {
     m_wid_menu = new QWidget(this);
     QVBoxLayout* layout_menu = new QVBoxLayout(m_wid_menu);
 
-    QPushButton* btn_jouer = new QPushButton("J1 Vs J2");
+    QPushButton* btn_jouer = new QPushButton("Joueur1 Vs Joueur2");
     connect(btn_jouer, &QPushButton::clicked, this, &Jeu::btn_jouer);
     layout_menu->addWidget(btn_jouer);
 
-    QPushButton* btn_jouer_iar = new QPushButton("J Vs IA Random");
+    QPushButton* btn_jouer_iar = new QPushButton("Joueur Vs Random");
     connect(btn_jouer_iar, &QPushButton::clicked, this, &Jeu::btn_jouer_iar);
     layout_menu->addWidget(btn_jouer_iar);
 
-    QPushButton* btn_jouer_iamm = new QPushButton("J Vs IA MinMax");
-    connect(btn_jouer_iamm, &QPushButton::clicked, this, &Jeu::btn_jouer_iar);
+    QPushButton* btn_jouer_iamm = new QPushButton("Joueur Vs MinMax");
+    connect(btn_jouer_iamm, &QPushButton::clicked, this, &Jeu::btn_jouer_iamm);
     layout_menu->addWidget(btn_jouer_iamm);
 
     // Ajout du menu
@@ -122,7 +122,7 @@ void Jeu::btn_jouer_iar() {
 
 void Jeu::btn_jouer_iamm() {
     // Création de l'othellier
-    m_othellier = new Othellier(std::shared_ptr<IA>(new MinMaxIA(5)));
+    m_othellier = new Othellier(std::shared_ptr<IA>(new MinMaxIA(3)));
     connect_othellier();
 }
 

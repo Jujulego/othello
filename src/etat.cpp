@@ -16,8 +16,6 @@ struct P {
 
 // Méthodes
 void Etat::appliquer_coup(Pion const& p) {
-    if (p.couleur != joueur) std::cout << "Aïe les couleurs ne correspondent pas !" << std::endl;
-
     // Déclarations
     COULEUR ennemi = (joueur == BLANC) ? NOIR : BLANC;
     std::vector<P> tmp;
@@ -58,6 +56,9 @@ void Etat::appliquer_coup(Pion const& p) {
             // Changements de couleur
             for (P pt : tmp) {
                 pt.it->couleur = joueur;
+                pions[joueur].push_back(*(pt.it));
+                pions[ennemi].erase(pt.it);
+                othellier[pt.i][pt.j] = joueur;
             }
         }
     }

@@ -21,18 +21,22 @@ class Arbre {
 
                 // Constructeur
                 Noeud(D val, std::shared_ptr<Noeud> pere = nullptr) : m_val(val), m_pere(pere) {
+                    if (pere != nullptr) pere->add_fils(pt());
+                }
+
+                // Méthodes
+                void add_fils(std::shared_ptr<Noeud> fils) {
+                    m_fils.insert(fils);
+                }
+
+                void pere(std::shared_ptr<Noeud> pere) {
+                    m_pere = pere;
                 }
 
             public:
                 // Méthodes statiques
                 static std::shared_ptr<Noeud> creer(D val, std::shared_ptr<Noeud> pere = nullptr) {
                     return (new Noeud(val, pere))->pt();
-                }
-
-                // Méthodes
-                void add_fils(std::shared_ptr<Noeud>& fils) {
-                    m_fils.insert(fils);
-                    fils->pere(pt());
                 }
 
                 // Accesseurs
@@ -42,9 +46,6 @@ class Arbre {
                 std::shared_ptr<Noeud> pere() const {
                     if (m_pere.expired()) return nullptr;
                     return std::shared_ptr<Noeud>(m_pere);
-                }
-                void pere(std::shared_ptr<Noeud>& pere) {
-                    m_pere = pere;
                 }
                 D val() {
                     return m_val;
@@ -93,7 +94,7 @@ class Arbre {
         std::shared_ptr<Noeud> racine() const {
             return m_racine;
         }
-        std::vector<std::shared_ptr<Noeud>> noeuds() const {
+        std::vector<std::shared_ptr<Noeud>> noeuds() {
             // Déclaration
             std::vector<std::shared_ptr<Noeud>> noeuds;
 
@@ -102,9 +103,11 @@ class Arbre {
                 if (it->expired()) {
                     m_noeuds.erase(it);
                 } else {
-                    noeuds.push_back(*it);
+                    noeuds.push_back(std::shared_ptr<Noeud>(*it));
                 }
             }
+
+            return noeuds;
         }
 };
 
