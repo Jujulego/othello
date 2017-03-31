@@ -24,6 +24,9 @@ struct Etat {
 
     // Représentation générale du plateau
     std::vector<std::vector<COULEUR>> othellier;
+
+    // Méthodes
+    void appliquer_coup(Pion const& p);
 };
 
 #endif // ETAT_H

@@ -39,6 +39,7 @@ class Jeu : public QMainWindow {
         // Slots
         void btn_jouer();
         void btn_jouer_iar();
+        void btn_jouer_iamm();
 
         void retour_menu();
 

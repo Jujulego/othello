@@ -16,6 +16,7 @@
 #include "othellier.h"
 #include "pion.h"
 
+#include "src/minmaxia.h"
 #include "src/randomia.h"
 
 // Constructeur
@@ -71,6 +72,10 @@ void Jeu::init_menu() {
     connect(btn_jouer_iar, &QPushButton::clicked, this, &Jeu::btn_jouer_iar);
     layout_menu->addWidget(btn_jouer_iar);
 
+    QPushButton* btn_jouer_iamm = new QPushButton("J Vs IA MinMax");
+    connect(btn_jouer_iamm, &QPushButton::clicked, this, &Jeu::btn_jouer_iar);
+    layout_menu->addWidget(btn_jouer_iamm);
+
     // Ajout du menu
     m_wid_menu->setLayout(layout_menu);
     setCentralWidget(m_wid_menu);
@@ -112,6 +117,12 @@ void Jeu::btn_jouer() {
 void Jeu::btn_jouer_iar() {
     // Création de l'othellier
     m_othellier = new Othellier(std::shared_ptr<IA>(new RandomIA));
+    connect_othellier();
+}
+
+void Jeu::btn_jouer_iamm() {
+    // Création de l'othellier
+    m_othellier = new Othellier(std::shared_ptr<IA>(new MinMaxIA(5)));
     connect_othellier();
 }
 
