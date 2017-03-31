@@ -15,15 +15,32 @@ class Jeu : public QMainWindow {
 
     private:
         // Attributes
+        QWidget* m_wid_menu;
         Othellier* m_othellier;
+
+        QAction* m_act_annuler;
+        QAction* m_act_recommencer;
+        QAction* m_act_quitter;
+
         QLabel* m_status_joueur;
         QLabel* m_status_scores;
+
+        // Méthodes
+        void init_menu();
+        void connect_othellier();
 
     public:
         // Constructeur
         explicit Jeu(QWidget *parent = nullptr);
 
     signals:
+
+    private slots:
+        // Slots
+        void btn_jouer();
+        void btn_jouer_iar();
+
+        void retour_menu();
 
     public slots:
         // Slots

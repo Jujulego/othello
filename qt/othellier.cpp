@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QGraphicsScene>
+#include <QGraphicsTextItem>
 #include <QPoint>
 #include <QTimer>
 
@@ -222,12 +223,37 @@ void Othellier::reset() {
     m_score_noir = 2;
     emit chg_scores(m_score_blanc, m_score_noir);
 
-    // Ajout des cases
+    // Ajout des cases et des indices autour
+    static std::vector<QString> lettres  = {"A", "B", "C", "D", "E", "F", "G", "H"};
+    static std::vector<QString> chiffres = {"1", "2", "3", "4", "5", "6", "7", "8"};
+    QGraphicsTextItem* qti;
+
     for (int i = 0; i < 8; i++) {
+        // Les cases
         for (int j = 0; j < 8; j++) {
             m_pions[i][j] = new GPion(QPoint(i, j));
             scene()->addItem(m_pions[i][j]);
         }
+
+        // Au dessus ...
+        qti = new QGraphicsTextItem(lettres[i]);
+        qti->setPos((i - 0.2)*TAILLE_CASE, -TAILLE_CASE);
+        scene()->addItem(qti);
+
+        // ... et en dessous !
+        qti = new QGraphicsTextItem(lettres[i]);
+        qti->setPos((i - 0.2)*TAILLE_CASE, 7.5*TAILLE_CASE);
+        scene()->addItem(qti);
+
+        // A gauche ...
+        qti = new QGraphicsTextItem(chiffres[i]);
+        qti->setPos(-TAILLE_CASE, (i - 0.2)*TAILLE_CASE);
+        scene()->addItem(qti);
+
+        // ... et a droite !
+        qti = new QGraphicsTextItem(chiffres[i]);
+        qti->setPos(7.6*TAILLE_CASE, (i - 0.2)*TAILLE_CASE);
+        scene()->addItem(qti);
     }
 
     // Pions de départ
