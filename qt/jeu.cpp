@@ -53,7 +53,6 @@ Jeu::Jeu(QWidget *parent) : QMainWindow(parent) {
     menu_jouer->addAction(m_act_quitter);
 
     // Status bar
-    m_status_joueur = new QLabel(this);
     m_status_scores = new QLabel(this);
     chg_score(0, 0);
     statusBar()->addPermanentWidget(m_status_scores);
@@ -103,6 +102,7 @@ void Jeu::connect_othellier() {
 
     // Status !
     chg_score(2, 2);
+    m_status_joueur = new QLabel(this);
     m_status_joueur->setText("Au tour du joueur blanc");
     statusBar()->addWidget(m_status_joueur);
 }
@@ -122,7 +122,7 @@ void Jeu::btn_jouer_iar() {
 
 void Jeu::btn_jouer_iamm() {
     // Création de l'othellier
-    m_othellier = new Othellier(std::shared_ptr<IA>(new MinMaxIA(3)));
+    m_othellier = new Othellier(std::shared_ptr<IA>(new MinMaxIA(5)));
     connect_othellier();
 }
 

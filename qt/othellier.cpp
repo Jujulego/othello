@@ -17,7 +17,7 @@
 #include "src/ia.h"
 
 // Macros
-#define TEMP_IA 1
+#define TEMP_IA 1000
 
 #define ENTDIV(D, d) ((qFloor(D) - (qFloor(D) % qFloor(d))) / qFloor(d))
 

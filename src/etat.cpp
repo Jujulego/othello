@@ -8,11 +8,7 @@
 #include "pion.h"
 
 // Structure
-struct P {
-    int i, j;
-    COULEUR c;
-    std::vector<Pion>::iterator it;
-};
+struct P { int i, j; };
 
 // Méthodes
 void Etat::appliquer_coup(Pion const& p) {
@@ -35,11 +31,7 @@ void Etat::appliquer_coup(Pion const& p) {
             // Action :
             if (othellier[i][j] == ennemi) {
                 // Sélection ou ...
-                tmp.push_back({i, j, othellier[i][j],
-                    std::find_if(pions[ennemi].begin(), pions[ennemi].end(), [i, j] (Pion const& pe) -> bool {
-                        return (pe.x == i) && (pe.y == j);
-                    })
-                });
+                tmp.push_back({i, j});
             } else {
                 // Confirmation !
                 if (othellier[i][j] == joueur) ok = true;
@@ -55,10 +47,11 @@ void Etat::appliquer_coup(Pion const& p) {
 
             // Changements de couleur
             for (P pt : tmp) {
-                pt.it->couleur = joueur;
-                pions[joueur].push_back(*(pt.it));
-                pions[ennemi].erase(pt.it);
                 othellier[pt.i][pt.j] = joueur;
+                pions[joueur].push_back({pt.i, pt.j, joueur});
+                pions[ennemi].erase(std::find_if(pions[ennemi].begin(), pions[ennemi].end(), [pt] (Pion const& pe) -> bool {
+                    return (pe.x == pt.i) && (pe.y == pt.j);
+                }));
             }
         }
     }
