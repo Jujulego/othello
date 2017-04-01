@@ -8,19 +8,14 @@
 #include <iostream>
 #include <ctime>
 
-#include <utils/debug.h>
-#include <utils/signaux.h>
-
 #include "jeu.h"
+#include "src/pion.h"
+
+// Macros
+Q_DECLARE_METATYPE(Pion)
 
 // Main
 int main(int argc, char* argv[]) {
-    // Initialisation signaux
-    utils::init_debug();
-    utils::init_signaux();
-
-    utils::set_niveau("DEBUG");
-
     // Pratique :
     std::cout << std::boolalpha;
 
@@ -29,6 +24,8 @@ int main(int argc, char* argv[]) {
 
     // Définition de l'application
     QApplication app(argc, argv);
+
+    qRegisterMetaType<Pion>();
 
     // Traduction
     QString locale = QLocale::system().name().section('_', 0, 0);

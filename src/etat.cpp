@@ -11,6 +11,26 @@
 struct P { int i, j; };
 
 // Méthodes
+std::vector<Pion> Etat::pions(COULEUR c) const {
+    // Déclarations
+    std::vector<Pion> pions;
+
+    // Parcours !
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            if (othellier[i][j] == c) {
+                pions.push_back({i, j, c});
+
+                if (pions.size() == scores.at(c)) break;
+            }
+        }
+
+        if (pions.size() == scores.at(c)) break;
+    }
+
+    return pions;
+}
+
 void Etat::appliquer_coup(Pion const& p) {
     // Déclarations
     COULEUR ennemi = (joueur == BLANC) ? NOIR : BLANC;
@@ -42,17 +62,14 @@ void Etat::appliquer_coup(Pion const& p) {
         // Application des changements
         if (ok) {
             // Ajout du nouveau pion
-            pions[joueur].push_back(p);
             othellier[p.x][p.y] = joueur;
 
             // Changements de couleur
-            for (P pt : tmp) {
-                othellier[pt.i][pt.j] = joueur;
-                pions[joueur].push_back({pt.i, pt.j, joueur});
-                pions[ennemi].erase(std::find_if(pions[ennemi].begin(), pions[ennemi].end(), [pt] (Pion const& pe) -> bool {
-                    return (pe.x == pt.i) && (pe.y == pt.j);
-                }));
-            }
+            for (P pt : tmp) othellier[pt.i][pt.j] = joueur;
+
+            // Maj scores
+            scores[joueur] += tmp.size() + 1;
+            scores[ennemi] -= tmp.size();
         }
     }
 

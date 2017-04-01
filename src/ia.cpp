@@ -22,7 +22,7 @@ std::set<Pion,bool(&)(Pion const&,Pion const&)> IA::get_coups(Etat const& platea
     // Analyse du plateau
     COULEUR ennemi = (plateau.joueur == BLANC) ? NOIR : BLANC;
 
-    for (Pion p : plateau.pions.at(plateau.joueur)) {
+    for (Pion p : plateau.pions(plateau.joueur)) {
         // Recherche de coups possibles
         for (auto d : DIRECTIONS) {
             // Init recherche

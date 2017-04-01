@@ -7,13 +7,18 @@
 #include <QGraphicsScene>
 #include <QTimer>
 
+#include <QThread>
+
 #include <memory>
 #include <stack>
 #include <vector>
 
-#include "etat.h"
 #include "pion.h"
+#include "threadia.h"
+
+#include "src/etat.h"
 #include "src/ia.h"
+#include "src/pion.h"
 
 // Classe
 class Othellier : public QGraphicsView {
@@ -29,11 +34,11 @@ class Othellier : public QGraphicsView {
         std::stack<Etat> m_historique;
 
         QTimer* m_timer_ia;
-        std::shared_ptr<IA> m_ia;
+        QThread m_thread_ia;
+        ThreadIA m_ia;
 
         // Méthodes
-        void exec_coup(Pion const& p);
-        void start_ia();
+        bool test_ia();
 
     public:
         // Constructeur
@@ -53,13 +58,15 @@ class Othellier : public QGraphicsView {
     signals:
         // Signaux
         void fin(COULEUR gagnant);
+        void start_ia(Othellier*);
         void chg_joueur(COULEUR joueur);
         void chg_scores(int blanc, int noir);
 
     private slots:
         // Slots
+        void exec_coup(Pion const& p);
         void jouer();
-        void jouer_ia();
+        //void jouer_ia();
 
     public slots:
         // Slots

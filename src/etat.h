@@ -19,13 +19,13 @@
 struct Etat {
     // Infos joueurs
     COULEUR joueur; // qui doit jouer
-    std::map<COULEUR,int> scores;
-    std::map<COULEUR,std::vector<Pion>> pions;
+    std::map<COULEUR,unsigned> scores;
 
     // Représentation générale du plateau
     std::vector<std::vector<COULEUR>> othellier;
 
     // Méthodes
+    std::vector<Pion> pions(COULEUR c) const;
     void appliquer_coup(Pion const& p);
 };
 

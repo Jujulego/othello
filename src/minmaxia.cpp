@@ -11,7 +11,7 @@
 
 // Constructeur
 MinMaxIA::MinMaxIA(unsigned prof) : IA(), m_prof(prof-1),
-    m_algo([this] (CE const& ce) -> unsigned { return ce.etat.pions.at(this->m_couleur).size(); }) {
+    m_algo([this] (CE const& ce) -> unsigned { return ce.etat.scores.at(this->m_couleur); }) {
 }
 
 // Méthodes

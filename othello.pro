@@ -11,7 +11,8 @@ HEADERS += \
     src/minmax.h \
     src/arbre.h \
     src/macros.h \
-    src/minmaxia.h
+    src/minmaxia.h \
+    qt/threadia.h
 
 SOURCES += \
     qt/main.cpp \
@@ -21,10 +22,7 @@ SOURCES += \
     src/randomia.cpp \
     qt/jeu.cpp \
     src/minmaxia.cpp \
-    src/etat.cpp
-
-unix:!macx: LIBS += -L$$PWD/../../lib/ -lutils
+    src/etat.cpp \
+    qt/threadia.cpp
 
 INCLUDEPATH += $$PWD/src
-INCLUDEPATH += $$PWD/../../include
-DEPENDPATH += $$PWD/../../include

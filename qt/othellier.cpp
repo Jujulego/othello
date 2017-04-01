@@ -7,6 +7,8 @@
 #include <QPoint>
 #include <QTimer>
 
+#include <QThread>
+
 #include <functional>
 #include <memory>
 
@@ -17,7 +19,7 @@
 #include "src/ia.h"
 
 // Macros
-#define TEMP_IA 1000
+#define TEMP_IA 1
 
 #define ENTDIV(D, d) ((qFloor(D) - (qFloor(D) % qFloor(d))) / qFloor(d))
 
@@ -25,14 +27,24 @@
 Othellier::Othellier(std::shared_ptr<IA> ia, QWidget *parent) : QGraphicsView(parent), m_ia(ia) {
     // Préparation de la scène
     setScene(new QGraphicsScene(parent));
-    connect(scene(), &QGraphicsScene::selectionChanged, this, &Othellier::jouer);
+    connect(scene(), SIGNAL(selectionChanged()), this, SLOT(jouer()));
 
     // Ajout des cases
     m_pions = std::vector<std::vector<GPion*>>(8, std::vector<GPion*>(8, nullptr));
     reset();
+
+    // Préparation Thread IA
+    m_ia.moveToThread(&m_thread_ia);
+    connect(this, SIGNAL(start_ia(Othellier*)), &m_ia, SLOT(lancer(Othellier*)));
+    connect(&m_ia, SIGNAL(fini(Pion)), this, SLOT(exec_coup(Pion)));
+    m_thread_ia.start();
 }
 
 // Méthodes
+bool Othellier::test_ia() {
+    return (m_joueur == NOIR) && m_ia.ok();
+}
+
 void Othellier::exec_coup(Pion const&p) {
     // Cascade !
     auto pions = test_pos(QPoint(p.x, p.y));
@@ -65,20 +77,20 @@ void Othellier::exec_coup(Pion const&p) {
         if (test_fin()) emit fin((m_score_noir >= m_score_blanc) ? NOIR : BLANC);
 
         // Exec IA
-        start_ia();
+        if (test_ia()) emit start_ia(this);
     }
 }
 
-void Othellier::start_ia() {
+/*void Othellier::start_ia() {
     // Gardien (c'est bien le tour de l'IA ?)
-    if ((m_ia == nullptr) || (m_joueur == BLANC)) return;
+    if (test_ia()) return;
 
     // Lancement timer
     m_timer_ia = new QTimer(this);
     connect(m_timer_ia, &QTimer::timeout, this, &Othellier::jouer_ia);
     connect(this, &Othellier::chg_joueur, m_timer_ia, &QTimer::stop);
     m_timer_ia->start(TEMP_IA);
-}
+}*/
 
 Etat Othellier::get_etat() const {
     // Init
@@ -97,10 +109,6 @@ Etat Othellier::get_etat() const {
 
             // Ajout matrice
             etat.othellier[i][j] = c;
-
-            // Ajout aux tableaux / joueurs
-            if (c == VIDE) continue;
-            etat.pions[c].push_back({i, j, c});
         }
     }
 
@@ -118,7 +126,7 @@ void Othellier::set_etat(Etat const& etat) {
     emit chg_joueur(m_joueur);
 
     // Exec IA
-    start_ia();
+    if (test_ia()) emit start_ia(this);
 
     // Mise à jour du plateau
     scene()->clear();
@@ -190,7 +198,7 @@ bool Othellier::test_fin() const {
 // Slots
 void Othellier::jouer() {
     // Gardien IA
-    if ((m_ia != nullptr) && (m_joueur == NOIR)) return;
+    if (test_ia()) return;
 
     // Gardien déselection
     if (scene()->selectedItems().size() == 0) return;
@@ -205,11 +213,20 @@ void Othellier::jouer() {
     }
 }
 
-void Othellier::jouer_ia() {
-    exec_coup(m_ia->jouer(get_etat()));
+/*void Othellier::jouer_ia() {
+    // Preparation concurrent
+    m_ret_ia.setFuture(QtConcurrent::run([this] () -> Pion { return m_ia->jouer(get_etat()); }));
 }
 
+void Othellier::fini_ia() {
+    // Récupération du resultat
+    exec_coup(m_ret_ia.future().result());
+}*/
+
 void Othellier::reset() {
+    // Arrêt des calculs
+    m_thread_ia.quit();
+
     // Vidage de la scene
     scene()->clear();
 
@@ -268,6 +285,9 @@ void Othellier::reset() {
 void Othellier::annuler() {
     // Gradien
     if (m_historique.empty()) return;
+
+    // Arrêt des calculs
+    m_thread_ia.quit();
 
     // Retour en arrière !
     set_etat(m_historique.top());
