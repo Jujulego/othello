@@ -19,8 +19,6 @@
 #include "src/ia.h"
 
 // Macros
-#define TEMP_IA 1
-
 #define ENTDIV(D, d) ((qFloor(D) - (qFloor(D) % qFloor(d))) / qFloor(d))
 
 // Constructeur
@@ -80,17 +78,6 @@ void Othellier::exec_coup(Pion const&p) {
         if (test_ia()) emit start_ia(this);
     }
 }
-
-/*void Othellier::start_ia() {
-    // Gardien (c'est bien le tour de l'IA ?)
-    if (test_ia()) return;
-
-    // Lancement timer
-    m_timer_ia = new QTimer(this);
-    connect(m_timer_ia, &QTimer::timeout, this, &Othellier::jouer_ia);
-    connect(this, &Othellier::chg_joueur, m_timer_ia, &QTimer::stop);
-    m_timer_ia->start(TEMP_IA);
-}*/
 
 Etat Othellier::get_etat() const {
     // Init
