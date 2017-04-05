@@ -9,7 +9,7 @@
 			<Target title="Debug">
 				<Option output="build/cb-debug/othello" prefix_auto="1" extension_auto="1" />
 				<Option object_output="build/cb-debug/" />
-				<Option type= "1" />
+				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-Wall" />
@@ -31,11 +31,22 @@
 				</Linker>
 			</Target>
 		</Build>
-		<Compiler>
-		</Compiler>
+		<Unit filename="src/arbre.h" />
+		<Unit filename="src/console.cpp" />
+		<Unit filename="src/console.h" />
+		<Unit filename="src/etat.cpp" />
 		<Unit filename="src/etat.h" />
 		<Unit filename="src/graphe.h" />
+		<Unit filename="src/ia.cpp" />
+		<Unit filename="src/ia.h" />
+		<Unit filename="src/macros.h" />
 		<Unit filename="src/main.cpp" />
+		<Unit filename="src/minmax.h" />
+		<Unit filename="src/minmaxia.cpp" />
+		<Unit filename="src/minmaxia.h" />
+		<Unit filename="src/pion.h" />
+		<Unit filename="src/randomia.cpp" />
+		<Unit filename="src/randomia.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
