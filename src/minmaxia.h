@@ -2,6 +2,8 @@
 #define MINMAXIA_H
 
 // Dépendances
+#include <memory>
+
 #include "arbre.h"
 #include "etat.h"
 #include "ia.h"
@@ -17,7 +19,7 @@ class MinMaxIA : public IA {
         // Attributs
         unsigned m_prof;
         COULEUR m_couleur;
-        AlgoMinMax<CE> m_algo;
+        AlgoMinMax<std::shared_ptr<CE>> m_algo;
 
     public:
         // Constructeur

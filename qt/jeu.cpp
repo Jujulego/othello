@@ -103,7 +103,7 @@ void Jeu::connect_othellier() {
     // Status !
     chg_score(2, 2);
     m_status_joueur = new QLabel(this);
-    m_status_joueur->setText("Au tour du joueur blanc");
+    m_status_joueur->setText("Au tour du joueur noir");
     statusBar()->addWidget(m_status_joueur);
 }
 
@@ -139,6 +139,7 @@ void Jeu::retour_menu() {
     connect(m_act_quitter, &QAction::triggered, this, &Jeu::close);
 
     // Retour au menu
+    m_othellier->quitter();
     init_menu();
     m_othellier = nullptr;
 

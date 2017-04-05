@@ -25,5 +25,5 @@ SOURCES += \
     src/etat.cpp \
     qt/threadia.cpp
 
-QMAKE_CXXFLAGS += -Og -std=c++14 -g -rdynamic
+QMAKE_CXXFLAGS += -O3 -std=c++14
 INCLUDEPATH += $$PWD/src

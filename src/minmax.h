@@ -12,7 +12,7 @@
 #include "arbre.h"
 
 // Algo :
-template<class D> // D est le type du graphe sur lequel on applique MinMax
+template<class D> // D est le type de l'arbre sur lequel on applique MinMax
 class AlgoMinMax {
     private:
         // Attributs
@@ -89,7 +89,7 @@ class AlgoMinMax {
             }
 
             // Fini !
-            std::cout << std::endl;
+            std::cout << preds[arbre.racine()] << std::endl;
             return preds[arbre.racine()]->val();
         }
 };

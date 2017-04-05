@@ -20,7 +20,6 @@ std::vector<Pion> Etat::pions(COULEUR c) const {
         for (int j = 0; j < 8; j++) {
             if (othellier[i][j] == c) {
                 pions.push_back({i, j, c});
-
                 if (pions.size() == scores.at(c)) break;
             }
         }
@@ -35,7 +34,7 @@ void Etat::appliquer_coup(Pion const& p) {
     // Déclarations
     COULEUR ennemi = (joueur == BLANC) ? NOIR : BLANC;
     std::vector<P> tmp;
-    bool ok;
+    bool ok = false;
 
     // Recherches dans les 8 dirs
     for (std::function<void(int&,int&)> f : DIRECTIONS) {

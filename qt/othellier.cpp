@@ -24,7 +24,7 @@
 // Constructeur
 Othellier::Othellier(std::shared_ptr<IA> ia, QWidget *parent) : QGraphicsView(parent), m_ia(ia) {
     // Préparation de la scène
-    setScene(new QGraphicsScene(parent));
+    setScene(new QGraphicsScene(this));
     connect(scene(), SIGNAL(selectionChanged()), this, SLOT(jouer()));
 
     // Ajout des cases
@@ -40,7 +40,7 @@ Othellier::Othellier(std::shared_ptr<IA> ia, QWidget *parent) : QGraphicsView(pa
 
 // Méthodes
 bool Othellier::test_ia() {
-    return (m_joueur == NOIR) && m_ia.ok();
+    return (m_joueur == BLANC) && m_ia.ok();
 }
 
 void Othellier::exec_coup(Pion const&p) {
@@ -72,7 +72,10 @@ void Othellier::exec_coup(Pion const&p) {
         emit chg_joueur(m_joueur);
 
         // Test de fin
-        if (test_fin()) emit fin((m_score_noir >= m_score_blanc) ? NOIR : BLANC);
+        if (test_fin()) {
+            emit fin((m_score_noir >= m_score_blanc) ? NOIR : BLANC);
+            return;
+        }
 
         // Exec IA
         if (test_ia()) emit start_ia(this);
@@ -112,11 +115,10 @@ void Othellier::set_etat(Etat const& etat) {
     m_joueur = etat.joueur;
     emit chg_joueur(m_joueur);
 
-    // Exec IA
-    if (test_ia()) emit start_ia(this);
+    // Affichage !
+    reset_affichage();
 
-    // Mise à jour du plateau
-    scene()->clear();
+    // Les cases
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
             m_pions[i][j] = new GPion(QPoint(i, j), etat.othellier[i][j]);
@@ -200,34 +202,36 @@ void Othellier::jouer() {
     }
 }
 
-/*void Othellier::jouer_ia() {
-    // Preparation concurrent
-    m_ret_ia.setFuture(QtConcurrent::run([this] () -> Pion { return m_ia->jouer(get_etat()); }));
-}
-
-void Othellier::fini_ia() {
-    // Récupération du resultat
-    exec_coup(m_ret_ia.future().result());
-}*/
-
 void Othellier::reset() {
     // Arrêt des calculs
     m_thread_ia.quit();
-
-    // Vidage de la scene
-    scene()->clear();
+    m_thread_ia.start();
 
     // Vidage de l'historique
     m_historique = std::stack<Etat>();
 
     // Joueur !
-    m_joueur = BLANC;
+    m_joueur = NOIR;
     emit chg_joueur(m_joueur);
 
     // Scores
     m_score_blanc = 2;
     m_score_noir = 2;
     emit chg_scores(m_score_blanc, m_score_noir);
+
+    // Affichage !
+    reset_affichage();
+
+    // Pions de départ
+    m_pions[3][3]->couleur(BLANC);
+    m_pions[4][4]->couleur(BLANC);
+    m_pions[3][4]->couleur(NOIR);
+    m_pions[4][3]->couleur(NOIR);
+}
+
+void Othellier::reset_affichage() {
+    // Vidage de la scene
+    scene()->clear();
 
     // Ajout des cases et des indices autour
     static std::vector<QString> lettres  = {"A", "B", "C", "D", "E", "F", "G", "H"};
@@ -261,24 +265,20 @@ void Othellier::reset() {
         qti->setPos(7.6*TAILLE_CASE, (i - 0.2)*TAILLE_CASE);
         scene()->addItem(qti);
     }
-
-    // Pions de départ
-    m_pions[3][3]->couleur(BLANC);
-    m_pions[4][4]->couleur(BLANC);
-    m_pions[3][4]->couleur(NOIR);
-    m_pions[4][3]->couleur(NOIR);
 }
 
 void Othellier::annuler() {
     // Gradien
     if (m_historique.empty()) return;
 
-    // Arrêt des calculs
-    m_thread_ia.quit();
-
-    // Retour en arrière !
+    // Retour en arrière ! (2 fois en cas d'IA)
+    if (m_ia.ok() && m_joueur != BLANC) m_historique.pop();
     set_etat(m_historique.top());
     m_historique.pop();
+}
+
+void Othellier::quitter() {
+    m_thread_ia.quit();
 }
 
 // Accesseurs

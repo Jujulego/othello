@@ -29,7 +29,7 @@ class Othellier : public QGraphicsView {
         int m_score_blanc = 0;
         int m_score_noir = 0;
 
-        COULEUR m_joueur = BLANC;
+        COULEUR m_joueur = NOIR;
         std::vector<std::vector<GPion*>> m_pions;
         std::stack<Etat> m_historique;
 
@@ -66,12 +66,13 @@ class Othellier : public QGraphicsView {
         // Slots
         void exec_coup(Pion const& p);
         void jouer();
-        //void jouer_ia();
 
     public slots:
         // Slots
         void reset();
+        void reset_affichage();
         void annuler();
+        void quitter();
 };
 
 #endif // OTHELLIER_H
