@@ -6,6 +6,7 @@
 #include <QGraphicsTextItem>
 #include <QPoint>
 #include <QTimer>
+#include <QMessageBox>
 
 #include <QThread>
 
@@ -72,6 +73,12 @@ void Othellier::exec_coup(Pion const&p) {
         emit chg_joueur(m_joueur);
 
         // Test de fin
+        if (test_fin()) {
+            QMessageBox::information(this, "Othello", QString("Le joueur ") + QString((m_joueur == BLANC) ? "blanc" : "noir") + QString(" ne peut pas jouer !"));
+            m_joueur = (m_joueur == BLANC) ? NOIR : BLANC;
+            emit chg_joueur(m_joueur);
+        }
+
         if (test_fin()) {
             emit fin((m_score_noir >= m_score_blanc) ? NOIR : BLANC);
             return;
@@ -204,8 +211,8 @@ void Othellier::jouer() {
 
 void Othellier::reset() {
     // Arrêt des calculs
-    m_thread_ia.quit();
-    m_thread_ia.start();
+    //m_thread_ia.quit();
+    //m_thread_ia.start();
 
     // Vidage de l'historique
     m_historique = std::stack<Etat>();

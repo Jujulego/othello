@@ -16,18 +16,18 @@ template<class D> // D est le type de l'arbre sur lequel on applique MinMax
 class AlgoMinMax {
     private:
         // Attributs
-        std::function<unsigned(D const&)> m_heuristique;
+        std::function<int(D const&)> m_heuristique;
 
     public:
         // Constructeur
-        AlgoMinMax(std::function<unsigned(D const&)> heuristique) : m_heuristique(heuristique) {
+        AlgoMinMax(std::function<int(D const&)> heuristique) : m_heuristique(heuristique) {
         }
 
         // Méthodes
         D exec(Arbre<D>& arbre, bool joueur = true) { // joueur à vrai signifie que les derniers noeuds concernent le joueur
             // Récupération des noeuds
             std::map<std::shared_ptr<typename Arbre<D>::Noeud>,std::shared_ptr<typename Arbre<D>::Noeud>> preds;
-            std::map<std::shared_ptr<typename Arbre<D>::Noeud>,unsigned> noeuds;
+            std::map<std::shared_ptr<typename Arbre<D>::Noeud>,int> noeuds;
 
             // Application de l'heuristique sur les feuilles (elles n'ont pas de fils !) + récup de leurs pères
             std::set<std::shared_ptr<typename Arbre<D>::Noeud>> peres;
@@ -44,8 +44,7 @@ class AlgoMinMax {
 
             // MinMax !
             std::set<std::shared_ptr<typename Arbre<D>::Noeud>> feuilles;
-            int i = joueur ? 0 : 1;
-            unsigned val;
+            int i = joueur ? 0 : 1, val;
 
             while (!peres.empty()) {
                 // Copie des pères
@@ -58,7 +57,7 @@ class AlgoMinMax {
                     // Sélection de la valeur
                     if (i == 0) {
                         // i = 0 => moi => max !
-                        val = 0;
+                        val = std::numeric_limits<int>::min();
 
                         for (auto f : n->fils()) {
                             if (noeuds[f] > val) {
@@ -69,7 +68,7 @@ class AlgoMinMax {
                         }
                     } else {
                         // i = 1 => lui => min !
-                        val = std::numeric_limits<unsigned>::max();
+                        val = std::numeric_limits<int>::max();
 
                         for (auto f : n->fils()) {
                             if (noeuds[f] < val) {

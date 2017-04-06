@@ -9,9 +9,23 @@
 #include "pion.h"
 #include "minmaxia.h"
 
+#define VAL_COINS 10
+
 // Constructeur
 MinMaxIA::MinMaxIA(unsigned prof) : IA(), m_prof(prof-1),
-    m_algo([this] (std::shared_ptr<CE> const& ce) -> unsigned { return ce->etat.scores.at(this->m_couleur); }) {
+    m_algo([this] (std::shared_ptr<CE> const& ce) -> int {
+        COULEUR e = (this->m_couleur == NOIR) ? BLANC : NOIR;
+        return ce->etat.scores.at(this->m_couleur)
+            + ((ce->etat.othellier[0][0] == this->m_couleur) ? VAL_COINS : 0)
+            + ((ce->etat.othellier[0][7] == this->m_couleur) ? VAL_COINS : 0)
+            + ((ce->etat.othellier[7][0] == this->m_couleur) ? VAL_COINS : 0)
+            + ((ce->etat.othellier[7][7] == this->m_couleur) ? VAL_COINS : 0)
+            -   ce->etat.scores.at(e)
+            - ((ce->etat.othellier[0][0] == e) ? VAL_COINS : 0)
+            - ((ce->etat.othellier[0][7] == e) ? VAL_COINS : 0)
+            - ((ce->etat.othellier[7][0] == e) ? VAL_COINS : 0)
+            - ((ce->etat.othellier[7][7] == e) ? VAL_COINS : 0);
+    }) {
 }
 
 // Méthodes
