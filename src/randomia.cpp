@@ -1,4 +1,5 @@
 // Importations
+#include <cstdlib>
 #include <ctime>
 #include <iostream>
 
@@ -13,7 +14,7 @@ Pion RandomIA::jouer(Etat const& plateau) {
     auto coups = get_coups(plateau);
 
     // Tirage aléatoire !
-    int r = rand() % coups.size();
+    int r = std::rand() % coups.size();
 
     // Récupération du coup
     auto it = coups.begin();

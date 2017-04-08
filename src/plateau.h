@@ -1,0 +1,6 @@
+#ifndef PLATEAU_H_INCLUDED
+#define PLATEAU_H_INCLUDED
+
+
+
+#endif // PLATEAU_H_INCLUDED
