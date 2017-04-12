@@ -138,3 +138,60 @@
 	"pion.h"
 	"etat.h"
 
+1492016747 source:/home/julien/projets/c++/othello/src/main.cpp
+	<iostream>
+	"plateau.h"
+
+1492016747 /home/julien/projets/c++/othello/src/plateau.h
+	<vector>
+	"pion.h"
+	"console.h"
+	<memory>
+	<set>
+
+1491484519 source:/home/julien/projets/c++/othello/src/minmaxia.cpp
+	<memory>
+	<iostream>
+	<set>
+	"arbre.h"
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"minmaxia.h"
+
+1490984237 /home/julien/projets/c++/othello/src/arbre.h
+	<memory>
+	<set>
+	<vector>
+
+1491218886 /home/julien/projets/c++/othello/src/minmaxia.h
+	<memory>
+	"arbre.h"
+	"etat.h"
+	"ia.h"
+	"minmax.h"
+	"pion.h"
+
+1491483020 /home/julien/projets/c++/othello/src/minmax.h
+	<functional>
+	<limits>
+	<iostream>
+	<map>
+	<memory>
+	<set>
+	"arbre.h"
+
+1491662950 source:/home/julien/projets/c++/othello/src/randomia.cpp
+	<cstdlib>
+	<ctime>
+	<iostream>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"randomia.h"
+
+1490893454 /home/julien/projets/c++/othello/src/randomia.h
+	"etat.h"
+	"ia.h"
+	"pion.h"
+
