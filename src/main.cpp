@@ -5,11 +5,14 @@
 
 // Importations
 #include <iostream>
+#include "plateau.h"
+
 
 // Main
 int main() {
-	std::cout << "Yo !" << std::endl;
-	std::cout << "A vous de vous démerder maintenant !!!" << std::endl;
-	
+   Tableau t;
+    t.CreationTab();
+
+
 	return 1; // Erreur => y a pas de code !!!
 }

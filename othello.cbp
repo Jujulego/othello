@@ -45,6 +45,8 @@
 		<Unit filename="src/minmaxia.cpp" />
 		<Unit filename="src/minmaxia.h" />
 		<Unit filename="src/pion.h" />
+		<Unit filename="src/plateau.cpp" />
+		<Unit filename="src/plateau.h" />
 		<Unit filename="src/randomia.cpp" />
 		<Unit filename="src/randomia.h" />
 		<Extensions>

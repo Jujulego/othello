@@ -38,8 +38,9 @@
 	"pion.h"
 	"etat.h"
 
-1491420227 source:c:\users\nolwenn\documents\othello\src\main.cpp
+1491743229 source:c:\users\nolwenn\documents\othello\src\main.cpp
 	<iostream>
+	"plateau.h"
 
 1491563894 source:c:\users\nolwenn\documents\othello\src\minmaxia.cpp
 	<memory>
@@ -86,4 +87,15 @@
 	"etat.h"
 	"ia.h"
 	"pion.h"
+
+1491752277 source:c:\users\nolwenn\documents\othello\src\plateau.cpp
+	"plateau.h"
+	"console.h"
+
+1491752582 c:\users\nolwenn\documents\othello\src\plateau.h
+	<vector>
+	"pion.h"
+	"console.h"
+	<memory>
+	<set>
 
