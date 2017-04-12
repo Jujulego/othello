@@ -99,3 +99,42 @@
 	<memory>
 	<set>
 
+1490880137 source:/home/julien/projets/c++/othello/src/console.cpp
+	"console.h"
+	<conio.h>
+	<windows.h>
+	<fcntl.h>
+	<unistd.h>
+	<termios.h>
+
+1490880137 /home/julien/projets/c++/othello/src/console.h
+	<iostream>
+
+1491388824 source:/home/julien/projets/c++/othello/src/etat.cpp
+	<algorithm>
+	<functional>
+	<iostream>
+	<vector>
+	"etat.h"
+	"pion.h"
+
+1491388828 /home/julien/projets/c++/othello/src/etat.h
+	<map>
+	<vector>
+	"pion.h"
+
+1490891937 /home/julien/projets/c++/othello/src/pion.h
+	<vector>
+
+1491388107 source:/home/julien/projets/c++/othello/src/ia.cpp
+	<set>
+	<iostream>
+	"pion.h"
+	"etat.h"
+	"ia.h"
+
+1490892104 /home/julien/projets/c++/othello/src/ia.h
+	<set>
+	"pion.h"
+	"etat.h"
+
