@@ -1,9 +1,9 @@
 // Importations
+#include <limits>
 #include <memory>
 #include <iostream>
 #include <set>
 
-#include "arbre.h"
 #include "etat.h"
 #include "ia.h"
 #include "pion.h"
@@ -12,53 +12,78 @@
 #define VAL_COINS 10
 
 // Constructeur
-MinMaxIA::MinMaxIA(unsigned prof) : IA(), m_prof(prof-1),
-    m_algo([this] (std::shared_ptr<CE> const& ce) -> int {
-        COULEUR e = (this->m_couleur == NOIR) ? BLANC : NOIR;
-        return ce->etat.scores.at(this->m_couleur)
-            + ((ce->etat.othellier[0][0] == this->m_couleur) ? VAL_COINS : 0)
-            + ((ce->etat.othellier[0][7] == this->m_couleur) ? VAL_COINS : 0)
-            + ((ce->etat.othellier[7][0] == this->m_couleur) ? VAL_COINS : 0)
-            + ((ce->etat.othellier[7][7] == this->m_couleur) ? VAL_COINS : 0)
-            -   ce->etat.scores.at(e)
-            - ((ce->etat.othellier[0][0] == e) ? VAL_COINS : 0)
-            - ((ce->etat.othellier[0][7] == e) ? VAL_COINS : 0)
-            - ((ce->etat.othellier[7][0] == e) ? VAL_COINS : 0)
-            - ((ce->etat.othellier[7][7] == e) ? VAL_COINS : 0);
-    }) {
+MinMaxIA::MinMaxIA(unsigned prof) : IA(), m_prof(prof-1) {
 }
 
 // Méthodes
-Pion MinMaxIA::jouer(Etat const& plateau) {
-    // Construction de l'arbre
-    Arbre<std::shared_ptr<CE>> arbre(std::shared_ptr<CE>(new CE({plateau, {-1, -1, plateau.joueur}})));
-    std::set<std::shared_ptr<Arbre<std::shared_ptr<CE>>::Noeud>> noeuds;
-    std::set<std::shared_ptr<Arbre<std::shared_ptr<CE>>::Noeud>> peres;
-    noeuds.insert(arbre.racine());
+int MinMaxIA::heuristique(const Etat &etat) {
+    COULEUR ennemi = (m_couleur == NOIR) ? BLANC : NOIR;
+    return etat.scores.at(m_couleur)
+        + ((etat.othellier[0][0] == m_couleur) ? VAL_COINS : 0)
+        + ((etat.othellier[0][7] == m_couleur) ? VAL_COINS : 0)
+        + ((etat.othellier[7][0] == m_couleur) ? VAL_COINS : 0)
+        + ((etat.othellier[7][7] == m_couleur) ? VAL_COINS : 0)
+        -   etat.scores.at(ennemi)
+        - ((etat.othellier[0][0] == ennemi) ? VAL_COINS : 0)
+        - ((etat.othellier[0][7] == ennemi) ? VAL_COINS : 0)
+        - ((etat.othellier[7][0] == ennemi) ? VAL_COINS : 0)
+        - ((etat.othellier[7][7] == ennemi) ? VAL_COINS : 0);
+}
 
-    for (unsigned i = 0; i < m_prof; i++) {
-        // Copies noeuds => peres
-        peres = noeuds;
-        noeuds.clear();
+MinMaxIA::PV MinMaxIA::minmax(const Etat &etat, unsigned prof) {
+    // Feuille !
+    if (prof == m_prof) return {heuristique(etat), {0, 0, VIDE}};
 
-        // Génération des fils
-        std::cout << i << std::endl;
-        for (auto p : peres) {
-            for (auto c : get_coups(p->val()->etat)) {
-                Etat e(p->val()->etat); // Copie de l'état
-                e.appliquer_coup(c);
+    // Branche
+    auto coups = get_coups(etat);
+    Pion pion;
+    int val;
 
-                auto n = arbre.add_noeud(std::shared_ptr<CE>(new CE({e, c})), p);
-                noeuds.insert(n);
+    if (prof % 2) { // Max
+        // Initialisation
+        val = std::numeric_limits<decltype(val)>::min(); // -infini !
 
-                std::cout << p << " >> " << n << std::endl;
+        // Parcours des coups
+        for (auto c : coups) {
+            // Application du coup
+            Etat e(etat);
+            e.appliquer_coup(c);
+
+            // Minmax sur l'enfant
+            PV pv = minmax(e, prof+1);
+
+            // Max !
+            if (pv.val > val) {
+                pion = c;
+                val = pv.val;
             }
+        }
+    } else { // Min
+        // Initialisation
+        val = std::numeric_limits<decltype(val)>::max(); // +infini !
 
-            std::cout << std::endl;
+        // Parcours des coups
+        for (auto c : coups) {
+            // Application du coup
+            Etat e(etat);
+            e.appliquer_coup(c);
+
+            // Minmax sur l'enfant
+            PV pv = minmax(e, prof+1);
+
+            // Min !
+            if (pv.val < val) {
+                pion = c;
+                val = pv.val;
+            }
         }
     }
 
-    // Appel de l'algo
+    return {val, pion};
+}
+
+Pion MinMaxIA::jouer(Etat const& plateau) {
+    // Construction de l'arbre
     m_couleur = plateau.joueur;
-    return m_algo.exec(arbre, (m_prof % 2) == 0)->coup;
+    return minmax(plateau, 0).pion;
 }

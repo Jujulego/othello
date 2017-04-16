@@ -4,22 +4,23 @@
 // Dépendances
 #include <memory>
 
-#include "arbre.h"
 #include "etat.h"
 #include "ia.h"
-#include "minmax.h"
 #include "pion.h"
 
 // Classe
 class MinMaxIA : public IA {
-    private:
+    protected:
         // Type
-        struct CE { Etat etat; Pion coup; };
+        struct PV { int val; Pion pion; };
 
         // Attributs
         unsigned m_prof;
         COULEUR m_couleur;
-        AlgoMinMax<std::shared_ptr<CE>> m_algo;
+
+        // Méthodes
+        int heuristique(Etat const& etat);
+        PV minmax(Etat const& etat, unsigned prof);
 
     public:
         // Constructeur

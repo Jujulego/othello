@@ -8,8 +8,6 @@ HEADERS += \
     src/randomia.h \
     src/pion.h \
     qt/jeu.h \
-    src/minmax.h \
-    src/arbre.h \
     src/macros.h \
     src/minmaxia.h \
     qt/threadia.h
