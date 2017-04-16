@@ -16,6 +16,7 @@
 #include "othellier.h"
 #include "pion.h"
 
+#include "src/alphabetaia.h"
 #include "src/minmaxia.h"
 #include "src/randomia.h"
 
@@ -75,6 +76,10 @@ void Jeu::init_menu() {
     connect(btn_jouer_iamm, &QPushButton::clicked, this, &Jeu::btn_jouer_iamm);
     layout_menu->addWidget(btn_jouer_iamm);
 
+    QPushButton* btn_jouer_iaab = new QPushButton("Joueur Vs AlphaBeta");
+    connect(btn_jouer_iaab, &QPushButton::clicked, this, &Jeu::btn_jouer_iaab);
+    layout_menu->addWidget(btn_jouer_iaab);
+
     // Ajout du menu
     m_wid_menu->setLayout(layout_menu);
     setCentralWidget(m_wid_menu);
@@ -123,6 +128,12 @@ void Jeu::btn_jouer_iar() {
 void Jeu::btn_jouer_iamm() {
     // Création de l'othellier
     m_othellier = new Othellier(std::shared_ptr<IA>(new MinMaxIA(5)));
+    connect_othellier();
+}
+
+void Jeu::btn_jouer_iaab() {
+    // Création de l'othellier
+    m_othellier = new Othellier(std::shared_ptr<IA>(new AlphaBetaIA(5)));
     connect_othellier();
 }
 

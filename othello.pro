@@ -10,7 +10,8 @@ HEADERS += \
     qt/jeu.h \
     src/macros.h \
     src/minmaxia.h \
-    qt/threadia.h
+    qt/threadia.h \
+    src/alphabetaia.h
 
 SOURCES += \
     qt/main.cpp \
@@ -21,7 +22,8 @@ SOURCES += \
     qt/jeu.cpp \
     src/minmaxia.cpp \
     src/etat.cpp \
-    qt/threadia.cpp
+    qt/threadia.cpp \
+    src/alphabetaia.cpp
 
 QMAKE_CXXFLAGS += -O3 -std=c++14
 INCLUDEPATH += $$PWD/src
