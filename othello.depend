@@ -42,11 +42,11 @@
 	<iostream>
 	"plateau.h"
 
-1491563894 source:c:\users\nolwenn\documents\othello\src\minmaxia.cpp
+1492433569 source:c:\users\nolwenn\documents\othello\src\minmaxia.cpp
+	<limits>
 	<memory>
 	<iostream>
 	<set>
-	"arbre.h"
 	"etat.h"
 	"ia.h"
 	"pion.h"
@@ -57,12 +57,10 @@
 	<set>
 	<vector>
 
-1491563894 c:\users\nolwenn\documents\othello\src\minmaxia.h
+1492433569 c:\users\nolwenn\documents\othello\src\minmaxia.h
 	<memory>
-	"arbre.h"
 	"etat.h"
 	"ia.h"
-	"minmax.h"
 	"pion.h"
 
 1491563894 c:\users\nolwenn\documents\othello\src\minmax.h
@@ -88,7 +86,7 @@
 	"ia.h"
 	"pion.h"
 
-1492026009 source:c:\users\nolwenn\documents\othello\src\plateau.cpp
+1492433569 source:c:\users\nolwenn\documents\othello\src\plateau.cpp
 	"plateau.h"
 	"console.h"
 

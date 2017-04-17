@@ -40,7 +40,7 @@ void Tableau::CreationTab()
             std::cout << " " << l << " " << LIGNE_MIL1 << " " << l << std::endl;
         }
 
-        if (i != 4) {
+        if (i != 6) {
             std::cout << "   " << LIGNE_MIL2 << std::endl;
         }
 
