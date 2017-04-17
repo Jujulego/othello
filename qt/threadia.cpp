@@ -1,5 +1,7 @@
 // Importations
-#include <iostream>
+#include <QTimer>
+
+#include <cassert>
 #include <memory>
 
 #include "othellier.h"
@@ -7,17 +9,37 @@
 
 #include "src/ia.h"
 
-// Constructeur
-ThreadIA::ThreadIA(std::shared_ptr<IA> ia) : m_ia(ia) {
+// Constructeurs
+ThreadIA::ThreadIA(std::shared_ptr<IA> ia, COULEUR couleur) : m_ia(ia), m_couleur(couleur) {
+}
+
+ThreadIA::ThreadIA(ThreadIA const& thread_ia) : ThreadIA(thread_ia.m_ia, thread_ia.m_couleur) {
+}
+
+// Opérateurs
+ThreadIA& ThreadIA::operator = (ThreadIA const& thread_ia) {
+    m_ia = thread_ia.m_ia;
+    m_couleur = thread_ia.m_couleur;
+
+    return *this;
 }
 
 // Slots
 void ThreadIA::lancer(Othellier* o) {
-    emit fini(m_ia->jouer(o->get_etat()));
-    std::shared_ptr<Noeud<IA::PV>> a = m_ia->arbre();
+    // Gardien
+    if (m_couleur != o->get_joueur()) return;
+    assert(ok());
 
-    if (a)
-        std::cout << "Arbre : " << a->size() << " enfants ! val=" << a->val().val << std::endl;
+    // Stockage
+    m_othellier = o;
+
+    // Timer !
+    QTimer::singleShot(1000, this, SLOT(exec()));
+}
+
+void ThreadIA::exec() {
+    // Execution !
+    emit fini(m_ia->jouer(m_othellier->get_etat()));
 }
 
 // Accesseurs

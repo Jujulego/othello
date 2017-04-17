@@ -9,6 +9,7 @@
 
 #include <QThread>
 
+#include <map>
 #include <memory>
 #include <stack>
 #include <vector>
@@ -33,16 +34,15 @@ class Othellier : public QGraphicsView {
         std::vector<std::vector<GPion*>> m_pions;
         std::stack<Etat> m_historique;
 
-        QTimer* m_timer_ia;
         QThread m_thread_ia;
-        ThreadIA m_ia;
+        std::map<COULEUR,ThreadIA> m_ias;
 
         // Méthodes
         bool test_ia();
 
     public:
         // Constructeur
-        Othellier(std::shared_ptr<IA> ia = nullptr, QWidget* parent = nullptr);
+        Othellier(std::map<COULEUR,std::shared_ptr<IA>> ias, QWidget* parent = nullptr);
 
         // Méthodes
         Etat get_etat() const;
@@ -54,6 +54,7 @@ class Othellier : public QGraphicsView {
         // Accesseurs
         int score_blanc() const;
         int score_noir() const;
+        COULEUR get_joueur() const;
 
     signals:
         // Signaux

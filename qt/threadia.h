@@ -16,10 +16,17 @@ class ThreadIA : public QObject {
     private:
         // Attributs
         std::shared_ptr<IA> m_ia;
+        COULEUR m_couleur;
+
+        class Othellier* m_othellier;
 
     public:
         // Constructeur
-        ThreadIA(std::shared_ptr<IA> ia);
+        ThreadIA(std::shared_ptr<IA> ia = nullptr, COULEUR couleur = VIDE);
+        ThreadIA(ThreadIA const& thread_ia);
+
+        // Opérateurs
+        ThreadIA& operator = (ThreadIA const& thread_ia);
 
         // Accesseurs
         bool ok();
@@ -27,6 +34,10 @@ class ThreadIA : public QObject {
     signals:
         // Signaux
         void fini(Pion const& p);
+
+    private slots:
+        // Slots
+        void exec();
 
     public slots:
         // Slots

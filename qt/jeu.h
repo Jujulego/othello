@@ -42,6 +42,7 @@ class Jeu : public QMainWindow {
         void btn_jouer_iamm();
         void btn_jouer_iaab();
         void btn_jouer_ianm();
+        void btn_jouer_iaia();
 
         void retour_menu();
 

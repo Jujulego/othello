@@ -1,5 +1,6 @@
 // Importations
 #include <limits>
+#include <iostream>
 
 #include "negamaxia.h"
 
@@ -16,6 +17,9 @@ MinMaxIA::PV NegaMaxIA::alphabeta(Etat&& etat, unsigned prof, int alpha, int bet
     auto coups = get_coups(etat);
     Pion pion;
     int val;
+
+    // Cas sans coup
+    if (coups.size() == 0) return {heuristique(std::move(etat)), pion};
 
     // Initialisation
     val = std::numeric_limits<decltype(val)>::min(); // -infini !
@@ -44,5 +48,7 @@ MinMaxIA::PV NegaMaxIA::alphabeta(Etat&& etat, unsigned prof, int alpha, int bet
         }
     }
 
+    // Résultat
+    std::cout << (char) (pion.x + 'A') << (pion.y +1) << " " << pion.couleur << " " << val << std::endl;
     return {val, pion};
 }

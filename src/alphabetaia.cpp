@@ -1,4 +1,5 @@
 // Importations
+#include <iostream>
 #include <limits>
 
 #include "alphabetaia.h"
@@ -17,45 +18,28 @@ MinMaxIA::PV AlphaBetaIA::alphabeta(Etat&& etat, unsigned prof, int alpha, int b
     Pion pion;
     int val;
 
-    if (prof % 2) { // Max
-        // Initialisation
-        val = std::numeric_limits<decltype(val)>::min(); // -infini !
+    // Cas sans coup
+    if (coups.size() == 0) return {heuristique(std::move(etat)), pion};
 
-        // Parcours des coups
-        for (auto c : coups) {
-            // Application du coup
-            Etat e(etat);
-            e.appliquer_coup(c);
-
-            // AlphaBeta sur l'enfant
-            PV pv = alphabeta(std::move(e), prof+1, alpha, beta);
-
-            // Max !
-            if (pv.val > val) {
-                pion = c;
-                val = pv.val;
-            }
-
-            // Coupure beta
-            if (pv.val >= beta) return {val, pion};
-
-            // Maj alpha
-            if (pv.val > alpha) alpha = pv.val;
-        }
-    } else { // Min
+    // Initialisation
+    if (prof % 2) { // Min
         // Initialisation
         val = std::numeric_limits<decltype(val)>::max(); // +infini !
+    } else { // Max
+        // Initialisation
+        val = std::numeric_limits<decltype(val)>::min(); // -infini !
+    }
 
-        // Parcours des coups
-        for (auto c : coups) {
-            // Application du coup
-            Etat e(etat);
-            e.appliquer_coup(c);
+    // Parcours des coups
+    for (auto c : coups) {
+        // Application du coup
+        Etat e(etat);
+        e.appliquer_coup(c);
 
-            // AlphaBeta sur l'enfant
-            PV pv = alphabeta(std::move(e), prof+1, alpha, beta);
+        // AlphaBeta sur l'enfant
+        PV pv = alphabeta(std::move(e), prof+1, alpha, beta);
 
-            // Min !
+        if (prof % 2) { // Min
             if (pv.val < val) {
                 pion = c;
                 val = pv.val;
@@ -63,12 +47,22 @@ MinMaxIA::PV AlphaBetaIA::alphabeta(Etat&& etat, unsigned prof, int alpha, int b
 
             // Coupure alpha
             if (pv.val <= alpha) return {val, pion};
-
-            // Maj beta
             if (pv.val < beta) beta = pv.val;
+
+        } else { // Max
+            if (pv.val > val) {
+                pion = c;
+                val = pv.val;
+            }
+
+            // Coupure beta
+            if (pv.val >= beta) return {val, pion};
+            if (pv.val > alpha) alpha = pv.val;
         }
     }
 
+    // Résultat
+    std::cout << (char) (pion.x + 'A') << (pion.y +1) << " " << pion.couleur << " " << val << std::endl;
     return {val, pion};
 }
 
@@ -77,5 +71,8 @@ Pion AlphaBetaIA::jouer(Etat plateau) {
     m_couleur = plateau.joueur;
 
     // Algo !
-    return alphabeta(std::move(plateau), 0, std::numeric_limits<int>::min(), std::numeric_limits<int>::max()).pion;
+    return alphabeta(std::move(plateau), 0,
+        std::numeric_limits<int>::min(),
+        std::numeric_limits<int>::max()
+    ).pion;
 }

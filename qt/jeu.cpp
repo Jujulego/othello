@@ -88,6 +88,10 @@ void Jeu::init_menu() {
     connect(btn_jouer_ianm, &QPushButton::clicked, this, &Jeu::btn_jouer_ianm);
     layout_menu->addWidget(btn_jouer_ianm);
 
+    QPushButton* btn_jouer_iaia = new QPushButton("AlphaBeta Vs NegaMax");
+    connect(btn_jouer_iaia, &QPushButton::clicked, this, &Jeu::btn_jouer_iaia);
+    layout_menu->addWidget(btn_jouer_iaia);
+
     // Ajout du menu
     m_wid_menu->setLayout(layout_menu);
     setCentralWidget(m_wid_menu);
@@ -123,31 +127,55 @@ void Jeu::connect_othellier() {
 // Slots
 void Jeu::btn_jouer() {
     // Création de l'othellier
-    m_othellier = new Othellier();
+    m_othellier = new Othellier({
+        {NOIR,  nullptr},
+        {BLANC, nullptr}
+    });
     connect_othellier();
 }
 
 void Jeu::btn_jouer_iar() {
     // Création de l'othellier
-    m_othellier = new Othellier(std::shared_ptr<IA>(new RandomIA));
+    m_othellier = new Othellier({
+        {NOIR,  nullptr},
+        {BLANC, std::shared_ptr<IA>(new RandomIA)}
+    });
     connect_othellier();
 }
 
 void Jeu::btn_jouer_iamm() {
     // Création de l'othellier
-    m_othellier = new Othellier(std::shared_ptr<IA>(new MinMaxIA(PROF_ALGO)));
+    m_othellier = new Othellier({
+        {NOIR,  nullptr},
+        {BLANC, std::shared_ptr<IA>(new MinMaxIA(PROF_ALGO))}
+    });
     connect_othellier();
 }
 
 void Jeu::btn_jouer_iaab() {
     // Création de l'othellier
-    m_othellier = new Othellier(std::shared_ptr<IA>(new AlphaBetaIA(PROF_ALGO)));
+    m_othellier = new Othellier({
+        {NOIR,  nullptr},
+        {BLANC, std::shared_ptr<IA>(new AlphaBetaIA(PROF_ALGO))}
+    });
     connect_othellier();
 }
 
 void Jeu::btn_jouer_ianm() {
     // Création de l'othellier
-    m_othellier = new Othellier(std::shared_ptr<IA>(new NegaMaxIA(PROF_ALGO)));
+    m_othellier = new Othellier({
+        {NOIR,  nullptr},
+        {BLANC, std::shared_ptr<IA>(new NegaMaxIA(PROF_ALGO))}
+    });
+    connect_othellier();
+}
+
+void Jeu::btn_jouer_iaia() {
+    // Création de l'othellier
+    m_othellier = new Othellier({
+        {NOIR,  std::shared_ptr<IA>(new AlphaBetaIA(PROF_ALGO))},
+        {BLANC, std::shared_ptr<IA>(new NegaMaxIA(PROF_ALGO))}
+    });
     connect_othellier();
 }
 

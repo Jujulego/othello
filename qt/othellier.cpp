@@ -10,7 +10,7 @@
 
 #include <QThread>
 
-#include <functional>
+#include <map>
 #include <memory>
 
 #include "othellier.h"
@@ -23,25 +23,33 @@
 #define ENTDIV(D, d) ((qFloor(D) - (qFloor(D) % qFloor(d))) / qFloor(d))
 
 // Constructeur
-Othellier::Othellier(std::shared_ptr<IA> ia, QWidget *parent) : QGraphicsView(parent), m_ia(ia) {
+Othellier::Othellier(std::map<COULEUR,std::shared_ptr<IA>> ias, QWidget *parent) : QGraphicsView(parent) {
     // Préparation de la scène
     setScene(new QGraphicsScene(this));
     connect(scene(), SIGNAL(selectionChanged()), this, SLOT(jouer()));
 
+    // Préparation IA
+    for (COULEUR c : {BLANC, NOIR}) {
+        // Création obj
+        m_ias[c] = ThreadIA((ias.count(c) == 0) ? nullptr : ias.at(c), c);
+
+        // Paramètres
+        m_ias[c].moveToThread(&m_thread_ia);
+        connect(this, SIGNAL(start_ia(Othellier*)), &m_ias[c], SLOT(lancer(Othellier*)));
+        connect(&m_ias[c], SIGNAL(fini(Pion)), this, SLOT(exec_coup(Pion)));
+    }
+
+    // Lancement du thread
+    m_thread_ia.start();
+
     // Ajout des cases
     m_pions = std::vector<std::vector<GPion*>>(8, std::vector<GPion*>(8, nullptr));
     reset();
-
-    // Préparation Thread IA
-    m_ia.moveToThread(&m_thread_ia);
-    connect(this, SIGNAL(start_ia(Othellier*)), &m_ia, SLOT(lancer(Othellier*)));
-    connect(&m_ia, SIGNAL(fini(Pion)), this, SLOT(exec_coup(Pion)));
-    m_thread_ia.start();
 }
 
 // Méthodes
 bool Othellier::test_ia() {
-    return (m_joueur == BLANC) && m_ia.ok();
+    return m_ias[m_joueur].ok();
 }
 
 void Othellier::exec_coup(Pion const&p) {
@@ -71,22 +79,23 @@ void Othellier::exec_coup(Pion const&p) {
         m_pions[p.x][p.y]->couleur(m_joueur);
         m_joueur = (m_joueur == BLANC) ? NOIR : BLANC;
         emit chg_joueur(m_joueur);
-
-        // Test de fin
-        if (test_fin()) {
-            QMessageBox::information(this, "Othello", QString("Le joueur ") + QString((m_joueur == BLANC) ? "blanc" : "noir") + QString(" ne peut pas jouer !"));
-            m_joueur = (m_joueur == BLANC) ? NOIR : BLANC;
-            emit chg_joueur(m_joueur);
-        }
-
-        if (test_fin()) {
-            emit fin((m_score_noir >= m_score_blanc) ? NOIR : BLANC);
-            return;
-        }
-
-        // Exec IA
-        if (test_ia()) emit start_ia(this);
     }
+
+    // Test d'impossibilité de jouer
+    if (test_fin()) {
+        QMessageBox::information(this, "Othello", QString("Le joueur ") + QString((m_joueur == BLANC) ? "blanc" : "noir") + QString(" ne peut pas jouer !"));
+        m_joueur = (m_joueur == BLANC) ? NOIR : BLANC;
+        emit chg_joueur(m_joueur);
+    }
+
+    // Test de fin !
+    if (test_fin()) {
+        emit fin((m_score_noir >= m_score_blanc) ? NOIR : BLANC);
+        return;
+    }
+
+    // Exec IA
+    if (test_ia()) emit start_ia(this);
 }
 
 Etat Othellier::get_etat() const {
@@ -234,6 +243,9 @@ void Othellier::reset() {
     m_pions[4][4]->couleur(BLANC);
     m_pions[3][4]->couleur(NOIR);
     m_pions[4][3]->couleur(NOIR);
+
+    // Tour de l'IA :
+    if (test_ia()) emit start_ia(this);
 }
 
 void Othellier::reset_affichage() {
@@ -278,10 +290,16 @@ void Othellier::annuler() {
     // Gradien
     if (m_historique.empty()) return;
 
-    // Retour en arrière ! (2 fois en cas d'IA)
-    while (m_ia.ok() && (m_historique.top().joueur == BLANC)) m_historique.pop();
-    set_etat(m_historique.top());
-    m_historique.pop();
+    // Retour en arrière ! (jusqu'au 1er tour de joueur humain)
+    while (m_ias[m_historique.top().joueur].ok() && !m_historique.empty()) m_historique.pop();
+
+    // On remet le plateau en l'état
+    if (!m_historique.empty()) {
+        set_etat(m_historique.top());
+        m_historique.pop();
+    } else {
+        reset();
+    }
 }
 
 void Othellier::quitter() {
@@ -295,4 +313,8 @@ int Othellier::score_blanc() const {
 
 int Othellier::score_noir() const {
     return m_score_noir;
+}
+
+COULEUR Othellier::get_joueur() const {
+    return m_joueur;
 }
