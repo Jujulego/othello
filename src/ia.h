@@ -2,20 +2,36 @@
 #define IA_H
 
 // Dépendances
+#include <memory>
 #include <set>
 
-#include "pion.h"
 #include "etat.h"
+#include "noeud.h"
+#include "pion.h"
 
 // Classe
 class IA {
     public:
+        // Type
+        struct PV { int val; Pion pion; };
+
+    protected:
+        // Attributs
+        std::shared_ptr<Noeud<PV>> m_arbre;
+
+    public:
+        // Constructeur
+        IA();
+
         // Destructeur
-        virtual ~IA();
+        virtual ~IA() = default;
 
         // Méthodes
-        virtual Pion jouer(Etat const& plateau) = 0;
+        virtual Pion jouer(Etat plateau) = 0;
         std::set<Pion,bool(&)(Pion const&,Pion const&)> get_coups(Etat const& plateau) const;
+
+        // Accesseurs
+        std::shared_ptr<Noeud<PV>> arbre() const;
 };
 
 #endif // IA_H

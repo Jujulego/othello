@@ -8,14 +8,14 @@
 class AlphaBetaIA : public MinMaxIA {
     protected:
         // Méthodes
-        virtual MinMaxIA::PV alphabeta(const Etat &etat, unsigned prof, int alpha, int beta);
+        virtual MinMaxIA::PV alphabeta(Etat&& etat, unsigned prof, int alpha, int beta);
 
     public:
         // Constructeur
         AlphaBetaIA(unsigned prof);
 
         // Méthodes
-        virtual Pion jouer(Etat const& plateau) override;
+        virtual Pion jouer(Etat plateau) override;
 };
 
 #endif // ALPHABETAIA_H

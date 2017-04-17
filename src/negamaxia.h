@@ -8,7 +8,7 @@
 class NegaMaxIA : public AlphaBetaIA {
     protected:
         // Méthodes
-        virtual MinMaxIA::PV alphabeta(const Etat &etat, unsigned prof, int alpha, int beta) override;
+        virtual MinMaxIA::PV alphabeta(Etat&& etat, unsigned prof, int alpha, int beta) override;
 
     public:
         // Constructeur

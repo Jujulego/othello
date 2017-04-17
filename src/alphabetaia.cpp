@@ -8,9 +8,9 @@ AlphaBetaIA::AlphaBetaIA(unsigned prof) : MinMaxIA(prof) {
 }
 
 // Méthodes
-MinMaxIA::PV AlphaBetaIA::alphabeta(const Etat &etat, unsigned prof, int alpha, int beta) {
+MinMaxIA::PV AlphaBetaIA::alphabeta(Etat&& etat, unsigned prof, int alpha, int beta) {
     // Feuille !
-    if (prof == m_prof) return {heuristique(etat), {0, 0, VIDE}};
+    if (prof == m_prof) return {heuristique(std::move(etat)), {0, 0, VIDE}};
 
     // Branche
     auto coups = get_coups(etat);
@@ -28,7 +28,7 @@ MinMaxIA::PV AlphaBetaIA::alphabeta(const Etat &etat, unsigned prof, int alpha, 
             e.appliquer_coup(c);
 
             // AlphaBeta sur l'enfant
-            PV pv = alphabeta(e, prof+1, alpha, beta);
+            PV pv = alphabeta(std::move(e), prof+1, alpha, beta);
 
             // Max !
             if (pv.val > val) {
@@ -53,7 +53,7 @@ MinMaxIA::PV AlphaBetaIA::alphabeta(const Etat &etat, unsigned prof, int alpha, 
             e.appliquer_coup(c);
 
             // AlphaBeta sur l'enfant
-            PV pv = alphabeta(e, prof+1, alpha, beta);
+            PV pv = alphabeta(std::move(e), prof+1, alpha, beta);
 
             // Min !
             if (pv.val < val) {
@@ -72,7 +72,10 @@ MinMaxIA::PV AlphaBetaIA::alphabeta(const Etat &etat, unsigned prof, int alpha, 
     return {val, pion};
 }
 
-Pion AlphaBetaIA::jouer(const Etat &plateau) {
+Pion AlphaBetaIA::jouer(Etat plateau) {
+    // Initialisation
     m_couleur = plateau.joueur;
-    return alphabeta(plateau, 0, std::numeric_limits<int>::min(), std::numeric_limits<int>::max()).pion;
+
+    // Algo !
+    return alphabeta(std::move(plateau), 0, std::numeric_limits<int>::min(), std::numeric_limits<int>::max()).pion;
 }

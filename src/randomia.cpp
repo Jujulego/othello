@@ -9,7 +9,7 @@
 #include "randomia.h"
 
 // Méthodes
-Pion RandomIA::jouer(Etat const& plateau) {
+Pion RandomIA::jouer(Etat plateau) {
     // Récupération de la liste des coups possibles
     auto coups = get_coups(plateau);
 

@@ -8,9 +8,9 @@ NegaMaxIA::NegaMaxIA(unsigned prof) : AlphaBetaIA(prof) {
 }
 
 // Méthodes
-MinMaxIA::PV NegaMaxIA::alphabeta(const Etat &etat, unsigned prof, int alpha, int beta) {
+MinMaxIA::PV NegaMaxIA::alphabeta(Etat&& etat, unsigned prof, int alpha, int beta) {
     // Feuille !
-    if (prof == m_prof) return {heuristique(etat), {0, 0, VIDE}};
+    if (prof == m_prof) return {heuristique(std::move(etat)), {0, 0, VIDE}};
 
     // Branche
     auto coups = get_coups(etat);
@@ -27,7 +27,7 @@ MinMaxIA::PV NegaMaxIA::alphabeta(const Etat &etat, unsigned prof, int alpha, in
         e.appliquer_coup(c);
 
         // AlphaBeta sur l'enfant
-        int v = -(alphabeta(e, prof+1, -beta, -alpha).val);
+        int v = -(alphabeta(std::move(e), prof+1, -beta, -alpha).val);
 
         // NegaMax :
         if (v > val) {

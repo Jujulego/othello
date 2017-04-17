@@ -1,6 +1,7 @@
 // Importations
-#include <set>
+#include <functional>
 #include <iostream>
+#include <set>
 
 #include "pion.h"
 #include "etat.h"
@@ -11,8 +12,8 @@ static bool cc(Pion const& c1, Pion const& c2) {
     return ((c1.x + c1.y * 10) < (c2.x + c2.y * 10));
 }
 
-// Destructeur
-IA::~IA() {
+// Constructeur
+IA::IA() {
 }
 
 // Méthodes
@@ -28,7 +29,7 @@ std::set<Pion,bool(&)(Pion const&,Pion const&)> IA::get_coups(Etat const& platea
         for (auto d : DIRECTIONS) {
             // Init recherche
             int i = p.x, j = p.y;
-            d(i, j);          // On se déplace 1 fois
+            d(i, j); // On se déplace 1 fois
 
             // Recherche
             bool e = false, v = false; // v => vide, e => ennemi
@@ -46,6 +47,10 @@ std::set<Pion,bool(&)(Pion const&,Pion const&)> IA::get_coups(Etat const& platea
         }
     }
 
-    std::cout << "coups : " << coups.size() << std::endl;
+    //std::cout << "coups : " << coups.size() << std::endl;
     return coups;
+}
+
+std::shared_ptr<Noeud<IA::PV>> IA::arbre() const {
+    return std::ref(m_arbre);
 }

@@ -10,7 +10,7 @@
 class RandomIA : public IA {
     public:
         // Méthodes
-        virtual Pion jouer(Etat const& plateau) override;
+        virtual Pion jouer(Etat plateau) override;
 };
 
 #endif // RANDOMIA_H

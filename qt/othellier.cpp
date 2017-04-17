@@ -279,7 +279,7 @@ void Othellier::annuler() {
     if (m_historique.empty()) return;
 
     // Retour en arrière ! (2 fois en cas d'IA)
-    if (m_ia.ok() && m_joueur != BLANC) m_historique.pop();
+    while (m_ia.ok() && (m_historique.top().joueur == BLANC)) m_historique.pop();
     set_etat(m_historique.top());
     m_historique.pop();
 }
