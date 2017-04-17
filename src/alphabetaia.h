@@ -8,7 +8,7 @@
 class AlphaBetaIA : public MinMaxIA {
     protected:
         // Méthodes
-        MinMaxIA::PV alphabeta(const Etat &etat, unsigned prof, int alpha, int beta);
+        virtual MinMaxIA::PV alphabeta(const Etat &etat, unsigned prof, int alpha, int beta);
 
     public:
         // Constructeur

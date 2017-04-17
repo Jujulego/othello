@@ -9,10 +9,11 @@
 #include "pion.h"
 #include "minmaxia.h"
 
+// Macros
 #define VAL_COINS 10
 
 // Constructeur
-MinMaxIA::MinMaxIA(unsigned prof) : IA(), m_prof(prof-1) {
+MinMaxIA::MinMaxIA(unsigned prof) : IA(), m_prof(prof) {
 }
 
 // Méthodes

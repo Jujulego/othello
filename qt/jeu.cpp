@@ -18,7 +18,11 @@
 
 #include "src/alphabetaia.h"
 #include "src/minmaxia.h"
+#include "src/negamaxia.h"
 #include "src/randomia.h"
+
+// Macros
+#define PROF_ALGO 11
 
 // Constructeur
 Jeu::Jeu(QWidget *parent) : QMainWindow(parent) {
@@ -80,6 +84,10 @@ void Jeu::init_menu() {
     connect(btn_jouer_iaab, &QPushButton::clicked, this, &Jeu::btn_jouer_iaab);
     layout_menu->addWidget(btn_jouer_iaab);
 
+    QPushButton* btn_jouer_ianm = new QPushButton("Joueur Vs NegaMax");
+    connect(btn_jouer_ianm, &QPushButton::clicked, this, &Jeu::btn_jouer_ianm);
+    layout_menu->addWidget(btn_jouer_ianm);
+
     // Ajout du menu
     m_wid_menu->setLayout(layout_menu);
     setCentralWidget(m_wid_menu);
@@ -127,13 +135,19 @@ void Jeu::btn_jouer_iar() {
 
 void Jeu::btn_jouer_iamm() {
     // Création de l'othellier
-    m_othellier = new Othellier(std::shared_ptr<IA>(new MinMaxIA(5)));
+    m_othellier = new Othellier(std::shared_ptr<IA>(new MinMaxIA(PROF_ALGO)));
     connect_othellier();
 }
 
 void Jeu::btn_jouer_iaab() {
     // Création de l'othellier
-    m_othellier = new Othellier(std::shared_ptr<IA>(new AlphaBetaIA(5)));
+    m_othellier = new Othellier(std::shared_ptr<IA>(new AlphaBetaIA(PROF_ALGO)));
+    connect_othellier();
+}
+
+void Jeu::btn_jouer_ianm() {
+    // Création de l'othellier
+    m_othellier = new Othellier(std::shared_ptr<IA>(new NegaMaxIA(PROF_ALGO)));
     connect_othellier();
 }
 
