@@ -2,7 +2,6 @@
 #include <limits>
 #include <memory>
 #include <iostream>
-#include <set>
 
 #include "etat.h"
 #include "ia.h"
@@ -31,48 +30,40 @@ int MinMaxIA::heuristique(const Etat &etat) {
         - ((etat.othellier[7][7] == ennemi) ? VAL_COINS : 0);
 }
 
-MinMaxIA::PV MinMaxIA::minmax(const Etat &etat, unsigned prof) {
+MinMaxIA::PV MinMaxIA::minmax(Etat etat, unsigned prof, std::shared_ptr<Noeud<PV>> noeud) {
     // Feuille !
     if (prof == m_prof) return {heuristique(etat), {0, 0, VIDE}};
 
     // Branche
     auto coups = get_coups(etat);
-    Pion pion;
+    Pion pion = {0, 0, VIDE};
     int val;
 
+    // Initialisation
     if (prof % 2) { // Max
-        // Initialisation
         val = std::numeric_limits<decltype(val)>::min(); // -infini !
+    } else { // Min
+        val = std::numeric_limits<decltype(val)>::max(); // +infini !
+    }
 
-        // Parcours des coups
-        for (auto c : coups) {
-            // Application du coup
-            Etat e(etat);
-            e.appliquer_coup(c);
+    // Parcours des coups
+    if (coups.size() == 0) return {heuristique(etat), pion};
 
-            // Minmax sur l'enfant
-            PV pv = minmax(e, prof+1);
+    for (auto c : coups) {
+        // Application du coup
+        Etat e(etat);
+        e.appliquer_coup(c);
 
-            // Max !
+        // Minmax sur l'enfant
+        PV pv = minmax(e, prof+1, noeud->add_fils({0, c}));
+
+        // Résultat
+        if (prof % 2) { // Max
             if (pv.val > val) {
                 pion = c;
                 val = pv.val;
             }
-        }
-    } else { // Min
-        // Initialisation
-        val = std::numeric_limits<decltype(val)>::max(); // +infini !
-
-        // Parcours des coups
-        for (auto c : coups) {
-            // Application du coup
-            Etat e(etat);
-            e.appliquer_coup(c);
-
-            // Minmax sur l'enfant
-            PV pv = minmax(e, prof+1);
-
-            // Min !
+        } else { // Min
             if (pv.val < val) {
                 pion = c;
                 val = pv.val;
@@ -80,11 +71,22 @@ MinMaxIA::PV MinMaxIA::minmax(const Etat &etat, unsigned prof) {
         }
     }
 
+    // Résultat
+    noeud->val().val = val;
+
+    std::cout << (char) (pion.x + 'A') << (pion.y +1) << " " << pion.couleur << " " << val << std::endl;
+
     return {val, pion};
 }
 
-Pion MinMaxIA::jouer(Etat const& plateau) {
-    // Construction de l'arbre
+Pion MinMaxIA::jouer(Etat plateau) {
+    // Initialisation
+    m_arbre = Noeud<PV>::creer({0, {0, 0, VIDE}});
     m_couleur = plateau.joueur;
-    return minmax(plateau, 0).pion;
+
+    // Algo !!!
+    PV p = minmax(plateau, 0, m_arbre);
+    m_arbre->val().val = p.val;
+
+    return p.pion;
 }

@@ -12,7 +12,8 @@ HEADERS += \
     src/minmaxia.h \
     qt/threadia.h \
     src/alphabetaia.h \
-    src/negamaxia.h
+    src/negamaxia.h \
+    src/noeud.h
 
 SOURCES += \
     qt/main.cpp \
