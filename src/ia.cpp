@@ -54,3 +54,21 @@ std::set<Pion,bool(&)(Pion const&,Pion const&)> IA::get_coups(Etat const& platea
 std::shared_ptr<Noeud<IA::PV>> IA::arbre() const {
     return m_arbre;
 }
+
+// Compte le nombre de descendants au 3e coup
+int IA::compt_desc() {
+    // Déclaration des variables
+    int nb_desc = 0;
+
+    // Pour tous les descendants au 2e coup,
+    // On ajoute le nb de fils au nb total de descendants
+    for (unsigned int i = 0; i < m_arbre->size(); i++) {
+        for (unsigned int j = 0; j < m_arbre->fils(i)->size(); j++) {
+            nb_desc += m_arbre->fils(i)->fils(j)->size();
+        }
+    }
+
+    return nb_desc;
+}
+
+

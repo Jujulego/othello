@@ -31,19 +31,21 @@
 				</Linker>
 			</Target>
 		</Build>
-		<Unit filename="src/arbre.h" />
+		<Unit filename="src/alphabetaia.cpp" />
+		<Unit filename="src/alphabetaia.h" />
 		<Unit filename="src/console.cpp" />
 		<Unit filename="src/console.h" />
 		<Unit filename="src/etat.cpp" />
 		<Unit filename="src/etat.h" />
-		<Unit filename="src/graphe.h" />
 		<Unit filename="src/ia.cpp" />
 		<Unit filename="src/ia.h" />
 		<Unit filename="src/macros.h" />
 		<Unit filename="src/main.cpp" />
-		<Unit filename="src/minmax.h" />
 		<Unit filename="src/minmaxia.cpp" />
 		<Unit filename="src/minmaxia.h" />
+		<Unit filename="src/negamaxia.cpp" />
+		<Unit filename="src/negamaxia.h" />
+		<Unit filename="src/noeud.h" />
 		<Unit filename="src/pion.h" />
 		<Unit filename="src/plateau.cpp" />
 		<Unit filename="src/plateau.h" />

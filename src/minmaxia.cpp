@@ -107,3 +107,10 @@ Pion MinMaxIA::jouer(Etat plateau) {
 
     return p.pion;
 }
+
+
+
+
+
+
+

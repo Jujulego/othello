@@ -29,6 +29,7 @@ class IA {
         // Méthodes
         virtual Pion jouer(Etat plateau) = 0;
         std::set<Pion,bool(&)(Pion const&,Pion const&)> get_coups(Etat const& plateau) const;
+        int compt_desc();
 
         // Accesseurs
         std::shared_ptr<Noeud<PV>> arbre() const;
