@@ -23,7 +23,7 @@
 #define ENTDIV(D, d) ((qFloor(D) - (qFloor(D) % qFloor(d))) / qFloor(d))
 
 // Constructeur
-Othellier::Othellier(std::map<COULEUR,std::shared_ptr<IA>> ias, QWidget *parent) : QGraphicsView(parent) {
+Othellier::Othellier(std::map<COULEUR,std::shared_ptr<IA>> ias, bool infini, QWidget *parent) : QGraphicsView(parent), m_infini(infini) {
     // Préparation de la scène
     setScene(new QGraphicsScene(this));
     connect(scene(), SIGNAL(selectionChanged()), this, SLOT(jouer()));
@@ -83,7 +83,7 @@ void Othellier::exec_coup(Pion const&p) {
 
     // Test d'impossibilité de jouer
     if (test_fin()) {
-        QMessageBox::information(this, "Othello", QString("Le joueur ") + QString((m_joueur == BLANC) ? "blanc" : "noir") + QString(" ne peut pas jouer !"));
+        if (!m_infini) QMessageBox::information(this, "Othello", QString("Le joueur ") + QString((m_joueur == BLANC) ? "blanc" : "noir") + QString(" ne peut pas jouer !"));
         m_joueur = (m_joueur == BLANC) ? NOIR : BLANC;
         emit chg_joueur(m_joueur);
     }

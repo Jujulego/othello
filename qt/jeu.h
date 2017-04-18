@@ -7,6 +7,7 @@
 
 #include "othellier.h"
 #include "pion.h"
+#include "src/memia.h"
 #include "src/pion.h"
 
 // Classe
@@ -25,6 +26,13 @@ class Jeu : public QMainWindow {
         QLabel* m_status_joueur;
         QLabel* m_status_scores;
 
+        std::shared_ptr<MemIA> m_memia_a;
+        COULEUR m_couleur_memia_a = VIDE;
+
+        std::shared_ptr<MemIA> m_memia_b;
+        COULEUR m_couleur_memia_b = VIDE;
+        bool jouer_infini = false;
+
         // Méthodes
         void init_menu();
         void connect_othellier();
@@ -42,6 +50,7 @@ class Jeu : public QMainWindow {
         void btn_jouer_iamm();
         void btn_jouer_iaab();
         void btn_jouer_ianm();
+        void btn_jouer_iami();
         void btn_jouer_iaia();
 
         void retour_menu();

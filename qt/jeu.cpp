@@ -8,8 +8,10 @@
 #include <QAction>
 #include <QShortcut>
 #include <QStatusBar>
+#include <QTimer>
 #include <QMessageBox>
 
+#include <fstream>
 #include <memory>
 
 #include "jeu.h"
@@ -17,6 +19,7 @@
 #include "pion.h"
 
 #include "src/alphabetaia.h"
+#include "src/memia.h"
 #include "src/minmaxia.h"
 #include "src/negamaxia.h"
 #include "src/randomia.h"
@@ -25,7 +28,7 @@
 #define PROF_ALGO 5
 
 // Constructeur
-Jeu::Jeu(QWidget *parent) : QMainWindow(parent) {
+Jeu::Jeu(QWidget *parent) : QMainWindow(parent), m_memia_a(new MemIA("arbre_a.txt")), m_memia_b(new MemIA("arbre_b.txt")) {
     // Paramètres fenêtre
     setMinimumSize(TAILLE_CASE*9 + 3, TAILLE_CASE*9 + 25);
 
@@ -88,7 +91,11 @@ void Jeu::init_menu() {
     connect(btn_jouer_ianm, &QPushButton::clicked, this, &Jeu::btn_jouer_ianm);
     layout_menu->addWidget(btn_jouer_ianm);
 
-    QPushButton* btn_jouer_iaia = new QPushButton("AlphaBeta Vs NegaMax");
+    QPushButton* btn_jouer_iami = new QPushButton("Joueur Vs Mem");
+    connect(btn_jouer_iami, &QPushButton::clicked, this, &Jeu::btn_jouer_iami);
+    layout_menu->addWidget(btn_jouer_iami);
+
+    QPushButton* btn_jouer_iaia = new QPushButton("Mem Vs Mem (infini)");
     connect(btn_jouer_iaia, &QPushButton::clicked, this, &Jeu::btn_jouer_iaia);
     layout_menu->addWidget(btn_jouer_iaia);
 
@@ -170,12 +177,29 @@ void Jeu::btn_jouer_ianm() {
     connect_othellier();
 }
 
+void Jeu::btn_jouer_iami() {
+    // Création de l'othellier
+    m_othellier = new Othellier({
+        {NOIR,  nullptr},
+        {BLANC, m_memia_a}
+    });
+
+    m_couleur_memia_a = BLANC;
+
+    connect_othellier();
+}
+
 void Jeu::btn_jouer_iaia() {
     // Création de l'othellier
     m_othellier = new Othellier({
-        {NOIR,  std::shared_ptr<IA>(new AlphaBetaIA(PROF_ALGO))},
-        {BLANC, std::shared_ptr<IA>(new NegaMaxIA(PROF_ALGO))}
-    });
+        {NOIR,  m_memia_a},
+        {BLANC, m_memia_b}
+    }, true);
+
+    m_couleur_memia_a = NOIR;
+    m_couleur_memia_b = BLANC;
+    jouer_infini = true;
+
     connect_othellier();
 }
 
@@ -201,9 +225,41 @@ void Jeu::retour_menu() {
 }
 
 void Jeu::fin_jeu(COULEUR gagnant) {
-    QMessageBox::information(this, "Victoire !", ((gagnant == BLANC) ? "Blanc" : "Noir") + (QString) " à gagné !!!\n" +
-                         (QString) "Score final : Blanc : " + QString(std::to_string(m_othellier->score_blanc()).c_str()) +
-                                              "   Noir : "  + QString(std::to_string(m_othellier->score_noir()).c_str()));
+    // MemIA A
+    if (m_couleur_memia_a == gagnant) {
+        m_memia_a->gagne();
+    } else if (m_couleur_memia_a != VIDE) {
+        m_memia_a->perdu();
+    }
+    m_couleur_memia_a = VIDE;
+
+    // MemIA B
+    if (m_couleur_memia_b == gagnant) {
+        m_memia_b->gagne();
+    } else if (m_couleur_memia_b != VIDE) {
+        m_memia_b->perdu();
+    }
+    m_couleur_memia_b = VIDE;
+
+    // Message
+    if (!jouer_infini) {
+        QMessageBox::information(this, "Victoire !", ((gagnant == BLANC) ? "Blanc" : "Noir") + (QString) " à gagné !!!\n" +
+                             (QString) "Score final : Blanc : " + QString(std::to_string(m_othellier->score_blanc()).c_str()) +
+                                                  "   Noir : "  + QString(std::to_string(m_othellier->score_noir()).c_str()));
+    } else {
+        // Log
+        std::ofstream f("log.txt", std::ios_base::app | std::ios_base::out);
+        f << ((gagnant == BLANC) ? "Blanc" : "Noir") << " à gagné !" << std::endl;
+        f << "    Blanc : " << m_othellier->score_blanc() << std::endl;
+        f << "    Noir  : " << m_othellier->score_noir() << std::endl;
+        f << std::endl;
+
+        f.close();
+
+        // Petit temps ...
+        QTimer::singleShot(1000, this, SLOT(btn_jouer_iaia()));
+    }
+
     retour_menu();
 }
 

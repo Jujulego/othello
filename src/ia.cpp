@@ -52,5 +52,5 @@ std::set<Pion,bool(&)(Pion const&,Pion const&)> IA::get_coups(Etat const& platea
 }
 
 std::shared_ptr<Noeud<IA::PV>> IA::arbre() const {
-    return std::ref(m_arbre);
+    return m_arbre;
 }

@@ -12,8 +12,10 @@ HEADERS += \
     src/minmaxia.h \
     qt/threadia.h \
     src/alphabetaia.h \
+    src/memarbre.h \
     src/negamaxia.h \
-    src/noeud.h
+    src/noeud.h \
+    src/memia.h
 
 SOURCES += \
     qt/main.cpp \
@@ -26,7 +28,9 @@ SOURCES += \
     src/etat.cpp \
     qt/threadia.cpp \
     src/alphabetaia.cpp \
-    src/negamaxia.cpp
+    src/memarbre.cpp \
+    src/negamaxia.cpp \
+    src/memia.cpp
 
 QMAKE_CXXFLAGS += -O3 -std=c++14
 INCLUDEPATH += $$PWD/src

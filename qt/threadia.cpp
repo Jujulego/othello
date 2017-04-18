@@ -34,7 +34,7 @@ void ThreadIA::lancer(Othellier* o) {
     m_othellier = o;
 
     // Timer !
-    QTimer::singleShot(1000, this, SLOT(exec()));
+    QTimer::singleShot(500, this, SLOT(exec()));
 }
 
 void ThreadIA::exec() {

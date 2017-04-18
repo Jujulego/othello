@@ -29,6 +29,7 @@ class Othellier : public QGraphicsView {
         // Attributs
         int m_score_blanc = 0;
         int m_score_noir = 0;
+        bool m_infini = false;
 
         COULEUR m_joueur = NOIR;
         std::vector<std::vector<GPion*>> m_pions;
@@ -42,7 +43,7 @@ class Othellier : public QGraphicsView {
 
     public:
         // Constructeur
-        Othellier(std::map<COULEUR,std::shared_ptr<IA>> ias, QWidget* parent = nullptr);
+        Othellier(std::map<COULEUR,std::shared_ptr<IA>> ias, bool infini = false, QWidget* parent = nullptr);
 
         // Méthodes
         Etat get_etat() const;

@@ -34,7 +34,7 @@ int MinMaxIA::heuristique(Etat&& etat) {
     COULEUR ennemi = (m_couleur == NOIR) ? BLANC : NOIR;
     std::map<COULEUR,int> mul;
     mul[m_couleur] = +1;
-    mul[ennemi]    = +1;
+    mul[ennemi]    = -1;
     mul[VIDE]      =  0;
     int m = 0;
 
