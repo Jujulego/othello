@@ -12,7 +12,7 @@ class NegaMaxIA : public AlphaBetaIA {
 
     public:
         // Constructeur
-        NegaMaxIA(unsigned prof);
+        NegaMaxIA(unsigned prof, COULEUR c);
 };
 
 #endif // NEGAMAXIA_H

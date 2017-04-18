@@ -5,7 +5,7 @@
 #include "alphabetaia.h"
 
 // Constructeur
-AlphaBetaIA::AlphaBetaIA(unsigned prof) : MinMaxIA(prof) {
+AlphaBetaIA::AlphaBetaIA(unsigned prof, COULEUR c) : MinMaxIA(prof, c) {
 }
 
 // Méthodes

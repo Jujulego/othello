@@ -17,7 +17,7 @@
 #define VAL_MIN -2
 
 // Constructeur
-MemIA::MemIA(std::string const& fichier) : MinMaxIA(1), m_memarbre(std::make_shared<MemArbre>(fichier)) {
+MemIA::MemIA(std::string const& fichier, unsigned prof, COULEUR c) : MinMaxIA(prof, c), m_memarbre(std::make_shared<MemArbre>(fichier)) {
     m_memarbre->charger();
 }
 
@@ -51,7 +51,7 @@ Pion MemIA::jouer(Etat plateau) {
         }
 
         // Calcul de la valeur
-        v = heuristique(std::move(etat)) * ((np == nullptr) ? 1 : np->val());
+        v = minmax(std::move(etat), m_prof, nullptr).val * ((np == nullptr) ? 1 : np->val());
         std::cout << v << std::endl;
 
         if (v > val) {

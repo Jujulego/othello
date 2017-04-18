@@ -16,7 +16,7 @@ class MemIA : public MinMaxIA {
 
     public:
         // Constructeur
-        MemIA(std::string const& fichier);
+        MemIA(std::string const& fichier, unsigned prof, COULEUR c);
 
         // Méthodes
         virtual Pion jouer(Etat plateau) override;

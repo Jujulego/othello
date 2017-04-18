@@ -28,7 +28,9 @@
 #define PROF_ALGO 5
 
 // Constructeur
-Jeu::Jeu(QWidget *parent) : QMainWindow(parent), m_memia_a(new MemIA("arbre_a.txt")), m_memia_b(new MemIA("arbre_b.txt")) {
+Jeu::Jeu(QWidget *parent) : QMainWindow(parent),
+        m_memia_a(new MemIA("arbre_a.txt", PROF_ALGO, NOIR)),
+        m_memia_b(new MemIA("arbre_b.txt", PROF_ALGO, BLANC)) {
     // Paramètres fenêtre
     setMinimumSize(TAILLE_CASE*9 + 3, TAILLE_CASE*9 + 25);
 
@@ -154,7 +156,7 @@ void Jeu::btn_jouer_iamm() {
     // Création de l'othellier
     m_othellier = new Othellier({
         {NOIR,  nullptr},
-        {BLANC, std::shared_ptr<IA>(new MinMaxIA(PROF_ALGO))}
+        {BLANC, std::shared_ptr<IA>(new MinMaxIA(PROF_ALGO, BLANC))}
     });
     connect_othellier();
 }
@@ -163,7 +165,7 @@ void Jeu::btn_jouer_iaab() {
     // Création de l'othellier
     m_othellier = new Othellier({
         {NOIR,  nullptr},
-        {BLANC, std::shared_ptr<IA>(new AlphaBetaIA(PROF_ALGO))}
+        {BLANC, std::shared_ptr<IA>(new AlphaBetaIA(PROF_ALGO, BLANC))}
     });
     connect_othellier();
 }
@@ -172,7 +174,7 @@ void Jeu::btn_jouer_ianm() {
     // Création de l'othellier
     m_othellier = new Othellier({
         {NOIR,  nullptr},
-        {BLANC, std::shared_ptr<IA>(new NegaMaxIA(PROF_ALGO))}
+        {BLANC, std::shared_ptr<IA>(new NegaMaxIA(PROF_ALGO, BLANC))}
     });
     connect_othellier();
 }
@@ -181,10 +183,10 @@ void Jeu::btn_jouer_iami() {
     // Création de l'othellier
     m_othellier = new Othellier({
         {NOIR,  nullptr},
-        {BLANC, m_memia_a}
+        {BLANC, m_memia_b}
     });
 
-    m_couleur_memia_a = BLANC;
+    m_couleur_memia_b = BLANC;
 
     connect_othellier();
 }

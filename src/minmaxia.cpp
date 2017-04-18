@@ -14,7 +14,7 @@
 #define VAL_COINS 1
 
 // Constructeur
-MinMaxIA::MinMaxIA(unsigned prof) : IA(), m_prof(prof) {
+MinMaxIA::MinMaxIA(unsigned prof, COULEUR c) : IA(), m_prof(prof), m_couleur(c) {
 }
 
 // Méthodes
@@ -69,7 +69,11 @@ MinMaxIA::PV MinMaxIA::minmax(Etat&& etat, unsigned prof, std::shared_ptr<Noeud<
         e.appliquer_coup(c);
 
         // Minmax sur l'enfant
-        PV pv = minmax(std::move(e), prof+1, noeud->add_fils({0, c}));
+        PV pv;
+        if (noeud)
+            pv = minmax(std::move(e), prof+1, noeud->add_fils({0, c}));
+        else
+            pv = minmax(std::move(e), prof+1, noeud->add_fils({0, c}));
 
         // Résultat
         if (prof % 2) { // Min
@@ -86,7 +90,7 @@ MinMaxIA::PV MinMaxIA::minmax(Etat&& etat, unsigned prof, std::shared_ptr<Noeud<
     }
 
     // Résultat
-    noeud->val().val = val;
+    if (noeud) noeud->val().val = val;
     std::cout << (char) (pion.x + 'A') << (pion.y +1) << " " << pion.couleur << " " << val << std::endl;
 
     return {val, pion};

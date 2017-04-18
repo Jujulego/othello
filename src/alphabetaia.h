@@ -12,7 +12,7 @@ class AlphaBetaIA : public MinMaxIA {
 
     public:
         // Constructeur
-        AlphaBetaIA(unsigned prof);
+        AlphaBetaIA(unsigned prof, COULEUR c);
 
         // Méthodes
         virtual Pion jouer(Etat plateau) override;

@@ -5,7 +5,7 @@
 #include "negamaxia.h"
 
 // Constructeur
-NegaMaxIA::NegaMaxIA(unsigned prof) : AlphaBetaIA(prof) {
+NegaMaxIA::NegaMaxIA(unsigned prof, COULEUR c) : AlphaBetaIA(prof, c) {
 }
 
 // Méthodes

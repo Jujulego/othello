@@ -22,7 +22,7 @@ class MinMaxIA : public IA {
 
     public:
         // Constructeur
-        MinMaxIA(unsigned prof);
+        MinMaxIA(unsigned prof, COULEUR c);
 
         // Méthodes
         virtual Pion jouer(Etat plateau) override;
