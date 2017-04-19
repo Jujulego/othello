@@ -104,8 +104,117 @@
 	"pion.h"
 	"randomia.h"
 
+<<<<<<< HEAD
 1492597925 c:\users\nolwenn\documents\othello\src\randomia.h
+=======
+1492607435 c:\users\maxim\desktop\programmes\othello\src\ia.h
+	<memory>
+	<set>
+	<vector>
+	"etat.h"
+	"noeud.h"
+	"pion.h"
+
+1492518063 c:\users\maxim\desktop\programmes\othello\src\noeud.h
+	<functional>
+	<memory>
+	<vector>
+
+1492518063 c:\users\maxim\desktop\programmes\othello\src\randomia.h
+
+1492528516 source:c:\users\clara\desktop\othello-nolwenn\othello\src\minmaxia.cpp
+	<limits>
+	<memory>
+	<iostream>
+	<set>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"minmaxia.h"
+
+1492528516 c:\users\clara\desktop\othello-nolwenn\othello\src\minmaxia.h
+	<memory>
+>>>>>>> a23da6c01f41f7fc134d2105e85b6bbdfb3d49fe
 	"etat.h"
 	"ia.h"
 	"pion.h"
 
+<<<<<<< HEAD
+=======
+1492528517 source:c:\users\clara\desktop\othello-nolwenn\othello\src\randomia.cpp
+	<cstdlib>
+	<ctime>
+	<iostream>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"randomia.h"
+
+1492528517 c:\users\clara\desktop\othello-nolwenn\othello\src\randomia.h
+
+1492533268 source:c:\users\clara\desktop\othello-nolwenn\othello\src\plateau.cpp
+	"plateau.h"
+	"console.h"
+	"windows.h"
+	"conio.h"
+
+1492531192 source:/home/julien/projets/c++/othello/src/alphabetaia.cpp
+	<iostream>
+	<limits>
+	"alphabetaia.h"
+
+1492531178 /home/julien/projets/c++/othello/src/alphabetaia.h
+	"minmaxia.h"
+
+1492516129 /home/julien/projets/c++/othello/src/noeud.h
+	<functional>
+	<memory>
+	<vector>
+
+1492531163 source:/home/julien/projets/c++/othello/src/negamaxia.cpp
+	<limits>
+	<iostream>
+	"negamaxia.h"
+
+1492531166 /home/julien/projets/c++/othello/src/negamaxia.h
+	"alphabetaia.h"
+
+1492596086 source:/home/julien/projets/c++/othello/src/plateau.cpp
+	"plateau.h"
+	"console.h"
+
+1492537843 source:c:\users\maxim\desktop\programmes\othello\src\alphabetaia.cpp
+	<iostream>
+	<limits>
+	"alphabetaia.h"
+
+1492537843 c:\users\maxim\desktop\programmes\othello\src\alphabetaia.h
+	"minmaxia.h"
+
+1492542142 c:\users\maxim\desktop\programmes\othello\src\minmaxia.h
+	<memory>
+	"noeud.h"
+	"etat.h"
+	"ia.h"
+	"pion.h"
+
+1492542142 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
+	<limits>
+	<map>
+	<memory>
+	<iostream>
+	<vector>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"minmaxia.h"
+
+1492537843 source:c:\users\maxim\desktop\programmes\othello\src\negamaxia.cpp
+	<limits>
+	<iostream>
+	"negamaxia.h"
+
+1492537843 c:\users\maxim\desktop\programmes\othello\src\negamaxia.h
+	"alphabetaia.h"
+
+>>>>>>> a23da6c01f41f7fc134d2105e85b6bbdfb3d49fe
