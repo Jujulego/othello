@@ -73,7 +73,7 @@ MinMaxIA::PV MinMaxIA::minmax(Etat&& etat, unsigned prof, std::shared_ptr<Noeud<
         if (noeud)
             pv = minmax(std::move(e), prof+1, noeud->add_fils({0, c}));
         else
-            pv = minmax(std::move(e), prof+1, noeud->add_fils({0, c}));
+            pv = minmax(std::move(e), prof+1, nullptr);
 
         // Résultat
         if (prof % 2) { // Min
@@ -102,7 +102,7 @@ Pion MinMaxIA::jouer(Etat plateau) {
     m_couleur = plateau.joueur;
 
     // Algo !!!
-    PV p = minmax(std::move(plateau), 0, m_arbre);
+    PV p = minmax(std::move(plateau), 0, (m_prof > 6) ? nullptr : m_arbre);
     m_arbre->val().val = p.val;
 
     return p.pion;
