@@ -2,6 +2,7 @@
 #include <functional>
 #include <iostream>
 #include <set>
+#include <vector>
 
 #include "pion.h"
 #include "etat.h"
@@ -69,6 +70,34 @@ int IA::compt_desc() {
     }
 
     return nb_desc;
+}
+
+void IA::charg_tab() {
+    // On ajoute la première ligne, et on y stock le premier pointeur
+    m_tab.push_back(std::vector<std::shared_ptr<Noeud<PV>>>(1));
+    m_tab[0][0] = m_arbre;
+
+    // Deuxième ligne
+    m_tab.push_back(std::vector<std::shared_ptr<Noeud<PV>>>(m_arbre->size()));
+    for (unsigned int i = 0; i < m_arbre->size(); i++) {
+        m_tab[1][i] = m_arbre->fils(i);
+    }
+
+    // Troisième ligne
+    m_tab.push_back(std::vector<std::shared_ptr<Noeud<PV>>>(0));
+    for (unsigned int i = 0; i < m_tab[1].size(); i++) {
+        for (unsigned int j = 0; j < m_tab[1][i]->size(); i++) {
+            m_tab[2].push_back(m_tab[1][i]->fils(j));
+        }
+    }
+
+    // Quatrième ligne
+    m_tab.push_back(std::vector<std::shared_ptr<Noeud<PV>>>(0));
+    for (unsigned int i = 0; i < m_tab[2].size(); i++) {
+        for (unsigned int j = 0; j < m_tab[2][i]->size(); i++) {
+            m_tab[3].push_back(m_tab[2][i]->fils(j));
+        }
+    }
 }
 
 

@@ -4,6 +4,7 @@
 // Dépendances
 #include <memory>
 #include <set>
+#include <vector>
 
 #include "etat.h"
 #include "noeud.h"
@@ -18,6 +19,7 @@ class IA {
     protected:
         // Attributs
         std::shared_ptr<Noeud<PV>> m_arbre;
+        std::vector<std::vector <std::shared_ptr<Noeud<PV>>>> m_tab;
 
     public:
         // Constructeur
@@ -30,6 +32,7 @@ class IA {
         virtual Pion jouer(Etat plateau) = 0;
         std::set<Pion,bool(&)(Pion const&,Pion const&)> get_coups(Etat const& plateau) const;
         int compt_desc();
+        void charg_tab();
 
         // Accesseurs
         std::shared_ptr<Noeud<PV>> arbre() const;

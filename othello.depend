@@ -286,9 +286,10 @@
 	"pion.h"
 	"randomia.h"
 
-1492542142 c:\users\maxim\desktop\programmes\othello\src\ia.h
+1492607435 c:\users\maxim\desktop\programmes\othello\src\ia.h
 	<memory>
 	<set>
+	<vector>
 	"etat.h"
 	"noeud.h"
 	"pion.h"
@@ -357,4 +358,38 @@
 1492596086 source:/home/julien/projets/c++/othello/src/plateau.cpp
 	"plateau.h"
 	"console.h"
+
+1492537843 source:c:\users\maxim\desktop\programmes\othello\src\alphabetaia.cpp
+	<iostream>
+	<limits>
+	"alphabetaia.h"
+
+1492537843 c:\users\maxim\desktop\programmes\othello\src\alphabetaia.h
+	"minmaxia.h"
+
+1492542142 c:\users\maxim\desktop\programmes\othello\src\minmaxia.h
+	<memory>
+	"noeud.h"
+	"etat.h"
+	"ia.h"
+	"pion.h"
+
+1492542142 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
+	<limits>
+	<map>
+	<memory>
+	<iostream>
+	<vector>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"minmaxia.h"
+
+1492537843 source:c:\users\maxim\desktop\programmes\othello\src\negamaxia.cpp
+	<limits>
+	<iostream>
+	"negamaxia.h"
+
+1492537843 c:\users\maxim\desktop\programmes\othello\src\negamaxia.h
+	"alphabetaia.h"
 
