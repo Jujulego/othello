@@ -69,7 +69,7 @@ void Tableau::AfficherTab()
         else if (Plateau[i][j].couleur==BLANC)
            {
                s_console->gotoLigCol(5+4*j,7+8*i);
-               s_console->setColor(color )
+//               s_console->setColor(color )
                 std::cout<<"1";
            }
 
@@ -96,13 +96,13 @@ void Tableau::AfficherTab()
 void Tableau::CreationTab()
 {
     // Affichage du plateau
-    s_console->clear();
+
     s_console->gotoLigCol(3, 0);
     char l;
 
     std::cout << "       0       1       2       3       4       5       6       7" << std::endl;
     std::cout << "   " << LIGNE_HAUT << std::endl;
-    for (int i = 0; i < 7; i++)
+    for (int i = 0; i < 8; i++)
     {
         for (int j = 0; j < 3; j++)
         {
@@ -115,7 +115,7 @@ void Tableau::CreationTab()
         }
 
 
-        if (i != 6) {
+        if (i != 7) {
             std::cout << "   " << LIGNE_MIL2 << std::endl;
         }
 
@@ -186,17 +186,25 @@ void Tableau::BoucleJeu()
     COULEUR joueur=BLANC;
     int x=0;
     int y=0;
-
+    s_console->gotoLigCol(35,5);
+    std::cout<<"Le tour du joueur aux pions noirs";
     while (continuer==true)
     {
+
+
         if (joueur == NOIR)
         {
 
             joueur=BLANC;
+            s_console->gotoLigCol(35,5);
+            std::cout<<"Le tour du joueur aux pions blancs";
         }
         else
         {
+
             joueur=NOIR;
+            s_console->gotoLigCol(35,5);
+            std::cout<<"Le tour du joueur aux pions noirs";
         }
         CreationTab();
         Jouer(joueur,x,y);

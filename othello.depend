@@ -27,9 +27,10 @@
 1492532118 c:\users\nolwenn\documents\othello\src\pion.h
 	<vector>
 
-1492597925 c:\users\nolwenn\documents\othello\src\ia.h
+1492611070 c:\users\nolwenn\documents\othello\src\ia.h
 	<memory>
 	<set>
+	<vector>
 	"etat.h"
 	"noeud.h"
 	"pion.h"
@@ -53,26 +54,27 @@
 	"etat.h"
 	"pion.h"
 
-1492597925 source:c:\users\nolwenn\documents\othello\src\ia.cpp
+1492611070 source:c:\users\nolwenn\documents\othello\src\ia.cpp
 	<functional>
 	<iostream>
 	<set>
+	<vector>
 	"pion.h"
 	"etat.h"
 	"ia.h"
 
-1492609153 source:c:\users\nolwenn\documents\othello\src\main.cpp
+1492625020 source:c:\users\nolwenn\documents\othello\src\main.cpp
 	<iostream>
 	"plateau.h"
 
-1492609982 c:\users\nolwenn\documents\othello\src\plateau.h
+1492624711 c:\users\nolwenn\documents\othello\src\plateau.h
 	<vector>
 	"pion.h"
 	"console.h"
 	<memory>
 	<set>
 
-1492597925 source:c:\users\nolwenn\documents\othello\src\minmaxia.cpp
+1492612214 source:c:\users\nolwenn\documents\othello\src\minmaxia.cpp
 	<limits>
 	<map>
 	<memory>
@@ -91,7 +93,7 @@
 1492597925 c:\users\nolwenn\documents\othello\src\negamaxia.h
 	"alphabetaia.h"
 
-1492609381 source:c:\users\nolwenn\documents\othello\src\plateau.cpp
+1492624569 source:c:\users\nolwenn\documents\othello\src\plateau.cpp
 	"plateau.h"
 	"console.h"
 
@@ -104,9 +106,10 @@
 	"pion.h"
 	"randomia.h"
 
-<<<<<<< HEAD
+1492528516 D
+
 1492597925 c:\users\nolwenn\documents\othello\src\randomia.h
-=======
+
 1492607435 c:\users\maxim\desktop\programmes\othello\src\ia.h
 	<memory>
 	<set>
@@ -134,13 +137,12 @@
 
 1492528516 c:\users\clara\desktop\othello-nolwenn\othello\src\minmaxia.h
 	<memory>
->>>>>>> a23da6c01f41f7fc134d2105e85b6bbdfb3d49fe
+
+1492537843 da6c01f41f7fc134d2105e85b6bbdfb3d49fe
 	"etat.h"
 	"ia.h"
 	"pion.h"
 
-<<<<<<< HEAD
-=======
 1492528517 source:c:\users\clara\desktop\othello-nolwenn\othello\src\randomia.cpp
 	<cstdlib>
 	<ctime>
@@ -217,4 +219,3 @@
 1492537843 c:\users\maxim\desktop\programmes\othello\src\negamaxia.h
 	"alphabetaia.h"
 
->>>>>>> a23da6c01f41f7fc134d2105e85b6bbdfb3d49fe
