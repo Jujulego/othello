@@ -1,7 +1,5 @@
 #include "plateau.h"
 #include "console.h"
-#include "windows.h"
-#include "conio.h"
 
 #ifndef __gnu_linux__
 static const std::string LIGNE_HAUT = "\xda\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xbf";
@@ -90,36 +88,38 @@ void Tableau::Jouer()
     //boucle tant que on a pas appuyer sur entrer (pour entrer un pion)
     while (onContinue==true)
     {
-        c = getch();
+        c = s_console->getch();
 
-        s_console->gotoLigCol(x,y);
+        switch(c)
+        {
+        case 'z':
+            y--;
+            break;
 
-            switch(c)
-            {
-            case 'z':
-                x-=1;
-                s_console->gotoLigCol(3+3*x,3+3*y);
-                break;
+        case 'q':
+            x--;
+            break;
 
-            case 'q':
-                y-=1;
-                s_console->gotoLigCol(3+3*x,3+3*y);
-                break;
+        case 's':
+            y++;
+            break;
 
-            case 's':
-                x+=1;
-                s_console->gotoLigCol(3+3*x,3+3*y);
-                break;
+        case 'd':
+            x++;
+            break;
 
-            case 'd':
-                y+=1;
-                s_console->gotoLigCol(3+3*x,3+3*y);
-                break;
+        case 'e':                //touche entrer
+            onContinue = false;
+            break;
+        }
 
-            case 'e':                //touche entrer
-                onContinue = false;
-                break;
-            }
+        // Déplacement du curseur
+        if (x < 0) x = 0;
+        if (y < 0) y = 0;
+        if (x > 7) x = 7;
+        if (y > 7) y = 7;
+
+        s_console->gotoLigCol(4+4*y,7+8*x);
     }
 
 
