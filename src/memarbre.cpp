@@ -182,15 +182,15 @@ void MemArbre::charger() {
 				pos,
 				shared_from_this()
 			);
-		} else {
+        } else {
 			n = std::make_shared<MemArbre::Noeud>(
 				val,
 				std::make_tuple((int) (coords[0] - 'A'), (int) (coords[1] - '1')),
 				pos,
 				shared_from_this(),
-				m_noeuds[pere]
+                m_noeuds.at(pere)
 			);
-			m_noeuds[pere]->add_fils(n);
+            m_noeuds.at(pere)->add_fils(n);
 		}
 		
 		m_noeuds[pos] = n;

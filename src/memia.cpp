@@ -51,7 +51,7 @@ Pion MemIA::jouer(Etat plateau) {
         }
 
         // Calcul de la valeur
-        v = minmax(std::move(etat), m_prof, nullptr).val * ((np == nullptr) ? 1 : np->val());
+        v = minmax(std::move(etat), 0, nullptr).val * ((np == nullptr) ? 1 : np->val());
         std::cout << v << std::endl;
 
         if (v > val) {

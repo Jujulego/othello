@@ -90,7 +90,7 @@ void Othellier::exec_coup(Pion const&p) {
 
     // Test de fin !
     if (test_fin()) {
-        emit fin((m_score_noir >= m_score_blanc) ? NOIR : BLANC);
+        emit fin((m_score_noir == m_score_blanc) ? ((m_joueur == BLANC) ? NOIR : BLANC) : ((m_score_noir > m_score_blanc) ? NOIR : BLANC));
         return;
     }
 
