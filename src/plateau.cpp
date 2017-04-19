@@ -69,7 +69,7 @@ void Tableau::AfficherTab()
         else if (Plateau[i][j].couleur==BLANC)
            {
                s_console->gotoLigCol(5+4*j,7+8*i);
-               s_console->setColor(color )
+               //s_console->setColor(color )
                 std::cout<<"1";
            }
 
