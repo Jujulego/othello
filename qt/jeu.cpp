@@ -25,7 +25,7 @@
 #include "src/randomia.h"
 
 // Macros
-#define PROF_ALGO 7
+#define PROF_ALGO 11
 
 // Constructeur
 Jeu::Jeu(QWidget *parent) : QMainWindow(parent),
@@ -259,7 +259,7 @@ void Jeu::fin_jeu(COULEUR gagnant) {
         f.close();
 
         // Petit temps ...
-        QTimer::singleShot(1000, this, SLOT(btn_jouer_iaia()));
+        QTimer::singleShot(500, this, SLOT(btn_jouer_iaia()));
     }
 
     retour_menu();

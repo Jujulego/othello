@@ -1,36 +1,38 @@
-#include "plateau.h"
+#include "etat.h"
 #include "console.h"
+#include "plateau.h"
 
 #ifndef __gnu_linux__
 static const std::string LIGNE_HAUT = "\xda\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xbf";
 static const std::string LIGNE_MIL1 = "\xb3       \xb3       \xb3       \xb3       \xb3       \xb3       \xb3       \xb3       \xb3";
 static const std::string LIGNE_MIL2 = "\xc3\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc5\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc5\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc5\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc5\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc5\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc5\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc5\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xb4";
 static const std::string LIGNE_BAS  = "\xc0\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc1\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc1\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc1\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc1\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc1\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc1\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xc1\xc4\xc4\xc4\xc4\xc4\xc4\xc4\xd9";
+#define OFFSET 0
 #else
 static const std::string LIGNE_HAUT = "\xe2\x95\xad\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xac\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xac\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xac\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xac\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xac\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xac\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xac\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x95\xae";
 static const std::string LIGNE_MIL1 = "\xe2\x94\x82       \xe2\x94\x82       \xe2\x94\x82       \xe2\x94\x82       \xe2\x94\x82       \xe2\x94\x82       \xe2\x94\x82       \xe2\x94\x82       \xe2\x94\x82";
 static const std::string LIGNE_MIL2 = "\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xbc\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xbc\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xbc\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xbc\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xbc\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xbc\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xbc\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xa4";
 static const std::string LIGNE_BAS  = "\xe2\x95\xb0\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xb4\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xb4\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xb4\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xb4\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xb4\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xb4\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xb4\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x95\xaf";
+#define OFFSET 1
 #endif
 
 // Variables statiques
 //Console Tableau::s_console;
 
-Tableau::Tableau()
-{
-    //pour mettre a la bonne taille
-    Plateau.resize(TailleTab);
+Tableau::Tableau() {
+    // pour mettre a la bonne taille
+/*    Plateau.resize(TailleTab);
     for( int i=0; i< TailleTab; i++)
     {
         Plateau[i].resize(TailleTab);
     }
 
-    //parcours du plateau et rendre tout vide et avec bon coordonnés
+    //parcours du plateau et rendre tout vide et avec bon coordonnï¿½s
     for ( int i=0; i<TailleTab; i++)
     {
         for(int j=0; j<TailleTab; j++)
         {
-            //mise des coordonnées
+            //mise des coordonnï¿½es
             Plateau[i][j].x=i;
             Plateau[i][j].y=j;
 
@@ -39,108 +41,110 @@ Tableau::Tableau()
         }
     }
 
-    //mise des 4 pions au milieu
+    // mise des 4 pions au milieu
     Plateau[3][4].couleur=NOIR;
     Plateau[4][3].couleur=NOIR;
     Plateau[3][3].couleur=BLANC;
-    Plateau[4][4].couleur=BLANC;
+    Plateau[4][4].couleur=BLANC;*/
+
+    // Init etat
+    m_etat.joueur = NOIR;    // tjs le noir qui commence
+    m_etat.scores[NOIR]  = 2; // = au nb de pions du joueur
+    m_etat.scores[BLANC] = 2;
+
+    // Init plateau
+    m_etat.othellier = std::vector<std::vector<COULEUR>>(TailleTab, std::vector<COULEUR>(TailleTab, VIDE));
+    m_etat.othellier[3][4] = NOIR;
+    m_etat.othellier[4][3] = NOIR;
+    m_etat.othellier[3][3] = BLANC;
+    m_etat.othellier[4][4] = BLANC;
 }
 
-void Tableau::AfficherTab()
-{
-    s_console->gotoLigCol(8,0);
+void Tableau::AfficherTab() {
+    for (int i=0;i < TailleTab; i++) {
+        for (int j=0; j < TailleTab; j++) {
+            // Les 4 coins
+            s_console->setColor(COLOR_DEFAULT, COLOR_GREEN);
+            s_console->gotoLigCol(4+OFFSET+4*j,4+8*i);
+            std::cout << "       ";
+            s_console->gotoLigCol(5+OFFSET+4*j,4+8*i);
+            std::cout << "       ";
+            s_console->gotoLigCol(6+OFFSET+4*j,4+8*i);
+            std::cout << "       ";
 
+            switch (m_etat.othellier[i][j]) {
+            case VIDE:
+                s_console->setColor(COLOR_DEFAULT, COLOR_GREEN);
+                //remetcouleur ï¿½ O
+                break;
 
-    for (int i=0;i< TailleTab;i++)
-    {
-         for (int j=0; j< TailleTab;j++)
-        {
+            case BLANC:
+                s_console->setColor(COLOR_DEFAULT, COLOR_WHITE);
+                break;
 
-        if (Plateau[i][j].couleur==VIDE)
-
-            {
-                s_console->gotoLigCol(5+4*j,7+8*i);
-                //s_console->setColor(COLOR_BLACK)
-                std::cout<<"0";
-                //remetcouleur à O
-
+            case NOIR:
+                s_console->setColor(COLOR_DEFAULT, COLOR_BLACK);
+                break;
             }
 
-        else if (Plateau[i][j].couleur==BLANC)
-           {
-               s_console->gotoLigCol(5+4*j,7+8*i);
-               //s_console->setColor(color )
-                std::cout<<"1";
-           }
-
-        else if(Plateau[i][j].couleur==NOIR)
-            {
-
-            s_console->gotoLigCol(5+4*j,7+8*i);
-            std::cout<<"2";
-            }
-
-        else
-
-            {
-            s_console->gotoLigCol(5+4*j,7+8*i);
-            std::cout<<"error";
-            }
-
+            // Retour couleur de dï¿½part
+            s_console->gotoLigCol(4+OFFSET+4*j,5+8*i);
+            std::cout << "     ";
+            s_console->gotoLigCol(5+OFFSET+4*j,4+8*i);
+            std::cout << "       ";
+            s_console->gotoLigCol(6+OFFSET+4*j,5+8*i);
+            std::cout << "     ";
+            s_console->setColor(COLOR_DEFAULT, COLOR_DEFAULT);
         }
-        std::cout<<std::endl;
-        std::cout<<std::endl;
     }
 }
 
-void Tableau::CreationTab()
-{
+void Tableau::CreationTab() {
     // Affichage du plateau
     s_console->clear();
     s_console->gotoLigCol(3, 0);
     char l;
 
-    std::cout << "       0       1       2       3       4       5       6       7" << std::endl;
+    std::cout << "       A       B       C       D       E       F       G       H" << std::endl;
     std::cout << "   " << LIGNE_HAUT << std::endl;
-    for (int i = 0; i < 7; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
+
+    for (int i = 0; i < TailleTab; i++) {
+        for (int j = 0; j < 3; j++) {
             l = ' ';
-            if (j% 2 ) {
-                l = 'A' + i;
+
+            if (j % 2) {
+                l = '1' + i;
             }
 
             std::cout << " " << l << " " << LIGNE_MIL1 << " " << l << std::endl;
         }
 
-
-        if (i != 6) {
+        if (i != 7) {
             std::cout << "   " << LIGNE_MIL2 << std::endl;
         }
 
     }
-    std::cout << "   " << LIGNE_BAS << std::endl;
-    std::cout << "       0       1       2       3       4       5       6       7" << std::endl;
-   AfficherTab();
 
+    std::cout << "   " << LIGNE_BAS << std::endl;
+    std::cout << "       A       B       C       D       E       F       G       H" << std::endl;
+
+    AfficherTab();
 }
 
-void Tableau::Jouer(COULEUR Couljoueur,int &x, int&y)//
-{
+bool Tableau::Jouer(int &x, int&y) {
     //declaration des variables
-    bool onContinue = true;
+    bool onContinue = true, quitter = false;
     int  c;
     //int x=0,y=0;
 
-
     //boucle tant que on a pas appuyer sur entrer (pour entrer un pion)
-    while (onContinue==true)
-    {
+    while (onContinue) {
+        // Dï¿½placement du curseur
+        s_console->gotoLigCol(5+OFFSET+4*y,7+8*x);
+
         c = s_console->getch();
 
-        switch(c)
-        {
+        switch(c) {
         case 'z':
             y--;
             break;
@@ -157,50 +161,41 @@ void Tableau::Jouer(COULEUR Couljoueur,int &x, int&y)//
             x++;
             break;
 
-        case 13:
+        case 'e':
+            quitter = true;
+            onContinue = false;
+            break;
 
-            if (Plateau[x][y].couleur == VIDE)
-            {
-                onContinue = false;
-                Plateau[x][y].couleur=Couljoueur;
+        case 'p':
+            if (m_etat.othellier[x][y] == VIDE) {
+                // Renvoie vrai si le coup est valide et change le joueur
+                onContinue = !m_etat.appliquer_coup({x, y, m_etat.joueur});
             }
+
             break;
         }
 
-
-        // Déplacement du curseur
+        // Attention au bords !
         if (x < 0) x = 0;
         if (y < 0) y = 0;
         if (x > 7) x = 7;
         if (y > 7) y = 7;
-
-        s_console->gotoLigCol(5+4*y,7+8*x);
-
     }
 
+    return !quitter;
 }
 
-void Tableau::BoucleJeu()
-{
+void Tableau::BoucleJeu() {
     bool continuer=true;
-    COULEUR joueur=BLANC;
     int x=0;
     int y=0;
 
-    while (continuer==true)
-    {
-        if (joueur == NOIR)
-        {
-
-            joueur=BLANC;
-        }
-        else
-        {
-            joueur=NOIR;
-        }
+    while (continuer) {
+    	// Affichage
         CreationTab();
-        Jouer(joueur,x,y);
-        //consequences , on envoi x y
+
+        // Interaction
+        continuer = Jouer(x, y); // consequences , on envoi x y
     }
 }
 

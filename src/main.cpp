@@ -10,12 +10,12 @@
 
 // Main
 int main() {
-   Tableau t= Tableau();
-    t.CreationTab();
+    Tableau t = Tableau();
+
+    std::cout << std::boolalpha;
+
+    //t.CreationTab();
     t.BoucleJeu();
-
-
-
 
 	return 1; // Erreur => y a pas de code !!!
 }

@@ -235,8 +235,7 @@ std::shared_ptr<MemArbre::Noeud> MemArbre::add_racine(int val, std::tuple<int,in
     auto n = std::make_shared<MemArbre::Noeud>(val, coords, -1, shared_from_this(), nullptr);
 	
 	// Sauvegarde dans l'arbre
-	save(n);
-    std::cout << "racine ! " << n->pos() << std::endl;
+    save(n);
 	
 	return n;
 }

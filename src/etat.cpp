@@ -30,11 +30,11 @@ std::vector<Pion> Etat::pions(COULEUR c) const {
     return pions;
 }
 
-void Etat::appliquer_coup(Pion const& p) {
+bool Etat::appliquer_coup(Pion const& p) {
     // Déclarations
     COULEUR ennemi = (joueur == BLANC) ? NOIR : BLANC;
     std::vector<P> tmp;
-    bool ok = false;
+    bool ok = false, valide = false;
 
     // Recherches dans les 8 dirs
     for (std::function<void(int&,int&)> f : DIRECTIONS) {
@@ -59,9 +59,10 @@ void Etat::appliquer_coup(Pion const& p) {
         }
 
         // Application des changements
-        if (ok) {
+        if (ok && !tmp.empty()) {
             // Ajout du nouveau pion
             othellier[p.x][p.y] = joueur;
+            valide = true;
 
             // Changements de couleur
             for (P pt : tmp) othellier[pt.i][pt.j] = joueur;
@@ -73,5 +74,8 @@ void Etat::appliquer_coup(Pion const& p) {
     }
 
     // Changement de joueur !
-    joueur = ennemi;
+    std::cout << valide << std::endl;
+    if (valide) joueur = ennemi;
+
+    return valide;
 }

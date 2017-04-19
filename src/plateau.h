@@ -1,22 +1,28 @@
 #ifndef PLATEAU_H_INCLUDED
 #define PLATEAU_H_INCLUDED
+
 #define TailleTab 8
+
 #include <vector>
-#include "pion.h"
-#include "console.h"
 #include <memory>
 #include <set>
 
-class Tableau
-{
+#include "etat.h"
+#include "console.h"
+#include "pion.h"
+
+class Tableau {
     private:
-        std::vector<std::vector<Pion>> Plateau;
+        Etat m_etat;
+//        std::vector<std::vector<Pion>> Plateau;
+
     protected:
-         Console* s_console = NULL;
+        Console* s_console = NULL;
+
     public:
         Tableau();
         void CreationTab();
-        void Jouer(COULEUR Couljoueur,int &x, int&y);
+        bool Jouer(int &x, int&y);
         void AfficherTab();
         void BoucleJeu();
 
