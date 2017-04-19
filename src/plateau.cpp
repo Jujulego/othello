@@ -45,12 +45,59 @@ Tableau::Tableau()
     Plateau[3][3].couleur=BLANC;
     Plateau[4][4].couleur=BLANC;
 }
+
+void Tableau::AfficherTab()
+{
+    s_console->gotoLigCol(8,0);
+
+
+    for (int i=0;i< TailleTab;i++)
+    {
+         for (int j=0; j< TailleTab;j++)
+        {
+
+        if (Plateau[i][j].couleur==VIDE)
+
+            {
+                s_console->gotoLigCol(5+4*j,7+8*i);
+                //s_console->setColor(COLOR_BLACK)
+                std::cout<<"0";
+                //remetcouleur à O
+
+            }
+
+        else if (Plateau[i][j].couleur==BLANC)
+           {
+               s_console->gotoLigCol(5+4*j,7+8*i);
+               s_console->setColor(color )
+                std::cout<<"1";
+           }
+
+        else if(Plateau[i][j].couleur==NOIR)
+            {
+
+            s_console->gotoLigCol(5+4*j,7+8*i);
+            std::cout<<"2";
+            }
+
+        else
+
+            {
+            s_console->gotoLigCol(5+4*j,7+8*i);
+            std::cout<<"error";
+            }
+
+        }
+        std::cout<<std::endl;
+        std::cout<<std::endl;
+    }
+}
+
 void Tableau::CreationTab()
 {
     // Affichage du plateau
     s_console->clear();
     s_console->gotoLigCol(3, 0);
-
     char l;
 
     std::cout << "       0       1       2       3       4       5       6       7" << std::endl;
@@ -75,15 +122,17 @@ void Tableau::CreationTab()
     }
     std::cout << "   " << LIGNE_BAS << std::endl;
     std::cout << "       0       1       2       3       4       5       6       7" << std::endl;
+   AfficherTab();
 
 }
 
-void Tableau::Jouer()
+void Tableau::Jouer(COULEUR Couljoueur,int &x, int&y)//
 {
     //declaration des variables
     bool onContinue = true;
-    char  c;
-    int x=0,y=0;
+    int  c;
+    //int x=0,y=0;
+
 
     //boucle tant que on a pas appuyer sur entrer (pour entrer un pion)
     while (onContinue==true)
@@ -108,10 +157,16 @@ void Tableau::Jouer()
             x++;
             break;
 
-        case 'e':                //touche entrer
-            onContinue = false;
+        case 13:
+
+            if (Plateau[x][y].couleur == VIDE)
+            {
+                onContinue = false;
+                Plateau[x][y].couleur=Couljoueur;
+            }
             break;
         }
+
 
         // Déplacement du curseur
         if (x < 0) x = 0;
@@ -119,11 +174,34 @@ void Tableau::Jouer()
         if (x > 7) x = 7;
         if (y > 7) y = 7;
 
-        s_console->gotoLigCol(4+4*y,7+8*x);
-    }
+        s_console->gotoLigCol(5+4*y,7+8*x);
 
+    }
 
 }
 
+void Tableau::BoucleJeu()
+{
+    bool continuer=true;
+    COULEUR joueur=BLANC;
+    int x=0;
+    int y=0;
+
+    while (continuer==true)
+    {
+        if (joueur == NOIR)
+        {
+
+            joueur=BLANC;
+        }
+        else
+        {
+            joueur=NOIR;
+        }
+        CreationTab();
+        Jouer(joueur,x,y);
+        //consequences , on envoi x y
+    }
+}
 
 

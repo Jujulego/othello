@@ -10,9 +10,10 @@
 
 // Main
 int main() {
-   Tableau t;
+   Tableau t= Tableau();
     t.CreationTab();
-    t.Jouer();
+    t.BoucleJeu();
+
 
 
 

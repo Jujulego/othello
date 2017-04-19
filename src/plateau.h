@@ -16,7 +16,9 @@ class Tableau
     public:
         Tableau();
         void CreationTab();
-        void Jouer();
+        void Jouer(COULEUR Couljoueur,int &x, int&y);
+        void AfficherTab();
+        void BoucleJeu();
 
     //Accesseur
      std::vector<std::shared_ptr<Pion>> const& get_pions() const;
