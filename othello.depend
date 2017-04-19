@@ -104,9 +104,10 @@
 	"pion.h"
 	"randomia.h"
 
-<<<<<<< HEAD
+1492528516 D
+
 1492597925 c:\users\nolwenn\documents\othello\src\randomia.h
-=======
+
 1492607435 c:\users\maxim\desktop\programmes\othello\src\ia.h
 	<memory>
 	<set>
@@ -134,13 +135,12 @@
 
 1492528516 c:\users\clara\desktop\othello-nolwenn\othello\src\minmaxia.h
 	<memory>
->>>>>>> a23da6c01f41f7fc134d2105e85b6bbdfb3d49fe
+
+1492537843 da6c01f41f7fc134d2105e85b6bbdfb3d49fe
 	"etat.h"
 	"ia.h"
 	"pion.h"
 
-<<<<<<< HEAD
-=======
 1492528517 source:c:\users\clara\desktop\othello-nolwenn\othello\src\randomia.cpp
 	<cstdlib>
 	<ctime>
@@ -217,4 +217,39 @@
 1492537843 c:\users\maxim\desktop\programmes\othello\src\negamaxia.h
 	"alphabetaia.h"
 
->>>>>>> a23da6c01f41f7fc134d2105e85b6bbdfb3d49fe
+1492013341 c:\users\maxim\desktop\programmes\othello\src\etat.h
+	<map>
+	<vector>
+	"pion.h"
+
+1492013341 c:\users\maxim\desktop\programmes\othello\src\pion.h
+	<vector>
+
+1492013341 source:c:\users\maxim\desktop\programmes\othello\src\console.cpp
+	"console.h"
+	<conio.h>
+	<windows.h>
+	<fcntl.h>
+	<unistd.h>
+	<termios.h>
+
+1492013341 c:\users\maxim\desktop\programmes\othello\src\console.h
+	<iostream>
+
+1492013341 source:c:\users\maxim\desktop\programmes\othello\src\etat.cpp
+	<algorithm>
+	<functional>
+	<iostream>
+	<vector>
+	"etat.h"
+	"pion.h"
+
+1492518063 source:c:\users\maxim\desktop\programmes\othello\src\randomia.cpp
+	<cstdlib>
+	<ctime>
+	<iostream>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"randomia.h"
+
