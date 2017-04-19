@@ -12,14 +12,14 @@ class Tableau
     private:
         std::vector<std::vector<Pion>> Plateau;
     protected:
-        static Console s_console;
+         Console* s_console = NULL;
     public:
         Tableau();
         void CreationTab();
-        void RemplisTab();
-        void AffichTab();
+        void Jouer();
 
-
+    //Accesseur
+     std::vector<std::shared_ptr<Pion>> const& get_pions() const;
 };
 
 #endif // PLATEAU_H_INCLUDED

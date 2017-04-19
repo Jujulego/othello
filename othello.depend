@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1491420227 source:c:\users\nolwenn\documents\othello\src\console.cpp
+1492532118 source:c:\users\nolwenn\documents\othello\src\console.cpp
 	"console.h"
 	<conio.h>
 	<windows.h>
@@ -7,10 +7,10 @@
 	<unistd.h>
 	<termios.h>
 
-1491420227 c:\users\nolwenn\documents\othello\src\console.h
+1492532118 c:\users\nolwenn\documents\othello\src\console.h
 	<iostream>
 
-1491563894 source:c:\users\nolwenn\documents\othello\src\etat.cpp
+1492532118 source:c:\users\nolwenn\documents\othello\src\etat.cpp
 	<algorithm>
 	<functional>
 	<iostream>
@@ -18,31 +18,31 @@
 	"etat.h"
 	"pion.h"
 
-1491420227 c:\users\nolwenn\documents\othello\src\etat.h
+1492532118 c:\users\nolwenn\documents\othello\src\etat.h
 	<map>
 	<vector>
 	"pion.h"
 
-1491420227 c:\users\nolwenn\documents\othello\src\pion.h
+1492532118 c:\users\nolwenn\documents\othello\src\pion.h
 	<vector>
 
-1491563894 source:c:\users\nolwenn\documents\othello\src\ia.cpp
+1492532118 source:c:\users\nolwenn\documents\othello\src\ia.cpp
 	<set>
 	<iostream>
 	"pion.h"
 	"etat.h"
 	"ia.h"
 
-1491420227 c:\users\nolwenn\documents\othello\src\ia.h
+1492532118 c:\users\nolwenn\documents\othello\src\ia.h
 	<set>
 	"pion.h"
 	"etat.h"
 
-1491743229 source:c:\users\nolwenn\documents\othello\src\main.cpp
+1492532118 source:c:\users\nolwenn\documents\othello\src\main.cpp
 	<iostream>
 	"plateau.h"
 
-1492433569 source:c:\users\nolwenn\documents\othello\src\minmaxia.cpp
+1492532118 source:c:\users\nolwenn\documents\othello\src\minmaxia.cpp
 	<limits>
 	<memory>
 	<iostream>
@@ -57,7 +57,7 @@
 	<set>
 	<vector>
 
-1492433569 c:\users\nolwenn\documents\othello\src\minmaxia.h
+1492532118 c:\users\nolwenn\documents\othello\src\minmaxia.h
 	<memory>
 	"etat.h"
 	"ia.h"
@@ -72,7 +72,7 @@
 	<set>
 	"arbre.h"
 
-1491665793 source:c:\users\nolwenn\documents\othello\src\randomia.cpp
+1492532118 source:c:\users\nolwenn\documents\othello\src\randomia.cpp
 	<cstdlib>
 	<ctime>
 	<iostream>
@@ -81,16 +81,18 @@
 	"pion.h"
 	"randomia.h"
 
-1491420227 c:\users\nolwenn\documents\othello\src\randomia.h
+1492532118 c:\users\nolwenn\documents\othello\src\randomia.h
 	"etat.h"
 	"ia.h"
 	"pion.h"
 
-1492433569 source:c:\users\nolwenn\documents\othello\src\plateau.cpp
+1492539042 source:c:\users\nolwenn\documents\othello\src\plateau.cpp
 	"plateau.h"
 	"console.h"
+	"windows.h"
+	"conio.h"
 
-1491752582 c:\users\nolwenn\documents\othello\src\plateau.h
+1492535948 c:\users\nolwenn\documents\othello\src\plateau.h
 	<vector>
 	"pion.h"
 	"console.h"
@@ -193,7 +195,11 @@
 	"ia.h"
 	"pion.h"
 
+<<<<<<< Updated upstream
 1492013341 source:c:\users\maxim\desktop\programmes\othello\src\console.cpp
+=======
+1492528516 source:c:\users\clara\desktop\othello-nolwenn\othello\src\console.cpp
+>>>>>>> Stashed changes
 	"console.h"
 	<conio.h>
 	<windows.h>
@@ -201,10 +207,17 @@
 	<unistd.h>
 	<termios.h>
 
+<<<<<<< Updated upstream
 1492013341 c:\users\maxim\desktop\programmes\othello\src\console.h
 	<iostream>
 
 1492013341 source:c:\users\maxim\desktop\programmes\othello\src\etat.cpp
+=======
+1492528516 c:\users\clara\desktop\othello-nolwenn\othello\src\console.h
+	<iostream>
+
+1492528516 source:c:\users\clara\desktop\othello-nolwenn\othello\src\etat.cpp
+>>>>>>> Stashed changes
 	<algorithm>
 	<functional>
 	<iostream>
@@ -212,11 +225,16 @@
 	"etat.h"
 	"pion.h"
 
+<<<<<<< Updated upstream
 1492013341 c:\users\maxim\desktop\programmes\othello\src\etat.h
+=======
+1492528516 c:\users\clara\desktop\othello-nolwenn\othello\src\etat.h
+>>>>>>> Stashed changes
 	<map>
 	<vector>
 	"pion.h"
 
+<<<<<<< Updated upstream
 1492013341 c:\users\maxim\desktop\programmes\othello\src\pion.h
 	<vector>
 
@@ -225,12 +243,35 @@
 	"plateau.h"
 
 1492089114 c:\users\maxim\desktop\programmes\othello\src\plateau.h
+=======
+1492528516 c:\users\clara\desktop\othello-nolwenn\othello\src\pion.h
+	<vector>
+
+1492528516 source:c:\users\clara\desktop\othello-nolwenn\othello\src\ia.cpp
+	<set>
+	<iostream>
+	"pion.h"
+	"etat.h"
+	"ia.h"
+
+1492528516 c:\users\clara\desktop\othello-nolwenn\othello\src\ia.h
+	<set>
+	"pion.h"
+	"etat.h"
+
+1492528516 source:c:\users\clara\desktop\othello-nolwenn\othello\src\main.cpp
+	<iostream>
+	"plateau.h"
+
+1492532346 c:\users\clara\desktop\othello-nolwenn\othello\src\plateau.h
+>>>>>>> Stashed changes
 	<vector>
 	"pion.h"
 	"console.h"
 	<memory>
 	<set>
 
+<<<<<<< Updated upstream
 1492518063 source:c:\users\maxim\desktop\programmes\othello\src\plateau.cpp
 	"plateau.h"
 	"console.h"
@@ -257,7 +298,44 @@
 	<vector>
 
 1492518063 c:\users\maxim\desktop\programmes\othello\src\randomia.h
+=======
+1492528516 source:c:\users\clara\desktop\othello-nolwenn\othello\src\minmaxia.cpp
+	<limits>
+	<memory>
+	<iostream>
+	<set>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"minmaxia.h"
+
+1492528516 c:\users\clara\desktop\othello-nolwenn\othello\src\minmaxia.h
+	<memory>
 	"etat.h"
 	"ia.h"
 	"pion.h"
 
+1492528517 source:c:\users\clara\desktop\othello-nolwenn\othello\src\randomia.cpp
+	<cstdlib>
+	<ctime>
+	<iostream>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"randomia.h"
+
+1492528517 c:\users\clara\desktop\othello-nolwenn\othello\src\randomia.h
+>>>>>>> Stashed changes
+	"etat.h"
+	"ia.h"
+	"pion.h"
+
+<<<<<<< Updated upstream
+=======
+1492533268 source:c:\users\clara\desktop\othello-nolwenn\othello\src\plateau.cpp
+	"plateau.h"
+	"console.h"
+	"windows.h"
+	"conio.h"
+
+>>>>>>> Stashed changes

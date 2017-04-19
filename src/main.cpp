@@ -12,6 +12,8 @@
 int main() {
    Tableau t;
     t.CreationTab();
+    t.Jouer();
+
 
 
 	return 1; // Erreur => y a pas de code !!!
