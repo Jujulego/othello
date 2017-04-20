@@ -27,10 +27,19 @@
 1492532118 c:\users\nolwenn\documents\othello\src\pion.h
 	<vector>
 
+1492450533 D
+
 1492631330 c:\users\nolwenn\documents\othello\src\ia.h
 	<memory>
 	<set>
 	<vector>
+	"etat.h"
+	"noeud.h"
+	"pion.h"
+
+1492450533 3056c2f010d3577a12576d6553d2950d0c40d
+	<memory>
+	<set>
 	"etat.h"
 	"noeud.h"
 	"pion.h"
@@ -46,7 +55,7 @@
 1492532118 c:\users\nolwenn\documents\othello\src\console.h
 	<iostream>
 
-1492532118 source:c:\users\nolwenn\documents\othello\src\etat.cpp
+1492631330 source:c:\users\nolwenn\documents\othello\src\etat.cpp
 	<algorithm>
 	<functional>
 	<iostream>
@@ -54,7 +63,7 @@
 	"etat.h"
 	"pion.h"
 
-1492611070 source:c:\users\nolwenn\documents\othello\src\ia.cpp
+1492631330 source:c:\users\nolwenn\documents\othello\src\ia.cpp
 	<functional>
 	<iostream>
 	<set>
@@ -63,18 +72,19 @@
 	"etat.h"
 	"ia.h"
 
-1492625020 source:c:\users\nolwenn\documents\othello\src\main.cpp
+1492678447 source:c:\users\nolwenn\documents\othello\src\main.cpp
 	<iostream>
 	"plateau.h"
 
-1492624711 c:\users\nolwenn\documents\othello\src\plateau.h
+1492631330 c:\users\nolwenn\documents\othello\src\plateau.h
 	<vector>
-	"pion.h"
-	"console.h"
 	<memory>
 	<set>
+	"etat.h"
+	"console.h"
+	"pion.h"
 
-1492612214 source:c:\users\nolwenn\documents\othello\src\minmaxia.cpp
+1492631330 source:c:\users\nolwenn\documents\othello\src\minmaxia.cpp
 	<limits>
 	<map>
 	<memory>
@@ -93,9 +103,10 @@
 1492597925 c:\users\nolwenn\documents\othello\src\negamaxia.h
 	"alphabetaia.h"
 
-1492624569 source:c:\users\nolwenn\documents\othello\src\plateau.cpp
-	"plateau.h"
+1492678881 source:c:\users\nolwenn\documents\othello\src\plateau.cpp
+	"etat.h"
 	"console.h"
+	"plateau.h"
 
 1492597925 source:c:\users\nolwenn\documents\othello\src\randomia.cpp
 	<cstdlib>
@@ -105,8 +116,6 @@
 	"ia.h"
 	"pion.h"
 	"randomia.h"
-
-1492537843 D
 
 1492597925 c:\users\nolwenn\documents\othello\src\randomia.h
 

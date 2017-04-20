@@ -60,47 +60,6 @@ Tableau::Tableau() {
     m_etat.othellier[4][4] = BLANC;
 }
 
-<<<<<<< HEAD
-void Tableau::AfficherTab()
-{
-    s_console->gotoLigCol(8,0);
-
-
-    for (int i=0;i< TailleTab;i++)
-    {
-         for (int j=0; j< TailleTab;j++)
-        {
-
-        if (Plateau[i][j].couleur==VIDE)
-
-            {
-                s_console->gotoLigCol(5+4*j,7+8*i);
-                //s_console->setColor(COLOR_BLACK)
-                std::cout<<"0";
-                //remetcouleur à O
-
-            }
-
-        else if (Plateau[i][j].couleur==BLANC)
-           {
-               s_console->gotoLigCol(5+4*j,7+8*i);
-//               s_console->setColor(color )
-                std::cout<<"1";
-           }
-
-        else if(Plateau[i][j].couleur==NOIR)
-            {
-
-            s_console->gotoLigCol(5+4*j,7+8*i);
-            std::cout<<"2";
-            }
-
-        else
-
-            {
-            s_console->gotoLigCol(5+4*j,7+8*i);
-            std::cout<<"error";
-=======
 void Tableau::AfficherTab() {
     for (int i=0;i < TailleTab; i++) {
         for (int j=0; j < TailleTab; j++) {
@@ -126,7 +85,6 @@ void Tableau::AfficherTab() {
             case NOIR:
                 s_console->setColor(COLOR_DEFAULT, COLOR_BLACK);
                 break;
->>>>>>> 5b9a5e5b88b29d9e28eac04e1f1755033277b66e
             }
 
             // Retour couleur de dï¿½part
@@ -143,22 +101,15 @@ void Tableau::AfficherTab() {
 
 void Tableau::CreationTab() {
     // Affichage du plateau
-
+    s_console->clear();
     s_console->gotoLigCol(3, 0);
     char l;
 
     std::cout << "       A       B       C       D       E       F       G       H" << std::endl;
     std::cout << "   " << LIGNE_HAUT << std::endl;
-<<<<<<< HEAD
-    for (int i = 0; i < 8; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-=======
 
     for (int i = 0; i < TailleTab; i++) {
         for (int j = 0; j < 3; j++) {
->>>>>>> 5b9a5e5b88b29d9e28eac04e1f1755033277b66e
             l = ' ';
 
             if (j % 2) {
@@ -168,10 +119,6 @@ void Tableau::CreationTab() {
             std::cout << " " << l << " " << LIGNE_MIL1 << " " << l << std::endl;
         }
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 5b9a5e5b88b29d9e28eac04e1f1755033277b66e
         if (i != 7) {
             std::cout << "   " << LIGNE_MIL2 << std::endl;
         }
@@ -219,7 +166,7 @@ bool Tableau::Jouer(int &x, int&y) {
             onContinue = false;
             break;
 
-        case 'p':
+        case 13:
             if (m_etat.othellier[x][y] == VIDE) {
                 // Renvoie vrai si le coup est valide et change le joueur
                 onContinue = !m_etat.appliquer_coup({x, y, m_etat.joueur});
@@ -242,32 +189,9 @@ void Tableau::BoucleJeu() {
     bool continuer=true;
     int x=0;
     int y=0;
-<<<<<<< HEAD
-    s_console->gotoLigCol(35,5);
-    std::cout<<"Le tour du joueur aux pions noirs";
-    while (continuer==true)
-    {
-
-
-        if (joueur == NOIR)
-        {
-
-            joueur=BLANC;
-            s_console->gotoLigCol(35,5);
-            std::cout<<"Le tour du joueur aux pions blancs";
-        }
-        else
-        {
-
-            joueur=NOIR;
-            s_console->gotoLigCol(35,5);
-            std::cout<<"Le tour du joueur aux pions noirs";
-        }
-=======
 
     while (continuer) {
     	// Affichage
->>>>>>> 5b9a5e5b88b29d9e28eac04e1f1755033277b66e
         CreationTab();
 
         // Interaction
