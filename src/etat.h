@@ -26,7 +26,7 @@ struct Etat {
 
     // Méthodes
     std::vector<Pion> pions(COULEUR c) const;
-    void appliquer_coup(Pion const& p);
+    bool appliquer_coup(Pion const& p);
 };
 
 #endif // ETAT_H

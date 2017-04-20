@@ -40,6 +40,7 @@ int MinMaxIA::heuristique(Etat&& etat) {
 
     // Calculs !
     for (auto p : PIONS)  m += mul[etat.othellier[p.first][p.second]];
+    std::cout << "feuille !" << std::endl;
     return m * (etat.scores[m_couleur] - etat.scores[ennemi]);
 }
 

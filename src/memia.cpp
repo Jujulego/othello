@@ -17,7 +17,7 @@
 #define VAL_MIN -2
 
 // Constructeur
-MemIA::MemIA(std::string const& fichier, unsigned prof, COULEUR c) : MinMaxIA(prof, c), m_memarbre(std::make_shared<MemArbre>(fichier)) {
+MemIA::MemIA(std::string const& fichier, unsigned prof, COULEUR c) : MinMaxIA(prof -1, c), m_memarbre(std::make_shared<MemArbre>(fichier)) {
     m_memarbre->charger();
 }
 
@@ -31,8 +31,6 @@ Pion MemIA::jouer(Etat plateau) {
     std::set<Pion,bool(&)(Pion const&,Pion const&)> coups_possibles = get_coups(plateau);
     int val = std::numeric_limits<int>::min(), v;
     Pion pion;
-
-    std::cout << "nb : " << coups_connus.size() << std::endl;
 
     // Intersection
     for (Pion p : coups_possibles) {
@@ -52,7 +50,6 @@ Pion MemIA::jouer(Etat plateau) {
 
         // Calcul de la valeur
         v = minmax(std::move(etat), 0, nullptr).val * ((np == nullptr) ? 1 : np->val());
-        std::cout << v << std::endl;
 
         if (v > val) {
             val = v;
