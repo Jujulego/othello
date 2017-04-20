@@ -27,10 +27,9 @@
 1492532118 c:\users\nolwenn\documents\othello\src\pion.h
 	<vector>
 
-1492611070 c:\users\nolwenn\documents\othello\src\ia.h
+1492597925 c:\users\nolwenn\documents\othello\src\ia.h
 	<memory>
 	<set>
-	<vector>
 	"etat.h"
 	"noeud.h"
 	"pion.h"
@@ -54,27 +53,26 @@
 	"etat.h"
 	"pion.h"
 
-1492611070 source:c:\users\nolwenn\documents\othello\src\ia.cpp
+1492597925 source:c:\users\nolwenn\documents\othello\src\ia.cpp
 	<functional>
 	<iostream>
 	<set>
-	<vector>
 	"pion.h"
 	"etat.h"
 	"ia.h"
 
-1492625020 source:c:\users\nolwenn\documents\othello\src\main.cpp
+1492609153 source:c:\users\nolwenn\documents\othello\src\main.cpp
 	<iostream>
 	"plateau.h"
 
-1492624711 c:\users\nolwenn\documents\othello\src\plateau.h
+1492609982 c:\users\nolwenn\documents\othello\src\plateau.h
 	<vector>
 	"pion.h"
 	"console.h"
 	<memory>
 	<set>
 
-1492612214 source:c:\users\nolwenn\documents\othello\src\minmaxia.cpp
+1492597925 source:c:\users\nolwenn\documents\othello\src\minmaxia.cpp
 	<limits>
 	<map>
 	<memory>
@@ -93,7 +91,7 @@
 1492597925 c:\users\nolwenn\documents\othello\src\negamaxia.h
 	"alphabetaia.h"
 
-1492624569 source:c:\users\nolwenn\documents\othello\src\plateau.cpp
+1492609381 source:c:\users\nolwenn\documents\othello\src\plateau.cpp
 	"plateau.h"
 	"console.h"
 
@@ -220,8 +218,6 @@
 1492537843 c:\users\maxim\desktop\programmes\othello\src\negamaxia.h
 	"alphabetaia.h"
 
-<<<<<<< HEAD
-=======
 1492531034 /home/julien/projets/c++/othello/src/minmaxia.h
 	<memory>
 	"noeud.h"
@@ -310,4 +306,3 @@
 	"ia.h"
 	"pion.h"
 
->>>>>>> 5b9a5e5b88b29d9e28eac04e1f1755033277b66e
