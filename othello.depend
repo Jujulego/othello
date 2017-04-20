@@ -131,13 +131,16 @@
 
 1492597925 c:\users\nolwenn\documents\othello\src\randomia.h
 
-1492607435 c:\users\maxim\desktop\programmes\othello\src\ia.h
+1492713972 c:\users\maxim\desktop\programmes\othello\src\ia.h
 	<memory>
 	<set>
 	<vector>
+	<utility>
 	"etat.h"
 	"noeud.h"
 	"pion.h"
+	"console.h"
+	"Coordonnees.h"
 
 1492518063 c:\users\maxim\desktop\programmes\othello\src\noeud.h
 	<functional>
@@ -233,7 +236,7 @@
 	"ia.h"
 	"pion.h"
 
-1492622318 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
+1492697146 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
 	<limits>
 	<map>
 	<memory>
@@ -631,4 +634,71 @@
 	"etat.h"
 	"console.h"
 	"plateau.h"
+
+1492697146 c:\users\maxim\desktop\programmes\othello\src\etat.h
+	<map>
+	<vector>
+	"pion.h"
+
+1492013341 c:\users\maxim\desktop\programmes\othello\src\pion.h
+	<vector>
+
+1492625201 source:c:\users\maxim\desktop\programmes\othello\src\ia.cpp
+	<functional>
+	<iostream>
+	<set>
+	<vector>
+	"pion.h"
+	"etat.h"
+	"ia.h"
+
+1492518063 source:c:\users\maxim\desktop\programmes\othello\src\randomia.cpp
+	<cstdlib>
+	<ctime>
+	<iostream>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"randomia.h"
+
+1492697146 source:c:\users\maxim\desktop\programmes\othello\src\console.cpp
+	"console.h"
+	<conio.h>
+	<windows.h>
+	<fcntl.h>
+	<unistd.h>
+	<termios.h>
+
+1492013341 c:\users\maxim\desktop\programmes\othello\src\console.h
+	<iostream>
+
+1492697146 source:c:\users\maxim\desktop\programmes\othello\src\etat.cpp
+	<algorithm>
+	<functional>
+	<iostream>
+	<vector>
+	"etat.h"
+	"pion.h"
+
+1492697146 source:c:\users\maxim\desktop\programmes\othello\src\main.cpp
+	<iostream>
+	"plateau.h"
+
+1492697146 c:\users\maxim\desktop\programmes\othello\src\plateau.h
+	<vector>
+	<memory>
+	<set>
+	"etat.h"
+	"console.h"
+	"pion.h"
+
+1492697146 source:c:\users\maxim\desktop\programmes\othello\src\plateau.cpp
+	"etat.h"
+	"console.h"
+	"plateau.h"
+
+1492713973 c:\users\maxim\desktop\programmes\othello\src\coordonnees.h
+
+1492713972 source:c:\users\maxim\desktop\programmes\othello\src\coordonnees.cpp
+	"Coordonnees.h"
 
