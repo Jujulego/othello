@@ -25,7 +25,7 @@
 #include "src/randomia.h"
 
 // Macros
-#define PROF_ALGO 11
+#define PROF_ALGO 5//11
 
 // Constructeur
 Jeu::Jeu(QWidget *parent) : QMainWindow(parent),
