@@ -19,7 +19,7 @@
 	<memory>
 	<vector>
 
-1492532118 c:\users\nolwenn\documents\othello\src\etat.h
+1492631330 c:\users\nolwenn\documents\othello\src\etat.h
 	<map>
 	<vector>
 	"pion.h"
@@ -27,7 +27,7 @@
 1492532118 c:\users\nolwenn\documents\othello\src\pion.h
 	<vector>
 
-1492611070 c:\users\nolwenn\documents\othello\src\ia.h
+1492631330 c:\users\nolwenn\documents\othello\src\ia.h
 	<memory>
 	<set>
 	<vector>
@@ -106,7 +106,7 @@
 	"pion.h"
 	"randomia.h"
 
-1492528516 D
+1492537843 D
 
 1492597925 c:\users\nolwenn\documents\othello\src\randomia.h
 
@@ -220,8 +220,6 @@
 1492537843 c:\users\maxim\desktop\programmes\othello\src\negamaxia.h
 	"alphabetaia.h"
 
-<<<<<<< HEAD
-=======
 1492531034 /home/julien/projets/c++/othello/src/minmaxia.h
 	<memory>
 	"noeud.h"
@@ -310,4 +308,5 @@
 	"ia.h"
 	"pion.h"
 
->>>>>>> 5b9a5e5b88b29d9e28eac04e1f1755033277b66e
+1492450533 a5e5b88b29d9e28eac04e1f1755033277b66e
+
