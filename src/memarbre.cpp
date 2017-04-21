@@ -189,7 +189,7 @@ void MemArbre::charger() {
 				pos,
 				shared_from_this(),
                 m_noeuds.at(pere)
-			);
+            );
             m_noeuds.at(pere)->add_fils(n);
 		}
 		

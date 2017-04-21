@@ -30,9 +30,9 @@ std::vector<Pion> Etat::pions(COULEUR c) const {
     return pions;
 }
 
-bool Etat::appliquer_coup(Pion const& p) {
+bool Etat::appliquer_coup(Pion const& p, bool fake) {
     // Déclarations
-    COULEUR ennemi = (joueur == BLANC) ? NOIR : BLANC;
+    COULEUR ennemi = (p.couleur == BLANC) ? NOIR : BLANC;
     std::vector<P> tmp;
     bool ok = false, valide = false;
 
@@ -53,23 +53,26 @@ bool Etat::appliquer_coup(Pion const& p) {
                 tmp.push_back({i, j});
             } else {
                 // Confirmation !
-                if (othellier[i][j] == joueur) ok = true;
+                if (othellier[i][j] == p.couleur) ok = true;
                 break;
             }
         }
 
         // Application des changements
         if (ok && !tmp.empty()) {
-            // Ajout du nouveau pion
-            othellier[p.x][p.y] = joueur;
             valide = true;
 
-            // Changements de couleur
-            for (P pt : tmp) othellier[pt.i][pt.j] = joueur;
+            if (!fake) {
+                // Ajout du nouveau pion
+                othellier[p.x][p.y] = p.couleur;
 
-            // Maj scores
-            scores[joueur] += tmp.size() + 1;
-            scores[ennemi] -= tmp.size();
+                // Changements de couleur
+                for (P pt : tmp) othellier[pt.i][pt.j] = p.couleur;
+
+                // Maj scores
+                scores[p.couleur] += tmp.size() + 1;
+                scores[ennemi]    -= tmp.size();
+            }
         }
     }
 
@@ -77,4 +80,20 @@ bool Etat::appliquer_coup(Pion const& p) {
     if (valide) joueur = ennemi;
 
     return valide;
+}
+
+int Etat::coups_restant(COULEUR c) {
+    // Déclarations
+    int nb = 0;
+
+    // Décompte
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            if ((othellier[i][j] == VIDE)) {
+                if (appliquer_coup({i, j, c}, true)) nb++;
+            }
+        }
+    }
+
+    return nb;
 }

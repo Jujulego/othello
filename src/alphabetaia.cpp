@@ -62,7 +62,6 @@ MinMaxIA::PV AlphaBetaIA::alphabeta(Etat&& etat, unsigned prof, int alpha, int b
     }
 
     // Résultat
-    std::cout << (char) (pion.x + 'A') << (pion.y +1) << " " << pion.couleur << " " << val << std::endl;
     return {val, pion};
 }
 

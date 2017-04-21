@@ -7,12 +7,16 @@
 
 #include "minmaxia.h"
 #include "memarbre.h"
+#include "negamaxia.h"
 
-class MemIA : public MinMaxIA {
+class MemIA : public AlphaBetaIA {
     private:
         // Attributs
         std::shared_ptr<MemArbre> m_memarbre;
         std::shared_ptr<MemArbre::Noeud> m_noeud;
+
+        // Méthodes
+        virtual MinMaxIA::PV memia(Etat&& etat, unsigned prof, int alpha, int beta, std::shared_ptr<MemArbre::Noeud> noeud);
 
     public:
         // Constructeur
