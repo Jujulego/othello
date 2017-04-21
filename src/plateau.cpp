@@ -50,20 +50,13 @@ Tableau::Tableau(std::shared_ptr<IA> ia_noir, std::shared_ptr<IA> ia_blanc) {
 void Tableau::AfficherTab() {
     for (int i=0;i < TailleTab; i++) {
         for (int j=0; j < TailleTab; j++) {
-            // Les 4 coins
-            s_console->setColor(COLOR_DEFAULT, COLOR_GREEN);
-            s_console->gotoLigCol(4+OFFSET+4*j,4+8*i);
-            std::cout << "       ";
-            s_console->gotoLigCol(5+OFFSET+4*j,4+8*i);
-            std::cout << "       ";
-            s_console->gotoLigCol(6+OFFSET+4*j,4+8*i);
-            std::cout << "       ";
-
+            // Rien à faire pour le cases vides
+            if (m_etat.othellier[i][j] == VIDE) {
+                continue;
+            }
+            
+            // Choix de la couleur
             switch (m_etat.othellier[i][j]) {
-            case VIDE:
-                s_console->setColor(COLOR_DEFAULT, COLOR_GREEN);
-                break;
-
             case BLANC:
                 s_console->setColor(COLOR_DEFAULT, COLOR_WHITE);
                 break;
@@ -73,7 +66,7 @@ void Tableau::AfficherTab() {
                 break;
             }
 
-            // Retour couleur de d�part
+            // Affichage du pion
             s_console->gotoLigCol(4+OFFSET+4*j,5+8*i);
             std::cout <<  "     ";
             s_console->gotoLigCol(5+OFFSET+4*j,4+8*i);
@@ -102,15 +95,26 @@ void Tableau::CreationTab() {
                 l = '1' + i;
             }
 
-            std::cout << " " << l << " " << LIGNE_MIL1 << " " << l << std::endl;
+            s_console->gotoLigCol(i*4+5+j, 0);
+            std::cout << " " << l << " " << LIGNE_MIL1 << " " << l;
+            
+            s_console->setColor(COLOR_DEFAULT, COLOR_GREEN);
+            for (int c = 0; c < 8; c++) {
+            	s_console->gotoLigCol(i*4+5+j,4+8*c);
+            	std::cout << "       ";
+            }
+            
+            s_console->setColor();
         }
 
         if (i != 7) {
-            std::cout << "   " << LIGNE_MIL2 << std::endl;
+            s_console->gotoLigCol(i*4+8, 0);
+            std::cout << "   " << LIGNE_MIL2;
         }
 
     }
 
+    s_console->gotoLigCol(36, 0);
     std::cout << "   " << LIGNE_BAS << std::endl;
     std::cout << "       A       B       C       D       E       F       G       H" << std::endl;
 
@@ -177,7 +181,7 @@ bool Tableau::Jouer(int &x, int&y) {
     return !quitter;
 }
 
-void Tableau::BoucleJeu() {
+COULEUR Tableau::BoucleJeu() {
     bool continuer=true;
     int x=0;
     int y=0;
@@ -201,15 +205,24 @@ void Tableau::BoucleJeu() {
         	
         	// Test de fin !
         	if (m_etat.coups_restant(m_etat.joueur) == 0) { // Personne ne peux jouer !
+	        	m_etat.joueur = (m_etat.joueur == NOIR) ? BLANC : NOIR;
         		continuer = false;
         	}
         }
         
         // Affichage
-        CreationTab();
+        AfficherTab();
     }
     
     s_console->gotoLigCol(40, 0);
+    
+    if (m_etat.scores[NOIR] > m_etat.scores[BLANC]) {
+    	return NOIR;
+    } else if (m_etat.scores[BLANC] > m_etat.scores[NOIR]) {
+    	return BLANC;
+    } else {
+    	return m_etat.joueur;
+    }
 }
 
 std::map<COULEUR,unsigned> const Tableau::scores() const {

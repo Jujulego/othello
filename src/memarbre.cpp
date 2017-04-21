@@ -132,7 +132,7 @@ std::set<std::shared_ptr<MemArbre::Noeud>> const& MemArbre::Noeud::fils() const 
 // Constructeur
 MemArbre::MemArbre(std::string const& fichier) {
 	// Ouverture du fichier !
-    m_fichier.open(fichier);
+    m_fichier.open(fichier, std::ios_base::in | std::ios_base::out | std::ios_base::binary);
 
     while (m_fichier.fail()) {
         // Uniquement si le fichier n'existe pas
