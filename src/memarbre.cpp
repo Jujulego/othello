@@ -11,6 +11,7 @@
 #include <string>
 #include <tuple>
 #include <vector>
+#include <cstdlib>
 
 #include "memarbre.h"
 

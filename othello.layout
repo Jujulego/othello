@@ -1,7 +1,42 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+	<File name="src\plateau.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="347" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\randomia.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="320" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\plateau.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4260" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\console.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="150" topLine="14" />
+		</Cursor>
+	</File>
+	<File name="src\pion.h" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="215" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\etat.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+=======
+	<File name="src\pion.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="16" />
+		</Cursor>
+	</File>
+>>>>>>> 1295cdbf096627748c62bff761518715deeabada
 	<File name="src\memarbre.cpp" open="1" top="1" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="3418" topLine="126" />
@@ -17,12 +52,61 @@
 			<Cursor1 position="53" topLine="0" />
 		</Cursor>
 	</File>
+<<<<<<< HEAD
 	<File name="src\minmaxia.cpp" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+=======
+	<File name="src\plateau.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+>>>>>>> b3d12e41d1d46ca1e4f129ccf581c8b63669c5d4
+>>>>>>> 1295cdbf096627748c62bff761518715deeabada
 		<Cursor>
 			<Cursor1 position="0" topLine="0" />
 		</Cursor>
 	</File>
+<<<<<<< HEAD
 	<File name="src\minmaxia.h" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+=======
+<<<<<<< HEAD
+	<File name="src\ia.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="809" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\etat.h" open="0" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="362" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\ia.cpp" open="1" top="1" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="7287" topLine="159" />
+		</Cursor>
+	</File>
+	<File name="src\minmaxia.cpp" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1317" topLine="15" />
+		</Cursor>
+	</File>
+	<File name="src\noeud.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="360" topLine="31" />
+		</Cursor>
+	</File>
+	<File name="src\main.cpp" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="257" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\minmaxia.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="616" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="src\console.cpp" open="0" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3090" topLine="110" />
+=======
+	<File name="src\ia.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+>>>>>>> 1295cdbf096627748c62bff761518715deeabada
 		<Cursor>
 			<Cursor1 position="0" topLine="8" />
 		</Cursor>
@@ -34,12 +118,17 @@
 	</File>
 	<File name="src\plateau.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
+<<<<<<< HEAD
 			<Cursor1 position="4133" topLine="2" />
 		</Cursor>
 	</File>
 	<File name="src\ia.cpp" open="0" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="302" topLine="12" />
+=======
+			<Cursor1 position="4133" topLine="0" />
+>>>>>>> b3d12e41d1d46ca1e4f129ccf581c8b63669c5d4
+>>>>>>> 1295cdbf096627748c62bff761518715deeabada
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
