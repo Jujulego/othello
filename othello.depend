@@ -25,7 +25,7 @@
 	<memory>
 	<vector>
 
-1492631330 c:\users\nolwenn\documents\othello\src\etat.h
+1492795871 c:\users\nolwenn\documents\othello\src\etat.h
 	<map>
 	<vector>
 	"pion.h"
@@ -35,7 +35,7 @@
 
 1492450533 D
 
-1492780236 c:\users\nolwenn\documents\othello\src\ia.h
+1492795871 c:\users\nolwenn\documents\othello\src\ia.h
 	<memory>
 	<set>
 	<vector>
@@ -44,7 +44,6 @@
 	"noeud.h"
 	"pion.h"
 	"console.h"
-	"Coordonnees.h"
 
 1492450533 3056c2f010d3577a12576d6553d2950d0c40d
 	<memory>
@@ -53,7 +52,7 @@
 	"noeud.h"
 	"pion.h"
 
-1492532118 source:c:\users\nolwenn\documents\othello\src\console.cpp
+1492780236 source:c:\users\nolwenn\documents\othello\src\console.cpp
 	"console.h"
 	<conio.h>
 	<windows.h>
