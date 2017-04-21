@@ -33,6 +33,38 @@ Menu::Menu() :
 }
 
 // Méthodes
+void Menu::regles() const {
+	// Affichage entête
+	s_console.clear();
+	s_console.gotoLigCol(2, 0);
+	std::cout << "         ____       __    __             __  __     " << std::endl;
+	std::cout << "        / __ \\   __/ /_  / /            / / / /     " << std::endl;
+	std::cout << "       / /  \\ \\ /_  __/ / /_    ___    / / / / ___  " << std::endl;
+	std::cout << "      / /   / /  / /   / __ \\  / _ \\  / / / / / _ \\ " << std::endl;
+	std::cout << "      \\ \\__/ /  / /   / / / / /  __/ / / / / / // / " << std::endl;
+	std::cout << "       \\____/  /_/   /_/ /_/  \\___/ /_/ /_/  \\___/  " << std::endl;
+	
+	// Affichage des options
+	s_console.gotoLigCol(10, 0);
+	std::cout << "    Z       ^" << std::endl;
+	std::cout << "  Q S D   < v >     Pour se déplacer sur le plateau" << std::endl;
+	std::cout << std::endl;
+	std::cout << "             |" << std::endl;
+	std::cout << " ENTREE   <--+      Pour placer un pion" << std::endl;
+	std::cout << std::endl;
+	std::cout << "        E           Pour quitter la partie" << std::endl;
+	std::cout << std::endl;
+	std::cout << "        F           Pour sauvegarder la partie" << std::endl;
+	std::cout << std::endl;
+	std::cout << "Appuyez sur [ENTREE]" << std::endl;
+	std::cout.flush();
+	
+	// Attente
+	do {
+		std::cin.clear();
+	} while (s_console.getch() != ENTREE);
+}
+
 void Menu::afficher() const {
 	// Déclarations
 	bool quitter = false;
@@ -45,12 +77,12 @@ void Menu::afficher() const {
 		// Affichage entête
 		s_console.clear();
 		s_console.gotoLigCol(2, 0);
-		std::cout << "            ____       __    __             __  __     " << std::endl;
-		std::cout << "           / __ \\   __/ /_  / /            / / / /     " << std::endl;
-		std::cout << "          / /  \\ \\ /_  __/ / /_    ___    / / / / ___  " << std::endl;
-		std::cout << "         / /   / /  / /   / __ \\  / _ \\  / / / / / _ \\ " << std::endl;
-		std::cout << "         \\ \\__/ /  / /   / / / / /  __/ / / / / / // / " << std::endl;
-		std::cout << "          \\____/  /_/   /_/ /_/  \\___/ /_/ /_/  \\___/  " << std::endl;
+		std::cout << "         ____       __    __             __  __     " << std::endl;
+		std::cout << "        / __ \\   __/ /_  / /            / / / /     " << std::endl;
+		std::cout << "       / /  \\ \\ /_  __/ / /_    ___    / / / / ___  " << std::endl;
+		std::cout << "      / /   / /  / /   / __ \\  / _ \\  / / / / / _ \\ " << std::endl;
+		std::cout << "      \\ \\__/ /  / /   / / / / /  __/ / / / / / // / " << std::endl;
+		std::cout << "       \\____/  /_/   /_/ /_/  \\___/ /_/ /_/  \\___/  " << std::endl;
 		
 		// Affichage des options
 		s_console.gotoLigCol(10, 15);
@@ -90,7 +122,19 @@ void Menu::afficher() const {
 		std::cout << "- Joueur vs Memory";
 		
 		s_console.gotoLigCol(16, 15);
-		if (choix == 6) s_console.setColor(COLOR_RED, COLOR_WHITE);
+		if (choix == 6) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
+		else            s_console.setColor();
+		
+		std::cout << "- Commandes";
+		
+		s_console.gotoLigCol(17, 15);
+		if (choix == 7) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
+		else            s_console.setColor();
+		
+		std::cout << "- Charger une sauvegarde";
+		
+		s_console.gotoLigCol(18, 15);
+		if (choix == 8) s_console.setColor(COLOR_RED, COLOR_WHITE);
 		else            s_console.setColor(COLOR_RED);
 		
 		std::cout << "- Quitter";
@@ -153,6 +197,13 @@ void Menu::afficher() const {
         		break;
         	
         	case 6:
+        		regles();
+        		break;
+        	
+        	case 7:
+        		break;
+        	
+        	case 8:
         		quitter = true;
         		break;
         	}
@@ -161,7 +212,7 @@ void Menu::afficher() const {
         
         // Controle des bords
         if (choix < 0) choix = 0;
-        if (choix > 6) choix = 6;
+        if (choix > 8) choix = 8;
 	} while (!quitter);
 	
 	s_console.gotoLigCol(20, 0);

@@ -23,6 +23,7 @@ class Menu {
 		Menu();
 		
 		// Méthodes
+		void regles() const;
 		void afficher() const;
 };
 
