@@ -15,10 +15,6 @@ static bool cc(Pion const& c1, Pion const& c2) {
     return ((c1.x + c1.y * 10) < (c2.x + c2.y * 10));
 }
 
-// Constructeur
-IA::IA() {
-}
-
 // Méthodes
 std::set<Pion,bool(&)(Pion const&,Pion const&)> IA::get_coups(Etat const& plateau) const {
     // Déclaration du set

@@ -4,30 +4,33 @@
 #define TailleTab 8
 
 #include <vector>
+#include <map>
 #include <memory>
 #include <set>
 
-#include "etat.h"
 #include "console.h"
+#include "etat.h"
+#include "ia.h"
 #include "pion.h"
 
 class Tableau {
     private:
         Etat m_etat;
-//        std::vector<std::vector<Pion>> Plateau;
+        std::map<COULEUR,std::shared_ptr<IA>> m_ias;
 
     protected:
         Console* s_console = NULL;
 
     public:
-        Tableau();
+        Tableau(std::shared_ptr<IA> ia_noir = nullptr, std::shared_ptr<IA> ia_blanc = nullptr);
         void CreationTab();
         bool Jouer(int &x, int&y);
         void AfficherTab();
         void BoucleJeu();
 
-    //Accesseur
-     std::vector<std::shared_ptr<Pion>> const& get_pions() const;
+        // Accesseur
+        std::map<COULEUR,unsigned> const scores() const;
+        std::vector<std::shared_ptr<Pion>> const& get_pions() const;
 };
 
 #endif // PLATEAU_H_INCLUDED

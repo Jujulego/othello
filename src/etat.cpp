@@ -77,7 +77,7 @@ bool Etat::appliquer_coup(Pion const& p, bool fake) {
     }
 
     // Changement de joueur !
-    if (valide) joueur = ennemi;
+    if (valide && !fake) joueur = ennemi;
 
     return valide;
 }

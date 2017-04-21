@@ -1,3 +1,6 @@
+#include <map>
+#include <memory>
+
 #include "etat.h"
 #include "console.h"
 #include "plateau.h"
@@ -26,10 +29,11 @@ static const std::string LIGNE_BAS  = "\xe2\x95\xb0\xe2\x94\x80\xe2\x94\x80\xe2\
 #define FL_BAS    1792834
 #endif
 
-// Variables statiques
-//Console Tableau::s_console;
+Tableau::Tableau(std::shared_ptr<IA> ia_noir, std::shared_ptr<IA> ia_blanc) {
+    // Init joueur
+    m_ias[NOIR]  = ia_noir;
+    m_ias[BLANC] = ia_blanc;
 
-Tableau::Tableau() {
     // Init etat
     m_etat.joueur = NOIR;    // tjs le noir qui commence
     m_etat.scores[NOIR]  = 2; // = au nb de pions du joueur
@@ -117,7 +121,6 @@ bool Tableau::Jouer(int &x, int&y) {
     //declaration des variables
     bool onContinue = true, quitter = false;
     int  c;
-    //int x=0,y=0;
 
     //boucle tant que on a pas appuyer sur entrer (pour entrer un pion)
     while (onContinue) {
@@ -179,13 +182,36 @@ void Tableau::BoucleJeu() {
     int x=0;
     int y=0;
 
+    // Affichage
+    CreationTab();
+    
     while (continuer) {
-    	// Affichage
+        // Execution de l'IA
+        if (m_ias[m_etat.joueur] != nullptr) {
+        	m_etat.appliquer_coup(m_ias[m_etat.joueur]->jouer(m_etat));
+        } else {
+            // Interaction
+            continuer = Jouer(x, y); // consequences , on envoi x y
+        }
+        
+        // Test peut pas jouer !
+        if (m_etat.coups_restant(m_etat.joueur) == 0) { // Le joueur ne peux pas jouer !
+        	// On passe au suivant
+        	m_etat.joueur = (m_etat.joueur == NOIR) ? BLANC : NOIR;
+        	
+        	// Test de fin !
+        	if (m_etat.coups_restant(m_etat.joueur) == 0) { // Personne ne peux jouer !
+        		continuer = false;
+        	}
+        }
+        
+        // Affichage
         CreationTab();
-
-        // Interaction
-        continuer = Jouer(x, y); // consequences , on envoi x y
     }
+    
+    s_console->gotoLigCol(40, 0);
 }
 
-
+std::map<COULEUR,unsigned> const Tableau::scores() const {
+	return m_etat.scores;
+}

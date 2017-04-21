@@ -27,9 +27,6 @@ class IA {
         // .second (shared_ptr<Noeud<PV>>) : pointeur sur le noeud
 
     public:
-        // Constructeur
-        IA();
-
         // Destructeur
         virtual ~IA() = default;
 

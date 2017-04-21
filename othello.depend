@@ -186,10 +186,7 @@
 	"windows.h"
 	"conio.h"
 
-1492531192 source:/home/julien/projets/c++/othello/src/alphabetaia.cpp
-	<iostream>
-	<limits>
-	"alphabetaia.h"
+1492779751 source:/home/julien/projets/c++/othello/src/alphabetaia.cpp
 	<iostream>
 	<limits>
 	"alphabetaia.h"
@@ -206,10 +203,7 @@
 	<memory>
 	<vector>
 
-1492531163 source:/home/julien/projets/c++/othello/src/negamaxia.cpp
-	<limits>
-	<iostream>
-	"negamaxia.h"
+1492779751 source:/home/julien/projets/c++/othello/src/negamaxia.cpp
 	<limits>
 	<iostream>
 	"negamaxia.h"
@@ -218,7 +212,7 @@
 	"alphabetaia.h"
 	"alphabetaia.h"
 
-1492676062 source:/home/julien/projets/c++/othello/src/plateau.cpp
+1492678844 source:/home/julien/projets/c++/othello/src/plateau.cpp
 	"etat.h"
 	"console.h"
 	"plateau.h"
@@ -269,10 +263,7 @@
 	"ia.h"
 	"pion.h"
 
-1492674352 /home/julien/projets/c++/othello/src/etat.h
-	<map>
-	<vector>
-	"pion.h"
+1492779751 /home/julien/projets/c++/othello/src/etat.h
 	<map>
 	<vector>
 	"pion.h"
@@ -281,27 +272,17 @@
 	<vector>
 	<vector>
 
-1492674352 /home/julien/projets/c++/othello/src/ia.h
+1492783582 /home/julien/projets/c++/othello/src/ia.h
 	<memory>
 	<set>
 	<vector>
+	<utility>
 	"etat.h"
 	"noeud.h"
 	"pion.h"
-	<memory>
-	<set>
-	<vector>
-	"etat.h"
-	"noeud.h"
-	"pion.h"
-
-1492676787 source:/home/julien/projets/c++/othello/src/console.cpp
 	"console.h"
-	<conio.h>
-	<windows.h>
-	<fcntl.h>
-	<unistd.h>
-	<termios.h>
+
+1492678761 source:/home/julien/projets/c++/othello/src/console.cpp
 	"console.h"
 	<conio.h>
 	<windows.h>
@@ -313,13 +294,7 @@
 	<iostream>
 	<iostream>
 
-1492675926 source:/home/julien/projets/c++/othello/src/etat.cpp
-	<algorithm>
-	<functional>
-	<iostream>
-	<vector>
-	"etat.h"
-	"pion.h"
+1492779751 source:/home/julien/projets/c++/othello/src/etat.cpp
 	<algorithm>
 	<functional>
 	<iostream>
@@ -327,21 +302,16 @@
 	"etat.h"
 	"pion.h"
 
-1492674352 source:/home/julien/projets/c++/othello/src/ia.cpp
+1492783559 source:/home/julien/projets/c++/othello/src/ia.cpp
 	<functional>
 	<iostream>
 	<set>
 	<vector>
+	<utility>
 	"pion.h"
 	"etat.h"
 	"ia.h"
-	<functional>
-	<iostream>
-	<set>
-	<vector>
-	"pion.h"
-	"etat.h"
-	"ia.h"
+	"console.h"
 
 1492674352 source:/home/julien/projets/c++/othello/src/main.cpp
 	<iostream>
@@ -349,30 +319,17 @@
 	<iostream>
 	"plateau.h"
 
-1492674352 /home/julien/projets/c++/othello/src/plateau.h
+1492783933 /home/julien/projets/c++/othello/src/plateau.h
 	<vector>
-	<memory>
-	<set>
-	"etat.h"
-	"console.h"
-	"pion.h"
-	<vector>
-	<memory>
-	<set>
-	"etat.h"
-	"console.h"
-	"pion.h"
-
-1492674352 source:/home/julien/projets/c++/othello/src/minmaxia.cpp
-	<limits>
 	<map>
 	<memory>
-	<iostream>
-	<vector>
+	<set>
+	"console.h"
 	"etat.h"
 	"ia.h"
 	"pion.h"
-	"minmaxia.h"
+
+1492779751 source:/home/julien/projets/c++/othello/src/minmaxia.cpp
 	<limits>
 	<map>
 	<memory>
@@ -705,4 +662,51 @@
 	"Coordonnees.h"
 
 1492780236 c:\users\nolwenn\documents\othello\src\coordonnees.h
+
+1492779751 source:/home/julien/projets/c++/othello/src/memarbre.cpp
+	<cerrno>
+	<cstring>
+	<functional>
+	<fstream>
+	<iostream>
+	<map>
+	<memory>
+	<set>
+	<sstream>
+	<string>
+	<tuple>
+	<vector>
+	"memarbre.h"
+
+1492520924 /home/julien/projets/c++/othello/src/memarbre.h
+	<fstream>
+	<map>
+	<memory>
+	<set>
+	<string>
+	<tuple>
+
+1492779751 source:/home/julien/projets/c++/othello/src/memia.cpp
+	<algorithm>
+	<iostream>
+	<limits>
+	<memory>
+	<string>
+	<tuple>
+	<vector>
+	"macros.h"
+	"minmaxia.h"
+	"memarbre.h"
+	"memia.h"
+
+1490963344 /home/julien/projets/c++/othello/src/macros.h
+
+1492779751 /home/julien/projets/c++/othello/src/memia.h
+	<memory>
+	<string>
+	"minmaxia.h"
+	"memarbre.h"
+	"negamaxia.h"
+
+1491662950 source:/home/julien/projets/c++/othello/src/pions.cpp
 
