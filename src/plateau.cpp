@@ -181,7 +181,7 @@ bool Tableau::Jouer(int &x, int&y) {
     return !quitter;
 }
 
-void Tableau::BoucleJeu() {
+COULEUR Tableau::BoucleJeu() {
     bool continuer=true;
     int x=0;
     int y=0;
@@ -205,6 +205,7 @@ void Tableau::BoucleJeu() {
         	
         	// Test de fin !
         	if (m_etat.coups_restant(m_etat.joueur) == 0) { // Personne ne peux jouer !
+	        	m_etat.joueur = (m_etat.joueur == NOIR) ? BLANC : NOIR;
         		continuer = false;
         	}
         }
@@ -214,6 +215,14 @@ void Tableau::BoucleJeu() {
     }
     
     s_console->gotoLigCol(40, 0);
+    
+    if (m_etat.scores[NOIR] > m_etat.scores[BLANC]) {
+    	return NOIR;
+    } else if (m_etat.scores[BLANC] > m_etat.scores[NOIR]) {
+    	return BLANC;
+    } else {
+    	return m_etat.joueur;
+    }
 }
 
 std::map<COULEUR,unsigned> const Tableau::scores() const {

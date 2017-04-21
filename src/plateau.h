@@ -26,7 +26,7 @@ class Tableau {
         void CreationTab();
         bool Jouer(int &x, int&y);
         void AfficherTab();
-        void BoucleJeu();
+        COULEUR BoucleJeu();
 
         // Accesseur
         std::map<COULEUR,unsigned> const scores() const;
