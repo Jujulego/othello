@@ -71,13 +71,13 @@ void Tableau::CreationTab() {
 
             s_console->gotoLigCol(i*3+5+j, 0);
             std::cout << " " << l << " " << LIGNE_MIL1 << " " << l;
-            
+
             s_console->setColor(COLOR_DEFAULT, COLOR_GREEN);
             for (int c = 0; c < 8; c++) {
             	s_console->gotoLigCol(i*3+5+j,4+5*c);
             	std::cout << "    ";
             }
-            
+
             s_console->setColor();
         }
 
@@ -102,7 +102,7 @@ void Tableau::AfficherTab() {
             if (m_etat.othellier[i][j] == VIDE) {
                 continue;
             }
-            
+
             // Choix de la couleur
             switch (m_etat.othellier[i][j]) {
             case BLANC:
@@ -188,20 +188,14 @@ COULEUR Tableau::BoucleJeu() {
 
     // Affichage
     CreationTab();
-    
+
     while (continuer) {
         // Message
-        s_console->gotoLigCol(39, 0);
+        s_console->gotoLigCol(10, 50);
         std::cout << "Au tour de " << ((m_etat.joueur == NOIR) ? "noir ! " : "blanc !");
-        
-        s_console->gotoLigCol(39, 50);
-        std::cout << "Blanc : " << m_etat.scores[BLANC];
-        
-        s_console->gotoLigCol(40, 50);
-        std::cout << "Noir  : " << m_etat.scores[NOIR];
-        
+
         std::cout.flush();
-        
+
         // Execution de l'IA
         if (m_ias[m_etat.joueur] != nullptr) {
         	// On va dormir un peu
@@ -211,26 +205,34 @@ COULEUR Tableau::BoucleJeu() {
             // Interaction
             continuer = Jouer(x, y); // consequences, on envoi x y
         }
-        
+
         // Affichage
         AfficherTab();
-        std::cout.flush(); // Force la mise à jour de l'écran
         
+        s_console->gotoLigCol(15, 50);
+        std::cout << "Blanc : " << m_etat.scores[BLANC] << " ";
+
+        s_console->gotoLigCol(16, 50);
+        std::cout << "Noir  : " << m_etat.scores[NOIR] << " ";
+        std::cout.flush(); // Force la mise à jour de l'écran
+
         // Test peut pas jouer !
         if (m_etat.coups_restant(m_etat.joueur) == 0) { // Le joueur ne peux pas jouer !
         	// Message
-    	    s_console->gotoLigCol(40, 0);
+            s_console->gotoLigCol(11, 50);
+            s_console->setColor(COLOR_YELLOW);
 	        std::cout << ((m_etat.joueur == NOIR) ? "Noir" : "Blanc") << " ne peux pas jouer !";
+	        s_console->setColor();
 	        std::cout.flush();
-        	
+
         	// On passe au suivant
         	m_etat.joueur = (m_etat.joueur == NOIR) ? BLANC : NOIR;
-        	
+
         	// Test de fin !
         	if (m_etat.coups_restant(m_etat.joueur) == 0) { // Personne ne peux jouer !
 	        	m_etat.joueur = (m_etat.joueur == NOIR) ? BLANC : NOIR;
         		continuer = false;
-	        	
+
     	    	// Message
     	    	COULEUR v = m_etat.joueur;
     	    	if (m_etat.scores[NOIR] > m_etat.scores[BLANC]) {
@@ -238,23 +240,26 @@ COULEUR Tableau::BoucleJeu() {
     	    	} else if (m_etat.scores[NOIR] < m_etat.scores[BLANC]) {
     	    		v = BLANC;
     	    	}
-    	    	
-    		    s_console->gotoLigCol(41, 0);
+
+                s_console->gotoLigCol(12, 50);
 	        	std::cout << ((v == NOIR) ? "Noir" : "Blanc") << " a gagne !";
-    		    s_console->gotoLigCol(42, 0);
+    		    s_console->gotoLigCol(13, 50);
 	        	std::cout << "Appuyer sur [ENTREE]";
 		        std::cout.flush();
-				
+
 			    // Attente
 			    do {
 			        std::cin.clear();
 			    } while (s_console->getch() != ENTREE);
         	}
+        } else {
+            s_console->gotoLigCol(11, 50);
+            std::cout << "                        ";
         }
     }
-    
+
     s_console->gotoLigCol(40, 0);
-    
+
     if (m_etat.scores[NOIR] > m_etat.scores[BLANC]) {
     	return NOIR;
     } else if (m_etat.scores[BLANC] > m_etat.scores[NOIR]) {

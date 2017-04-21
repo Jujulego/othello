@@ -99,16 +99,22 @@ void Menu::afficher() const {
 		if (choix == 6) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 		
-		std::cout << "- Commandes";
+		std::cout << "- Memory vs Memory";
 		
 		s_console.gotoLigCol(17, 15);
 		if (choix == 7) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 		
-		std::cout << "- Charger une sauvegarde";
+		std::cout << "- Commandes";
 		
 		s_console.gotoLigCol(18, 15);
-		if (choix == 8) s_console.setColor(COLOR_RED, COLOR_WHITE);
+		if (choix == 8) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
+		else            s_console.setColor();
+		
+		std::cout << "- Charger une sauvegarde";
+		
+		s_console.gotoLigCol(19, 15);
+		if (choix == 9) s_console.setColor(COLOR_RED, COLOR_WHITE);
 		else            s_console.setColor(COLOR_RED);
 		
 		std::cout << "- Quitter";
@@ -130,13 +136,13 @@ void Menu::afficher() const {
         
         case ENTREE:
         	switch (choix) {
-        	case 0:
+        	case 0: // J vs J
         		tab = Tableau();
         		tab.BoucleJeu();
         		
         		break;
         	
-        	case 1:
+        	case 1: // J vs RIA
         		if (choix_coul() == NOIR)
         			tab = Tableau(nullptr, std::make_shared<RandomIA>());
         		else
@@ -145,7 +151,7 @@ void Menu::afficher() const {
         		tab.BoucleJeu();
         		break;
         	
-        	case 2:
+        	case 2: // J vs MM
         		if (choix_coul() == NOIR)
         			tab = Tableau(nullptr, std::make_shared<MinMaxIA>(PROF_ALGO, BLANC));
         		else
@@ -154,7 +160,7 @@ void Menu::afficher() const {
         		tab.BoucleJeu();
         		break;
         	
-        	case 3:
+        	case 3: // J vs AB
         		if (choix_coul() == NOIR)
         			tab = Tableau(nullptr, std::make_shared<AlphaBetaIA>(PROF_ALGO, BLANC));
         		else
@@ -163,7 +169,7 @@ void Menu::afficher() const {
         		tab.BoucleJeu();
         		break;
         	
-        	case 4:
+        	case 4: // J vs NM
         		if (choix_coul() == NOIR)
         			tab = Tableau(nullptr, std::make_shared<NegaMaxIA>(PROF_ALGO, BLANC));
         		else
@@ -172,7 +178,7 @@ void Menu::afficher() const {
         		tab.BoucleJeu();
         		break;
         	
-        	case 5:
+        	case 5: // J vs MIA
         		if (choix_coul() == NOIR) {
         			tab = Tableau(nullptr, m_memia_blanche);
 	        		v = tab.BoucleJeu();
@@ -183,20 +189,33 @@ void Menu::afficher() const {
         			tab = Tableau(m_memia_noire, nullptr);
 	        		v = tab.BoucleJeu();
 	        		
-    	    		if (v == BLANC) m_memia_noire->gagne();
+    	    		if (v == NOIR) m_memia_noire->gagne();
         			else m_memia_noire->perdu();
         		}
         		
         		break;
         	
-        	case 6:
+        	case 6: // MIA vs MIA
+        		tab = Tableau(m_memia_noire, m_memia_blanche);
+        		
+        		if (tab.BoucleJeu() == NOIR) {
+        			m_memia_noire->gagne();
+        			m_memia_blanche->perdu();
+        		} else {
+        			m_memia_noire->perdu();
+        			m_memia_blanche->gagne();
+        		}
+        		
+        		break;
+        	
+        	case 7: // Commandes
         		regles();
         		break;
         	
-        	case 7:
+        	case 8: // Charger
         		break;
         	
-        	case 8:
+        	case 9: // Quitter
         		quitter = true;
         		break;
         	}
@@ -205,7 +224,7 @@ void Menu::afficher() const {
         
         // Controle des bords
         if (choix < 0) choix = 0;
-        if (choix > 8) choix = 8;
+        if (choix > 9) choix = 9;
 	} while (!quitter);
 	
 	s_console.gotoLigCol(20, 0);
