@@ -1,6 +1,7 @@
 # Dossiers
 build
 *.swp
+*.txt
 
 # Compiled Object files
 *.slo

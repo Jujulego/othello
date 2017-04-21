@@ -22,6 +22,7 @@ int main() {
     // Création du plateau de jeu
 //    Tableau t = Tableau(nullptr, std::make_shared<MinMaxIA>(PROF_ALGO, BLANC));
     Tableau t = Tableau(memia_noire, memia_blanche);
+//    Tableau t = Tableau();
     t.BoucleJeu();
 
 	return 1; // Erreur => y a pas de code !!!
