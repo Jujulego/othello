@@ -35,13 +35,16 @@
 
 1492450533 D
 
-1492631330 c:\users\nolwenn\documents\othello\src\ia.h
+1492780236 c:\users\nolwenn\documents\othello\src\ia.h
 	<memory>
 	<set>
 	<vector>
+	<utility>
 	"etat.h"
 	"noeud.h"
 	"pion.h"
+	"console.h"
+	"Coordonnees.h"
 
 1492450533 3056c2f010d3577a12576d6553d2950d0c40d
 	<memory>
@@ -700,4 +703,6 @@
 
 1492713972 source:c:\users\maxim\desktop\programmes\othello\src\coordonnees.cpp
 	"Coordonnees.h"
+
+1492780236 c:\users\nolwenn\documents\othello\src\coordonnees.h
 

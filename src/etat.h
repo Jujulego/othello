@@ -26,7 +26,8 @@ struct Etat {
 
     // Méthodes
     std::vector<Pion> pions(COULEUR c) const;
-    bool appliquer_coup(Pion const& p);
+    bool appliquer_coup(Pion const& p, bool fake = false);
+    int coups_restant(COULEUR c);
 };
 
 #endif // ETAT_H
