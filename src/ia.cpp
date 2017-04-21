@@ -126,7 +126,9 @@ void IA::aff_arbre(Console* s_console, int x, int y) {
     // Déclaration de l'arbre
     int nb_desc = 0; // nombre total de descendants
     int nb_desc_aff = 0; // nombre de descendants déjà affichés
-
+    int moy_1 = 0; // moyenne des abscisses des noeuds du coup 1
+    int moy_2 = 0; // moyenne des abscisses des noeuds du coup 2 dans une branche
+    int moy_3 = 0; // moyenne des abscisses des noeuds du coup 3 dans une branche
 
     // On charge le tableau, et on prend le nombre de descendants
     nb_desc = charg_tab();
@@ -134,9 +136,13 @@ void IA::aff_arbre(Console* s_console, int x, int y) {
     // On dessine l'arbre en partant du bas :
     // Pour chaque fils du noeud de base (coup 1)
     for (unsigned int i =0; i < m_tab[0][0].second->size(); i++) {
+        // On remet à 0 la moyenne au coup 2 (car nouvelle branche)
+        moy_2 = 0;
 
         // On prend chaque fils (coup 2)
         for (unsigned int j = 0; j < m_tab[1][i].second->size(); j++) {
+            // On remet à 0 la moyenne au coup 3 (car nouvelle branche)
+            moy_3 = 0;
 
             // On prend chaque fils (coup 3)
             for (unsigned int k = 0; k < m_tab[2][j].second->size(); k++) {
@@ -148,18 +154,46 @@ void IA::aff_arbre(Console* s_console, int x, int y) {
 
                 // On incrémente le nombre de descendants affichés
                 nb_desc_aff++;
+
+                // On modifie la moyenne 3
+                if (!moy_3) moy_3 = m_tab[3][k].first;
+                else moy_3 = (moy_3 + m_tab[3][k].first) / 2;
             }
 
             // On affiche le noeud
-            m_tab[2][j].first = x + nb_desc_aff;
+            if (!m_tab[2][j].second->size()) { // Si le noeud n'a pas de fils
+                m_tab[2][j].first = x + nb_desc_aff;
+                nb_desc_aff++;
+            }
+            else m_tab[2][j].first = x + moy_3; // Sinon on donne comme abscisse au noeud la "moyenne", calculée à partir des abscisses de ses fils
+            s_console->gotoLigCol(m_tab[2][j].first, y + 6);
+            std::cout << "\e8";
+            // RAJOUTER BRANCHES
+
+            // On modifie la moyenne 2
+            if (!moy_2) moy_2 = m_tab[2][j].first;
+            else moy_2 = (moy_2 + m_tab[2][j].first) / 2;
         }
 
+        // On affiche le noeud
+        if (!m_tab[1][i].second->size()) { // Si le noeud n'a pas de fils
+            m_tab[1][i].first = x + nb_desc_aff;
+            nb_desc_aff++;
+        }
+        else m_tab[1][i].first = x + moy_2; // Sinon on donne comme abscisse au noeud la "moyenne", calculée à partir des abscisses de ses fils
+        s_console->gotoLigCol(m_tab[1][i].first, y + 3);
+        std::cout << "\e8";
+        // RAJOUTER BRANCHES
+
+        // On modifie la moyenne 1
+        if (!moy_1) moy_1 = m_tab[1][i].first;
+        else moy_1 = (moy_1 + m_tab[1][i].first) / 2;
     }
 
     // On affiche le noeud de base
-    m_tab[0][0].first = x + (nb_desc/2); // On lui donne son abscisse
+    m_tab[0][0].first = x + moy_1; // On lui donne son abscisse
     s_console->gotoLigCol(m_tab[0][0].first, y); // On se place
-    std::cout << "\e8"; // On affiche la valeur du noeud
+    std::cout << "\e8";
     /*s_console->gotoLigCol(m_tab[0][0].first, y + 1); // On affiche la branche qui part en-dessous
     std::cout << "\xb3";
     s_console->gotoLigCol(m_tab[0][0].first, y + 2);
