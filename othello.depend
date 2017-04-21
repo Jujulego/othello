@@ -4,8 +4,12 @@
 	<limits>
 	"alphabetaia.h"
 
+1492531166 ia.h"
+
 1492597925 c:\users\nolwenn\documents\othello\src\alphabetaia.h
 	"minmaxia.h"
+
+1492450537 h"
 
 1492597925 c:\users\nolwenn\documents\othello\src\minmaxia.h
 	<memory>
@@ -13,6 +17,8 @@
 	"etat.h"
 	"ia.h"
 	"pion.h"
+
+1490880137 
 
 1492597925 c:\users\nolwenn\documents\othello\src\noeud.h
 	<functional>
@@ -29,13 +35,16 @@
 
 1492450533 D
 
-1492631330 c:\users\nolwenn\documents\othello\src\ia.h
+1492780236 c:\users\nolwenn\documents\othello\src\ia.h
 	<memory>
 	<set>
 	<vector>
+	<utility>
 	"etat.h"
 	"noeud.h"
 	"pion.h"
+	"console.h"
+	"Coordonnees.h"
 
 1492450533 3056c2f010d3577a12576d6553d2950d0c40d
 	<memory>
@@ -51,6 +60,8 @@
 	<fcntl.h>
 	<unistd.h>
 	<termios.h>
+
+1492676787 >
 
 1492532118 c:\users\nolwenn\documents\othello\src\console.h
 	<iostream>
@@ -76,6 +87,8 @@
 	<iostream>
 	"plateau.h"
 
+1492676906 "
+
 1492631330 c:\users\nolwenn\documents\othello\src\plateau.h
 	<vector>
 	<memory>
@@ -100,6 +113,8 @@
 	<iostream>
 	"negamaxia.h"
 
+1492531163 .h"
+
 1492597925 c:\users\nolwenn\documents\othello\src\negamaxia.h
 	"alphabetaia.h"
 
@@ -119,13 +134,16 @@
 
 1492597925 c:\users\nolwenn\documents\othello\src\randomia.h
 
-1492607435 c:\users\maxim\desktop\programmes\othello\src\ia.h
+1492713972 c:\users\maxim\desktop\programmes\othello\src\ia.h
 	<memory>
 	<set>
 	<vector>
+	<utility>
 	"etat.h"
 	"noeud.h"
 	"pion.h"
+	"console.h"
+	"Coordonnees.h"
 
 1492518063 c:\users\maxim\desktop\programmes\othello\src\noeud.h
 	<functional>
@@ -173,11 +191,18 @@
 	<iostream>
 	<limits>
 	"alphabetaia.h"
+	<iostream>
+	<limits>
+	"alphabetaia.h"
 
 1492531178 /home/julien/projets/c++/othello/src/alphabetaia.h
 	"minmaxia.h"
+	"minmaxia.h"
 
 1492516129 /home/julien/projets/c++/othello/src/noeud.h
+	<functional>
+	<memory>
+	<vector>
 	<functional>
 	<memory>
 	<vector>
@@ -186,11 +211,15 @@
 	<limits>
 	<iostream>
 	"negamaxia.h"
+	<limits>
+	<iostream>
+	"negamaxia.h"
 
 1492531166 /home/julien/projets/c++/othello/src/negamaxia.h
 	"alphabetaia.h"
+	"alphabetaia.h"
 
-1492624197 source:/home/julien/projets/c++/othello/src/plateau.cpp
+1492676062 source:/home/julien/projets/c++/othello/src/plateau.cpp
 	"etat.h"
 	"console.h"
 	"plateau.h"
@@ -210,7 +239,7 @@
 	"ia.h"
 	"pion.h"
 
-1492622318 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
+1492697146 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
 	<limits>
 	<map>
 	<memory>
@@ -235,16 +264,31 @@
 	"etat.h"
 	"ia.h"
 	"pion.h"
+	<memory>
+	"noeud.h"
+	"etat.h"
+	"ia.h"
+	"pion.h"
 
-1492621060 /home/julien/projets/c++/othello/src/etat.h
+1492674352 /home/julien/projets/c++/othello/src/etat.h
+	<map>
+	<vector>
+	"pion.h"
 	<map>
 	<vector>
 	"pion.h"
 
 1490891937 /home/julien/projets/c++/othello/src/pion.h
 	<vector>
+	<vector>
 
-1492607338 /home/julien/projets/c++/othello/src/ia.h
+1492674352 /home/julien/projets/c++/othello/src/ia.h
+	<memory>
+	<set>
+	<vector>
+	"etat.h"
+	"noeud.h"
+	"pion.h"
 	<memory>
 	<set>
 	<vector>
@@ -252,7 +296,13 @@
 	"noeud.h"
 	"pion.h"
 
-1490880137 source:/home/julien/projets/c++/othello/src/console.cpp
+1492676787 source:/home/julien/projets/c++/othello/src/console.cpp
+	"console.h"
+	<conio.h>
+	<windows.h>
+	<fcntl.h>
+	<unistd.h>
+	<termios.h>
 	"console.h"
 	<conio.h>
 	<windows.h>
@@ -262,8 +312,15 @@
 
 1490880137 /home/julien/projets/c++/othello/src/console.h
 	<iostream>
+	<iostream>
 
-1492624496 source:/home/julien/projets/c++/othello/src/etat.cpp
+1492675926 source:/home/julien/projets/c++/othello/src/etat.cpp
+	<algorithm>
+	<functional>
+	<iostream>
+	<vector>
+	"etat.h"
+	"pion.h"
 	<algorithm>
 	<functional>
 	<iostream>
@@ -271,7 +328,14 @@
 	"etat.h"
 	"pion.h"
 
-1492607338 source:/home/julien/projets/c++/othello/src/ia.cpp
+1492674352 source:/home/julien/projets/c++/othello/src/ia.cpp
+	<functional>
+	<iostream>
+	<set>
+	<vector>
+	"pion.h"
+	"etat.h"
+	"ia.h"
 	<functional>
 	<iostream>
 	<set>
@@ -280,11 +344,19 @@
 	"etat.h"
 	"ia.h"
 
-1492624525 source:/home/julien/projets/c++/othello/src/main.cpp
+1492674352 source:/home/julien/projets/c++/othello/src/main.cpp
+	<iostream>
+	"plateau.h"
 	<iostream>
 	"plateau.h"
 
-1492623112 /home/julien/projets/c++/othello/src/plateau.h
+1492674352 /home/julien/projets/c++/othello/src/plateau.h
+	<vector>
+	<memory>
+	<set>
+	"etat.h"
+	"console.h"
+	"pion.h"
 	<vector>
 	<memory>
 	<set>
@@ -292,7 +364,16 @@
 	"console.h"
 	"pion.h"
 
-1492608834 source:/home/julien/projets/c++/othello/src/minmaxia.cpp
+1492674352 source:/home/julien/projets/c++/othello/src/minmaxia.cpp
+	<limits>
+	<map>
+	<memory>
+	<iostream>
+	<vector>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"minmaxia.h"
 	<limits>
 	<map>
 	<memory>
@@ -311,11 +392,318 @@
 	"ia.h"
 	"pion.h"
 	"randomia.h"
+	<cstdlib>
+	<ctime>
+	<iostream>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"randomia.h"
 
 1492450533 /home/julien/projets/c++/othello/src/randomia.h
 	"etat.h"
 	"ia.h"
 	"pion.h"
+	"etat.h"
+	"ia.h"
+	"pion.h"
 
 1492450533 a5e5b88b29d9e28eac04e1f1755033277b66e
+
+1492531192 source:\\vboxsvr\virtualwin\projets\c++\othello\src\alphabetaia.cpp
+	<iostream>
+	<limits>
+	"alphabetaia.h"
+
+1492531178 \\vboxsvr\virtualwin\projets\c++\othello\src\alphabetaia.h
+	"minmaxia.h"
+
+1492531034 \\vboxsvr\virtualwin\projets\c++\othello\src\minmaxia.h
+	<memory>
+	"noeud.h"
+	"etat.h"
+	"ia.h"
+	"pion.h"
+
+1492516129 \\vboxsvr\virtualwin\projets\c++\othello\src\noeud.h
+	<functional>
+	<memory>
+	<vector>
+
+1492674352 \\vboxsvr\virtualwin\projets\c++\othello\src\etat.h
+	<map>
+	<vector>
+	"pion.h"
+
+1490891937 \\vboxsvr\virtualwin\projets\c++\othello\src\pion.h
+	<vector>
+
+1492674352 \\vboxsvr\virtualwin\projets\c++\othello\src\ia.h
+	<memory>
+	<set>
+	<vector>
+	"etat.h"
+	"noeud.h"
+	"pion.h"
+
+1492676787 source:\\vboxsvr\virtualwin\projets\c++\othello\src\console.cpp
+	"console.h"
+	<conio.h>
+	<windows.h>
+	<fcntl.h>
+	<unistd.h>
+	<termios.h>
+
+1490880137 \\vboxsvr\virtualwin\projets\c++\othello\src\console.h
+	<iostream>
+
+1492675926 source:\\vboxsvr\virtualwin\projets\c++\othello\src\etat.cpp
+	<algorithm>
+	<functional>
+	<iostream>
+	<vector>
+	"etat.h"
+	"pion.h"
+
+1492674352 source:\\vboxsvr\virtualwin\projets\c++\othello\src\ia.cpp
+	<functional>
+	<iostream>
+	<set>
+	<vector>
+	"pion.h"
+	"etat.h"
+	"ia.h"
+
+1492674352 source:\\vboxsvr\virtualwin\projets\c++\othello\src\main.cpp
+	<iostream>
+	"plateau.h"
+
+1492674352 \\vboxsvr\virtualwin\projets\c++\othello\src\plateau.h
+	<vector>
+	<memory>
+	<set>
+	"etat.h"
+	"console.h"
+	"pion.h"
+
+1492674352 source:\\vboxsvr\virtualwin\projets\c++\othello\src\minmaxia.cpp
+	<limits>
+	<map>
+	<memory>
+	<iostream>
+	<vector>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"minmaxia.h"
+
+1492531163 source:\\vboxsvr\virtualwin\projets\c++\othello\src\negamaxia.cpp
+	<limits>
+	<iostream>
+	"negamaxia.h"
+
+1492531166 \\vboxsvr\virtualwin\projets\c++\othello\src\negamaxia.h
+	"alphabetaia.h"
+
+1492676906 source:\\vboxsvr\virtualwin\projets\c++\othello\src\plateau.cpp
+	"etat.h"
+	"console.h"
+	"plateau.h"
+
+1492450537 source:\\vboxsvr\virtualwin\projets\c++\othello\src\randomia.cpp
+	<cstdlib>
+	<ctime>
+	<iostream>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"randomia.h"
+
+1492450533 \\vboxsvr\virtualwin\projets\c++\othello\src\randomia.h
+	"etat.h"
+	"ia.h"
+	"pion.h"
+
+1492531192 source:e:\projets\c++\othello\src\alphabetaia.cpp
+	<iostream>
+	<limits>
+	"alphabetaia.h"
+
+1492531178 e:\projets\c++\othello\src\alphabetaia.h
+	"minmaxia.h"
+
+1492531034 e:\projets\c++\othello\src\minmaxia.h
+	<memory>
+	"noeud.h"
+	"etat.h"
+	"ia.h"
+	"pion.h"
+
+1492516129 e:\projets\c++\othello\src\noeud.h
+	<functional>
+	<memory>
+	<vector>
+
+1492674352 e:\projets\c++\othello\src\etat.h
+	<map>
+	<vector>
+	"pion.h"
+
+1490891937 e:\projets\c++\othello\src\pion.h
+	<vector>
+
+1492674352 e:\projets\c++\othello\src\ia.h
+	<memory>
+	<set>
+	<vector>
+	"etat.h"
+	"noeud.h"
+	"pion.h"
+
+1492678761 source:e:\projets\c++\othello\src\console.cpp
+	"console.h"
+	<conio.h>
+	<windows.h>
+	<fcntl.h>
+	<unistd.h>
+	<termios.h>
+
+1490880137 e:\projets\c++\othello\src\console.h
+	<iostream>
+
+1492675926 source:e:\projets\c++\othello\src\etat.cpp
+	<algorithm>
+	<functional>
+	<iostream>
+	<vector>
+	"etat.h"
+	"pion.h"
+
+1492674352 source:e:\projets\c++\othello\src\ia.cpp
+	<functional>
+	<iostream>
+	<set>
+	<vector>
+	"pion.h"
+	"etat.h"
+	"ia.h"
+
+1492674352 source:e:\projets\c++\othello\src\main.cpp
+	<iostream>
+	"plateau.h"
+
+1492674352 e:\projets\c++\othello\src\plateau.h
+	<vector>
+	<memory>
+	<set>
+	"etat.h"
+	"console.h"
+	"pion.h"
+
+1492674352 source:e:\projets\c++\othello\src\minmaxia.cpp
+	<limits>
+	<map>
+	<memory>
+	<iostream>
+	<vector>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"minmaxia.h"
+
+1492531163 source:e:\projets\c++\othello\src\negamaxia.cpp
+	<limits>
+	<iostream>
+	"negamaxia.h"
+
+1492531166 e:\projets\c++\othello\src\negamaxia.h
+	"alphabetaia.h"
+
+1492450537 source:e:\projets\c++\othello\src\randomia.cpp
+	<cstdlib>
+	<ctime>
+	<iostream>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"randomia.h"
+
+1492450533 e:\projets\c++\othello\src\randomia.h
+	"etat.h"
+	"ia.h"
+	"pion.h"
+
+1492678844 source:e:\projets\c++\othello\src\plateau.cpp
+	"etat.h"
+	"console.h"
+	"plateau.h"
+
+1492697146 c:\users\maxim\desktop\programmes\othello\src\etat.h
+	<map>
+	<vector>
+	"pion.h"
+
+1492013341 c:\users\maxim\desktop\programmes\othello\src\pion.h
+	<vector>
+
+1492625201 source:c:\users\maxim\desktop\programmes\othello\src\ia.cpp
+	<functional>
+	<iostream>
+	<set>
+	<vector>
+	"pion.h"
+	"etat.h"
+	"ia.h"
+
+1492518063 source:c:\users\maxim\desktop\programmes\othello\src\randomia.cpp
+	<cstdlib>
+	<ctime>
+	<iostream>
+	"etat.h"
+	"ia.h"
+	"pion.h"
+	"randomia.h"
+
+1492697146 source:c:\users\maxim\desktop\programmes\othello\src\console.cpp
+	"console.h"
+	<conio.h>
+	<windows.h>
+	<fcntl.h>
+	<unistd.h>
+	<termios.h>
+
+1492013341 c:\users\maxim\desktop\programmes\othello\src\console.h
+	<iostream>
+
+1492697146 source:c:\users\maxim\desktop\programmes\othello\src\etat.cpp
+	<algorithm>
+	<functional>
+	<iostream>
+	<vector>
+	"etat.h"
+	"pion.h"
+
+1492697146 source:c:\users\maxim\desktop\programmes\othello\src\main.cpp
+	<iostream>
+	"plateau.h"
+
+1492697146 c:\users\maxim\desktop\programmes\othello\src\plateau.h
+	<vector>
+	<memory>
+	<set>
+	"etat.h"
+	"console.h"
+	"pion.h"
+
+1492697146 source:c:\users\maxim\desktop\programmes\othello\src\plateau.cpp
+	"etat.h"
+	"console.h"
+	"plateau.h"
+
+1492713973 c:\users\maxim\desktop\programmes\othello\src\coordonnees.h
+
+1492713972 source:c:\users\maxim\desktop\programmes\othello\src\coordonnees.cpp
+	"Coordonnees.h"
+
+1492780236 c:\users\nolwenn\documents\othello\src\coordonnees.h
 

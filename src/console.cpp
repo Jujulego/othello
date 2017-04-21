@@ -33,6 +33,12 @@ namespace c {
         // Récupération du char
         ch = getchar();
 
+        if (ch == 27) { // char de controle
+            ch <<= 16;
+            ch += getchar() << 8;
+            ch += getchar();
+        }
+
         // Rétablissement du terminal
         tcsetattr(STDIN_FILENO, TCSANOW, &oldattr);
 
@@ -107,7 +113,16 @@ void Console::clear() {
 
 int Console::getch() { // récupère le caractère du clavier
     std::cin.clear();
-    return c::getch();
+    int c = c::getch();
+
+#ifndef __gnu_linux__
+    if (c == 224) {
+        c <<= 8;
+        c += c::getch();
+    }
+#endif // __gnu_linux__
+
+    return c;
 }
 
 int Console::kbhit() { // renvoi 0 ou 1
@@ -145,7 +160,7 @@ void Console::_setColor(int front, int back) {
 
 void Console::setColor(Color front, Color back) {
 #ifndef __gnu_linux__
-    int couleurs[] = {0, 15, 12, 10, 9, 14, 11, 8, 7};
+    int couleurs[] = {0, 15, 12, 10, 9, 14, 11, 8, 7, 0};
 #else
     int couleurs[] = {0, 7, 1, 2, 4, 3, 5, 6, 9, 9};
 #endif
