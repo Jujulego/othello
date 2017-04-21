@@ -480,7 +480,7 @@
 	"ia.h"
 	"pion.h"
 
-1492531192 source:e:\projets\c++\othello\src\alphabetaia.cpp
+1492779751 source:e:\projets\c++\othello\src\alphabetaia.cpp
 	<iostream>
 	<limits>
 	"alphabetaia.h"
@@ -500,7 +500,7 @@
 	<memory>
 	<vector>
 
-1492674352 e:\projets\c++\othello\src\etat.h
+1492779751 e:\projets\c++\othello\src\etat.h
 	<map>
 	<vector>
 	"pion.h"
@@ -508,13 +508,15 @@
 1490891937 e:\projets\c++\othello\src\pion.h
 	<vector>
 
-1492674352 e:\projets\c++\othello\src\ia.h
+1492783582 e:\projets\c++\othello\src\ia.h
 	<memory>
 	<set>
 	<vector>
+	<utility>
 	"etat.h"
 	"noeud.h"
 	"pion.h"
+	"console.h"
 
 1492678761 source:e:\projets\c++\othello\src\console.cpp
 	"console.h"
@@ -527,7 +529,7 @@
 1490880137 e:\projets\c++\othello\src\console.h
 	<iostream>
 
-1492675926 source:e:\projets\c++\othello\src\etat.cpp
+1492785175 source:e:\projets\c++\othello\src\etat.cpp
 	<algorithm>
 	<functional>
 	<iostream>
@@ -535,28 +537,35 @@
 	"etat.h"
 	"pion.h"
 
-1492674352 source:e:\projets\c++\othello\src\ia.cpp
+1492783559 source:e:\projets\c++\othello\src\ia.cpp
 	<functional>
 	<iostream>
 	<set>
 	<vector>
+	<utility>
 	"pion.h"
 	"etat.h"
 	"ia.h"
+	"console.h"
 
-1492674352 source:e:\projets\c++\othello\src\main.cpp
+1492788753 source:e:\projets\c++\othello\src\main.cpp
 	<iostream>
+	<memory>
 	"plateau.h"
+	"memia.h"
+	"minmaxia.h"
 
-1492674352 e:\projets\c++\othello\src\plateau.h
+1492784978 e:\projets\c++\othello\src\plateau.h
 	<vector>
+	<map>
 	<memory>
 	<set>
-	"etat.h"
 	"console.h"
+	"etat.h"
+	"ia.h"
 	"pion.h"
 
-1492674352 source:e:\projets\c++\othello\src\minmaxia.cpp
+1492779751 source:e:\projets\c++\othello\src\minmaxia.cpp
 	<limits>
 	<map>
 	<memory>
@@ -567,7 +576,7 @@
 	"pion.h"
 	"minmaxia.h"
 
-1492531163 source:e:\projets\c++\othello\src\negamaxia.cpp
+1492779751 source:e:\projets\c++\othello\src\negamaxia.cpp
 	<limits>
 	<iostream>
 	"negamaxia.h"
@@ -589,7 +598,9 @@
 	"ia.h"
 	"pion.h"
 
-1492678844 source:e:\projets\c++\othello\src\plateau.cpp
+1492788815 source:e:\projets\c++\othello\src\plateau.cpp
+	<map>
+	<memory>
 	"etat.h"
 	"console.h"
 	"plateau.h"
@@ -709,4 +720,52 @@
 	"negamaxia.h"
 
 1491662950 source:/home/julien/projets/c++/othello/src/pions.cpp
+
+1492790216 source:e:\projets\c++\othello\src\memarbre.cpp
+	<cerrno>
+	<cstring>
+	<cstdlib>
+	<functional>
+	<fstream>
+	<iostream>
+	<map>
+	<memory>
+	<set>
+	<sstream>
+	<string>
+	<tuple>
+	<vector>
+	"memarbre.h"
+
+1492520924 e:\projets\c++\othello\src\memarbre.h
+	<fstream>
+	<map>
+	<memory>
+	<set>
+	<string>
+	<tuple>
+
+1492779751 source:e:\projets\c++\othello\src\memia.cpp
+	<algorithm>
+	<iostream>
+	<limits>
+	<memory>
+	<string>
+	<tuple>
+	<vector>
+	"macros.h"
+	"minmaxia.h"
+	"memarbre.h"
+	"memia.h"
+
+1490963344 e:\projets\c++\othello\src\macros.h
+
+1492779751 e:\projets\c++\othello\src\memia.h
+	<memory>
+	<string>
+	"minmaxia.h"
+	"memarbre.h"
+	"negamaxia.h"
+
+1491662950 source:e:\projets\c++\othello\src\pions.cpp
 
