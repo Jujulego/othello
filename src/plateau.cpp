@@ -100,7 +100,7 @@ void Tableau::CreationTab() {
             
             s_console->setColor(COLOR_DEFAULT, COLOR_GREEN);
             for (int c = 0; c < 8; c++) {
-            	s_console->gotoLigCol(i*4+5+j,4+8*c);
+            	s_console->gotoLigCol(i*4+5+j, 4+8*c);
             	std::cout << "       ";
             }
             
@@ -122,14 +122,14 @@ void Tableau::CreationTab() {
 }
 
 bool Tableau::Jouer(int &x, int&y) {
-    //declaration des variables
+    // declaration des variables
     bool onContinue = true, quitter = false;
     int  c;
 
-    //boucle tant que on a pas appuyer sur entrer (pour entrer un pion)
+    // boucle tant que on a pas appuyer sur entrer (pour entrer un pion)
     while (onContinue) {
         // D�placement du curseur
-        s_console->gotoLigCol(5+OFFSET+4*y,7+8*x);
+        s_console->gotoLigCol(5+OFFSET+4*y, 7+8*x);
 
         c = s_console->getch();
 
@@ -166,9 +166,6 @@ bool Tableau::Jouer(int &x, int&y) {
             }
 
             break;
-
-        default:
-            std::cout << c;
         }
 
         // Attention au bords !
@@ -195,7 +192,7 @@ COULEUR Tableau::BoucleJeu() {
         	m_etat.appliquer_coup(m_ias[m_etat.joueur]->jouer(m_etat));
         } else {
             // Interaction
-            continuer = Jouer(x, y); // consequences , on envoi x y
+            continuer = Jouer(x, y); // consequences, on envoi x y
         }
         
         // Test peut pas jouer !
