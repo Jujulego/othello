@@ -33,7 +33,7 @@ Menu::Menu() :
 }
 
 // Méthodes
-void Menu::regles() const {
+void Menu::entete() const {
 	// Affichage entête
 	s_console.clear();
 	s_console.gotoLigCol(2, 0);
@@ -43,26 +43,7 @@ void Menu::regles() const {
 	std::cout << "      / /   / /  / /   / __ \\  / _ \\  / / / / / _ \\ " << std::endl;
 	std::cout << "      \\ \\__/ /  / /   / / / / /  __/ / / / / / // / " << std::endl;
 	std::cout << "       \\____/  /_/   /_/ /_/  \\___/ /_/ /_/  \\___/  " << std::endl;
-	
-	// Affichage des options
-	s_console.gotoLigCol(10, 0);
-	std::cout << "    Z       ^" << std::endl;
-	std::cout << "  Q S D   < v >     Pour se déplacer sur le plateau" << std::endl;
-	std::cout << std::endl;
-	std::cout << "             |" << std::endl;
-	std::cout << " ENTREE   <--+      Pour placer un pion" << std::endl;
-	std::cout << std::endl;
-	std::cout << "        E           Pour quitter la partie" << std::endl;
-	std::cout << std::endl;
-	std::cout << "        F           Pour sauvegarder la partie" << std::endl;
-	std::cout << std::endl;
-	std::cout << "Appuyez sur [ENTREE]" << std::endl;
 	std::cout.flush();
-	
-	// Attente
-	do {
-		std::cin.clear();
-	} while (s_console.getch() != ENTREE);
 }
 
 void Menu::afficher() const {
@@ -75,14 +56,7 @@ void Menu::afficher() const {
 	// Choix :
 	do {
 		// Affichage entête
-		s_console.clear();
-		s_console.gotoLigCol(2, 0);
-		std::cout << "         ____       __    __             __  __     " << std::endl;
-		std::cout << "        / __ \\   __/ /_  / /            / / / /     " << std::endl;
-		std::cout << "       / /  \\ \\ /_  __/ / /_    ___    / / / / ___  " << std::endl;
-		std::cout << "      / /   / /  / /   / __ \\  / _ \\  / / / / / _ \\ " << std::endl;
-		std::cout << "      \\ \\__/ /  / /   / / / / /  __/ / / / / / // / " << std::endl;
-		std::cout << "       \\____/  /_/   /_/ /_/  \\___/ /_/ /_/  \\___/  " << std::endl;
+		entete();
 		
 		// Affichage des options
 		s_console.gotoLigCol(10, 15);
@@ -142,9 +116,8 @@ void Menu::afficher() const {
 		s_console.setColor();
 		
 		// Interactions
-        int c = s_console.getch();
-        
-        switch (c) {
+		std::cin.clear();
+        switch (s_console.getch()) {
 	    case 'z':
     	case FL_HAUT:
         	choix--;
@@ -164,35 +137,55 @@ void Menu::afficher() const {
         		break;
         	
         	case 1:
-        		tab = Tableau(nullptr, std::make_shared<RandomIA>());
-        		tab.BoucleJeu();
+        		if (choix_coul() == NOIR)
+        			tab = Tableau(nullptr, std::make_shared<RandomIA>());
+        		else
+        			tab = Tableau(std::make_shared<RandomIA>(), nullptr);
         		
+        		tab.BoucleJeu();
         		break;
         	
         	case 2:
-        		tab = Tableau(nullptr, std::make_shared<MinMaxIA>(PROF_ALGO, BLANC));
-        		tab.BoucleJeu();
+        		if (choix_coul() == NOIR)
+        			tab = Tableau(nullptr, std::make_shared<MinMaxIA>(PROF_ALGO, BLANC));
+        		else
+        			tab = Tableau(std::make_shared<MinMaxIA>(PROF_ALGO, NOIR), nullptr);
         		
+        		tab.BoucleJeu();
         		break;
         	
         	case 3:
-        		tab = Tableau(nullptr, std::make_shared<AlphaBetaIA>(PROF_ALGO, BLANC));
-        		tab.BoucleJeu();
+        		if (choix_coul() == NOIR)
+        			tab = Tableau(nullptr, std::make_shared<AlphaBetaIA>(PROF_ALGO, BLANC));
+        		else
+        			tab = Tableau(std::make_shared<AlphaBetaIA>(PROF_ALGO, NOIR), nullptr);
         		
+        		tab.BoucleJeu();
         		break;
         	
         	case 4:
-        		tab = Tableau(nullptr, std::make_shared<NegaMaxIA>(PROF_ALGO, BLANC));
-        		tab.BoucleJeu();
+        		if (choix_coul() == NOIR)
+        			tab = Tableau(nullptr, std::make_shared<NegaMaxIA>(PROF_ALGO, BLANC));
+        		else
+        			tab = Tableau(std::make_shared<NegaMaxIA>(PROF_ALGO, NOIR), nullptr);
         		
+        		tab.BoucleJeu();
         		break;
         	
         	case 5:
-        		tab = Tableau(nullptr, m_memia_blanche);
-        		v = tab.BoucleJeu();
-        		
-        		if (v == BLANC) m_memia_blanche->gagne();
-        		else m_memia_blanche->perdu();
+        		if (choix_coul() == NOIR) {
+        			tab = Tableau(nullptr, m_memia_blanche);
+	        		v = tab.BoucleJeu();
+	        		
+    	    		if (v == BLANC) m_memia_blanche->gagne();
+        			else m_memia_blanche->perdu();
+        		} else {
+        			tab = Tableau(m_memia_noire, nullptr);
+	        		v = tab.BoucleJeu();
+	        		
+    	    		if (v == BLANC) m_memia_noire->gagne();
+        			else m_memia_noire->perdu();
+        		}
         		
         		break;
         	
@@ -216,4 +209,77 @@ void Menu::afficher() const {
 	} while (!quitter);
 	
 	s_console.gotoLigCol(20, 0);
+}
+
+COULEUR Menu::choix_coul() const {
+	// Déclarations
+	COULEUR coul = NOIR;
+	bool quitter = false;
+	
+	do {
+		// Entete
+		entete();
+		
+		// Affichage
+		s_console.gotoLigCol(10, 10);
+		std::cout << "Quelle couleur veux-tu etre ?";
+		
+		s_console.gotoLigCol(12, 15);
+		if (coul == NOIR) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
+		else              s_console.setColor();
+		std::cout << "- Noir";
+		
+		s_console.gotoLigCol(13, 15);
+		if (coul == BLANC) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
+		else               s_console.setColor();
+		std::cout << "- Blanc";
+		
+		s_console.gotoLigCol(15, 10);
+		s_console.setColor();
+		std::cout << "Appuyes sur [ENTREE] pour valider !";
+		std::cout.flush();
+		
+		// Interactions
+		std::cin.clear();
+		switch (s_console.getch()) {
+		case 'z':
+		case FL_HAUT:
+			if (coul == BLANC) coul = NOIR;
+			break;
+		
+		case 's':
+		case FL_BAS:
+			if (coul == NOIR) coul = BLANC;
+			break;
+		
+		case ENTREE:
+			quitter = true;
+			break;
+		}
+	} while (!quitter);
+	
+	return coul;
+}
+
+void Menu::regles() const {
+	// Affichage des options
+	entete();
+	s_console.gotoLigCol(10, 0);
+	std::cout << "    Z       ^" << std::endl;
+	std::cout << "  Q S D   < v >     Pour se déplacer sur le plateau" << std::endl;
+	std::cout << std::endl;
+	std::cout << "             |" << std::endl;
+	std::cout << " ENTREE   <--+      Pour placer un pion" << std::endl;
+	std::cout << std::endl;
+	std::cout << "        E           Pour quitter la partie" << std::endl;
+	std::cout << std::endl;
+	std::cout << "        F           Pour sauvegarder la partie" << std::endl;
+	std::cout << std::endl;
+	std::cout << "Appuyez sur [ENTREE]" << std::endl;
+	std::cout.flush();
+	
+	// Attente
+	do {
+		std::cin.clear();
+	} while (s_console.getch() != ENTREE);
 }

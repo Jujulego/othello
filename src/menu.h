@@ -23,8 +23,10 @@ class Menu {
 		Menu();
 		
 		// Méthodes
-		void regles() const;
+		void entete() const;
 		void afficher() const;
+		COULEUR choix_coul() const;
+		void regles() const;
 };
 
 #endif // __MENU
