@@ -63,21 +63,24 @@ bool Etat::appliquer_coup(Pion const& p, bool fake) {
             valide = true;
 
             if (!fake) {
-                // Ajout du nouveau pion
-                othellier[p.x][p.y] = p.couleur;
-
                 // Changements de couleur
                 for (P pt : tmp) othellier[pt.i][pt.j] = p.couleur;
 
                 // Maj scores
-                scores[p.couleur] += tmp.size() + 1;
+                scores[p.couleur] += tmp.size();
                 scores[ennemi]    -= tmp.size();
             }
         }
     }
 
-    // Changement de joueur !
-    if (valide && !fake) joueur = ennemi;
+    if (valide && !fake) {
+        // Ajout du nouveau pion
+        othellier[p.x][p.y] = p.couleur;
+        scores[p.couleur]++;
+
+	    // Changement de joueur !
+    	joueur = ennemi;
+    }
 
     return valide;
 }
