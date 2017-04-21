@@ -2,6 +2,8 @@
 #define RANDOMIA_H
 
 // Dépendances
+#include <string>
+
 #include "etat.h"
 #include "ia.h"
 #include "pion.h"
@@ -10,6 +12,7 @@
 class RandomIA : public IA {
     public:
         // Méthodes
+        virtual std::string id() const override;
         virtual Pion jouer(Etat plateau) override;
 };
 

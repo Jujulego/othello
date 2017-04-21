@@ -1,10 +1,15 @@
+#include <cerrno>
+#include <cstring>
 #include <chrono>
+#include <fstream>
 #include <map>
 #include <memory>
+#include <string>
 #include <thread>
 
-#include "etat.h"
 #include "console.h"
+#include "etat.h"
+#include "macros.h"
 #include "plateau.h"
 
 // Macros
@@ -156,6 +161,14 @@ bool Tableau::Jouer(int &x, int&y) {
         case FL_DROITE:
             x++;
             break;
+        
+        case 'f':
+        	if (sauvegarder()) {
+	            quitter = true;
+    	        onContinue = false;
+        	}
+        	
+        	break;
 
         case 'e':
             quitter = true;
@@ -248,9 +261,7 @@ COULEUR Tableau::BoucleJeu() {
 		        std::cout.flush();
 
 			    // Attente
-			    do {
-			        std::cin.clear();
-			    } while (s_console->getch() != ENTREE);
+			    do {} while (s_console->getch() != ENTREE);
         	}
         } else {
             s_console->gotoLigCol(11, 50);
@@ -267,6 +278,92 @@ COULEUR Tableau::BoucleJeu() {
     } else {
     	return m_etat.joueur;
     }
+}
+
+bool Tableau::sauvegarder() const {
+	// Déclarations
+	bool annule = false;
+	std::string nom;
+	std::ofstream f; // au lieu de fstream => permet de créer un fichier
+	int taille = 0, c;
+	
+	// Interactions !
+	do {
+		// Affichage
+		s_console->gotoLigCol(21, 50);
+		std::cout << "Entrez un nom de fichier :";
+		std::cout.flush();
+		
+		// Entrée
+		s_console->gotoLigCol(22, 50);
+		std::getline(std::cin, nom);
+		
+		// Annulation (chaine vide)
+		if (nom == "") {
+			annule = true;
+			break;
+		}
+		
+		// Tentative d'ouverture
+		errno = 0;
+		f.clear();
+		f.open(nom + ".txt", std::ios_base::out | std::ios_base::trunc); // Vide le fichier à l'ouverture
+		
+		// Cas d'erreur :
+		if (f.fail()) {
+			s_console->gotoLigCol(18, 50);
+			s_console->setColor(COLOR_RED);
+			std::cout << "Erreur à l'ouverture de '" << nom << ".txt' :";
+			
+			s_console->gotoLigCol(19, 50);
+			std::cout << strerror(errno);
+			
+			s_console->setColor();
+			std::cout.flush();
+			
+			taille = MAX(nom.size() + 32, strlen(strerror(errno)));
+			
+			continue;
+		}
+		
+		// Effacement d'un eventuel message d'erreur
+		if (taille != 0) {
+			s_console->gotoLigCol(18, 50);
+			for (int i = 0; i < taille; i++) std::cout << " ";
+			s_console->gotoLigCol(19, 50);
+			for (int i = 0; i < taille; i++) std::cout << " ";
+			std::cout.flush();
+		}
+		
+		// Enregistrement
+		f << ((m_ias.at(NOIR ) == nullptr) ? "joueur" : m_ias.at(NOIR )->id()) << std::endl;
+		f << ((m_ias.at(BLANC) == nullptr) ? "joueur" : m_ias.at(BLANC)->id()) << std::endl;
+		f << m_etat.joueur << std::endl;
+		
+		for (int i = 0; i < 8; i++) {
+		    for (int j = 0; j < 8; j++) {
+		    	f << m_etat.othellier[i][j] << " ";
+		    }
+		    f << std::endl;
+		}
+		
+		// Message de confirmation
+		s_console->gotoLigCol(24, 50);
+		s_console->setColor(COLOR_GREEN);
+		std::cout << "Sauvegardé !" << std::endl;
+		s_console->setColor();
+	    
+	    // Attente
+		s_console->gotoLigCol(25, 50);
+       	std::cout << "Appuyer sur [ENTREE]";
+        std::cout.flush();
+		
+	    do {} while (s_console->getch() != ENTREE);
+		
+		break;
+	} while (true);
+	
+	return !annule;
 }
 
 std::map<COULEUR,unsigned> const Tableau::scores() const {

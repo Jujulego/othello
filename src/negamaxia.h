@@ -4,6 +4,8 @@
 // Dépendances
 #include "alphabetaia.h"
 
+#include <string>
+
 // Classe
 class NegaMaxIA : public AlphaBetaIA {
     protected:
@@ -13,6 +15,9 @@ class NegaMaxIA : public AlphaBetaIA {
     public:
         // Constructeur
         NegaMaxIA(unsigned prof, COULEUR c);
+        
+        // Méthodes
+        virtual std::string id() const override;
 };
 
 #endif // NEGAMAXIA_H

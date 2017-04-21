@@ -1,6 +1,7 @@
 // Importations
 #include <limits>
 #include <iostream>
+#include <string>
 
 #include "negamaxia.h"
 
@@ -9,6 +10,10 @@ NegaMaxIA::NegaMaxIA(unsigned prof, COULEUR c) : AlphaBetaIA(prof, c) {
 }
 
 // Méthodes
+std::string NegaMaxIA::id() const {
+	return "negamax";
+}
+
 MinMaxIA::PV NegaMaxIA::alphabeta(Etat&& etat, unsigned prof, int alpha, int beta) {
     // Feuille !
     if (prof == m_prof) return {heuristique(std::move(etat)), {0, 0, VIDE}};

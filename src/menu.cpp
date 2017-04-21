@@ -122,7 +122,6 @@ void Menu::afficher() const {
 		s_console.setColor();
 		
 		// Interactions
-		std::cin.clear();
         switch (s_console.getch()) {
 	    case 'z':
     	case FL_HAUT:
@@ -259,7 +258,6 @@ COULEUR Menu::choix_coul() const {
 		std::cout.flush();
 		
 		// Interactions
-		std::cin.clear();
 		switch (s_console.getch()) {
 		case 'z':
 		case FL_HAUT:
@@ -298,7 +296,5 @@ void Menu::regles() const {
 	std::cout.flush();
 	
 	// Attente
-	do {
-		std::cin.clear();
-	} while (s_console.getch() != ENTREE);
+	do {} while (s_console.getch() != ENTREE);
 }

@@ -3,6 +3,7 @@
 
 // Dépendances
 #include <memory>
+#include <string>
 
 #include "noeud.h"
 #include "etat.h"
@@ -25,6 +26,7 @@ class MinMaxIA : public IA {
         MinMaxIA(unsigned prof, COULEUR c);
 
         // Méthodes
+        virtual std::string id() const override;
         virtual Pion jouer(Etat plateau) override;
 };
 

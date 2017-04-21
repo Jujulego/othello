@@ -3,6 +3,7 @@
 #include <map>
 #include <memory>
 #include <iostream>
+#include <string>
 #include <vector>
 
 #include "etat.h"
@@ -22,6 +23,10 @@ int MinMaxIA::heuristique(Etat&& etat) {
     // Initialisation
     COULEUR ennemi = (m_couleur == NOIR) ? BLANC : NOIR;
     return ((2*etat.scores[m_couleur]*etat.coups_restant(m_couleur)) - (etat.coups_restant(ennemi)*etat.scores[ennemi]));
+}
+
+std::string MinMaxIA::id() const {
+	return "minmax";
 }
 
 MinMaxIA::PV MinMaxIA::minmax(Etat&& etat, unsigned prof, std::shared_ptr<Noeud<PV>> noeud) {
