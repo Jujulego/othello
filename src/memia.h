@@ -27,6 +27,8 @@ class MemIA : public AlphaBetaIA {
         virtual Pion jouer(Etat plateau) override;
         void gagne();
         void perdu();
+        
+        void set_noeud(int pos);
 };
 
 #endif // MEMIA_H

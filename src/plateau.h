@@ -24,6 +24,7 @@ class Tableau {
     public:
     	// Constructeur
         Tableau(std::shared_ptr<IA> ia_noir = nullptr, std::shared_ptr<IA> ia_blanc = nullptr);
+        Tableau(Etat&& etat, std::shared_ptr<IA> ia_noir, std::shared_ptr<IA> ia_blanc);
         
         // Méthodes
         void CreationTab();

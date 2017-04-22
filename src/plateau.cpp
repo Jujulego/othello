@@ -57,6 +57,15 @@ Tableau::Tableau(std::shared_ptr<IA> ia_noir, std::shared_ptr<IA> ia_blanc) {
     m_etat.othellier[4][4] = BLANC;
 }
 
+Tableau::Tableau(Etat&& etat, std::shared_ptr<IA> ia_noir, std::shared_ptr<IA> ia_blanc) {
+	// Init joueurs
+    m_ias[NOIR]  = ia_noir;
+    m_ias[BLANC] = ia_blanc;
+    
+    // Init etat
+    m_etat = std::move(etat);
+}
+
 void Tableau::CreationTab() {
     // Affichage du plateau
     s_console->clear();
@@ -103,13 +112,11 @@ void Tableau::CreationTab() {
 void Tableau::AfficherTab() {
     for (int i=0;i < TailleTab; i++) {
         for (int j=0; j < TailleTab; j++) {
-            // Rien à faire pour le cases vides
-            if (m_etat.othellier[i][j] == VIDE) {
-                continue;
-            }
-
             // Choix de la couleur
             switch (m_etat.othellier[i][j]) {
+            case VIDE: // Rien à faire pour les cases vides
+            	continue;
+
             case BLANC:
                 s_console->setColor(COLOR_DEFAULT, COLOR_WHITE);
                 break;
@@ -285,7 +292,7 @@ bool Tableau::sauvegarder() const {
 	bool annule = false;
 	std::string nom;
 	std::ofstream f; // au lieu de fstream => permet de créer un fichier
-	int taille = 0, c;
+	int taille = 0;
 	
 	// Interactions !
 	do {
@@ -294,12 +301,33 @@ bool Tableau::sauvegarder() const {
 		std::cout << "Entrez un nom de fichier :";
 		std::cout.flush();
 		
+		// Effacement du nom précédent
+		if (taille != 0) {
+			s_console->gotoLigCol(22, 50);
+			for (int i = 0; i < taille; i++) std::cout << " ";
+		}
+		
 		// Entrée
 		s_console->gotoLigCol(22, 50);
 		std::getline(std::cin, nom);
 		
+		// Effacement d'un eventuel message d'erreur
+		if (taille != 0) {
+			s_console->gotoLigCol(18, 50);
+			for (int i = 0; i < taille; i++) std::cout << " ";
+			s_console->gotoLigCol(19, 50);
+			for (int i = 0; i < taille; i++) std::cout << " ";
+			std::cout.flush();
+		}
+		
 		// Annulation (chaine vide)
 		if (nom == "") {
+			// Message d'annulation
+			s_console->gotoLigCol(24, 50);
+			s_console->setColor(COLOR_YELLOW);
+			std::cout << "Annulé !" << std::endl;
+			s_console->setColor();
+			
 			annule = true;
 			break;
 		}
@@ -326,15 +354,6 @@ bool Tableau::sauvegarder() const {
 			continue;
 		}
 		
-		// Effacement d'un eventuel message d'erreur
-		if (taille != 0) {
-			s_console->gotoLigCol(18, 50);
-			for (int i = 0; i < taille; i++) std::cout << " ";
-			s_console->gotoLigCol(19, 50);
-			for (int i = 0; i < taille; i++) std::cout << " ";
-			std::cout.flush();
-		}
-		
 		// Enregistrement
 		f << ((m_ias.at(NOIR ) == nullptr) ? "joueur" : m_ias.at(NOIR )->id()) << std::endl;
 		f << ((m_ias.at(BLANC) == nullptr) ? "joueur" : m_ias.at(BLANC)->id()) << std::endl;
@@ -347,21 +366,33 @@ bool Tableau::sauvegarder() const {
 		    f << std::endl;
 		}
 		
+		f.close();
+		
 		// Message de confirmation
 		s_console->gotoLigCol(24, 50);
 		s_console->setColor(COLOR_GREEN);
 		std::cout << "Sauvegardé !" << std::endl;
 		s_console->setColor();
-	    
-	    // Attente
-		s_console->gotoLigCol(25, 50);
-       	std::cout << "Appuyer sur [ENTREE]";
-        std::cout.flush();
-		
-	    do {} while (s_console->getch() != ENTREE);
 		
 		break;
 	} while (true);
+    
+    // Attente
+	s_console->gotoLigCol(25, 50);
+   	std::cout << "Appuyer sur [ENTREE]";
+    std::cout.flush();
+	
+    do {} while (s_console->getch() != ENTREE);
+	
+	// Effacage des affichages en cas d'annulation
+	if (annule) {
+		s_console->gotoLigCol(21, 50);
+		std::cout << "                          ";
+		s_console->gotoLigCol(24, 50);
+		std::cout << "        " << std::endl;
+		s_console->gotoLigCol(25, 50);
+	   	std::cout << "                    ";
+	}
 	
 	return !annule;
 }
