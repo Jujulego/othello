@@ -22,13 +22,17 @@ class Tableau {
         Console* s_console = NULL;
 
     public:
+    	// Constructeur
         Tableau(std::shared_ptr<IA> ia_noir = nullptr, std::shared_ptr<IA> ia_blanc = nullptr);
+        
+        // Méthodes
         void CreationTab();
         bool Jouer(int &x, int&y);
         void AfficherTab();
         COULEUR BoucleJeu();
+        bool sauvegarder() const;
 
-        // Accesseur
+        // Accesseurs
         std::map<COULEUR,unsigned> const scores() const;
         std::vector<std::shared_ptr<Pion>> const& get_pions() const;
 };

@@ -6,6 +6,7 @@
 #include <set>
 #include <vector>
 #include <utility>
+#include <string>
 
 #include "etat.h"
 #include "noeud.h"
@@ -31,8 +32,10 @@ class IA {
         virtual ~IA() = default;
 
         // Méthodes
+        virtual std::string id() const = 0;
         virtual Pion jouer(Etat plateau) = 0;
         std::set<Pion,bool(&)(Pion const&,Pion const&)> get_coups(Etat const& plateau) const;
+        
         int charg_tab();
         void aff_arbre(Console* s_console, int x, int y);
 

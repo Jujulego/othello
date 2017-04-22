@@ -539,7 +539,7 @@
 1490880137 e:\projets\c++\othello\src\console.h
 	<iostream>
 
-1492785175 source:e:\projets\c++\othello\src\etat.cpp
+1492813600 source:e:\projets\c++\othello\src\etat.cpp
 	<algorithm>
 	<functional>
 	<iostream>
@@ -558,14 +558,15 @@
 	"ia.h"
 	"console.h"
 
-1492788753 source:e:\projets\c++\othello\src\main.cpp
+1492805051 source:e:\projets\c++\othello\src\main.cpp
 	<iostream>
 	<memory>
+	"menu.h"
 	"plateau.h"
 	"memia.h"
 	"minmaxia.h"
 
-1492784978 e:\projets\c++\othello\src\plateau.h
+1492792349 e:\projets\c++\othello\src\plateau.h
 	<vector>
 	<map>
 	<memory>
@@ -759,12 +760,18 @@
 	<cerrno>
 	<cstring>
 
+<<<<<<< HEAD
 1492790216 source:e:\projets\c++\othello\src\memarbre.cpp
 	<cerrno>
 	<cstring>
 	<cstdlib>
 
 1491662950 12e41d1d46ca1e4f129ccf581c8b63669c5d4
+=======
+1492794828 source:e:\projets\c++\othello\src\memarbre.cpp
+	<cerrno>
+	<cstring>
+>>>>>>> 7757e1ceaba1bc851b24620dd61696d25cd43866
 	<functional>
 	<fstream>
 	<iostream>
@@ -774,6 +781,45 @@
 	<sstream>
 	<string>
 	<tuple>
+	<vector>
+<<<<<<< HEAD
+	<algorithm>
+	<iostream>
+	<limits>
+	<memory>
+	<string>
+	<tuple>
+	<vector>
+	"macros.h"
+	"minmaxia.h"
+=======
+	<cstdlib>
+>>>>>>> 7757e1ceaba1bc851b24620dd61696d25cd43866
+	"memarbre.h"
+	"memia.h"
+
+<<<<<<< HEAD
+1492784176 source:c:\users\maxim\desktop\programmes\othello\src\memia.cpp
+	"memarbre.h"
+
+1492520924 e:\projets\c++\othello\src\memarbre.h
+=======
+1491662950 12e41d1d46ca1e4f129ccf581c8b63669c5d4
+	<functional>
+>>>>>>> 7757e1ceaba1bc851b24620dd61696d25cd43866
+	<fstream>
+	<iostream>
+	<map>
+	<memory>
+	<set>
+	<sstream>
+	<string>
+	<tuple>
+<<<<<<< HEAD
+
+1492779751 source:e:\projets\c++\othello\src\memia.cpp
+
+=======
 	<vector>
 	<algorithm>
 	<iostream>
@@ -800,6 +846,7 @@
 
 1492779751 source:e:\projets\c++\othello\src\memia.cpp
 
+>>>>>>> 7757e1ceaba1bc851b24620dd61696d25cd43866
 1492013341 c:\users\maxim\desktop\programmes\othello\src\macros.h
 
 1490963344 e:\projets\c++\othello\src\macros.h
@@ -813,6 +860,7 @@
 
 1491662950 source:e:\projets\c++\othello\src\pions.cpp
 
+<<<<<<< HEAD
 1492795871 c:\users\nolwenn\documents\othello\src\memia.h
 	<memory>
 	<string>
@@ -858,4 +906,22 @@
 	"memia.h"
 
 1492532118 c:\users\nolwenn\documents\othello\src\macros.h
+=======
+1492811225 e:\projets\c++\othello\src\menu.h
+	<memory>
+	"console.h"
+	"memia.h"
+	"plateau.h"
+
+1492812270 source:e:\projets\c++\othello\src\menu.cpp
+	<iostream>
+	<memory>
+	"alphabetaia.h"
+	"ia.h"
+	"minmaxia.h"
+	"memia.h"
+	"menu.h"
+	"negamaxia.h"
+	"randomia.h"
+>>>>>>> 7757e1ceaba1bc851b24620dd61696d25cd43866
 

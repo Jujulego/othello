@@ -22,6 +22,10 @@ MemIA::MemIA(std::string const& fichier, unsigned prof, COULEUR c) : AlphaBetaIA
 }
 
 // Méthodes
+std::string MemIA::id() const {
+	return "memia";
+}
+
 MinMaxIA::PV MemIA::memia(Etat&& etat, unsigned prof, int alpha, int beta, std::shared_ptr<MemArbre::Noeud> noeud) {
     // Feuille !
     if (prof == m_prof) return {heuristique(std::move(etat)), {0, 0, VIDE}};

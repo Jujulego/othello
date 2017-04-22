@@ -23,6 +23,7 @@ class MemIA : public AlphaBetaIA {
         MemIA(std::string const& fichier, unsigned prof, COULEUR c);
 
         // Méthodes
+        virtual std::string id() const override;
         virtual Pion jouer(Etat plateau) override;
         void gagne();
         void perdu();

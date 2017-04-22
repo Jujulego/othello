@@ -2,6 +2,8 @@
 #define ALPHABETAIA_H
 
 // Dépendances
+#include <string>
+
 #include "minmaxia.h"
 
 // Classe
@@ -15,6 +17,7 @@ class AlphaBetaIA : public MinMaxIA {
         AlphaBetaIA(unsigned prof, COULEUR c);
 
         // Méthodes
+        virtual std::string id() const override;
         virtual Pion jouer(Etat plateau) override;
 };
 

@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
+#include <string>
 
 #include "etat.h"
 #include "ia.h"
@@ -9,6 +10,10 @@
 #include "randomia.h"
 
 // Méthodes
+std::string RandomIA::id() const {
+	return "random";
+}
+
 Pion RandomIA::jouer(Etat plateau) {
     // Récupération de la liste des coups possibles
     auto coups = get_coups(plateau);

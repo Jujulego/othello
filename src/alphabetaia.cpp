@@ -1,6 +1,7 @@
 // Importations
 #include <iostream>
 #include <limits>
+#include <string>
 
 #include "alphabetaia.h"
 
@@ -9,6 +10,10 @@ AlphaBetaIA::AlphaBetaIA(unsigned prof, COULEUR c) : MinMaxIA(prof, c) {
 }
 
 // Méthodes
+std::string AlphaBetaIA::id() const {
+	return "alphabeta";
+}
+
 MinMaxIA::PV AlphaBetaIA::alphabeta(Etat&& etat, unsigned prof, int alpha, int beta) {
     // Feuille !
     if (prof == m_prof) return {heuristique(std::move(etat)), {0, 0, VIDE}};
