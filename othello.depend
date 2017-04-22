@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1492597925 source:c:\users\nolwenn\documents\othello\src\alphabetaia.cpp
+1492795871 source:c:\users\nolwenn\documents\othello\src\alphabetaia.cpp
 	<iostream>
 	<limits>
 	"alphabetaia.h"
@@ -18,7 +18,7 @@
 	"ia.h"
 	"pion.h"
 
-1490880137 
+1492791227 
 
 1492597925 c:\users\nolwenn\documents\othello\src\noeud.h
 	<functional>
@@ -33,7 +33,9 @@
 1492532118 c:\users\nolwenn\documents\othello\src\pion.h
 	<vector>
 
-1492450533 D
+1492779751 D
+	<cstdlib>
+	"memarbre.h"
 
 1492795871 c:\users\nolwenn\documents\othello\src\ia.h
 	<memory>
@@ -65,7 +67,7 @@
 1492532118 c:\users\nolwenn\documents\othello\src\console.h
 	<iostream>
 
-1492631330 source:c:\users\nolwenn\documents\othello\src\etat.cpp
+1492795871 source:c:\users\nolwenn\documents\othello\src\etat.cpp
 	<algorithm>
 	<functional>
 	<iostream>
@@ -73,30 +75,37 @@
 	"etat.h"
 	"pion.h"
 
-1492631330 source:c:\users\nolwenn\documents\othello\src\ia.cpp
+1492795871 source:c:\users\nolwenn\documents\othello\src\ia.cpp
 	<functional>
 	<iostream>
 	<set>
 	<vector>
+	<utility>
 	"pion.h"
 	"etat.h"
 	"ia.h"
+	"console.h"
 
-1492678447 source:c:\users\nolwenn\documents\othello\src\main.cpp
+1492799068 source:c:\users\nolwenn\documents\othello\src\main.cpp
 	<iostream>
+	<memory>
 	"plateau.h"
+	"memia.h"
+	"minmaxia.h"
 
 1492676906 "
 
-1492631330 c:\users\nolwenn\documents\othello\src\plateau.h
+1492797548 c:\users\nolwenn\documents\othello\src\plateau.h
 	<vector>
+	<map>
 	<memory>
 	<set>
-	"etat.h"
 	"console.h"
+	"etat.h"
+	"ia.h"
 	"pion.h"
 
-1492631330 source:c:\users\nolwenn\documents\othello\src\minmaxia.cpp
+1492795871 source:c:\users\nolwenn\documents\othello\src\minmaxia.cpp
 	<limits>
 	<map>
 	<memory>
@@ -107,7 +116,7 @@
 	"pion.h"
 	"minmaxia.h"
 
-1492597925 source:c:\users\nolwenn\documents\othello\src\negamaxia.cpp
+1492795871 source:c:\users\nolwenn\documents\othello\src\negamaxia.cpp
 	<limits>
 	<iostream>
 	"negamaxia.h"
@@ -117,7 +126,9 @@
 1492597925 c:\users\nolwenn\documents\othello\src\negamaxia.h
 	"alphabetaia.h"
 
-1492678881 source:c:\users\nolwenn\documents\othello\src\plateau.cpp
+1492797548 source:c:\users\nolwenn\documents\othello\src\plateau.cpp
+	<map>
+	<memory>
 	"etat.h"
 	"console.h"
 	"plateau.h"
@@ -729,7 +740,6 @@
 
 1491662950 source:/home/julien/projets/c++/othello/src/pions.cpp
 
-<<<<<<< HEAD
 1492784176 c:\users\maxim\desktop\programmes\othello\src\memia.h
 	<memory>
 	<string>
@@ -748,12 +758,13 @@
 1492791227 source:c:\users\maxim\desktop\programmes\othello\src\memarbre.cpp
 	<cerrno>
 	<cstring>
-=======
+
 1492790216 source:e:\projets\c++\othello\src\memarbre.cpp
 	<cerrno>
 	<cstring>
 	<cstdlib>
->>>>>>> b3d12e41d1d46ca1e4f129ccf581c8b63669c5d4
+
+1491662950 12e41d1d46ca1e4f129ccf581c8b63669c5d4
 	<functional>
 	<fstream>
 	<iostream>
@@ -764,24 +775,6 @@
 	<string>
 	<tuple>
 	<vector>
-<<<<<<< HEAD
-	<cstdlib>
-	"memarbre.h"
-
-1492784176 source:c:\users\maxim\desktop\programmes\othello\src\memia.cpp
-=======
-	"memarbre.h"
-
-1492520924 e:\projets\c++\othello\src\memarbre.h
-	<fstream>
-	<map>
-	<memory>
-	<set>
-	<string>
-	<tuple>
-
-1492779751 source:e:\projets\c++\othello\src\memia.cpp
->>>>>>> b3d12e41d1d46ca1e4f129ccf581c8b63669c5d4
 	<algorithm>
 	<iostream>
 	<limits>
@@ -794,9 +787,21 @@
 	"memarbre.h"
 	"memia.h"
 
-<<<<<<< HEAD
+1492784176 source:c:\users\maxim\desktop\programmes\othello\src\memia.cpp
+	"memarbre.h"
+
+1492520924 e:\projets\c++\othello\src\memarbre.h
+	<fstream>
+	<map>
+	<memory>
+	<set>
+	<string>
+	<tuple>
+
+1492779751 source:e:\projets\c++\othello\src\memia.cpp
+
 1492013341 c:\users\maxim\desktop\programmes\othello\src\macros.h
-=======
+
 1490963344 e:\projets\c++\othello\src\macros.h
 
 1492779751 e:\projets\c++\othello\src\memia.h
@@ -807,5 +812,50 @@
 	"negamaxia.h"
 
 1491662950 source:e:\projets\c++\othello\src\pions.cpp
->>>>>>> b3d12e41d1d46ca1e4f129ccf581c8b63669c5d4
+
+1492795871 c:\users\nolwenn\documents\othello\src\memia.h
+	<memory>
+	<string>
+	"minmaxia.h"
+	"memarbre.h"
+	"negamaxia.h"
+
+1492597925 c:\users\nolwenn\documents\othello\src\memarbre.h
+	<fstream>
+	<map>
+	<memory>
+	<set>
+	<string>
+	<tuple>
+
+1492797866 source:c:\users\nolwenn\documents\othello\src\memarbre.cpp
+	<cerrno>
+	<cstring>
+	<functional>
+	<fstream>
+	<iostream>
+	<map>
+	<memory>
+	<set>
+	<sstream>
+	<string>
+	<tuple>
+	<vector>
+	<cstdlib>
+	"memarbre.h"
+
+1492795871 source:c:\users\nolwenn\documents\othello\src\memia.cpp
+	<algorithm>
+	<iostream>
+	<limits>
+	<memory>
+	<string>
+	<tuple>
+	<vector>
+	"macros.h"
+	"minmaxia.h"
+	"memarbre.h"
+	"memia.h"
+
+1492532118 c:\users\nolwenn\documents\othello\src\macros.h
 
