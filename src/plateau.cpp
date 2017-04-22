@@ -188,7 +188,7 @@ bool Tableau::Jouer(int &x, int&y) {
 
         case 'a':
             if (m_ias[m_col_ia]->id() == "minmax") {
-                m_ias[m_col_ia]->aff_arbre(s_console, 80, 3);
+                m_ias[m_col_ia]->gere_arbre(s_console, m_ias[m_col_ia]->arbre(), 0);
             }
 
             break;
