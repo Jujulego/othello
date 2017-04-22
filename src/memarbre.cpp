@@ -261,6 +261,11 @@ MemArbre::iterateur MemArbre::end() const {
 	return m_noeuds.cend();
 }
 
+std::shared_ptr<MemArbre::Noeud> MemArbre::noeud(int pos) const {
+	if (pos == -1) return nullptr;
+	return m_noeuds.at(pos);
+}
+
 // Opérateurs externes
 std::ostream& operator << (std::ostream& stream, MemArbre::Noeud const& n) {
 	return n.afficher(stream);
