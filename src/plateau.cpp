@@ -44,6 +44,9 @@ Tableau::Tableau(std::shared_ptr<IA> ia_noir, std::shared_ptr<IA> ia_blanc) {
     m_ias[NOIR]  = ia_noir;
     m_ias[BLANC] = ia_blanc;
 
+    if (!m_ias[NOIR]) m_col_ia = BLANC;
+    else if (!m_ias[BLANC]) m_col_ia = NOIR;
+
     // Init etat
     m_etat.joueur = NOIR;    // tjs le noir qui commence
     m_etat.scores[NOIR]  = 2; // = au nb de pions du joueur
@@ -61,7 +64,7 @@ Tableau::Tableau(Etat&& etat, std::shared_ptr<IA> ia_noir, std::shared_ptr<IA> i
 	// Init joueurs
     m_ias[NOIR]  = ia_noir;
     m_ias[BLANC] = ia_blanc;
-    
+
     // Init etat
     m_etat = std::move(etat);
 }
@@ -105,6 +108,15 @@ void Tableau::CreationTab() {
     s_console->gotoLigCol(28, 0);
     std::cout << "   " << LIGNE_BAS << std::endl;
     std::cout << "     A    B    C    D    E    F    G    H" << std::endl;
+
+    if (m_ias[m_col_ia]->id() == "minmax") {
+        s_console->gotoLigCol(20, 50);
+        std::cout << "a : Montrer le graphe d'etat";
+    }
+    s_console->gotoLigCol(21, 50);
+    std::cout << "f : Sauvegarder";
+    s_console->gotoLigCol(22, 50);
+    std::cout << "e : Quitter";
 
     AfficherTab();
 }
@@ -174,6 +186,13 @@ bool Tableau::Jouer(int &x, int&y) {
             x++;
             break;
 
+        case 'a':
+            if (m_ias[m_col_ia]->id() == "minmax") {
+                m_ias[m_col_ia]->aff_arbre(s_console, 80, 3);
+            }
+
+            break;
+
         case 'f':
         	if (sauvegarder()) {
 	            quitter = true;
@@ -224,7 +243,7 @@ COULEUR Tableau::BoucleJeu() {
         // Execution de l'IA
         if (m_ias[m_etat.joueur] != nullptr) {
         	// On va dormir un peu
-        	std::this_thread::sleep_for(TIMEOUT);
+        	//std::this_thread::sleep_for(TIMEOUT);
         	m_etat.appliquer_coup(m_ias[m_etat.joueur]->jouer(m_etat));
         } else {
             // Interaction
@@ -297,37 +316,26 @@ bool Tableau::sauvegarder() const {
 	bool annule = false;
 	std::string nom;
 	std::ofstream f; // au lieu de fstream => permet de créer un fichier
-<<<<<<< HEAD
-	int taille = 0, c;
 
-=======
 	int taille = 0;
-	
->>>>>>> 9ee1aad01c52f7dd091645d2f6734814d7fa92d4
+
 	// Interactions !
 	do {
 		// Affichage
 		s_console->gotoLigCol(21, 50);
 		std::cout << "Entrez un nom de fichier :";
 		std::cout.flush();
-<<<<<<< HEAD
 
-		// Entrée
-		s_console->gotoLigCol(22, 50);
-		std::getline(std::cin, nom);
-
-=======
-		
 		// Effacement du nom précédent
 		if (taille != 0) {
 			s_console->gotoLigCol(22, 50);
 			for (int i = 0; i < taille; i++) std::cout << " ";
 		}
-		
+
 		// Entrée
 		s_console->gotoLigCol(22, 50);
 		std::getline(std::cin, nom);
-		
+
 		// Effacement d'un eventuel message d'erreur
 		if (taille != 0) {
 			s_console->gotoLigCol(18, 50);
@@ -336,8 +344,7 @@ bool Tableau::sauvegarder() const {
 			for (int i = 0; i < taille; i++) std::cout << " ";
 			std::cout.flush();
 		}
-		
->>>>>>> 9ee1aad01c52f7dd091645d2f6734814d7fa92d4
+
 		// Annulation (chaine vide)
 		if (nom == "") {
 			// Message d'annulation
@@ -345,7 +352,7 @@ bool Tableau::sauvegarder() const {
 			s_console->setColor(COLOR_YELLOW);
 			std::cout << "Annulé !" << std::endl;
 			s_console->setColor();
-			
+
 			annule = true;
 			break;
 		}
@@ -371,20 +378,7 @@ bool Tableau::sauvegarder() const {
 
 			continue;
 		}
-<<<<<<< HEAD
 
-		// Effacement d'un eventuel message d'erreur
-		if (taille != 0) {
-			s_console->gotoLigCol(18, 50);
-			for (int i = 0; i < taille; i++) std::cout << " ";
-			s_console->gotoLigCol(19, 50);
-			for (int i = 0; i < taille; i++) std::cout << " ";
-			std::cout.flush();
-		}
-
-=======
-		
->>>>>>> 9ee1aad01c52f7dd091645d2f6734814d7fa92d4
 		// Enregistrement
 		f << ((m_ias.at(NOIR ) == nullptr) ? "joueur" : m_ias.at(NOIR )->id()) << std::endl;
 		f << ((m_ias.at(BLANC) == nullptr) ? "joueur" : m_ias.at(BLANC)->id()) << std::endl;
@@ -396,42 +390,25 @@ bool Tableau::sauvegarder() const {
 		    }
 		    f << std::endl;
 		}
-<<<<<<< HEAD
 
-=======
-		
 		f.close();
-		
->>>>>>> 9ee1aad01c52f7dd091645d2f6734814d7fa92d4
-		// Message de confirmation
+
+        // Message de confirmation
 		s_console->gotoLigCol(24, 50);
 		s_console->setColor(COLOR_GREEN);
 		std::cout << "Sauvegardé !" << std::endl;
 		s_console->setColor();
-<<<<<<< HEAD
-
-	    // Attente
-		s_console->gotoLigCol(25, 50);
-       	std::cout << "Appuyer sur [ENTREE]";
-        std::cout.flush();
-
-	    do {} while (s_console->getch() != ENTREE);
 
 		break;
 	} while (true);
 
-=======
-		
-		break;
-	} while (true);
-    
     // Attente
 	s_console->gotoLigCol(25, 50);
    	std::cout << "Appuyer sur [ENTREE]";
     std::cout.flush();
-	
+
     do {} while (s_console->getch() != ENTREE);
-	
+
 	// Effacage des affichages en cas d'annulation
 	if (annule) {
 		s_console->gotoLigCol(21, 50);
@@ -441,8 +418,7 @@ bool Tableau::sauvegarder() const {
 		s_console->gotoLigCol(25, 50);
 	   	std::cout << "                    ";
 	}
-	
->>>>>>> 9ee1aad01c52f7dd091645d2f6734814d7fa92d4
+
 	return !annule;
 }
 

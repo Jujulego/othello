@@ -111,6 +111,9 @@ int IA::charg_tab() {
         }
     }
 
+
+    std::cout << nb_desc;
+
     // On retourne le nombre de descendants
     return nb_desc;
 }
@@ -127,7 +130,10 @@ void IA::aff_arbre(Console* s_console, int x, int y) {
     int moy_3 = 0; // moyenne des abscisses des noeuds du coup 3 dans une branche
 
     // On charge le tableau, et on prend le nombre de descendants
+    m_tab.clear();
     nb_desc = charg_tab();
+    s_console->gotoLigCol(y,x);
+    std::cout << "on est en plein dedans la";
 
     // On dessine l'arbre en partant du bas :
     // Pour chaque fils du noeud de base (coup 1)
@@ -144,7 +150,7 @@ void IA::aff_arbre(Console* s_console, int x, int y) {
             for (unsigned int k = 0; k < m_tab[2][j].second->size(); k++) {
                 // On affiche le noeud
                 m_tab[3][k].first = x + nb_desc_aff;
-                s_console->gotoLigCol(m_tab[3][k].first, y + 9);
+                s_console->gotoLigCol(y + 9, m_tab[3][k].first);
                 std::cout << "\e8";
                 // RAJOUTER BRANCHES
 
@@ -162,7 +168,7 @@ void IA::aff_arbre(Console* s_console, int x, int y) {
                 nb_desc_aff++;
             }
             else m_tab[2][j].first = x + moy_3; // Sinon on donne comme abscisse au noeud la "moyenne", calculée à partir des abscisses de ses fils
-            s_console->gotoLigCol(m_tab[2][j].first, y + 6);
+            s_console->gotoLigCol(y + 6, m_tab[2][j].first);
             std::cout << "\e8";
             // RAJOUTER BRANCHES
 
@@ -177,7 +183,7 @@ void IA::aff_arbre(Console* s_console, int x, int y) {
             nb_desc_aff++;
         }
         else m_tab[1][i].first = x + moy_2; // Sinon on donne comme abscisse au noeud la "moyenne", calculée à partir des abscisses de ses fils
-        s_console->gotoLigCol(m_tab[1][i].first, y + 3);
+        s_console->gotoLigCol(y + 3, m_tab[1][i].first);
         std::cout << "\e8";
         // RAJOUTER BRANCHES
 
@@ -188,7 +194,7 @@ void IA::aff_arbre(Console* s_console, int x, int y) {
 
     // On affiche le noeud de base
     m_tab[0][0].first = x + moy_1; // On lui donne son abscisse
-    s_console->gotoLigCol(m_tab[0][0].first, y); // On se place
+    s_console->gotoLigCol(y, m_tab[0][0].first); // On se place
     std::cout << "\e8";
     /*s_console->gotoLigCol(m_tab[0][0].first, y + 1); // On affiche la branche qui part en-dessous
     std::cout << "\xb3";

@@ -25,8 +25,8 @@ MemIA::MemIA(std::string const& fichier, unsigned prof, COULEUR c) : AlphaBetaIA
 std::string MemIA::id() const {
 	if (m_noeud == nullptr)
 		return "memia -1";
-	
-	return "memia " + std::to_string(m_noeud->pos());
+
+	return "memia ";// + std::to_string(m_noeud->pos());
 }
 
 MinMaxIA::PV MemIA::memia(Etat&& etat, unsigned prof, int alpha, int beta, std::shared_ptr<MemArbre::Noeud> noeud) {
