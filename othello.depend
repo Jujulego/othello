@@ -183,7 +183,7 @@
 	"ia.h"
 	"pion.h"
 
-1492966332 c:\users\maxim\desktop\programmes\othello\src\ia.h
+1492972385 c:\users\maxim\desktop\programmes\othello\src\ia.h
 	<memory>
 	<set>
 	<vector>
@@ -277,7 +277,7 @@
 	<string>
 	"alphabetaia.h"
 
-1492860812 c:\users\maxim\desktop\programmes\othello\src\alphabetaia.h
+1492972266 c:\users\maxim\desktop\programmes\othello\src\alphabetaia.h
 	<string>
 	"minmaxia.h"
 
@@ -289,7 +289,7 @@
 	"ia.h"
 	"pion.h"
 
-1492967081 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
+1492972385 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
 	<limits>
 	<map>
 	<memory>
@@ -675,7 +675,7 @@
 	<istream>
 	<vector>
 
-1492966966 source:c:\users\maxim\desktop\programmes\othello\src\ia.cpp
+1492967230 source:c:\users\maxim\desktop\programmes\othello\src\ia.cpp
 	<functional>
 	<iostream>
 	<set>
@@ -729,7 +729,7 @@
 	"ia.h"
 	"pion.h"
 
-1492963448 source:c:\users\maxim\desktop\programmes\othello\src\plateau.cpp
+1492972385 source:c:\users\maxim\desktop\programmes\othello\src\plateau.cpp
 	<cerrno>
 	<cstring>
 	<chrono>
