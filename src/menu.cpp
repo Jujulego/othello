@@ -43,12 +43,12 @@ void Menu::fichier_erreur(std::string const& fichier, std::string const& err) {
 	s_console.setColor(COLOR_RED);
 	s_console.gotoLigCol(17, DECAL_MENU2);
 	std::cout << "Erreur lors du chargement de " << fichier << ":";
-	
+
 	s_console.gotoLigCol(18, DECAL_MENU2);
 	std::cout << err;
 	s_console.setColor();
 	std::cout.flush();
-	
+
 	s_console.gotoLigCol(POS_FIN);
 }
 
@@ -56,9 +56,9 @@ int Menu::init() {
 	// Affichage
 	entete();
 	s_console.gotoLigCol(13, DECAL_MENU1);
-	std::cout << "Chargement des données ... 0%";
+	std::cout << "Chargement des donnees ... 0%";
 	std::cout.flush();
-	
+
 	// Chargement des MemIA (gestion des erreurs)
 	try {
 		m_memia_noire = std::make_shared<MemIA>(FICHIER_NOIR, m_prof, NOIR);
@@ -69,12 +69,12 @@ int Menu::init() {
 		fichier_erreur(FICHIER_NOIR, err);
 		return 1;
 	}
-	
+
 	// Evolution pourcentage !
 	s_console.gotoLigCol(13, DECAL_MENU1 + 27);
 	std::cout << "50%";
 	std::cout.flush();
-	
+
 	try {
 		m_memia_blanche = std::make_shared<MemIA>(FICHIER_BLANC, m_prof, BLANC);
 	} catch (std::out_of_range& err) {
@@ -84,7 +84,7 @@ int Menu::init() {
 		fichier_erreur(FICHIER_BLANC, err);
 		return 1;
 	}
-	
+
 	// Evolution pourcentage !
 	s_console.gotoLigCol(13, DECAL_MENU1 + 27);
 	std::cout << "Fini !";
@@ -93,12 +93,12 @@ int Menu::init() {
 	s_console.gotoLigCol(15, DECAL_MENU1);
 	std::cout << "Appuyez sur [ENTREE]" << std::endl;
 	std::cout.flush();
-	
+
 	do {} while (s_console.getch() != ENTREE);
-	
+
 	// Execution !
 	afficher();
-	
+
 	s_console.gotoLigCol(POS_FIN);
 	return 0;
 }
@@ -291,7 +291,7 @@ void Menu::afficher() {
         	case 9: // Parametres
         	    params();
         	    break;
-        	
+
         	case 10: // Quitter
         		quitter = true;
         		break;
@@ -539,56 +539,56 @@ void Menu::params() {
 	// Déclarations
 	bool quitter = false;
 	int pos = 0;
-	
+
 	do {
 		// Entete
 		entete();
-		
+
 		// Affichage
 		s_console.gotoLigCol(11, 5);
 		std::cout << "Profondeur de recherche des IA :";
-		
+
 		s_console.gotoLigCol(11, 38);
 		if (pos == 0) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		std::cout << " - ";
-		
+
 		s_console.setColor();
 		s_console.gotoLigCol(11, 42);
 		std::cout << m_prof;
-		
+
 		s_console.gotoLigCol(11, 45);
 		if (pos == 1) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		std::cout << " + ";
-		
+
 		s_console.setColor();
 		s_console.gotoLigCol(14, DECAL_MENU2);
 		if (pos == 2) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		std::cout << "- Retour";
-		
+
 		s_console.setColor();
-		
+
 		// Interactions
 		switch (s_console.getch()) {
 		case 'z':
 		case FL_HAUT:
 		    if (pos == 2) pos = 0;
 			break;
-		
+
 		case 'q':
 		case FL_GAUCHE:
 		    if (pos == 1) pos = 0;
 			break;
-		
+
 		case 's':
 		case FL_BAS:
 		    pos = 2;
 			break;
-		
+
 		case 'd':
 		case FL_DROITE:
 		    if (pos == 0) pos = 1;
 			break;
-		
+
 		case 'e':
 		case ENTREE:
 			switch (pos) {
@@ -596,21 +596,21 @@ void Menu::params() {
 				m_prof--;
 				if (m_prof < 1) m_prof = 1;
 				break;
-			
+
 			case 1:
 				m_prof++;
 				if (m_prof > 20) m_prof = 20;
 				break;
-			
+
 			case 2:
 				quitter = true;
 				break;
 			}
-			
+
 			break;
 		}
 	} while (!quitter);
-	
+
 	// Mise à jour des MemIA
 	m_memia_noire->set_prof(m_prof);
 	m_memia_blanche->set_prof(m_prof);
