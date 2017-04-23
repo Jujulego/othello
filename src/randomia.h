@@ -1,3 +1,8 @@
+/** @file: randomia.h
+ * @brief: 
+ *
+ */
+
 #ifndef RANDOMIA_H
 #define RANDOMIA_H
 

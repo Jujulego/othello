@@ -21,7 +21,7 @@ class AlphaBetaIA : public MinMaxIA {
     protected:
         // Méthodes
         /// L'algorithme en lui-même
-        virtual MinMaxIA::PV alphabeta(Etat&& etat, unsigned prof, int alpha, int beta);
+        virtual MinMaxIA::PV alphabeta(Etat&& etat, unsigned prof, int alpha, int beta, std::shared_ptr<Noeud<MinMaxIA::PV>> noeud);
 
     public:
         // Constructeur

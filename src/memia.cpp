@@ -26,12 +26,16 @@ std::string MemIA::id() const {
 	if (m_noeud == nullptr)
 		return "memia -1";
 
-	return "memia ";// + std::to_string(m_noeud->pos());
+	return "memia " + std::to_string(m_noeud->pos());
 }
 
-MinMaxIA::PV MemIA::memia(Etat&& etat, unsigned prof, int alpha, int beta, std::shared_ptr<MemArbre::Noeud> noeud) {
+MinMaxIA::PV MemIA::memia(Etat&& etat, unsigned prof, int alpha, int beta, std::shared_ptr<MemArbre::Noeud> memnoeud, std::shared_ptr<Noeud<MinMaxIA::PV>> noeud) {
     // Feuille !
-    if (prof == m_prof) return {heuristique(std::move(etat)), {0, 0, VIDE}};
+    if (prof == m_prof) {
+    	int val = heuristique(std::move(etat));
+    	if (noeud) noeud->val().val = val;
+    	return {val, {0, 0, VIDE}};
+    }
 
     // Branche
     auto coups = get_coups(etat);
@@ -39,7 +43,11 @@ MinMaxIA::PV MemIA::memia(Etat&& etat, unsigned prof, int alpha, int beta, std::
     int val;
 
     // Cas sans coup
-    if (coups.size() == 0) return {heuristique(std::move(etat)), pion};
+    if (coups.size() == 0) {
+    	int val = heuristique(std::move(etat));
+    	if (noeud) noeud->val().val = val;
+    	return {val, {0, 0, VIDE}};
+    }
 
     // Récupération des coups connus
     std::set<std::shared_ptr<MemArbre::Noeud>> coups_connus;
@@ -47,7 +55,7 @@ MinMaxIA::PV MemIA::memia(Etat&& etat, unsigned prof, int alpha, int beta, std::
 
     // Seulment les coups de l'IA sont enregistrés
     if ((prof % 2) == 0) {
-        coups_connus = (noeud == nullptr) ? m_memarbre->racines() : noeud->fils();
+        coups_connus = (memnoeud == nullptr) ? m_memarbre->racines() : memnoeud->fils();
     }
 
     // Initialisation
@@ -73,13 +81,18 @@ MinMaxIA::PV MemIA::memia(Etat&& etat, unsigned prof, int alpha, int beta, std::
                 }
             }
         } else {
-            np = noeud;
+            np = memnoeud;
         }
 
         // AlphaBeta sur l'enfant
+        PV pv;
         int v;
         if (np != nullptr) {
-            v = memia(std::move(e), prof+1, beta, alpha, np).val;
+    	    if (noeud)
+    	        pv = memia(std::move(e), prof+1, beta, alpha, np, noeud->add_fils({0, c}));
+    	    else
+	            pv = memia(std::move(e), prof+1, beta, alpha, np, nullptr);
+            v = pv.val;
 
             if (np->val() < 0) {
                 v *= ((v < 0) ? -1 : 1) * np->val();
@@ -87,7 +100,11 @@ MinMaxIA::PV MemIA::memia(Etat&& etat, unsigned prof, int alpha, int beta, std::
                 v *= ((v < 0) ? 1 : -1) * np->val();
             }
         } else {
-            v = alphabeta(std::move(e), prof+1, beta, alpha).val;
+	        if (noeud)
+	            pv = alphabeta(std::move(e), prof+1, beta, alpha, noeud->add_fils({0, c}));
+	        else
+	            pv = alphabeta(std::move(e), prof+1, beta, alpha, nullptr);
+            v = val;
         }
 
         if (prof % 2) { // Min
@@ -97,7 +114,7 @@ MinMaxIA::PV MemIA::memia(Etat&& etat, unsigned prof, int alpha, int beta, std::
             }
 
             // Coupure alpha
-            if (v <= alpha) return {v, pion};
+            if (v <= alpha) break;
             if (v < beta) beta = v;
 
         } else { // Max
@@ -107,25 +124,37 @@ MinMaxIA::PV MemIA::memia(Etat&& etat, unsigned prof, int alpha, int beta, std::
             }
 
             // Coupure beta
-            if (v >= beta) return {v, pion};
+            if (v >= beta) break;
             if (v > alpha) alpha = v;
         }
     }
 
     // Résultat
+    if (noeud) {
+    	noeud->val().val = val;
+    }
+    
     return {val, pion};
 }
 
 Pion MemIA::jouer(Etat plateau) {
     // Initialisation
+    m_arbre = Noeud<PV>::creer({0, {0, 0, VIDE}});
     m_couleur = plateau.joueur;
 
     // Algo !
     Pion pion = memia(std::move(plateau), 0,
         std::numeric_limits<int>::min(),
         std::numeric_limits<int>::max(),
-        m_noeud
+        m_noeud,
+        (m_prof > 10) ? nullptr : m_arbre
     ).pion;
+    
+    if (m_prof > 10) {
+    	m_arbre = nullptr;
+    } else {
+	    m_arbre->val().pion = pion;
+	}
 
     // Création d'un nouveau noeud si inexistant
     std::set<std::shared_ptr<MemArbre::Noeud>> coups_connus((m_noeud == nullptr) ? m_memarbre->racines() : m_noeud->fils());
