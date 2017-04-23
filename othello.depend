@@ -950,7 +950,7 @@
 	"memia.h"
 	"plateau.h"
 
-1492961388 source:c:\users\maxim\desktop\programmes\othello\src\menu.cpp
+1492963558 source:c:\users\maxim\desktop\programmes\othello\src\menu.cpp
 	<cerrno>
 	<cstring>
 	<fstream>
