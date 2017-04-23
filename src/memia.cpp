@@ -187,6 +187,7 @@ void MemIA::gagne() {
     m_noeud->save();
 
     m_noeud = nullptr;
+   	m_arbre = nullptr;
 }
 
 void MemIA::perdu() {
@@ -195,6 +196,7 @@ void MemIA::perdu() {
     m_noeud->save();
 
     m_noeud = nullptr;
+   	m_arbre = nullptr;
 }
 
 void MemIA::set_prof(unsigned prof) {
