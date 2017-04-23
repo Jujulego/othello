@@ -16,7 +16,7 @@ class MemIA : public AlphaBetaIA {
         std::shared_ptr<MemArbre::Noeud> m_noeud;
 
         // Méthodes
-        virtual MinMaxIA::PV memia(Etat&& etat, unsigned prof, int alpha, int beta, std::shared_ptr<MemArbre::Noeud> noeud);
+        virtual MinMaxIA::PV memia(Etat&& etat, unsigned prof, int alpha, int beta, std::shared_ptr<MemArbre::Noeud> memnoeud, std::shared_ptr<Noeud<MinMaxIA::PV>> noeud);
 
     public:
         // Constructeur

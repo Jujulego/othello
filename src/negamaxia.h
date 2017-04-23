@@ -10,7 +10,7 @@
 class NegaMaxIA : public AlphaBetaIA {
     protected:
         // Méthodes
-        virtual MinMaxIA::PV alphabeta(Etat&& etat, unsigned prof, int alpha, int beta) override;
+        virtual MinMaxIA::PV alphabeta(Etat&& etat, unsigned prof, int alpha, int beta, std::shared_ptr<Noeud<MinMaxIA::PV>> noeud) override;
 
     public:
         // Constructeur

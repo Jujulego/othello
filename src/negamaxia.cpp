@@ -14,9 +14,13 @@ std::string NegaMaxIA::id() const {
 	return "negamax";
 }
 
-MinMaxIA::PV NegaMaxIA::alphabeta(Etat&& etat, unsigned prof, int alpha, int beta) {
+MinMaxIA::PV NegaMaxIA::alphabeta(Etat&& etat, unsigned prof, int alpha, int beta, std::shared_ptr<Noeud<MinMaxIA::PV>> noeud) {
     // Feuille !
-    if (prof == m_prof) return {heuristique(std::move(etat)), {0, 0, VIDE}};
+    if (prof == m_prof) {
+    	int val = heuristique(std::move(etat));
+    	if (noeud) noeud->val().val = val;
+    	return {val, {0, 0, VIDE}};
+    }
 
     // Branche
     auto coups = get_coups(etat);
@@ -24,7 +28,11 @@ MinMaxIA::PV NegaMaxIA::alphabeta(Etat&& etat, unsigned prof, int alpha, int bet
     int val;
 
     // Cas sans coup
-    if (coups.size() == 0) return {heuristique(std::move(etat)), pion};
+    if (coups.size() == 0) {
+    	int val = heuristique(std::move(etat));
+    	if (noeud) noeud->val().val = val;
+    	return {val, {0, 0, VIDE}};
+    }
 
     // Initialisation
     val = std::numeric_limits<decltype(val)>::min(); // -infini !
@@ -36,7 +44,13 @@ MinMaxIA::PV NegaMaxIA::alphabeta(Etat&& etat, unsigned prof, int alpha, int bet
         e.appliquer_coup(c);
 
         // AlphaBeta sur l'enfant
-        int v = -(alphabeta(std::move(e), prof+1, -beta, -alpha).val);
+        PV pv;
+        if (noeud)
+        	pv = alphabeta(std::move(e), prof+1, -beta, -alpha, noeud->add_fils({0, c}));
+        else
+        	pv = alphabeta(std::move(e), prof+1, -beta, -alpha, nullptr);
+        
+        int v = -pv.val;
 
         // NegaMax :
         if (v > val) {
@@ -47,12 +61,16 @@ MinMaxIA::PV NegaMaxIA::alphabeta(Etat&& etat, unsigned prof, int alpha, int bet
                 alpha = val;
 
                 if (alpha >= beta) {
-                    return {val, pion};
+                    break;
                 }
             }
         }
     }
 
     // Résultat
+    if (noeud) {
+    	noeud->val().val = val;
+    }
+    
     return {val, pion};
 }

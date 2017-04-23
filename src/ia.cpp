@@ -69,25 +69,34 @@ void IA::aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num
 
     for (unsigned int i = 0; i < noeud->size(); i++) {
         // On affiche chaque fils
-        s_console->gotoLigCol(16, (i*3) + 9);
-	    std::cout << (char) (noeud->fils(i)->val().pion.x + 'A') << (char) (noeud->fils(i)->val().pion.y + '1');
-
-        s_console->gotoLigCol(15, (i*3) + 9);
-        std::cout << ANGLE_HDG;
-
-        s_console->gotoLigCol(14, (i*3) + 9);
-        if (i == 0) {
-            std::cout << ANGLE_BD;
-            s_console->gotoLigCol(14, (i*3) + 10);
-        } else if (i == (noeud->size() -1)) {
-            std::cout << ANGLE_BG;
-            s_console->gotoLigCol(14, (i*3) + 7);
+        if (noeud->size() != 1) {
+	        s_console->gotoLigCol(16, (i*3) + 9);
+		    std::cout << (char) (noeud->fils(i)->val().pion.x + 'A') << (char) (noeud->fils(i)->val().pion.y + '1');
+			
+	        s_console->gotoLigCol(15, (i*3) + 9);
+    	    std::cout << ANGLE_HDG;
+        	
+	        s_console->gotoLigCol(14, (i*3) + 9);
+  		    if (i == 0) {
+       		    std::cout << ANGLE_BD;
+           		s_console->gotoLigCol(14, (i*3) + 10);
+	        } else if (i == (noeud->size() -1)) {
+   		        std::cout << ANGLE_BG;
+       		    s_console->gotoLigCol(14, (i*3) + 7);
+	        } else {
+   		        std::cout << ANGLE_BDG;
+       		    s_console->gotoLigCol(14, (i*3) + 7);
+        	}
+	    	
+	        std::cout << BARRE_HORI;
+    	    std::cout << BARRE_HORI;
         } else {
-            std::cout << ANGLE_BDG;
-            s_console->gotoLigCol(14, (i*3) + 7);
+	        s_console->gotoLigCol(16, (i*3) + 10);
+		    std::cout << (char) (noeud->fils(i)->val().pion.x + 'A') << (char) (noeud->fils(i)->val().pion.y + '1');
+			
+	        s_console->gotoLigCol(15, (i*3) + 10);
+    	    std::cout << ANGLE_HDG;
         }
-        std::cout << BARRE_HORI;
-        std::cout << BARRE_HORI;
     }
 
     // On affiche le noeud de base
@@ -159,7 +168,7 @@ void IA::dess_plat(Console* s_console, int x, int y, Pion pion, Etat etat, int v
 
     // On affiche la valeur du coup
     s_console->gotoLigCol(y + 11, x);
-    std::cout << "Valeur du coup : " << val;
+    std::cout << "Valeur du coup : " << val << "        ";
 }
 
 bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num_coup, Etat etat) {
