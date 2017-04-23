@@ -43,12 +43,12 @@ void Menu::fichier_erreur(std::string const& fichier, std::string const& err) {
 	s_console.setColor(COLOR_RED);
 	s_console.gotoLigCol(17, DECAL_MENU2);
 	std::cout << "Erreur lors du chargement de " << fichier << ":";
-	
+
 	s_console.gotoLigCol(18, DECAL_MENU2);
 	std::cout << err;
 	s_console.setColor();
 	std::cout.flush();
-	
+
 	s_console.gotoLigCol(POS_FIN);
 }
 
@@ -58,7 +58,7 @@ int Menu::init() {
 	s_console.gotoLigCol(13, DECAL_MENU1);
 	std::cout << "Chargement des données ... 0%";
 	std::cout.flush();
-	
+
 	// Chargement des MemIA (gestion des erreurs)
 	try {
 		m_memia_noire = std::make_shared<MemIA>(FICHIER_NOIR, PROF_ALGO, NOIR);
@@ -69,12 +69,12 @@ int Menu::init() {
 		fichier_erreur(FICHIER_NOIR, err);
 		return 1;
 	}
-	
+
 	// Evolution pourcentage !
 	s_console.gotoLigCol(13, DECAL_MENU1 + 27);
 	std::cout << "50%";
 	std::cout.flush();
-	
+
 	try {
 		m_memia_blanche = std::make_shared<MemIA>(FICHIER_BLANC, PROF_ALGO, BLANC);
 	} catch (std::out_of_range& err) {
@@ -84,7 +84,7 @@ int Menu::init() {
 		fichier_erreur(FICHIER_BLANC, err);
 		return 1;
 	}
-	
+
 	// Evolution pourcentage !
 	s_console.gotoLigCol(13, DECAL_MENU1 + 27);
 	std::cout << "Fini !";
@@ -93,12 +93,12 @@ int Menu::init() {
 	s_console.gotoLigCol(15, DECAL_MENU1);
 	std::cout << "Appuyez sur [ENTREE]" << std::endl;
 	std::cout.flush();
-	
+
 	do {} while (s_console.getch() != ENTREE);
-	
+
 	// Execution !
 	afficher();
-	
+
 	s_console.gotoLigCol(POS_FIN);
 	return 0;
 }
@@ -125,91 +125,64 @@ void Menu::afficher() const {
 
 		std::cout << "- Joueur vs Joueur";
 
-<<<<<<< HEAD
-		s_console.gotoLigCol(11, 15);
-=======
+
 		s_console.gotoLigCol(11, DECAL_MENU1);
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
 		if (choix == 1) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 
 		std::cout << "- Joueur vs Random";
 
-<<<<<<< HEAD
-		s_console.gotoLigCol(12, 15);
-=======
+
+
 		s_console.gotoLigCol(12, DECAL_MENU1);
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
 		if (choix == 2) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 
 		std::cout << "- Joueur vs MinMax";
 
-<<<<<<< HEAD
-		s_console.gotoLigCol(13, 15);
-=======
+
 		s_console.gotoLigCol(13, DECAL_MENU1);
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
 		if (choix == 3) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 
 		std::cout << "- Joueur vs AlphaBeta";
 
-<<<<<<< HEAD
-		s_console.gotoLigCol(14, 15);
-=======
 		s_console.gotoLigCol(14, DECAL_MENU1);
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
 		if (choix == 4) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 
 		std::cout << "- Joueur vs NegaMax";
 
-<<<<<<< HEAD
-		s_console.gotoLigCol(15, 15);
-=======
+
 		s_console.gotoLigCol(15, DECAL_MENU1);
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
 		if (choix == 5) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 
 		std::cout << "- Joueur vs Memory";
 
-<<<<<<< HEAD
-		s_console.gotoLigCol(16, 15);
-=======
+
 		s_console.gotoLigCol(16, DECAL_MENU1);
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
 		if (choix == 6) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 
 		std::cout << "- Memory vs Memory";
 
-<<<<<<< HEAD
-		s_console.gotoLigCol(17, 15);
-=======
+
 		s_console.gotoLigCol(17, DECAL_MENU1);
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
 		if (choix == 7) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 
 		std::cout << "- Commandes";
 
-<<<<<<< HEAD
-		s_console.gotoLigCol(18, 15);
-=======
+
 		s_console.gotoLigCol(18, DECAL_MENU1);
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
 		if (choix == 8) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 
 		std::cout << "- Charger une sauvegarde";
 
-<<<<<<< HEAD
-		s_console.gotoLigCol(19, 15);
-=======
+
 		s_console.gotoLigCol(19, DECAL_MENU1);
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
 		if (choix == 9) s_console.setColor(COLOR_RED, COLOR_WHITE);
 		else            s_console.setColor(COLOR_RED);
 
@@ -278,20 +251,16 @@ void Menu::afficher() const {
         			tab = Tableau(nullptr, m_memia_blanche);
 	        		v = tab.BoucleJeu();
 
-<<<<<<< HEAD
-=======
         			// getion memias
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
+
     	    		if (v == BLANC) m_memia_blanche->gagne();
         			else m_memia_blanche->perdu();
         		} else {
         			tab = Tableau(m_memia_noire, nullptr);
 	        		v = tab.BoucleJeu();
 
-<<<<<<< HEAD
-=======
-        			// getion memias
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
+			// getion memias
+
     	    		if (v == NOIR) m_memia_noire->gagne();
         			else m_memia_noire->perdu();
         		}
@@ -301,10 +270,8 @@ void Menu::afficher() const {
         	case 6: // MIA vs MIA
         		tab = Tableau(m_memia_noire, m_memia_blanche);
 
-<<<<<<< HEAD
-=======
+
         		// Gestion memia
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
         		if (tab.BoucleJeu() == NOIR) {
         			m_memia_noire->gagne();
         			m_memia_blanche->perdu();
@@ -366,29 +333,20 @@ COULEUR Menu::choix_coul() const {
 		s_console.gotoLigCol(10, DECAL_MENU2);
 		std::cout << "Quelle couleur veux-tu etre ?";
 
-<<<<<<< HEAD
-		s_console.gotoLigCol(12, 15);
-=======
+
 		s_console.gotoLigCol(12, DECAL_MENU1);
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
 		if (coul == NOIR) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else              s_console.setColor();
 		std::cout << "- Noir";
 
-<<<<<<< HEAD
-		s_console.gotoLigCol(13, 15);
-=======
+
 		s_console.gotoLigCol(13, DECAL_MENU1);
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
 		if (coul == BLANC) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else               s_console.setColor();
 		std::cout << "- Blanc";
 
-<<<<<<< HEAD
-		s_console.gotoLigCol(15, 10);
-=======
+
 		s_console.gotoLigCol(15, DECAL_MENU2);
->>>>>>> 9295536ca948863ae8bb99e5170932f6aa5167f3
 		s_console.setColor();
 		std::cout << "Appuyez sur [ENTREE] pour valider !";
 		std::cout.flush();
