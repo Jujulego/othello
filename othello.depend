@@ -260,7 +260,7 @@
 	"ia.h"
 	"pion.h"
 
-1492965831 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
+1492967081 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
 	<limits>
 	<map>
 	<memory>
@@ -646,7 +646,7 @@
 	<istream>
 	<vector>
 
-1492966867 source:c:\users\maxim\desktop\programmes\othello\src\ia.cpp
+1492966966 source:c:\users\maxim\desktop\programmes\othello\src\ia.cpp
 	<functional>
 	<iostream>
 	<set>

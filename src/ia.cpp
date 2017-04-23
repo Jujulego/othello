@@ -122,7 +122,7 @@ void IA::aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num
 
 void IA::dess_plat(Console* s_console, int x, int y, Pion pion, std::vector<std::vector<COULEUR>> othellier, int val) {
     // On applique le coup à l'othellier
-    othellier[pion.y][pion.x] = pion.couleur;
+    othellier[pion.x][pion.y] = pion.couleur;
 
     // Affichage du plateau
     s_console->gotoLigCol(y, x);
