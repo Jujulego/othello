@@ -97,7 +97,8 @@ Pion MinMaxIA::jouer(Etat plateau) {
 
     // Algo !!!
     PV p = minmax(std::move(plateau), 0, (m_prof > 6) ? nullptr : m_arbre);
-    m_arbre->val() = p;
+    m_arbre->val().val  = p.val;
+    m_arbre->val().pion = p.pion;
 
     return p.pion;
 }

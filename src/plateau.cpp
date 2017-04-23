@@ -152,6 +152,7 @@ void Tableau::AfficherTab() {
 bool Tableau::Jouer(int &x, int&y) {
     // declaration des variables
     bool onContinue = true, quitter = false;
+    static Etat sauv_etat;
     int c;
 
     // boucle tant que on a pas appuyer sur entrer (pour entrer un pion)
@@ -183,10 +184,11 @@ bool Tableau::Jouer(int &x, int&y) {
             break;
 
         case 'a':
-            if ((m_ias[m_col_ia]->arbre() != nullptr) && (m_ias[m_col_ia]->id() == "minmax")) {
+            if (m_ias[m_col_ia]->arbre() != nullptr) {
                 // On affiche l'arbre
-                m_ias[m_col_ia]->gere_arbre(s_console, m_ias[m_col_ia]->arbre(), 0, m_etat.othellier);
+                m_ias[m_col_ia]->gere_arbre(s_console, m_ias[m_col_ia]->arbre(), 0, sauv_etat);
             }
+            
             // On réaffiche le plateau
             CreationTab();
 
@@ -208,7 +210,12 @@ bool Tableau::Jouer(int &x, int&y) {
         case ENTREE:
             if (m_etat.othellier[x][y] == VIDE) {
                 // Renvoie vrai si le coup est valide et change le joueur
-                onContinue = !m_etat.appliquer_coup({x, y, m_etat.joueur});
+                if (m_etat.appliquer_coup({x, y, m_etat.joueur}, true)) {
+	                m_etat.appliquer_coup({x, y, m_etat.joueur});
+	                sauv_etat = m_etat;
+	                
+	                onContinue = false;
+	            }
             }
 
             break;
