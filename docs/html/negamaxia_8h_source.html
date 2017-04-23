@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.11"/>
+<title>othello:  Fichier source de negamaxia.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { init_search(); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">othello
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.11 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div id="navrow2" class="tabs2">
+    <ul class="tablist">
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+    </ul>
+  </div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">negamaxia.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef NEGAMAXIA_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define NEGAMAXIA_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">// Dépendances</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="alphabetaia_8h.html">alphabetaia.h</a>&quot;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">// Classe</span></div><div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="classNegaMaxIA.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="classNegaMaxIA.html">NegaMaxIA</a> : <span class="keyword">public</span> <a class="code" href="classAlphaBetaIA.html">AlphaBetaIA</a> {</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">protected</span>:</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        <span class="comment">// Méthodes</span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="structIA_1_1PV.html">MinMaxIA::PV</a> <a class="code" href="classNegaMaxIA.html#afe019dd4570ec304b9b6b9c56596a51a">alphabeta</a>(<a class="code" href="structEtat.html">Etat</a>&amp;&amp; etat, <span class="keywordtype">unsigned</span> prof, <span class="keywordtype">int</span> alpha, <span class="keywordtype">int</span> beta) <span class="keyword">override</span>;</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="comment">// Constructeur</span></div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="classNegaMaxIA.html">NegaMaxIA</a>(<span class="keywordtype">unsigned</span> prof, COULEUR <a class="code" href="namespacec.html">c</a>);</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        </div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="comment">// Méthodes</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keyword">virtual</span> std::string <a class="code" href="classNegaMaxIA.html#aa8b42b9e3740f6df0d77fbf44d9062f4">id</a>() <span class="keyword">const override</span>;</div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#endif // NEGAMAXIA_H</span></div><div class="ttc" id="classAlphaBetaIA_html"><div class="ttname"><a href="classAlphaBetaIA.html">AlphaBetaIA</a></div><div class="ttdef"><b>Definition:</b> alphabetaia.h:20</div></div>
+<div class="ttc" id="classNegaMaxIA_html"><div class="ttname"><a href="classNegaMaxIA.html">NegaMaxIA</a></div><div class="ttdef"><b>Definition:</b> negamaxia.h:10</div></div>
+<div class="ttc" id="classNegaMaxIA_html_afe019dd4570ec304b9b6b9c56596a51a"><div class="ttname"><a href="classNegaMaxIA.html#afe019dd4570ec304b9b6b9c56596a51a">NegaMaxIA::alphabeta</a></div><div class="ttdeci">virtual MinMaxIA::PV alphabeta(Etat &amp;&amp;etat, unsigned prof, int alpha, int beta) override</div><div class="ttdoc">L&amp;#39;algorithme en lui-même. </div><div class="ttdef"><b>Definition:</b> negamaxia.cpp:17</div></div>
+<div class="ttc" id="structEtat_html"><div class="ttname"><a href="structEtat.html">Etat</a></div><div class="ttdef"><b>Definition:</b> etat.h:19</div></div>
+<div class="ttc" id="namespacec_html"><div class="ttname"><a href="namespacec.html">c</a></div><div class="ttdef"><b>Definition:</b> console.cpp:4</div></div>
+<div class="ttc" id="alphabetaia_8h_html"><div class="ttname"><a href="alphabetaia_8h.html">alphabetaia.h</a></div><div class="ttdoc">: Défini AlphaBetaIA une IA basée sur l&amp;#39;algorithme AlphaBeta </div></div>
+<div class="ttc" id="classNegaMaxIA_html_aa8b42b9e3740f6df0d77fbf44d9062f4"><div class="ttname"><a href="classNegaMaxIA.html#aa8b42b9e3740f6df0d77fbf44d9062f4">NegaMaxIA::id</a></div><div class="ttdeci">virtual std::string id() const override</div><div class="ttdoc">Identifiant de l&amp;#39;IA : &quot;alphabeta&quot;. </div><div class="ttdef"><b>Definition:</b> negamaxia.cpp:13</div></div>
+<div class="ttc" id="structIA_1_1PV_html"><div class="ttname"><a href="structIA_1_1PV.html">IA::PV</a></div><div class="ttdef"><b>Definition:</b> ia.h:20</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.11
+</small></address>
+</body>
+</html>

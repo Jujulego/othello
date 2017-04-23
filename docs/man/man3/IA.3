@@ -1,0 +1,53 @@
+.TH "IA" 3 "Dimanche 23 Avril 2017" "othello" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+IA \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Dérivée par \fBMinMaxIA\fP, et \fBRandomIA\fP\&.
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBPV\fP"
+.br
+.in -1c
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "virtual std::string \fBid\fP () const =0"
+.br
+.ti -1c
+.RI "virtual \fBPion\fP \fBjouer\fP (\fBEtat\fP plateau)=0"
+.br
+.ti -1c
+.RI "std::set< \fBPion\fP, bool(&)(\fBPion\fP const &, \fBPion\fP const &)> \fBget_coups\fP (\fBEtat\fP const &plateau) const "
+.br
+.ti -1c
+.RI "void \fBaff_arbre\fP (\fBConsole\fP *s_console, std::shared_ptr< \fBNoeud\fP< \fBPV\fP >> noeud, int num_coup)"
+.br
+.ti -1c
+.RI "bool \fBgere_arbre\fP (\fBConsole\fP *s_console, std::shared_ptr< \fBNoeud\fP< \fBPV\fP >> noeud, int num_coup, std::vector< std::vector< COULEUR >> othellier)"
+.br
+.ti -1c
+.RI "void \fBdess_plat\fP (\fBConsole\fP *s_console, int x, int y, \fBPion\fP pion, std::vector< std::vector< COULEUR >> othellier, int val)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBNoeud\fP< \fBPV\fP > > \fBarbre\fP () const "
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "std::shared_ptr< \fBNoeud\fP< \fBPV\fP > > \fBm_arbre\fP"
+.br
+.in -1c
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour othello à partir du code source\&.

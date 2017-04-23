@@ -1,0 +1,45 @@
+.TH "AlphaBetaIA" 3 "Dimanche 23 Avril 2017" "othello" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+AlphaBetaIA \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <alphabetaia\&.h>\fP
+.PP
+Est dérivée de \fBMinMaxIA\fP\&.
+.PP
+Dérivée par \fBMemIA\fP, et \fBNegaMaxIA\fP\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBAlphaBetaIA\fP (unsigned prof, COULEUR c)"
+.br
+.ti -1c
+.RI "virtual std::string \fBid\fP () const override"
+.br
+.RI "\fIIdentifiant de l'\fBIA\fP : 'alphabeta'\&. \fP"
+.ti -1c
+.RI "virtual \fBPion\fP \fBjouer\fP (\fBEtat\fP plateau) override"
+.br
+.RI "\fIEntrée de l'\fBIA\fP : lance l'execution de l'algorithme\&. \fP"
+.in -1c
+.SS "Fonctions membres protégées"
+
+.in +1c
+.ti -1c
+.RI "virtual \fBMinMaxIA::PV\fP \fBalphabeta\fP (\fBEtat\fP &&etat, unsigned prof, int alpha, int beta)"
+.br
+.RI "\fIL'algorithme en lui-même\&. \fP"
+.in -1c
+.SS "Membres hérités additionnels"
+.SH "Description détaillée"
+.PP 
+Classe de l'\fBIA\fP AlphaBeta Hérite de MinMax pour récupérer l'heuristique et la profondeur 
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour othello à partir du code source\&.

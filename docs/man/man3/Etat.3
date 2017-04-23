@@ -1,0 +1,38 @@
+.TH "Etat" 3 "Dimanche 23 Avril 2017" "othello" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Etat \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "std::vector< \fBPion\fP > \fBpions\fP (COULEUR c) const "
+.br
+.ti -1c
+.RI "bool \fBappliquer_coup\fP (\fBPion\fP const &p, bool fake=false)"
+.br
+.ti -1c
+.RI "int \fBcoups_restant\fP (COULEUR c)"
+.br
+.in -1c
+.SS "Attributs publics"
+
+.in +1c
+.ti -1c
+.RI "COULEUR \fBjoueur\fP"
+.br
+.ti -1c
+.RI "std::map< COULEUR, unsigned > \fBscores\fP"
+.br
+.ti -1c
+.RI "std::vector< std::vector< COULEUR > > \fBothellier\fP"
+.br
+.in -1c
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour othello à partir du code source\&.

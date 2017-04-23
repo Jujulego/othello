@@ -1,0 +1,86 @@
+\hypertarget{classOthellier}{}\section{Référence de la classe Othellier}
+\label{classOthellier}\index{Othellier@{Othellier}}
+
+
+Graphe d\textquotesingle{}héritage de Othellier\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classOthellier__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Graphe de collaboration de Othellier\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=178pt]{classOthellier__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Connecteurs publics}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries reset} ()\hypertarget{classOthellier_a376f9f9b9d08174bc2d2ab6e36e9b505}{}\label{classOthellier_a376f9f9b9d08174bc2d2ab6e36e9b505}
+
+\item 
+void {\bfseries reset\+\_\+affichage} ()\hypertarget{classOthellier_a312113b4f42c43b10b0ab602cd59f67c}{}\label{classOthellier_a312113b4f42c43b10b0ab602cd59f67c}
+
+\item 
+void {\bfseries annuler} ()\hypertarget{classOthellier_a81ed1f11d1471dea2fb4f5567cf9a1b7}{}\label{classOthellier_a81ed1f11d1471dea2fb4f5567cf9a1b7}
+
+\item 
+void {\bfseries quitter} ()\hypertarget{classOthellier_a3a2c45895df54ec7e5ea5bc93bc3b3e2}{}\label{classOthellier_a3a2c45895df54ec7e5ea5bc93bc3b3e2}
+
+\end{DoxyCompactItemize}
+\subsection*{Signaux}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries fin} (C\+O\+U\+L\+E\+UR gagnant)\hypertarget{classOthellier_a20f64c763665a10f4dd7055baaaf0c31}{}\label{classOthellier_a20f64c763665a10f4dd7055baaaf0c31}
+
+\item 
+void {\bfseries start\+\_\+ia} (\hyperlink{classOthellier}{Othellier} $\ast$)\hypertarget{classOthellier_a6a73f46c7ccbd3e957f439a3b0b5c9c0}{}\label{classOthellier_a6a73f46c7ccbd3e957f439a3b0b5c9c0}
+
+\item 
+void {\bfseries chg\+\_\+joueur} (C\+O\+U\+L\+E\+UR joueur)\hypertarget{classOthellier_a4d53350d7e47fb3448afebb221d63aa4}{}\label{classOthellier_a4d53350d7e47fb3448afebb221d63aa4}
+
+\item 
+void {\bfseries chg\+\_\+scores} (int blanc, int noir)\hypertarget{classOthellier_ac1140f99ca0ad23386fca06aab2ed0ac}{}\label{classOthellier_ac1140f99ca0ad23386fca06aab2ed0ac}
+
+\end{DoxyCompactItemize}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Othellier} (std\+::map$<$ C\+O\+U\+L\+E\+UR, std\+::shared\+\_\+ptr$<$ \hyperlink{classIA}{IA} $>$$>$ ias, bool infini=false, Q\+Widget $\ast$parent=nullptr)\hypertarget{classOthellier_ac316a7b9ce63055bd9ec6478de58b4ca}{}\label{classOthellier_ac316a7b9ce63055bd9ec6478de58b4ca}
+
+\item 
+\hyperlink{structEtat}{Etat} {\bfseries get\+\_\+etat} () const \hypertarget{classOthellier_af08e758da67d6ac6b816f8a7fca388a4}{}\label{classOthellier_af08e758da67d6ac6b816f8a7fca388a4}
+
+\item 
+void {\bfseries set\+\_\+etat} (\hyperlink{structEtat}{Etat} const \&etat)\hypertarget{classOthellier_a1e734c9ae8c3c48d6d14ab6239539f64}{}\label{classOthellier_a1e734c9ae8c3c48d6d14ab6239539f64}
+
+\item 
+bool {\bfseries test\+\_\+fin} () const \hypertarget{classOthellier_a290ceecc7023c9e0922d2fb144cd3d88}{}\label{classOthellier_a290ceecc7023c9e0922d2fb144cd3d88}
+
+\item 
+std\+::vector$<$ \hyperlink{classGPion}{G\+Pion} $\ast$ $>$ {\bfseries test\+\_\+pos} (Q\+Point pos) const \hypertarget{classOthellier_ae5529c1d3820960f3959a84f13e5ea5d}{}\label{classOthellier_ae5529c1d3820960f3959a84f13e5ea5d}
+
+\item 
+int {\bfseries score\+\_\+blanc} () const \hypertarget{classOthellier_a5506485735f33a832375d216f8112db6}{}\label{classOthellier_a5506485735f33a832375d216f8112db6}
+
+\item 
+int {\bfseries score\+\_\+noir} () const \hypertarget{classOthellier_aed3600f23b4a9aae12e1315fa6b856a3}{}\label{classOthellier_aed3600f23b4a9aae12e1315fa6b856a3}
+
+\item 
+C\+O\+U\+L\+E\+UR {\bfseries get\+\_\+joueur} () const \hypertarget{classOthellier_a3c11f449ea5e3e4c389599db7a46b8e1}{}\label{classOthellier_a3c11f449ea5e3e4c389599db7a46b8e1}
+
+\end{DoxyCompactItemize}
+
+
+La documentation de cette classe a été générée à partir des fichiers suivants \+:\begin{DoxyCompactItemize}
+\item 
+qt/othellier.\+h\item 
+build/qt-\/debug/moc\+\_\+othellier.\+cpp\item 
+qt/othellier.\+cpp\end{DoxyCompactItemize}

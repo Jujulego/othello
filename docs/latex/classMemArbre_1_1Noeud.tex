@@ -1,0 +1,77 @@
+\hypertarget{classMemArbre_1_1Noeud}{}\section{Référence de la classe Mem\+Arbre\+:\+:Noeud}
+\label{classMemArbre_1_1Noeud}\index{Mem\+Arbre\+::\+Noeud@{Mem\+Arbre\+::\+Noeud}}
+
+
+Graphe d\textquotesingle{}héritage de Mem\+Arbre\+:\+:Noeud\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{classMemArbre_1_1Noeud__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Graphe de collaboration de Mem\+Arbre\+:\+:Noeud\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{classMemArbre_1_1Noeud__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries Noeud} (int val, std\+::tuple$<$ int, int $>$ const \&coords, int pos, std\+::shared\+\_\+ptr$<$ \hyperlink{classMemArbre}{Mem\+Arbre} $>$ const \&arbre)\hypertarget{classMemArbre_1_1Noeud_a8fb60f07cdaa6c159102b5c28ccd904f}{}\label{classMemArbre_1_1Noeud_a8fb60f07cdaa6c159102b5c28ccd904f}
+
+\item 
+{\bfseries Noeud} (int val, std\+::tuple$<$ int, int $>$ const \&coords, int pos, std\+::shared\+\_\+ptr$<$ \hyperlink{classMemArbre}{Mem\+Arbre} $>$ const \&arbre, std\+::shared\+\_\+ptr$<$ \hyperlink{classMemArbre_1_1Noeud}{Noeud} $>$ const \&pere)\hypertarget{classMemArbre_1_1Noeud_a96ab7701e3ac3a755c66e2332f69cd7d}{}\label{classMemArbre_1_1Noeud_a96ab7701e3ac3a755c66e2332f69cd7d}
+
+\item 
+std\+::weak\+\_\+ptr$<$ \hyperlink{classMemArbre_1_1Noeud}{Noeud} $>$ {\bfseries weak\+\_\+from\+\_\+this} ()\hypertarget{classMemArbre_1_1Noeud_a4639b419945fdb26f7ba9c967559bcf3}{}\label{classMemArbre_1_1Noeud_a4639b419945fdb26f7ba9c967559bcf3}
+
+\item 
+std\+::ostream \& {\bfseries afficher} (std\+::ostream \&stream) const \hypertarget{classMemArbre_1_1Noeud_ae5c5794ad07ff855c5e472f10c890c38}{}\label{classMemArbre_1_1Noeud_ae5c5794ad07ff855c5e472f10c890c38}
+
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classMemArbre_1_1Noeud}{Noeud} $>$ {\bfseries add\+\_\+fils} (int val, std\+::tuple$<$ int, int $>$ const \&coords)\hypertarget{classMemArbre_1_1Noeud_a738b4af9c935bc05dac33f4c48bed0cf}{}\label{classMemArbre_1_1Noeud_a738b4af9c935bc05dac33f4c48bed0cf}
+
+\item 
+void {\bfseries save} ()\hypertarget{classMemArbre_1_1Noeud_a710f476869b71d13a8e26eddd86a08f9}{}\label{classMemArbre_1_1Noeud_a710f476869b71d13a8e26eddd86a08f9}
+
+\item 
+bool {\bfseries est\+\_\+racine} () const \hypertarget{classMemArbre_1_1Noeud_abb962cfea5c62f59b00ba4d89be3bee9}{}\label{classMemArbre_1_1Noeud_abb962cfea5c62f59b00ba4d89be3bee9}
+
+\item 
+int {\bfseries val} () const \hypertarget{classMemArbre_1_1Noeud_a6a4ea4e942bf9386355fbc07b9b20a58}{}\label{classMemArbre_1_1Noeud_a6a4ea4e942bf9386355fbc07b9b20a58}
+
+\item 
+void {\bfseries val} (int val)\hypertarget{classMemArbre_1_1Noeud_a1a0284e4bbece82e6ba90147daf15fbb}{}\label{classMemArbre_1_1Noeud_a1a0284e4bbece82e6ba90147daf15fbb}
+
+\item 
+int const \& {\bfseries pos} () const \hypertarget{classMemArbre_1_1Noeud_a80908f07b60962b3ad38a5bcdd3e739f}{}\label{classMemArbre_1_1Noeud_a80908f07b60962b3ad38a5bcdd3e739f}
+
+\item 
+std\+::tuple$<$ int, int $>$ \& {\bfseries coords} ()\hypertarget{classMemArbre_1_1Noeud_a97ffd0d907bf6d61fc19446212c676de}{}\label{classMemArbre_1_1Noeud_a97ffd0d907bf6d61fc19446212c676de}
+
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classMemArbre_1_1Noeud}{Noeud} $>$ {\bfseries pere} () const \hypertarget{classMemArbre_1_1Noeud_ade2357880c5929f836edc962301edf25}{}\label{classMemArbre_1_1Noeud_ade2357880c5929f836edc962301edf25}
+
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classMemArbre}{Mem\+Arbre} $>$ {\bfseries arbre} () const \hypertarget{classMemArbre_1_1Noeud_a3e4c43603bc73e9b3c59c4f484d66436}{}\label{classMemArbre_1_1Noeud_a3e4c43603bc73e9b3c59c4f484d66436}
+
+\item 
+std\+::set$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{classMemArbre_1_1Noeud}{Noeud} $>$ $>$ const \& {\bfseries fils} () const \hypertarget{classMemArbre_1_1Noeud_a7c627d3c87dac568a9d39d8f65516626}{}\label{classMemArbre_1_1Noeud_a7c627d3c87dac568a9d39d8f65516626}
+
+\end{DoxyCompactItemize}
+\subsection*{Amis}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Mem\+Arbre}\hypertarget{classMemArbre_1_1Noeud_a2828cd0bf50a0db376c8e9b9eeda2637}{}\label{classMemArbre_1_1Noeud_a2828cd0bf50a0db376c8e9b9eeda2637}
+
+\end{DoxyCompactItemize}
+
+
+La documentation de cette classe a été générée à partir des fichiers suivants \+:\begin{DoxyCompactItemize}
+\item 
+memarbre.\+h\item 
+memarbre.\+cpp\end{DoxyCompactItemize}
