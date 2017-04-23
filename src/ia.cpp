@@ -73,27 +73,33 @@ void IA::aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num
 
         s_console->gotoLigCol(7, (i*2) + 9);
         std::cout << ANGLE_HDG;
+        
         s_console->gotoLigCol(6, (i*2) + 9);
-        if (i < noeud->size() / 2) {
+        if (i == 0) {
             std::cout << ANGLE_BD;
             s_console->gotoLigCol(6, (i*2) + 10);
             std::cout << BARRE_HORI;
-        }
-        else if (i >= noeud->size() / 2) {
+        } else if (i == (noeud->size() -1)) {
             std::cout << ANGLE_BG;
+            s_console->gotoLigCol(6, (i*2) + 8);
+            std::cout << BARRE_HORI;
+        } else {
+            std::cout << ANGLE_BDG;
             s_console->gotoLigCol(6, (i*2) + 8);
             std::cout << BARRE_HORI;
         }
     }
 
     // On affiche le noeud de base
-    s_console->gotoLigCol(4, noeud->size() + 9);
+    s_console->gotoLigCol(4, noeud->size() + 8);
     std::cout << "O";
-    s_console->gotoLigCol(5, noeud->size() + 9);
+    
+    s_console->gotoLigCol(5, noeud->size() + 8);
     std::cout << BARRE_VERT;
-    s_console->gotoLigCol(6, noeud->size() + 9);
-
+    
+    s_console->gotoLigCol(6, noeud->size() + 8);
     if (noeud->size() == 1) std::cout << BARRE_VERT;
+    else if (noeud->size() % 2) std::cout << INTERSECT;
     else std::cout << ANGLE_HDG;
 
     // On affiche les consignes de touche
@@ -202,5 +208,3 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
 
     return quitter;
 }
-
-

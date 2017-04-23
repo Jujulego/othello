@@ -30,6 +30,8 @@ static const std::string BARRE_VERT = "\xb3";
 static const std::string ANGLE_BD   = "\xda";
 static const std::string ANGLE_BG   = "\xbf";
 static const std::string ANGLE_HDG  = "\xc1";
+static const std::string ANGLE_BDG  = "\xc2";
+static const std::string INTERSECT  = "\xc5";
 
 // Commandes
 # define ENTREE  13
@@ -51,6 +53,8 @@ static const std::string BARRE_VERT = "\xe2\x94\x82";
 static const std::string ANGLE_BD   = "\xe2\x95\xad";
 static const std::string ANGLE_BG   = "\xe2\x95\xae";
 static const std::string ANGLE_HDG  = "\xe2\x94\xb4";
+static const std::string ANGLE_BDG  = "\xe2\x94\xac";
+static const std::string INTERSECT  = "\xe2\x94\xbc";
 
 // Commandes
 # define ENTREE  10
