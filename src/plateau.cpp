@@ -111,12 +111,12 @@ void Tableau::CreationTab() {
 
     if (m_ias[m_col_ia]->id() == "minmax") {
         s_console->gotoLigCol(20, 50);
-        std::cout << "a : Montrer le graphe d'etat";
+        std::cout << "A : Montrer le graphe d'etat";
     }
     s_console->gotoLigCol(21, 50);
-    std::cout << "f : Sauvegarder";
+    std::cout << "F : Sauvegarder";
     s_console->gotoLigCol(22, 50);
-    std::cout << "e : Quitter";
+    std::cout << "E : Quitter";
 
     AfficherTab();
 }
@@ -151,6 +151,16 @@ void Tableau::AfficherTab() {
             s_console->setColor();
         }
     }
+
+    // Message
+    s_console->gotoLigCol(10, 50);
+    std::cout << "Au tour de " << ((m_etat.joueur == NOIR) ? "noir ! " : "blanc !");
+
+    s_console->gotoLigCol(15, 50);
+    std::cout << "Blanc : " << m_etat.scores[BLANC] << " ";
+
+    s_console->gotoLigCol(16, 50);
+    std::cout << "Noir  : " << m_etat.scores[NOIR] << " ";
 }
 
 bool Tableau::Jouer(int &x, int&y) {
@@ -187,9 +197,12 @@ bool Tableau::Jouer(int &x, int&y) {
             break;
 
         case 'a':
-            if (m_ias[m_col_ia]->id() == "minmax") {
+            if ((m_ias[m_col_ia]->arbre() != nullptr) && (m_ias[m_col_ia]->id() == "minmax")) {
+                // On affiche l'arbre
                 m_ias[m_col_ia]->gere_arbre(s_console, m_ias[m_col_ia]->arbre(), 0);
             }
+            // On réaffiche le plateau
+            CreationTab();
 
             break;
 

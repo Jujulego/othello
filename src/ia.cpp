@@ -107,6 +107,14 @@ void IA::aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num
     s_console->gotoLigCol(6, noeud->size() + 9);
     if (noeud->size() == 1) std::cout << "\xb3";
     else std::cout << "\xc1";
+
+    // On affiche les consignes de touche
+    s_console->gotoLigCol(12, 9);
+    std::cout << "R : remonter au dernier père";
+    s_console->gotoLigCol(13, 9);
+    std::cout << "P : revenir au plateau";
+    s_console->gotoLigCol(14, 9);
+    std::cout << "ENTRER (sur un fils) : descendre dans la branche";
 }
 
 bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num_coup) {
@@ -116,18 +124,14 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
     int c;
     bool cont = true;
     bool quitter = false;
-    bool aff = true;
+
+    // On affiche l'arbre
+    aff_arbre(s_console, noeud, num_coup);
 
     // On se place sur le noeud de base
     s_console->gotoLigCol(y, x);
 
     while (cont) {
-        // On affiche l'arbre, si besoin
-        if (aff) {
-            aff_arbre(s_console, noeud, num_coup);
-            aff = false;
-        }
-
         c = s_console->getch();
 
         switch (c)
@@ -177,8 +181,10 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
             case ENTREE:
                 if (num_coup < 4) {
                     if (y == 8) {
-                        if (gere_arbre(s_console, noeud->fils((x - 9) / 2), num_coup + 1)) cont = false;
-                        else aff = true;
+                            quitter = gere_arbre(s_console, noeud->fils((x - 9) / 2), num_coup + 1);
+                        if (quitter) cont = false;
+                        aff_arbre(s_console, noeud, num_coup);
+                        s_console->gotoLigCol(4, noeud->size() + 9);
                     }
                 }
                 else {
@@ -186,6 +192,22 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
                     std::cout << "Vous etes deja en bas de l'arbre !";
                 }
 
+                break;
+
+            case 'r':
+                if (num_coup > 0) {
+                    return quitter;
+                }
+                else {
+                    s_console->gotoLigCol(10, 9);
+                    std::cout << "Vous ne pouvez pas remonter plus haut !";
+                }
+
+                break;
+
+            case 'p':
+                quitter = true;
+                return quitter;
                 break;
         }
     }
