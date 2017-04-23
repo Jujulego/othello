@@ -3,6 +3,7 @@
 
 // Dépendances
 #include <memory>
+#include <string>
 
 #include "console.h"
 #include "memia.h"
@@ -17,15 +18,16 @@ class Menu {
 		
 		// Attributs statiques
 		static Console s_console;
+		
+		// Méthodes
+		void fichier_erreur(std::string const& fichier, std::string const& err);
 	
 	public:
-		// Constructeur
-		Menu();
-		
 		// Méthode statique
 		static void entete();
 		
 		// Méthodes
+		int init();
 		void afficher() const;
 		COULEUR choix_coul() const;
 		void regles() const;

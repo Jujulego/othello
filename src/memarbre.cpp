@@ -137,8 +137,7 @@ MemArbre::MemArbre(std::string const& fichier) {
     while (m_fichier.fail()) {
         // Uniquement si le fichier n'existe pas
         if (errno != ENOENT) {
-            std::cerr << "Impossible d'ouvrir le fichier : " << strerror(errno) << std::endl;
-            std::abort();
+            throw std::string(strerror(errno));
         }
 
         // Création du fichier

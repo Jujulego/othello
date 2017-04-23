@@ -40,3 +40,5 @@ parse\.py
 perf\.data
 perf\.data\.old
 src\.zip
+
+*.old
