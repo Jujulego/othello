@@ -111,6 +111,15 @@ void IA::aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num
     	std::cout << ANGLE_HDG;
     }
 
+    // On affiche les consignes de touche
+    s_console->gotoLigCol(23, 0);
+    std::cout << "R : remonter au dernier pere";
+
+    s_console->gotoLigCol(24, 0);
+    std::cout << "E : revenir au plateau";
+    s_console->gotoLigCol(25, 0);
+    std::cout << "ENTRER (sur un fils) : descendre dans la branche";
+
     std::cout.flush();
 }
 
@@ -133,7 +142,7 @@ void IA::dess_plat(Console* s_console, int x, int y, Pion pion, Etat etat, int v
             } else if (etat.othellier[j][i] == NOIR) {
             	s_console->setColor(COLOR_RED, COLOR_BLACK);
             }
-            
+
             if ((pion.x == j) && (pion.y == i)) {
 	           	std::cout << "<>";
             } else {
@@ -176,17 +185,6 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
     	noeud->val().val
     );
 
-    // On affiche les consignes de touche
-	if (num_coup != 0) {
-	    s_console->gotoLigCol(23, 0);
-    	std::cout << "R : remonter au dernier pere";
-    }
-    
-    s_console->gotoLigCol(24, 0);
-    std::cout << "E : revenir au plateau";
-    s_console->gotoLigCol(25, 0);
-    std::cout << "ENTRER (sur un fils) : descendre dans la branche";
-
     // On se place sur le noeud de base
     while (cont) {
     	// Récup
@@ -196,7 +194,7 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
 		// Effacage des messages d'erreurs
         s_console->gotoLigCol(26, 9);
         std::cout << "                                       ";
-        
+
         // Intéractions
         switch (c) {
             case 'z':
