@@ -1,0 +1,74 @@
+.TH "Othellier" 3 "Dimanche 23 Avril 2017" "othello" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Othellier \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de QGraphicsView\&.
+.SS "Connecteurs publics"
+
+.in +1c
+.ti -1c
+.RI "void \fBreset\fP ()"
+.br
+.ti -1c
+.RI "void \fBreset_affichage\fP ()"
+.br
+.ti -1c
+.RI "void \fBannuler\fP ()"
+.br
+.ti -1c
+.RI "void \fBquitter\fP ()"
+.br
+.in -1c
+.SS "Signaux"
+
+.in +1c
+.ti -1c
+.RI "void \fBfin\fP (COULEUR gagnant)"
+.br
+.ti -1c
+.RI "void \fBstart_ia\fP (\fBOthellier\fP *)"
+.br
+.ti -1c
+.RI "void \fBchg_joueur\fP (COULEUR joueur)"
+.br
+.ti -1c
+.RI "void \fBchg_scores\fP (int blanc, int noir)"
+.br
+.in -1c
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBOthellier\fP (std::map< COULEUR, std::shared_ptr< \fBIA\fP >> ias, bool infini=false, QWidget *parent=nullptr)"
+.br
+.ti -1c
+.RI "\fBEtat\fP \fBget_etat\fP () const "
+.br
+.ti -1c
+.RI "void \fBset_etat\fP (\fBEtat\fP const &etat)"
+.br
+.ti -1c
+.RI "bool \fBtest_fin\fP () const "
+.br
+.ti -1c
+.RI "std::vector< \fBGPion\fP * > \fBtest_pos\fP (QPoint pos) const "
+.br
+.ti -1c
+.RI "int \fBscore_blanc\fP () const "
+.br
+.ti -1c
+.RI "int \fBscore_noir\fP () const "
+.br
+.ti -1c
+.RI "COULEUR \fBget_joueur\fP () const "
+.br
+.in -1c
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour othello à partir du code source\&.

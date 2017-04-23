@@ -1,0 +1,50 @@
+.TH "Tableau" 3 "Dimanche 23 Avril 2017" "othello" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Tableau \- 
+.SH SYNOPSIS
+.br
+.PP
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBTableau\fP (std::shared_ptr< \fBIA\fP > ia_noir=nullptr, std::shared_ptr< \fBIA\fP > ia_blanc=nullptr)"
+.br
+.ti -1c
+.RI "\fBTableau\fP (\fBEtat\fP &&etat, std::shared_ptr< \fBIA\fP > ia_noir, std::shared_ptr< \fBIA\fP > ia_blanc)"
+.br
+.ti -1c
+.RI "void \fBCreationTab\fP ()"
+.br
+.ti -1c
+.RI "bool \fBJouer\fP (int &x, int &y)"
+.br
+.ti -1c
+.RI "void \fBAfficherTab\fP ()"
+.br
+.ti -1c
+.RI "COULEUR \fBBoucleJeu\fP ()"
+.br
+.ti -1c
+.RI "bool \fBsauvegarder\fP () const "
+.br
+.ti -1c
+.RI "std::map< COULEUR, unsigned > const \fBscores\fP () const "
+.br
+.ti -1c
+.RI "std::vector< std::shared_ptr< \fBPion\fP > > const & \fBget_pions\fP () const "
+.br
+.in -1c
+.SS "Attributs protégés"
+
+.in +1c
+.ti -1c
+.RI "\fBConsole\fP * \fBs_console\fP = NULL"
+.br
+.in -1c
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour othello à partir du code source\&.

@@ -51,7 +51,11 @@ MinMaxIA::PV MemIA::memia(Etat&& etat, unsigned prof, int alpha, int beta, std::
     }
 
     // Initialisation
-    val = std::numeric_limits<decltype(val)>::min(); // -infini !
+    if (prof % 2) {
+        val = std::numeric_limits<decltype(val)>::max(); // +infini !
+    } else {
+        val = std::numeric_limits<decltype(val)>::min(); // -infini !
+    }
 
     // Parcours des coups
     for (auto c : coups) {
@@ -162,6 +166,10 @@ void MemIA::perdu() {
     m_noeud->save();
 
     m_noeud = nullptr;
+}
+
+void MemIA::set_prof(unsigned prof) {
+	m_prof = prof;
 }
 
 void MemIA::set_noeud(int pos) {

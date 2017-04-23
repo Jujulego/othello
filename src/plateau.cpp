@@ -86,23 +86,7 @@ void Tableau::CreationTab() {
     s_console->gotoLigCol(28, 0);
     std::cout << "   " << LIGNE_BAS << std::endl;
     std::cout << "     A    B    C    D    E    F    G    H" << std::endl;
-
-    int off = 0;
-    s_console->gotoLigCol(5, DROITE_PLATEAU);
-    std::cout << "Commandes :";
-
-    if ((m_col_ia != VIDE) && (m_ias[m_col_ia]->id() == "minmax")) {
-        s_console->gotoLigCol(6, DROITE_PLATEAU);
-        std::cout << "A : Montrer le graphe d'etat";
-
-        off++;
-    }
-
-    s_console->gotoLigCol(6+off, DROITE_PLATEAU);
-    std::cout << "F : Sauvegarder";
-    s_console->gotoLigCol(7+off, DROITE_PLATEAU);
-    std::cout << "E : Quitter";
-
+    
     AfficherTab();
 }
 
@@ -136,6 +120,23 @@ void Tableau::AfficherTab() {
             s_console->setColor();
         }
     }
+
+	// Commandes
+    int off = 0;
+    s_console->gotoLigCol(5, DROITE_PLATEAU);
+    std::cout << "Commandes :";
+
+    if ((m_col_ia != VIDE) && (m_ias[m_col_ia]->arbre() != nullptr)) {
+        s_console->gotoLigCol(6, DROITE_PLATEAU);
+        std::cout << "A : Montrer le graphe d'etat";
+
+        off++;
+    }
+
+    s_console->gotoLigCol(6+off, DROITE_PLATEAU);
+    std::cout << "F : Sauvegarder";
+    s_console->gotoLigCol(7+off, DROITE_PLATEAU);
+    std::cout << "E : Quitter";
 
     // Message
     s_console->gotoLigCol(10, 50);
@@ -184,7 +185,7 @@ bool Tableau::Jouer(int &x, int&y) {
         case 'a':
             if ((m_ias[m_col_ia]->arbre() != nullptr) && (m_ias[m_col_ia]->id() == "minmax")) {
                 // On affiche l'arbre
-                m_ias[m_col_ia]->gere_arbre(s_console, m_ias[m_col_ia]->arbre(), 0);
+                m_ias[m_col_ia]->gere_arbre(s_console, m_ias[m_col_ia]->arbre(), 0, m_etat.othellier);
             }
             // On réaffiche le plateau
             CreationTab();

@@ -1,0 +1,46 @@
+.TH "Noeud< T >" 3 "Dimanche 23 Avril 2017" "othello" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Noeud< T > \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de enable_shared_from_this< Noeud< T > >\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBNoeud\fP (T const &val, std::weak_ptr< \fBNoeud\fP< T >> const &pere)"
+.br
+.ti -1c
+.RI "\fBNoeud\fP< T > \fBoperator[]\fP (int i)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBNoeud\fP< T > > \fBadd_fils\fP (T const &val)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBNoeud\fP< T > > \fBfils\fP (int i)"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBNoeud\fP< T > > \fBpere\fP ()"
+.br
+.ti -1c
+.RI "std::add_lvalue_reference< T >::type \fBval\fP ()"
+.br
+.ti -1c
+.RI "unsigned \fBsize\fP () const "
+.br
+.in -1c
+.SS "Fonctions membres publiques statiques"
+
+.in +1c
+.ti -1c
+.RI "static std::shared_ptr< \fBNoeud\fP< T > > \fBcreer\fP (T const &val)"
+.br
+.in -1c
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour othello à partir du code source\&.

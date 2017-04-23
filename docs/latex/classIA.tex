@@ -1,0 +1,61 @@
+\hypertarget{classIA}{}\section{Référence de la classe IA}
+\label{classIA}\index{IA@{IA}}
+
+
+Graphe d\textquotesingle{}héritage de IA\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classIA__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Graphe de collaboration de IA\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=157pt]{classIA__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structIA_1_1PV}{PV}
+\end{DoxyCompactItemize}
+\subsection*{Fonctions membres publiques}
+\begin{DoxyCompactItemize}
+\item 
+virtual std\+::string {\bfseries id} () const =0\hypertarget{classIA_a766f10d2cd5450868523e2fa184fdf93}{}\label{classIA_a766f10d2cd5450868523e2fa184fdf93}
+
+\item 
+virtual \hyperlink{structPion}{Pion} {\bfseries jouer} (\hyperlink{structEtat}{Etat} plateau)=0\hypertarget{classIA_a3f40133e71c6bbe7fe7c72b4792dccb4}{}\label{classIA_a3f40133e71c6bbe7fe7c72b4792dccb4}
+
+\item 
+std\+::set$<$ \hyperlink{structPion}{Pion}, bool(\&)(\hyperlink{structPion}{Pion} const \&, \hyperlink{structPion}{Pion} const \&)$>$ {\bfseries get\+\_\+coups} (\hyperlink{structEtat}{Etat} const \&plateau) const \hypertarget{classIA_a6a1a014ffa6b3dbf6c1f401ecfa55148}{}\label{classIA_a6a1a014ffa6b3dbf6c1f401ecfa55148}
+
+\item 
+void {\bfseries aff\+\_\+arbre} (\hyperlink{classConsole}{Console} $\ast$s\+\_\+console, std\+::shared\+\_\+ptr$<$ \hyperlink{classNoeud}{Noeud}$<$ \hyperlink{structIA_1_1PV}{PV} $>$$>$ noeud, int num\+\_\+coup)\hypertarget{classIA_aca13a5971e87f358cd9e70188448b698}{}\label{classIA_aca13a5971e87f358cd9e70188448b698}
+
+\item 
+bool {\bfseries gere\+\_\+arbre} (\hyperlink{classConsole}{Console} $\ast$s\+\_\+console, std\+::shared\+\_\+ptr$<$ \hyperlink{classNoeud}{Noeud}$<$ \hyperlink{structIA_1_1PV}{PV} $>$$>$ noeud, int num\+\_\+coup, std\+::vector$<$ std\+::vector$<$ C\+O\+U\+L\+E\+UR $>$$>$ othellier)\hypertarget{classIA_aa2896700500f380a77b8efc6dff9ed5e}{}\label{classIA_aa2896700500f380a77b8efc6dff9ed5e}
+
+\item 
+void {\bfseries dess\+\_\+plat} (\hyperlink{classConsole}{Console} $\ast$s\+\_\+console, int x, int y, \hyperlink{structPion}{Pion} pion, std\+::vector$<$ std\+::vector$<$ C\+O\+U\+L\+E\+UR $>$$>$ othellier, int val)\hypertarget{classIA_a2bb3de5d20fb887a3e88d6b0d698c381}{}\label{classIA_a2bb3de5d20fb887a3e88d6b0d698c381}
+
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classNoeud}{Noeud}$<$ \hyperlink{structIA_1_1PV}{PV} $>$ $>$ {\bfseries arbre} () const \hypertarget{classIA_a27c2b1942849e7fbd4c77f4c0fa0d88d}{}\label{classIA_a27c2b1942849e7fbd4c77f4c0fa0d88d}
+
+\end{DoxyCompactItemize}
+\subsection*{Attributs protégés}
+\begin{DoxyCompactItemize}
+\item 
+std\+::shared\+\_\+ptr$<$ \hyperlink{classNoeud}{Noeud}$<$ \hyperlink{structIA_1_1PV}{PV} $>$ $>$ {\bfseries m\+\_\+arbre}\hypertarget{classIA_a6666e00b08d090ab464d1847c6b9db32}{}\label{classIA_a6666e00b08d090ab464d1847c6b9db32}
+
+\end{DoxyCompactItemize}
+
+
+La documentation de cette classe a été générée à partir des fichiers suivants \+:\begin{DoxyCompactItemize}
+\item 
+ia.\+h\item 
+ia.\+cpp\end{DoxyCompactItemize}

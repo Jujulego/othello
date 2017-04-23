@@ -1,0 +1,6 @@
+<map id="AlphaBetaIA" name="AlphaBetaIA">
+<area shape="rect" id="node4" href="$classMemIA.html" title="{MemIA\n||+ MemIA()\l+ id()\l+ jouer()\l+ gagne()\l+ perdu()\l+ set_prof()\l+ set_noeud()\l}" alt="" coords="5,601,108,767"/>
+<area shape="rect" id="node5" href="$classNegaMaxIA.html" title="{NegaMaxIA\n||+ NegaMaxIA()\l+ id()\l# alphabeta()\l}" alt="" coords="132,631,243,737"/>
+<area shape="rect" id="node2" href="$classMinMaxIA.html" title="{MinMaxIA\n|# m_prof\l# m_couleur\l|+ MinMaxIA()\l+ id()\l+ jouer()\l# heuristique()\l# minmax()\l}" alt="" coords="70,233,174,384"/>
+<area shape="rect" id="node3" href="$classIA.html" title="{IA\n|# m_arbre\l|+ ~IA()\l+ id()\l+ jouer()\l+ get_coups()\l+ aff_arbre()\l+ gere_arbre()\l+ dess_plat()\l+ arbre()\l}" alt="" coords="71,5,173,185"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="IA" name="IA">
+<area shape="rect" id="node2" href="$classMinMaxIA.html" title="{MinMaxIA\n|# m_prof\l# m_couleur\l|+ MinMaxIA()\l+ id()\l+ jouer()\l# heuristique()\l# minmax()\l}" alt="" coords="70,233,174,384"/>
+<area shape="rect" id="node6" href="$classRandomIA.html" title="{RandomIA\n||+ id()\l+ jouer()\l}" alt="" coords="199,263,283,355"/>
+<area shape="rect" id="node3" href="$classAlphaBetaIA.html" title="{AlphaBetaIA\n||+ AlphaBetaIA()\l+ id()\l+ jouer()\l# alphabeta()\l}" alt="" coords="65,432,179,553"/>
+<area shape="rect" id="node4" href="$classMemIA.html" title="{MemIA\n||+ MemIA()\l+ id()\l+ jouer()\l+ gagne()\l+ perdu()\l+ set_prof()\l+ set_noeud()\l}" alt="" coords="5,601,108,767"/>
+<area shape="rect" id="node5" href="$classNegaMaxIA.html" title="{NegaMaxIA\n||+ NegaMaxIA()\l+ id()\l# alphabeta()\l}" alt="" coords="132,631,243,737"/>
+</map>

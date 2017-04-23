@@ -1,0 +1,67 @@
+.TH "MemArbre::Noeud" 3 "Dimanche 23 Avril 2017" "othello" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+MemArbre::Noeud \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Est dérivée de enable_shared_from_this< Noeud >\&.
+.SS "Fonctions membres publiques"
+
+.in +1c
+.ti -1c
+.RI "\fBNoeud\fP (int val, std::tuple< int, int > const &coords, int pos, std::shared_ptr< \fBMemArbre\fP > const &arbre)"
+.br
+.ti -1c
+.RI "\fBNoeud\fP (int val, std::tuple< int, int > const &coords, int pos, std::shared_ptr< \fBMemArbre\fP > const &arbre, std::shared_ptr< \fBNoeud\fP > const &pere)"
+.br
+.ti -1c
+.RI "std::weak_ptr< \fBNoeud\fP > \fBweak_from_this\fP ()"
+.br
+.ti -1c
+.RI "std::ostream & \fBafficher\fP (std::ostream &stream) const "
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBNoeud\fP > \fBadd_fils\fP (int val, std::tuple< int, int > const &coords)"
+.br
+.ti -1c
+.RI "void \fBsave\fP ()"
+.br
+.ti -1c
+.RI "bool \fBest_racine\fP () const "
+.br
+.ti -1c
+.RI "int \fBval\fP () const "
+.br
+.ti -1c
+.RI "void \fBval\fP (int val)"
+.br
+.ti -1c
+.RI "int const & \fBpos\fP () const "
+.br
+.ti -1c
+.RI "std::tuple< int, int > & \fBcoords\fP ()"
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBNoeud\fP > \fBpere\fP () const "
+.br
+.ti -1c
+.RI "std::shared_ptr< \fBMemArbre\fP > \fBarbre\fP () const "
+.br
+.ti -1c
+.RI "std::set< std::shared_ptr< \fBNoeud\fP > > const & \fBfils\fP () const "
+.br
+.in -1c
+.SS "Amis"
+
+.in +1c
+.ti -1c
+.RI "class \fBMemArbre\fP"
+.br
+.in -1c
+
+.SH "Auteur"
+.PP 
+Généré automatiquement par Doxygen pour othello à partir du code source\&.

@@ -28,6 +28,7 @@ class MemIA : public AlphaBetaIA {
         void gagne();
         void perdu();
         
+        void set_prof(unsigned prof);
         void set_noeud(int pos);
 };
 

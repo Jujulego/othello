@@ -183,7 +183,7 @@
 	"ia.h"
 	"pion.h"
 
-1492883350 c:\users\maxim\desktop\programmes\othello\src\ia.h
+1492966332 c:\users\maxim\desktop\programmes\othello\src\ia.h
 	<memory>
 	<set>
 	<vector>
@@ -289,7 +289,7 @@
 	"ia.h"
 	"pion.h"
 
-1492948831 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
+1492967081 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
 	<limits>
 	<map>
 	<memory>
@@ -675,7 +675,7 @@
 	<istream>
 	<vector>
 
-1492949032 source:c:\users\maxim\desktop\programmes\othello\src\ia.cpp
+1492966966 source:c:\users\maxim\desktop\programmes\othello\src\ia.cpp
 	<functional>
 	<iostream>
 	<set>
@@ -729,7 +729,7 @@
 	"ia.h"
 	"pion.h"
 
-1492949049 source:c:\users\maxim\desktop\programmes\othello\src\plateau.cpp
+1492963448 source:c:\users\maxim\desktop\programmes\othello\src\plateau.cpp
 	<cerrno>
 	<cstring>
 	<chrono>
@@ -797,7 +797,7 @@
 
 1491662950 source:/home/julien/projets/c++/othello/src/pions.cpp
 
-1492863667 c:\users\maxim\desktop\programmes\othello\src\memia.h
+1492961388 c:\users\maxim\desktop\programmes\othello\src\memia.h
 	<memory>
 	<string>
 	"minmaxia.h"
@@ -866,6 +866,14 @@
 	<sstream>
 	<string>
 	<tuple>
+<<<<<<< HEAD
+=======
+
+1492961388 source:c:\users\maxim\desktop\programmes\othello\src\memia.cpp
+	<algorithm>
+	<iostream>
+	<limits>
+>>>>>>> 59ed0584937f3c5f97681078f70377d1d68b67b7
 	<memory>
 	<string>
 	"minmaxia.h"
@@ -902,7 +910,7 @@
 	"memarbre.h"
 	"memia.h"
 
-1492948831 c:\users\maxim\desktop\programmes\othello\src\macros.h
+1492963448 c:\users\maxim\desktop\programmes\othello\src\macros.h
 
 1490963344 e:\projets\c++\othello\src\macros.h
 
@@ -978,13 +986,19 @@
 	"negamaxia.h"
 	"randomia.h"
 
+<<<<<<< HEAD
 1492959724 c:\users\nolwenn\documents\othello\src\menu.h
+=======
+1492961388 c:\users\maxim\desktop\programmes\othello\src\menu.h
+>>>>>>> 59ed0584937f3c5f97681078f70377d1d68b67b7
 	<memory>
 	<string>
 	"console.h"
+	"macros.h"
 	"memia.h"
 	"plateau.h"
 
+<<<<<<< HEAD
 1492948831 c:\users\maxim\desktop\programmes\othello\src\menu.h
 	<memory>
 	<string>
@@ -996,6 +1010,9 @@
 	"ia.h"
 
 1492948831 source:c:\users\maxim\desktop\programmes\othello\src\menu.cpp
+=======
+1492963558 source:c:\users\maxim\desktop\programmes\othello\src\menu.cpp
+>>>>>>> 59ed0584937f3c5f97681078f70377d1d68b67b7
 	<cerrno>
 	<cstring>
 	<fstream>

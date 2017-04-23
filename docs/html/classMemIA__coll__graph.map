@@ -1,0 +1,5 @@
+<map id="MemIA" name="MemIA">
+<area shape="rect" id="node2" href="$classAlphaBetaIA.html" title="{AlphaBetaIA\n||+ AlphaBetaIA()\l+ id()\l+ jouer()\l# alphabeta()\l}" alt="" coords="5,432,120,553"/>
+<area shape="rect" id="node3" href="$classMinMaxIA.html" title="{MinMaxIA\n|# m_prof\l# m_couleur\l|+ MinMaxIA()\l+ id()\l+ jouer()\l# heuristique()\l# minmax()\l}" alt="" coords="11,233,115,384"/>
+<area shape="rect" id="node4" href="$classIA.html" title="{IA\n|# m_arbre\l|+ ~IA()\l+ id()\l+ jouer()\l+ get_coups()\l+ aff_arbre()\l+ gere_arbre()\l+ dess_plat()\l+ arbre()\l}" alt="" coords="11,5,114,185"/>
+</map>
