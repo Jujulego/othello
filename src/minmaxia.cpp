@@ -76,7 +76,10 @@ MinMaxIA::PV MinMaxIA::minmax(Etat&& etat, unsigned prof, std::shared_ptr<Noeud<
     }
 
     // Résultat
-    if (noeud) noeud->val().val = val;
+    if (noeud) {
+    	noeud->val().val  = val;
+    	noeud->val().pion = pion;
+    }
 
     return {val, pion};
 }

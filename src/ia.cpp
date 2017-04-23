@@ -47,7 +47,6 @@ std::set<Pion,bool(&)(Pion const&,Pion const&)> IA::get_coups(Etat const& platea
         }
     }
 
-    //std::cout << "coups : " << coups.size() << std::endl;
     return coups;
 }
 
@@ -68,53 +67,60 @@ void IA::aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num
 
     for (unsigned int i = 0; i < noeud->size(); i++) {
         // On affiche chaque fils
-        s_console->gotoLigCol(8, (i*2) + 9);
-        std::cout << "O";
+        s_console->gotoLigCol(8, (i*3) + 9);
+	    std::cout << (char) (noeud->fils(i)->val().pion.x + 'A') << (char) (noeud->fils(i)->val().pion.y + '1');
 
-        s_console->gotoLigCol(7, (i*2) + 9);
+        s_console->gotoLigCol(7, (i*3) + 9);
         std::cout << ANGLE_HDG;
 
-        s_console->gotoLigCol(6, (i*2) + 9);
+        s_console->gotoLigCol(6, (i*3) + 9);
         if (i == 0) {
             std::cout << ANGLE_BD;
-            s_console->gotoLigCol(6, (i*2) + 10);
-            std::cout << BARRE_HORI;
+            s_console->gotoLigCol(6, (i*3) + 10);
         } else if (i == (noeud->size() -1)) {
             std::cout << ANGLE_BG;
-            s_console->gotoLigCol(6, (i*2) + 8);
-            std::cout << BARRE_HORI;
+            s_console->gotoLigCol(6, (i*3) + 7);
         } else {
             std::cout << ANGLE_BDG;
-            s_console->gotoLigCol(6, (i*2) + 8);
-            std::cout << BARRE_HORI;
+            s_console->gotoLigCol(6, (i*3) + 7);
         }
+        std::cout << BARRE_HORI;
+        std::cout << BARRE_HORI;
     }
 
     // On affiche le noeud de base
-    s_console->gotoLigCol(4, noeud->size() + 8);
-    std::cout << "O";
+    s_console->gotoLigCol(4, noeud->size() + 9);
+    std::cout << (char) (noeud->val().pion.y + 'A') << (char) (noeud->val().pion.x + '1');
 
-    s_console->gotoLigCol(5, noeud->size() + 8);
+    s_console->gotoLigCol(5, noeud->size() + 9);
     std::cout << BARRE_VERT;
 
-    s_console->gotoLigCol(6, noeud->size() + 8);
-    if (noeud->size() == 1) std::cout << BARRE_VERT;
-    else if (noeud->size() % 2) std::cout << INTERSECT;
-    else std::cout << ANGLE_HDG;
+    s_console->gotoLigCol(6, noeud->size() + 9);
+    if (noeud->size() == 1) {
+    	std::cout << BARRE_VERT;
+    } else if (noeud->size() == 0) {
+    	std::cout << BARRE_VERT;
+
+	    s_console->gotoLigCol(7, noeud->size() + 9);
+    	std::cout << ANGLE_HDG;
+    } else if ((noeud->size() % 3) == 0) {
+    	std::cout << INTERSECT;
+    } else {
+    	std::cout << ANGLE_HDG;
+    }
 
     // On affiche les consignes de touche
-    s_console->gotoLigCol(12, 9);
-    std::cout << "R : remonter au dernier père";
-    s_console->gotoLigCol(13, 9);
+    s_console->gotoLigCol(14, 7);
+    std::cout << "R : remonter au dernier pere";
+    s_console->gotoLigCol(15, 7);
     std::cout << "E : revenir au plateau";
-    s_console->gotoLigCol(14, 9);
+    s_console->gotoLigCol(16, 7);
     std::cout << "ENTRER (sur un fils) : descendre dans la branche";
+
+    std::cout.flush();
 }
 
-void IA::dess_plat(Console* s_console, int x, int y, Pion pion, std::vector<std::vector<COULEUR>> othellier) {
-    // Déclaration des variables
-
-
+void IA::dess_plat(Console* s_console, int x, int y, Pion pion, std::vector<std::vector<COULEUR>> othellier, int val) {
     // On applique le coup à l'othellier
     othellier[pion.y][pion.x] = pion.couleur;
 
@@ -136,6 +142,10 @@ void IA::dess_plat(Console* s_console, int x, int y, Pion pion, std::vector<std:
 
     s_console->gotoLigCol(y + 9, x);
     std::cout << "  A B C D E F G H";
+
+    // On affiche la valeur du coup
+    s_console->gotoLigCol(y + 11, x);
+    std::cout << "Valeur du coup : " << val;
 }
 
 bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num_coup, std::vector<std::vector<COULEUR>> othellier) {
@@ -153,12 +163,11 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
     aff_arbre(s_console, noeud, num_coup);
 
     // On dessine le plateau
-    dess_plat(s_console, noeud->size()*2 + 15, 1, noeud->val().pion, othellier);
+    dess_plat(s_console, noeud->size()*3 + 15, 1, noeud->val().pion, othellier, noeud->val().val);
 
     // On se place sur le noeud de base
-    s_console->gotoLigCol(y, x);
-
     while (cont) {
+	    s_console->gotoLigCol(y, x);
         c = s_console->getch();
 
         switch (c)
@@ -168,7 +177,9 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
                 if (y == 8) {
                     y = 4;
                     x = noeud->size() + 9;
-                    s_console->gotoLigCol(y, x);
+                }
+                else if (y == 4) {
+                    return quitter;
                 }
 
                 break;
@@ -178,7 +189,6 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
                 if ((y == 4) && (noeud->size())) {
                     y = 8;
                     x = 9;
-                    s_console->gotoLigCol(y, x);
                 }
 
                 break;
@@ -187,8 +197,7 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
             case FL_GAUCHE:
                 if (y == 8) {
                     if (x > 9) {
-                        x -= 2;
-                        s_console->gotoLigCol(y, x);
+                        x -= 3;
                     }
                 }
 
@@ -197,9 +206,8 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
             case 'd':
             case FL_DROITE:
                 if (y == 8) {
-                    if (x < (noeud->size() - 1)*2 + 9) {
-                        x += 2;
-                        s_console->gotoLigCol(y, x);
+                    if (x < (noeud->size() - 1)*3 + 9) {
+                        x += 3;
                     }
                 }
 
@@ -208,10 +216,9 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
             case ENTREE:
                 if (noeud->size()) {
                     if (y == 8) {
-                        quitter = gere_arbre(s_console, noeud->fils((x - 9) / 2), num_coup + 1, othellier);
+                        quitter = gere_arbre(s_console, noeud->fils((x - 9) / 3), num_coup + 1, othellier);
                         if (quitter) cont = false;
                         aff_arbre(s_console, noeud, num_coup);
-                        s_console->gotoLigCol(4, noeud->size() + 9);
                     }
                 }
                 else {
@@ -239,8 +246,8 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
         }
 
         // On affiche le plateau
-        if (y == 4) dess_plat(s_console, noeud->size()*2 + 15, 1, noeud->val().pion, othellier);
-        if (y == 8) dess_plat(s_console, noeud->size()*2 + 15, 1, noeud->fils((x - 9) / 2)->val().pion, othellier);
+        if (y == 4) dess_plat(s_console, noeud->size()*3 + 15, 1, noeud->val().pion, othellier, noeud->val().val);
+        if (y == 8) dess_plat(s_console, noeud->size()*3 + 15, 1, noeud->fils((x - 9) / 3)->val().pion, othellier, noeud->fils((x - 9) / 3)->val().val);
         s_console->gotoLigCol(y, x);
     }
 

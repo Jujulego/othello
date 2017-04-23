@@ -154,7 +154,7 @@
 
 1492597925 c:\users\nolwenn\documents\othello\src\randomia.h
 
-1492962971 c:\users\maxim\desktop\programmes\othello\src\ia.h
+1492966332 c:\users\maxim\desktop\programmes\othello\src\ia.h
 	<memory>
 	<set>
 	<vector>
@@ -260,7 +260,7 @@
 	"ia.h"
 	"pion.h"
 
-1492948831 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
+1492965831 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
 	<limits>
 	<map>
 	<memory>
@@ -646,7 +646,7 @@
 	<istream>
 	<vector>
 
-1492963448 source:c:\users\maxim\desktop\programmes\othello\src\ia.cpp
+1492966867 source:c:\users\maxim\desktop\programmes\othello\src\ia.cpp
 	<functional>
 	<iostream>
 	<set>
