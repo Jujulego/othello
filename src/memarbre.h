@@ -77,6 +77,7 @@ class MemArbre : public std::enable_shared_from_this<MemArbre> {
 		std::set<std::shared_ptr<Noeud>> racines() const;
 		iterateur begin() const;
 		iterateur end() const;
+		std::shared_ptr<Noeud> noeud(int pos) const;
 };
 
 // Opérateurs externes

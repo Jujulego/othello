@@ -22,10 +22,6 @@ class IA {
     protected:
         // Attributs
         std::shared_ptr<Noeud<PV>> m_arbre;
-        std::vector<std::vector <std::pair <int, std::shared_ptr<Noeud<PV>>>>> m_tab; // ... le type le plus long jamais créé
-        // Ce tableau permettra, pour l'affichage et le parcours de l'arbre, d'accéder plus facilement aux noeuds
-        // .first (int) : abscisse du noeud dans l'arbre
-        // .second (shared_ptr<Noeud<PV>>) : pointeur sur le noeud
 
     public:
         // Destructeur
@@ -35,9 +31,8 @@ class IA {
         virtual std::string id() const = 0;
         virtual Pion jouer(Etat plateau) = 0;
         std::set<Pion,bool(&)(Pion const&,Pion const&)> get_coups(Etat const& plateau) const;
-        
-        int charg_tab();
-        void aff_arbre(Console* s_console, int x, int y);
+        void aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num_coup);
+        bool gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num_coup);
 
         // Accesseurs
         std::shared_ptr<Noeud<PV>> arbre() const;

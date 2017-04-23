@@ -9,6 +9,7 @@
 #include "etat.h"
 #include "ia.h"
 #include "console.h"
+#include "macros.h"
 
 // Fonctions
 static bool cc(Pion const& c1, Pion const& c2) {
@@ -54,146 +55,152 @@ std::shared_ptr<Noeud<IA::PV>> IA::arbre() const {
     return m_arbre;
 }
 
-// Charge le double vecteur
-// Celui-ci nous permettra de simplifier l'affichage, et de se déplacer plus facilement dans l'arbre
-// Retourne le nombre total de descendants au coup 3 (ou autre si certaines branches s'arrêtent avant le coup 3), il sera utile pour l'affichage
-int IA::charg_tab() {
-    // Déclaration des variables
-    bool ligne_3 = false;
-    bool ligne_4 = false;
-    int nb_desc = 0;
+void IA::aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num_coup) {
+    // On clear la console
+    s_console->clear();
 
-    // On ajoute la première ligne, et on y stock le premier pointeur
-    m_tab.push_back(std::vector<std::pair <int, std::shared_ptr<Noeud<PV>>>>(1));
-    m_tab[0][0].second = m_arbre;
+    s_console->gotoLigCol(2, 2);
+    std::cout << "Coups";
+    s_console->gotoLigCol(4, 4);
+    std::cout << num_coup;
+    s_console->gotoLigCol(8, 4);
+    std::cout << num_coup + 1;
 
-    // Deuxième ligne
-    m_tab.push_back(std::vector<std::pair <int, std::shared_ptr<Noeud<PV>>>>(m_arbre->size()));
-    for (unsigned int i = 0; i < m_arbre->size(); i++) {
-        m_tab[1][i].second = m_arbre->fils(i);
+    for (unsigned int i = 0; i < noeud->size(); i++) {
+        // On affiche chaque fils
+        s_console->gotoLigCol(8, (i*2) + 9);
+        std::cout << "O";
 
-        // S'il n'a pas de fils, on l'ajoute au nombre de descendants
-        if (!m_tab[1][i].second->size()) nb_desc++;
-    }
-
-    // Troisième ligne
-    for (unsigned int i = 0; i < m_tab[1].size(); i++) {
-        for (unsigned int j = 0; j < m_tab[1][i].second->size(); j++) {
-            // Si on a pas encore créé la ligne 3
-            // (utile car comme ça, on ne crée pas la ligne 3 si les noeuds de la ligne 2 n'ont pas de fils)
-            if (!ligne_3) {
-                m_tab.push_back(std::vector<std::pair <int, std::shared_ptr<Noeud<PV>>>>(0));
-                ligne_3 = true;
-            }
-
-            m_tab[2].push_back(std::make_pair(0, m_tab[1][i].second->fils(j)));
-
-            // S'il n'a pas de fils, on l'ajoute au nombre de descendants
-            if (!m_tab[2][j].second->size()) nb_desc++;
+        s_console->gotoLigCol(7, (i*2) + 9);
+        std::cout << ANGLE_HDG;
+        s_console->gotoLigCol(6, (i*2) + 9);
+        if (i < noeud->size() / 2) {
+            std::cout << ANGLE_BD;
+            s_console->gotoLigCol(6, (i*2) + 10);
+            std::cout << BARRE_HORI;
         }
-    }
-
-    // Quatrième ligne, seulement si il y en a une 3e
-    if (ligne_3) {
-        for (unsigned int i = 0; i < m_tab[2].size(); i++) {
-            for (unsigned int j = 0; j < m_tab[2][i].second->size(); j++) {
-                // Si on a pas encore créé la ligne 4
-                if (!ligne_4) {
-                    m_tab.push_back(std::vector<std::pair <int, std::shared_ptr<Noeud<PV>>>>(0));
-                    ligne_4 = true;
-                }
-
-                m_tab[3].push_back(std::make_pair(0, m_tab[2][i].second->fils(j)));
-
-                // On l'ajoute au nombre de descendants
-                nb_desc++;
-            }
+        else if (i >= noeud->size() / 2) {
+            std::cout << ANGLE_BG;
+            s_console->gotoLigCol(6, (i*2) + 8);
+            std::cout << BARRE_HORI;
         }
-    }
-
-    // On retourne le nombre de descendants
-    return nb_desc;
-}
-
-// Affiche l'arbre
-// s_console : console dans laquelle on affiche
-// x, y : coordonnées de base de l'affichage de l'arbre (en haut à gauche de l'arbre)
-void IA::aff_arbre(Console* s_console, int x, int y) {
-    // Déclaration de l'arbre
-    int nb_desc = 0; // nombre total de descendants
-    int nb_desc_aff = 0; // nombre de descendants déjà affichés
-    int moy_1 = 0; // moyenne des abscisses des noeuds du coup 1
-    int moy_2 = 0; // moyenne des abscisses des noeuds du coup 2 dans une branche
-    int moy_3 = 0; // moyenne des abscisses des noeuds du coup 3 dans une branche
-
-    // On charge le tableau, et on prend le nombre de descendants
-    nb_desc = charg_tab();
-
-    // On dessine l'arbre en partant du bas :
-    // Pour chaque fils du noeud de base (coup 1)
-    for (unsigned int i =0; i < m_tab[0][0].second->size(); i++) {
-        // On remet à 0 la moyenne au coup 2 (car nouvelle branche)
-        moy_2 = 0;
-
-        // On prend chaque fils (coup 2)
-        for (unsigned int j = 0; j < m_tab[1][i].second->size(); j++) {
-            // On remet à 0 la moyenne au coup 3 (car nouvelle branche)
-            moy_3 = 0;
-
-            // On prend chaque fils (coup 3)
-            for (unsigned int k = 0; k < m_tab[2][j].second->size(); k++) {
-                // On affiche le noeud
-                m_tab[3][k].first = x + nb_desc_aff;
-                s_console->gotoLigCol(m_tab[3][k].first, y + 9);
-                std::cout << "\e8";
-                // RAJOUTER BRANCHES
-
-                // On incrémente le nombre de descendants affichés
-                nb_desc_aff++;
-
-                // On modifie la moyenne 3
-                if (!moy_3) moy_3 = m_tab[3][k].first;
-                else moy_3 = (moy_3 + m_tab[3][k].first) / 2;
-            }
-
-            // On affiche le noeud
-            if (!m_tab[2][j].second->size()) { // Si le noeud n'a pas de fils
-                m_tab[2][j].first = x + nb_desc_aff;
-                nb_desc_aff++;
-            }
-            else m_tab[2][j].first = x + moy_3; // Sinon on donne comme abscisse au noeud la "moyenne", calculée à partir des abscisses de ses fils
-            s_console->gotoLigCol(m_tab[2][j].first, y + 6);
-            std::cout << "\e8";
-            // RAJOUTER BRANCHES
-
-            // On modifie la moyenne 2
-            if (!moy_2) moy_2 = m_tab[2][j].first;
-            else moy_2 = (moy_2 + m_tab[2][j].first) / 2;
-        }
-
-        // On affiche le noeud
-        if (!m_tab[1][i].second->size()) { // Si le noeud n'a pas de fils
-            m_tab[1][i].first = x + nb_desc_aff;
-            nb_desc_aff++;
-        }
-        else m_tab[1][i].first = x + moy_2; // Sinon on donne comme abscisse au noeud la "moyenne", calculée à partir des abscisses de ses fils
-        s_console->gotoLigCol(m_tab[1][i].first, y + 3);
-        std::cout << "\e8";
-        // RAJOUTER BRANCHES
-
-        // On modifie la moyenne 1
-        if (!moy_1) moy_1 = m_tab[1][i].first;
-        else moy_1 = (moy_1 + m_tab[1][i].first) / 2;
     }
 
     // On affiche le noeud de base
-    m_tab[0][0].first = x + moy_1; // On lui donne son abscisse
-    s_console->gotoLigCol(m_tab[0][0].first, y); // On se place
-    std::cout << "\e8";
-    /*s_console->gotoLigCol(m_tab[0][0].first, y + 1); // On affiche la branche qui part en-dessous
-    std::cout << "\xb3";
-    s_console->gotoLigCol(m_tab[0][0].first, y + 2);
-    std::cout << "\xc1"; // AFFICHAGE A MODIFIER SELON LE NOMBRE DE FILS*/
+    s_console->gotoLigCol(4, noeud->size() + 9);
+    std::cout << "O";
+    s_console->gotoLigCol(5, noeud->size() + 9);
+    std::cout << BARRE_VERT;
+    s_console->gotoLigCol(6, noeud->size() + 9);
+
+    if (noeud->size() == 1) std::cout << BARRE_VERT;
+    else std::cout << ANGLE_HDG;
+
+    // On affiche les consignes de touche
+    s_console->gotoLigCol(12, 9);
+    std::cout << "R : remonter au dernier père";
+    s_console->gotoLigCol(13, 9);
+    std::cout << "P : revenir au plateau";
+    s_console->gotoLigCol(14, 9);
+    std::cout << "ENTRER (sur un fils) : descendre dans la branche";
+}
+
+bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num_coup) {
+    // Déclaration des variables
+    int x = noeud->size() + 9;
+    int y = 4;
+    int c;
+    bool cont = true;
+    bool quitter = false;
+
+    // On affiche l'arbre
+    aff_arbre(s_console, noeud, num_coup);
+
+    // On se place sur le noeud de base
+    s_console->gotoLigCol(y, x);
+
+    while (cont) {
+        c = s_console->getch();
+
+        switch (c)
+        {
+            case 'z':
+            case FL_HAUT:
+                if (y == 8) {
+                    y = 4;
+                    x = noeud->size() + 9;
+                    s_console->gotoLigCol(y, x);
+                }
+
+                break;
+
+            case 's':
+            case FL_BAS:
+                if (y == 4) {
+                    y = 8;
+                    x = 9;
+                    s_console->gotoLigCol(y, x);
+                }
+
+                break;
+
+            case 'q':
+            case FL_GAUCHE:
+                if (y == 8) {
+                    if (x > 9) {
+                        x -= 2;
+                        s_console->gotoLigCol(y, x);
+                    }
+                }
+
+                break;
+
+            case 'd':
+            case FL_DROITE:
+                if (y == 8) {
+                    if (x < (noeud->size() - 1)*2 + 9) {
+                        x += 2;
+                        s_console->gotoLigCol(y, x);
+                    }
+                }
+
+                break;
+
+            case ENTREE:
+                if ((num_coup < 4) && (noeud->size())) {
+                    if (y == 8) {
+                            quitter = gere_arbre(s_console, noeud->fils((x - 9) / 2), num_coup + 1);
+                        if (quitter) cont = false;
+                        aff_arbre(s_console, noeud, num_coup);
+                        s_console->gotoLigCol(4, noeud->size() + 9);
+                    }
+                }
+                else {
+                    s_console->gotoLigCol(10, 9);
+                    std::cout << "Vous etes deja en bas de l'arbre !";
+                }
+
+                break;
+
+            case 'r':
+                if (num_coup > 0) {
+                    return quitter;
+                }
+                else {
+                    s_console->gotoLigCol(10, 9);
+                    std::cout << "Vous ne pouvez pas remonter plus haut !";
+                }
+
+                break;
+
+            case 'p':
+                quitter = true;
+                return quitter;
+                break;
+        }
+    }
+
+    return quitter;
 }
 
 

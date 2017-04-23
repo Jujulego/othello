@@ -28,8 +28,17 @@ build
 *.lib
 
 # Executables
+run
 *.exe
 *.out
 *.app
 
-run
+# Autres
+call\.svg
+call\.png
+parse\.py
+perf\.data
+perf\.data\.old
+src\.zip
+
+*.old

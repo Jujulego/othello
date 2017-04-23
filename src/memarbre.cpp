@@ -137,8 +137,7 @@ MemArbre::MemArbre(std::string const& fichier) {
     while (m_fichier.fail()) {
         // Uniquement si le fichier n'existe pas
         if (errno != ENOENT) {
-            std::cerr << "Impossible d'ouvrir le fichier : " << strerror(errno) << std::endl;
-            std::abort();
+            throw std::string(strerror(errno));
         }
 
         // Création du fichier
@@ -259,6 +258,11 @@ MemArbre::iterateur MemArbre::begin() const {
 
 MemArbre::iterateur MemArbre::end() const {
 	return m_noeuds.cend();
+}
+
+std::shared_ptr<MemArbre::Noeud> MemArbre::noeud(int pos) const {
+	if (pos == -1) return nullptr;
+	return m_noeuds.at(pos);
 }
 
 // Opérateurs externes

@@ -32,6 +32,15 @@ helgrind: all
 
 .PHONY: helgrind
 
+perf.data: all
+	sudo perf record -gj u -- ./$(EXEC)
+
+analyse.txt: perf.data
+	sudo perf script | c++filt > analyse.txt
+
+call.png: analyse.txt
+	python3 parse.py | gprof2dot -sf perf -n0 -e0 | sed -e "s/ *.n(*[0-9]*\.[0-9][0-9]%)*//g" | sed -e "s/[0-9]*\.[0-9][0-9]%//g" | sed -e "s/run.n//g" | dot -Tpng -o call.png
+
 # Nettoyage
 clean:
 	$(RM) $(BUILD)

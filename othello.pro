@@ -15,7 +15,8 @@ HEADERS += \
     src/memarbre.h \
     src/negamaxia.h \
     src/noeud.h \
-    src/memia.h
+    src/memia.h \
+    src/console.h
 
 SOURCES += \
     qt/main.cpp \
@@ -30,7 +31,8 @@ SOURCES += \
     src/alphabetaia.cpp \
     src/memarbre.cpp \
     src/negamaxia.cpp \
-    src/memia.cpp
+    src/memia.cpp \
+    src/console.cpp
 
 QMAKE_CXXFLAGS += -O3 -std=c++14
 INCLUDEPATH += $$PWD/src

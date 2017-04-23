@@ -2,10 +2,14 @@
 #define COUP_H
 
 // Dépendances
+#include <istream>
 #include <vector>
 
 // Enumération
 enum COULEUR { VIDE, NOIR, BLANC };
+
+// Opérateur externe
+std::istream& operator >> (std::istream& stream, COULEUR& coul);
 
 // Structure de Pion
 struct Pion {
