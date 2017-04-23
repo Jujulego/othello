@@ -31,7 +31,11 @@ std::string MinMaxIA::id() const {
 
 MinMaxIA::PV MinMaxIA::minmax(Etat&& etat, unsigned prof, std::shared_ptr<Noeud<PV>> noeud) {
     // Feuille !
-    if (prof == m_prof) return {heuristique(std::move(etat)), {0, 0, VIDE}};
+    if (prof == m_prof) {
+    	int val = heuristique(std::move(etat));
+    	noeud->val().val = val;
+    	return {val, {0, 0, VIDE}};
+    }
 
     // Branche
     auto coups = get_coups(etat);
@@ -39,7 +43,10 @@ MinMaxIA::PV MinMaxIA::minmax(Etat&& etat, unsigned prof, std::shared_ptr<Noeud<
     int val;
 
     // Cas sans coup
-    if (coups.size() == 0) return {heuristique(std::move(etat)), pion};
+    if (coups.size() == 0) {
+    	noeud->val().val = heuristique(std::move(etat));
+    	return {noeud->val().val, {0, 0, VIDE}};
+    }
 
     // Initialisation
     if (prof % 2) { // Min
@@ -78,7 +85,6 @@ MinMaxIA::PV MinMaxIA::minmax(Etat&& etat, unsigned prof, std::shared_ptr<Noeud<
     // Résultat
     if (noeud) {
     	noeud->val().val  = val;
-    	noeud->val().pion = pion;
     }
 
     return {val, pion};
@@ -91,7 +97,7 @@ Pion MinMaxIA::jouer(Etat plateau) {
 
     // Algo !!!
     PV p = minmax(std::move(plateau), 0, (m_prof > 6) ? nullptr : m_arbre);
-    m_arbre->val().val = p.val;
+    m_arbre->val() = p;
 
     return p.pion;
 }
