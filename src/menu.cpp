@@ -61,7 +61,7 @@ int Menu::init() {
 	
 	// Chargement des MemIA (gestion des erreurs)
 	try {
-		m_memia_noire = std::make_shared<MemIA>(FICHIER_NOIR, PROF_ALGO, NOIR);
+		m_memia_noire = std::make_shared<MemIA>(FICHIER_NOIR, m_prof, NOIR);
 	} catch (std::out_of_range const& err) {
 		fichier_erreur(FICHIER_NOIR, "Le fichier est corrompu !");
 		return 1;
@@ -76,7 +76,7 @@ int Menu::init() {
 	std::cout.flush();
 	
 	try {
-		m_memia_blanche = std::make_shared<MemIA>(FICHIER_BLANC, PROF_ALGO, BLANC);
+		m_memia_blanche = std::make_shared<MemIA>(FICHIER_BLANC, m_prof, BLANC);
 	} catch (std::out_of_range& err) {
 		fichier_erreur(FICHIER_BLANC, "Le fichier est corrompu !");
 		return 1;
@@ -103,7 +103,7 @@ int Menu::init() {
 	return 0;
 }
 
-void Menu::afficher() const {
+void Menu::afficher() {
 	// Déclarations
 	bool quitter = false;
 	int choix = 0;
@@ -122,61 +122,56 @@ void Menu::afficher() const {
 		s_console.gotoLigCol(10, DECAL_MENU1);
 		if (choix == 0) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
-
 		std::cout << "- Joueur vs Joueur";
 
 		s_console.gotoLigCol(11, DECAL_MENU1);
 		if (choix == 1) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
-
 		std::cout << "- Joueur vs Random";
 
 		s_console.gotoLigCol(12, DECAL_MENU1);
 		if (choix == 2) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
-
 		std::cout << "- Joueur vs MinMax";
 
 		s_console.gotoLigCol(13, DECAL_MENU1);
 		if (choix == 3) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
-
 		std::cout << "- Joueur vs AlphaBeta";
 
 		s_console.gotoLigCol(14, DECAL_MENU1);
 		if (choix == 4) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
-
 		std::cout << "- Joueur vs NegaMax";
 
 		s_console.gotoLigCol(15, DECAL_MENU1);
 		if (choix == 5) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
-
 		std::cout << "- Joueur vs Memory";
 
 		s_console.gotoLigCol(16, DECAL_MENU1);
 		if (choix == 6) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
-
 		std::cout << "- Memory vs Memory";
 
 		s_console.gotoLigCol(17, DECAL_MENU1);
 		if (choix == 7) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
-
 		std::cout << "- Commandes";
 
 		s_console.gotoLigCol(18, DECAL_MENU1);
 		if (choix == 8) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
-
 		std::cout << "- Charger une sauvegarde";
 
 		s_console.gotoLigCol(19, DECAL_MENU1);
-		if (choix == 9) s_console.setColor(COLOR_RED, COLOR_WHITE);
-		else            s_console.setColor(COLOR_RED);
+		if (choix == 9) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
+		else            s_console.setColor();
+		std::cout << "- Parametres";
 
+		s_console.gotoLigCol(20, DECAL_MENU1);
+		if (choix == 10) s_console.setColor(COLOR_RED, COLOR_WHITE);
+		else            s_console.setColor(COLOR_RED);
 		std::cout << "- Quitter";
 
 		s_console.setColor();
@@ -212,27 +207,27 @@ void Menu::afficher() const {
 
         	case 2: // J vs MM
         		if (choix_coul() == NOIR)
-        			tab = Tableau(nullptr, std::make_shared<MinMaxIA>(PROF_ALGO, BLANC));
+        			tab = Tableau(nullptr, std::make_shared<MinMaxIA>(m_prof, BLANC));
         		else
-        			tab = Tableau(std::make_shared<MinMaxIA>(PROF_ALGO, NOIR), nullptr);
+        			tab = Tableau(std::make_shared<MinMaxIA>(m_prof, NOIR), nullptr);
 
         		tab.BoucleJeu();
         		break;
 
         	case 3: // J vs AB
         		if (choix_coul() == NOIR)
-        			tab = Tableau(nullptr, std::make_shared<AlphaBetaIA>(PROF_ALGO, BLANC));
+        			tab = Tableau(nullptr, std::make_shared<AlphaBetaIA>(m_prof, BLANC));
         		else
-        			tab = Tableau(std::make_shared<AlphaBetaIA>(PROF_ALGO, NOIR), nullptr);
+        			tab = Tableau(std::make_shared<AlphaBetaIA>(m_prof, NOIR), nullptr);
 
         		tab.BoucleJeu();
         		break;
 
         	case 4: // J vs NM
         		if (choix_coul() == NOIR)
-        			tab = Tableau(nullptr, std::make_shared<NegaMaxIA>(PROF_ALGO, BLANC));
+        			tab = Tableau(nullptr, std::make_shared<NegaMaxIA>(m_prof, BLANC));
         		else
-        			tab = Tableau(std::make_shared<NegaMaxIA>(PROF_ALGO, NOIR), nullptr);
+        			tab = Tableau(std::make_shared<NegaMaxIA>(m_prof, NOIR), nullptr);
 
         		tab.BoucleJeu();
         		break;
@@ -293,7 +288,11 @@ void Menu::afficher() const {
 
         		break;
 
-        	case 9: // Quitter
+        	case 9: // Parametres
+        	    params();
+        	    break;
+        	
+        	case 10: // Quitter
         		quitter = true;
         		break;
         	}
@@ -301,8 +300,8 @@ void Menu::afficher() const {
         }
 
         // Controle des bords
-        if (choix < 0) choix = 0;
-        if (choix > 9) choix = 9;
+        if (choix < 0)  choix = 0;
+        if (choix > 10) choix = 10;
 	} while (!quitter);
 
 	s_console.gotoLigCol(20, 0);
@@ -465,9 +464,9 @@ bool Menu::charger(Tableau& tab, bool& memia_noire, bool& memia_blanche) const {
 		// Lecture des joueurs
 		f >> buf;
 		if (buf == "random")    ia_noire = std::make_shared<RandomIA>();
-		if (buf == "minmax")    ia_noire = std::make_shared<MinMaxIA>(PROF_ALGO, NOIR);
-		if (buf == "alphabeta") ia_noire = std::make_shared<AlphaBetaIA>(PROF_ALGO, NOIR);
-		if (buf == "negamax")   ia_noire = std::make_shared<NegaMaxIA>(PROF_ALGO, NOIR);
+		if (buf == "minmax")    ia_noire = std::make_shared<MinMaxIA>(m_prof, NOIR);
+		if (buf == "alphabeta") ia_noire = std::make_shared<AlphaBetaIA>(m_prof, NOIR);
+		if (buf == "negamax")   ia_noire = std::make_shared<NegaMaxIA>(m_prof, NOIR);
 		if (buf == "memory") {
 			int pos = -1;
 			f >> pos;
@@ -479,9 +478,9 @@ bool Menu::charger(Tableau& tab, bool& memia_noire, bool& memia_blanche) const {
 
 		f >> buf;
 		if (buf == "random")    ia_blanche = std::make_shared<RandomIA>();
-		if (buf == "minmax")    ia_blanche = std::make_shared<MinMaxIA>(PROF_ALGO, BLANC);
-		if (buf == "alphabeta") ia_blanche = std::make_shared<AlphaBetaIA>(PROF_ALGO, BLANC);
-		if (buf == "negamax")   ia_blanche = std::make_shared<NegaMaxIA>(PROF_ALGO, BLANC);
+		if (buf == "minmax")    ia_blanche = std::make_shared<MinMaxIA>(m_prof, BLANC);
+		if (buf == "alphabeta") ia_blanche = std::make_shared<AlphaBetaIA>(m_prof, BLANC);
+		if (buf == "negamax")   ia_blanche = std::make_shared<NegaMaxIA>(m_prof, BLANC);
 		if (buf == "memia") {
 			int pos = -1;
 			f >> pos;
@@ -534,4 +533,85 @@ bool Menu::charger(Tableau& tab, bool& memia_noire, bool& memia_blanche) const {
 	do {} while (s_console.getch() != ENTREE);
 
 	return !annule;
+}
+
+void Menu::params() {
+	// Déclarations
+	bool quitter = false;
+	int pos = 0;
+	
+	do {
+		// Entete
+		entete();
+		
+		// Affichage
+		s_console.gotoLigCol(11, 5);
+		std::cout << "Profondeur de recherche des IA :";
+		
+		s_console.gotoLigCol(11, 38);
+		if (pos == 0) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
+		std::cout << " - ";
+		
+		s_console.setColor();
+		s_console.gotoLigCol(11, 42);
+		std::cout << m_prof;
+		
+		s_console.gotoLigCol(11, 45);
+		if (pos == 1) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
+		std::cout << " + ";
+		
+		s_console.setColor();
+		s_console.gotoLigCol(14, DECAL_MENU2);
+		if (pos == 2) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
+		std::cout << "- Retour";
+		
+		s_console.setColor();
+		
+		// Interactions
+		switch (s_console.getch()) {
+		case 'z':
+		case FL_HAUT:
+		    if (pos == 2) pos = 0;
+			break;
+		
+		case 'q':
+		case FL_GAUCHE:
+		    if (pos == 1) pos = 0;
+			break;
+		
+		case 's':
+		case FL_BAS:
+		    pos = 2;
+			break;
+		
+		case 'd':
+		case FL_DROITE:
+		    if (pos == 0) pos = 1;
+			break;
+		
+		case 'e':
+		case ENTREE:
+			switch (pos) {
+			case 0:
+				m_prof--;
+				if (m_prof < 1) m_prof = 1;
+				break;
+			
+			case 1:
+				m_prof++;
+				if (m_prof > 20) m_prof = 20;
+				break;
+			
+			case 2:
+				quitter = true;
+				break;
+			}
+			
+			break;
+		}
+	} while (!quitter);
+	
+	// Mise à jour des MemIA
+	m_memia_noire->set_prof(m_prof);
+	m_memia_blanche->set_prof(m_prof);
 }

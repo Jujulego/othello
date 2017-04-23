@@ -6,6 +6,7 @@
 #include <string>
 
 #include "console.h"
+#include "macros.h"
 #include "memia.h"
 #include "plateau.h"
 
@@ -15,6 +16,7 @@ class Menu {
 		// Attributs
 		std::shared_ptr<MemIA> m_memia_noire;
 		std::shared_ptr<MemIA> m_memia_blanche;
+		unsigned m_prof = PROF_ALGO;
 		
 		// Attributs statiques
 		static Console s_console;
@@ -28,10 +30,11 @@ class Menu {
 		
 		// Méthodes
 		int init();
-		void afficher() const;
+		void afficher();
 		COULEUR choix_coul() const;
 		void regles() const;
 		bool charger(Tableau& tab, bool& memia_noire, bool& memia_blanche) const;
+		void params();
 };
 
 #endif // __MENU
