@@ -184,7 +184,7 @@ bool Tableau::Jouer(int &x, int&y) {
         case 'a':
             if ((m_ias[m_col_ia]->arbre() != nullptr) && (m_ias[m_col_ia]->id() == "minmax")) {
                 // On affiche l'arbre
-                m_ias[m_col_ia]->gere_arbre(s_console, m_ias[m_col_ia]->arbre(), 0);
+                m_ias[m_col_ia]->gere_arbre(s_console, m_ias[m_col_ia]->arbre(), 0, m_etat.othellier);
             }
             // On réaffiche le plateau
             CreationTab();

@@ -100,18 +100,28 @@ void IA::aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num
     s_console->gotoLigCol(12, 9);
     std::cout << "R : remonter au dernier père";
     s_console->gotoLigCol(13, 9);
-    std::cout << "P : revenir au plateau";
+    std::cout << "E : revenir au plateau";
     s_console->gotoLigCol(14, 9);
     std::cout << "ENTRER (sur un fils) : descendre dans la branche";
 }
 
-bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num_coup) {
+void IA::dess_plat(Console* s_console, int x, int y, Pion pion, std::vector<std::vector<COULEUR>> othellier) {
+    // Déclaration des variables
+
+
+    //
+}
+
+bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num_coup, std::vector<std::vector<COULEUR>> othellier) {
     // Déclaration des variables
     int x = noeud->size() + 9;
     int y = 4;
     int c;
     bool cont = true;
     bool quitter = false;
+
+    // On applique le coup à l'othellier
+    othellier[noeud->val().pion.y][noeud->val().pion.x] = noeud->val().pion.couleur;
 
     // On affiche l'arbre
     aff_arbre(s_console, noeud, num_coup);
@@ -136,7 +146,7 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
 
             case 's':
             case FL_BAS:
-                if (y == 4) {
+                if ((y == 4) && (noeud->size())) {
                     y = 8;
                     x = 9;
                     s_console->gotoLigCol(y, x);
@@ -167,9 +177,9 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
                 break;
 
             case ENTREE:
-                if ((num_coup < 4) && (noeud->size())) {
+                if (noeud->size()) {
                     if (y == 8) {
-                            quitter = gere_arbre(s_console, noeud->fils((x - 9) / 2), num_coup + 1);
+                        quitter = gere_arbre(s_console, noeud->fils((x - 9) / 2), num_coup + 1, othellier);
                         if (quitter) cont = false;
                         aff_arbre(s_console, noeud, num_coup);
                         s_console->gotoLigCol(4, noeud->size() + 9);
@@ -193,11 +203,14 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
 
                 break;
 
-            case 'p':
+            case 'e':
                 quitter = true;
                 return quitter;
                 break;
         }
+
+        // On affiche le plateau
+        dess_plat(s_console, noeud->size()*2 + 15, 4, noeud->val().pion, othellier);
     }
 
     return quitter;

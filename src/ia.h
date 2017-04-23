@@ -32,7 +32,8 @@ class IA {
         virtual Pion jouer(Etat plateau) = 0;
         std::set<Pion,bool(&)(Pion const&,Pion const&)> get_coups(Etat const& plateau) const;
         void aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num_coup);
-        bool gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num_coup);
+        bool gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num_coup, std::vector<std::vector<COULEUR>> othellier);
+        void dess_plat(Console* s_console, int x, int y, Pion pion, std::vector<std::vector<COULEUR>> othellier);
 
         // Accesseurs
         std::shared_ptr<Noeud<PV>> arbre() const;
