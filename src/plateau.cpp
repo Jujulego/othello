@@ -87,32 +87,21 @@ void Tableau::CreationTab() {
     std::cout << "   " << LIGNE_BAS << std::endl;
     std::cout << "     A    B    C    D    E    F    G    H" << std::endl;
 
-<<<<<<< HEAD
-    if (m_ias[m_col_ia]->id() == "minmax") {
-        s_console->gotoLigCol(20, 50);
-        std::cout << "A : Montrer le graphe d'etat";
-    }
-    s_console->gotoLigCol(21, 50);
-    std::cout << "F : Sauvegarder";
-    s_console->gotoLigCol(22, 50);
-    std::cout << "E : Quitter";
-=======
     int off = 0;
     s_console->gotoLigCol(5, DROITE_PLATEAU);
     std::cout << "Commandes :";
-    
+
     if ((m_col_ia != VIDE) && (m_ias[m_col_ia]->id() == "minmax")) {
         s_console->gotoLigCol(6, DROITE_PLATEAU);
-        std::cout << "a : Montrer le graphe d'etat";
-        
+        std::cout << "A : Montrer le graphe d'etat";
+
         off++;
     }
-    
+
     s_console->gotoLigCol(6+off, DROITE_PLATEAU);
-    std::cout << "f : Sauvegarder";
+    std::cout << "F : Sauvegarder";
     s_console->gotoLigCol(7+off, DROITE_PLATEAU);
-    std::cout << "e : Quitter";
->>>>>>> a9b99ae91f9ebc2e2d59c2e4e8d3c24ceedaf2e9
+    std::cout << "E : Quitter";
 
     AfficherTab();
 }
@@ -252,7 +241,7 @@ COULEUR Tableau::BoucleJeu() {
         // Execution de l'IA
         if (m_ias[m_etat.joueur] != nullptr) {
         	// On va dormir un peu
-        	std::this_thread::sleep_for(TIMEOUT);
+        	//std::this_thread::sleep_for(TIMEOUT);
         	m_etat.appliquer_coup(m_ias[m_etat.joueur]->jouer(m_etat));
         } else {
             // Interaction

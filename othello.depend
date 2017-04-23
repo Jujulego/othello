@@ -165,7 +165,7 @@
 	"pion.h"
 	"console.h"
 
-1492518063 c:\users\maxim\desktop\programmes\othello\src\noeud.h
+1492948831 c:\users\maxim\desktop\programmes\othello\src\noeud.h
 	<functional>
 	<memory>
 	<vector>
@@ -260,7 +260,7 @@
 	"ia.h"
 	"pion.h"
 
-1492860812 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
+1492948831 source:c:\users\maxim\desktop\programmes\othello\src\minmaxia.cpp
 	<limits>
 	<map>
 	<memory>
@@ -646,7 +646,7 @@
 	<istream>
 	<vector>
 
-1492946540 source:c:\users\maxim\desktop\programmes\othello\src\ia.cpp
+1492949032 source:c:\users\maxim\desktop\programmes\othello\src\ia.cpp
 	<functional>
 	<iostream>
 	<set>
@@ -656,6 +656,7 @@
 	"etat.h"
 	"ia.h"
 	"console.h"
+	"macros.h"
 
 1492860812 source:c:\users\maxim\desktop\programmes\othello\src\randomia.cpp
 	<cstdlib>
@@ -686,15 +687,10 @@
 	"etat.h"
 	"pion.h"
 
-1492860812 source:c:\users\maxim\desktop\programmes\othello\src\main.cpp
-	<iostream>
-	<memory>
+1492948831 source:c:\users\maxim\desktop\programmes\othello\src\main.cpp
 	"menu.h"
-	"plateau.h"
-	"memia.h"
-	"minmaxia.h"
 
-1492870161 c:\users\maxim\desktop\programmes\othello\src\plateau.h
+1492948831 c:\users\maxim\desktop\programmes\othello\src\plateau.h
 	<vector>
 	<map>
 	<memory>
@@ -704,7 +700,7 @@
 	"ia.h"
 	"pion.h"
 
-1492948226 source:c:\users\maxim\desktop\programmes\othello\src\plateau.cpp
+1492949049 source:c:\users\maxim\desktop\programmes\othello\src\plateau.cpp
 	<cerrno>
 	<cstring>
 	<chrono>
@@ -787,7 +783,7 @@
 	<string>
 	<tuple>
 
-1492863667 source:c:\users\maxim\desktop\programmes\othello\src\memarbre.cpp
+1492948831 source:c:\users\maxim\desktop\programmes\othello\src\memarbre.cpp
 	<cerrno>
 	<cstring>
 	<functional>
@@ -870,7 +866,7 @@
 	"memarbre.h"
 	"memia.h"
 
-1492013341 c:\users\maxim\desktop\programmes\othello\src\macros.h
+1492948831 c:\users\maxim\desktop\programmes\othello\src\macros.h
 
 1490963344 e:\projets\c++\othello\src\macros.h
 
@@ -946,19 +942,21 @@
 	"negamaxia.h"
 	"randomia.h"
 
-1492863667 c:\users\maxim\desktop\programmes\othello\src\menu.h
+1492948831 c:\users\maxim\desktop\programmes\othello\src\menu.h
 	<memory>
+	<string>
 	"console.h"
 	"memia.h"
 	"plateau.h"
 
-1492865946 source:c:\users\maxim\desktop\programmes\othello\src\menu.cpp
+1492948831 source:c:\users\maxim\desktop\programmes\othello\src\menu.cpp
 	<cerrno>
 	<cstring>
 	<fstream>
 	<iostream>
 	<memory>
 	<string>
+	<thread>
 	"alphabetaia.h"
 	"ia.h"
 	"macros.h"

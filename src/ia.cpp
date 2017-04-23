@@ -92,9 +92,9 @@ void IA::aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num
     s_console->gotoLigCol(5, noeud->size() + 9);
     std::cout << BARRE_VERT;
     s_console->gotoLigCol(6, noeud->size() + 9);
-<<<<<<< HEAD
-    if (noeud->size() == 1) std::cout << "\xb3";
-    else std::cout << "\xc1";
+
+    if (noeud->size() == 1) std::cout << BARRE_VERT;
+    else std::cout << ANGLE_HDG;
 
     // On affiche les consignes de touche
     s_console->gotoLigCol(12, 9);
@@ -103,10 +103,6 @@ void IA::aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num
     std::cout << "P : revenir au plateau";
     s_console->gotoLigCol(14, 9);
     std::cout << "ENTRER (sur un fils) : descendre dans la branche";
-=======
-    if (noeud->size() == 1) std::cout << BARRE_VERT;
-    else std::cout << ANGLE_HDG;
->>>>>>> a9b99ae91f9ebc2e2d59c2e4e8d3c24ceedaf2e9
 }
 
 bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num_coup) {
@@ -171,7 +167,7 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
                 break;
 
             case ENTREE:
-                if (num_coup < 4) {
+                if ((num_coup < 4) && (noeud->size())) {
                     if (y == 8) {
                             quitter = gere_arbre(s_console, noeud->fils((x - 9) / 2), num_coup + 1);
                         if (quitter) cont = false;
