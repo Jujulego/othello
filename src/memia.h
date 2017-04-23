@@ -9,6 +9,7 @@
 #include "memarbre.h"
 #include "negamaxia.h"
 
+///Hérite de la classe AlphaBetaIA
 class MemIA : public AlphaBetaIA {
     private:
         // Attributs
@@ -25,9 +26,13 @@ class MemIA : public AlphaBetaIA {
         // Méthodes
         virtual std::string id() const override;
         virtual Pion jouer(Etat plateau) override;
+
+    ///Incrémentation de la valeur du noeud
         void gagne();
+
+    /// décrémentation de la valeur du noeud
         void perdu();
-        
+
         void set_prof(unsigned prof);
         void set_noeud(int pos);
 };

@@ -191,7 +191,7 @@ bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int nu
 	    s_console->gotoLigCol(y, x);
         c = s_console->getch();
 
-		// Effacage des messages d'erreurs
+		// Suppression des messages d'erreurs
         s_console->gotoLigCol(26, 9);
         std::cout << "                                       ";
 

@@ -12,7 +12,10 @@
 class RandomIA : public IA {
     public:
         // Méthodes
+
         virtual std::string id() const override;
+
+        ///Permet de générer les coups aléatoire en respectant les règles du jeu
         virtual Pion jouer(Etat plateau) override;
 };
 
