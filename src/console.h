@@ -22,6 +22,7 @@ enum Color {
 class Console {
     private:
         // Méthodes privées
+        ///Permet les modifications des couleurs
         void _setColor(int front, int back);
 
     public:
@@ -32,9 +33,12 @@ class Console {
         ~Console();
 
         // Méthodes publiques
+        ///Permet le positionnement dans la console suivant les lignes et colonnes
         void gotoLigCol(int lig, int col);
+        ///Nettoie la console
         void clear();
         int  kbhit();
+        ///Récupere la touche du clavier
         int  getch();
 
         #ifndef __gnu_linux__

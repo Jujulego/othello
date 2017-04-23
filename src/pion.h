@@ -11,7 +11,7 @@ enum COULEUR { VIDE, NOIR, BLANC };
 // Opérateur externe
 std::istream& operator >> (std::istream& stream, COULEUR& coul);
 
-// Structure de Pion
+/// Structure de Pion
 struct Pion {
     // Coordonnées matrice !
     int x, y;

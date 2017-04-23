@@ -18,15 +18,19 @@
 // Structure
 struct Etat {
     // Infos joueurs
-    COULEUR joueur; // qui doit jouer
+    ///Permet de connaitre la couleur de joueur qui doit jouer
+    COULEUR joueur;
     std::map<COULEUR,unsigned> scores;
 
-    // Représentation générale du plateau
+    /// Représentation générale du plateau
     std::vector<std::vector<COULEUR>> othellier;
 
     // Méthodes
     std::vector<Pion> pions(COULEUR c) const;
+
+    ///Permet après un coup de retourner les pions de l'adversaire
     bool appliquer_coup(Pion const& p, bool fake = false);
+
     int coups_restant(COULEUR c);
 };
 
