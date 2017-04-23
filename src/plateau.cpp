@@ -13,42 +13,19 @@
 #include "plateau.h"
 
 // Macros
-#define TIMEOUT std::chrono::milliseconds(500) // 500ms
+#define DROITE_PLATEAU 50
 
-#ifndef __gnu_linux__
-static const std::string LIGNE_HAUT = "\xda\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xc2\xc4\xc4\xc4\xc4\xbf";
-static const std::string LIGNE_MIL1 = "\xb3    \xb3    \xb3    \xb3    \xb3    \xb3    \xb3    \xb3    \xb3";
-static const std::string LIGNE_MIL2 = "\xc3\xc4\xc4\xc4\xc4\xc5\xc4\xc4\xc4\xc4\xc5\xc4\xc4\xc4\xc4\xc5\xc4\xc4\xc4\xc4\xc5\xc4\xc4\xc4\xc4\xc5\xc4\xc4\xc4\xc4\xc5\xc4\xc4\xc4\xc4\xc5\xc4\xc4\xc4\xc4\xb4";
-static const std::string LIGNE_BAS  = "\xc0\xc4\xc4\xc4\xc4\xc1\xc4\xc4\xc4\xc4\xc1\xc4\xc4\xc4\xc4\xc1\xc4\xc4\xc4\xc4\xc1\xc4\xc4\xc4\xc4\xc1\xc4\xc4\xc4\xc4\xc1\xc4\xc4\xc4\xc4\xc1\xc4\xc4\xc4\xc4\xd9";
-# define OFFSET 1
-# define ENTREE 13
-# define FL_DROITE 57421
-# define FL_GAUCHE 57419
-# define FL_HAUT   57416
-# define FL_BAS    57424
-#else
-static const std::string LIGNE_HAUT = "\xe2\x95\xad\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xac\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xac\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xac\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xac\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xac\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xac\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xac\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x95\xae";
-static const std::string LIGNE_MIL1 = "\xe2\x94\x82    \xe2\x94\x82    \xe2\x94\x82    \xe2\x94\x82    \xe2\x94\x82    \xe2\x94\x82    \xe2\x94\x82    \xe2\x94\x82    \xe2\x94\x82";
-static const std::string LIGNE_MIL2 = "\xe2\x94\x9c\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xbc\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xbc\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xbc\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xbc\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xbc\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xbc\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xbc\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xa4";
-static const std::string LIGNE_BAS  = "\xe2\x95\xb0\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xb4\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xb4\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xb4\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xb4\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xb4\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xb4\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\xb4\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x94\x80\xe2\x95\xaf";
-# define OFFSET 1
-# define ENTREE 10
-# define FL_DROITE 1792835
-# define FL_GAUCHE 1792836
-# define FL_HAUT   1792833
-# define FL_BAS    1792834
-#endif
-
+// Constructeur
 Tableau::Tableau(std::shared_ptr<IA> ia_noir, std::shared_ptr<IA> ia_blanc) {
     // Init joueur
     m_ias[NOIR]  = ia_noir;
     m_ias[BLANC] = ia_blanc;
 
-    if (!m_ias[NOIR]) m_col_ia = BLANC;
-    else if (!m_ias[BLANC]) m_col_ia = NOIR;
+    if (m_ias[NOIR] != nullptr) m_col_ia = NOIR;
+    else if (m_ias[BLANC] != nullptr) m_col_ia = BLANC;
 
     // Init etat
-    m_etat.joueur = NOIR;    // tjs le noir qui commence
+    m_etat.joueur = NOIR;     // tjs le noir qui commence
     m_etat.scores[NOIR]  = 2; // = au nb de pions du joueur
     m_etat.scores[BLANC] = 2;
 
@@ -69,6 +46,7 @@ Tableau::Tableau(Etat&& etat, std::shared_ptr<IA> ia_noir, std::shared_ptr<IA> i
     m_etat = std::move(etat);
 }
 
+// Méthodes
 void Tableau::CreationTab() {
     // Affichage du plateau
     s_console->clear();
@@ -109,6 +87,7 @@ void Tableau::CreationTab() {
     std::cout << "   " << LIGNE_BAS << std::endl;
     std::cout << "     A    B    C    D    E    F    G    H" << std::endl;
 
+<<<<<<< HEAD
     if (m_ias[m_col_ia]->id() == "minmax") {
         s_console->gotoLigCol(20, 50);
         std::cout << "A : Montrer le graphe d'etat";
@@ -117,13 +96,30 @@ void Tableau::CreationTab() {
     std::cout << "F : Sauvegarder";
     s_console->gotoLigCol(22, 50);
     std::cout << "E : Quitter";
+=======
+    int off = 0;
+    s_console->gotoLigCol(5, DROITE_PLATEAU);
+    std::cout << "Commandes :";
+    
+    if ((m_col_ia != VIDE) && (m_ias[m_col_ia]->id() == "minmax")) {
+        s_console->gotoLigCol(6, DROITE_PLATEAU);
+        std::cout << "a : Montrer le graphe d'etat";
+        
+        off++;
+    }
+    
+    s_console->gotoLigCol(6+off, DROITE_PLATEAU);
+    std::cout << "f : Sauvegarder";
+    s_console->gotoLigCol(7+off, DROITE_PLATEAU);
+    std::cout << "e : Quitter";
+>>>>>>> a9b99ae91f9ebc2e2d59c2e4e8d3c24ceedaf2e9
 
     AfficherTab();
 }
 
 void Tableau::AfficherTab() {
-    for (int i=0;i < TailleTab; i++) {
-        for (int j=0; j < TailleTab; j++) {
+    for (int i = 0; i < TailleTab; i++) {
+        for (int j = 0; j < TailleTab; j++) {
             // Rien à faire pour le cases vides
             if (m_etat.othellier[i][j] == VIDE) {
                 continue;
@@ -144,9 +140,9 @@ void Tableau::AfficherTab() {
             }
 
             // Affichage du pion
-            s_console->gotoLigCol(4+OFFSET+3*j,4+5*i);
+            s_console->gotoLigCol(5+3*j,4+5*i);
             std::cout << "    ";
-            s_console->gotoLigCol(5+OFFSET+3*j,4+5*i);
+            s_console->gotoLigCol(6+3*j,4+5*i);
             std::cout << "    ";
             s_console->setColor();
         }
@@ -171,7 +167,7 @@ bool Tableau::Jouer(int &x, int&y) {
     // boucle tant que on a pas appuyer sur entrer (pour entrer un pion)
     while (onContinue) {
         // Deplacement du curseur
-        s_console->gotoLigCol(5+OFFSET+3*y,5+5*x);
+        s_console->gotoLigCol(6+3*y,5+5*x);
 
         c = s_console->getch();
 
@@ -248,7 +244,7 @@ COULEUR Tableau::BoucleJeu() {
 
     while (continuer) {
         // Message
-        s_console->gotoLigCol(10, 50);
+        s_console->gotoLigCol(10, DROITE_PLATEAU);
         std::cout << "Au tour de " << ((m_etat.joueur == NOIR) ? "noir ! " : "blanc !");
 
         std::cout.flush();
@@ -256,7 +252,7 @@ COULEUR Tableau::BoucleJeu() {
         // Execution de l'IA
         if (m_ias[m_etat.joueur] != nullptr) {
         	// On va dormir un peu
-        	//std::this_thread::sleep_for(TIMEOUT);
+        	std::this_thread::sleep_for(TIMEOUT);
         	m_etat.appliquer_coup(m_ias[m_etat.joueur]->jouer(m_etat));
         } else {
             // Interaction
@@ -266,17 +262,17 @@ COULEUR Tableau::BoucleJeu() {
         // Affichage
         AfficherTab();
 
-        s_console->gotoLigCol(15, 50);
+        s_console->gotoLigCol(15, DROITE_PLATEAU);
         std::cout << "Blanc : " << m_etat.scores[BLANC] << " ";
 
-        s_console->gotoLigCol(16, 50);
+        s_console->gotoLigCol(16, DROITE_PLATEAU);
         std::cout << "Noir  : " << m_etat.scores[NOIR] << " ";
         std::cout.flush(); // Force la mise à jour de l'écran
 
         // Test peut pas jouer !
         if (m_etat.coups_restant(m_etat.joueur) == 0) { // Le joueur ne peux pas jouer !
         	// Message
-            s_console->gotoLigCol(11, 50);
+            s_console->gotoLigCol(11, DROITE_PLATEAU);
             s_console->setColor(COLOR_YELLOW);
 	        std::cout << ((m_etat.joueur == NOIR) ? "Noir" : "Blanc") << " ne peux pas jouer !";
 	        s_console->setColor();
@@ -298,9 +294,9 @@ COULEUR Tableau::BoucleJeu() {
     	    		v = BLANC;
     	    	}
 
-                s_console->gotoLigCol(12, 50);
+                s_console->gotoLigCol(12, DROITE_PLATEAU);
 	        	std::cout << ((v == NOIR) ? "Noir" : "Blanc") << " a gagne !";
-    		    s_console->gotoLigCol(13, 50);
+    		    s_console->gotoLigCol(13, DROITE_PLATEAU);
 	        	std::cout << "Appuyer sur [ENTREE]";
 		        std::cout.flush();
 
@@ -308,7 +304,7 @@ COULEUR Tableau::BoucleJeu() {
 			    do {} while (s_console->getch() != ENTREE);
         	}
         } else {
-            s_console->gotoLigCol(11, 50);
+            s_console->gotoLigCol(11, DROITE_PLATEAU);
             std::cout << "                        ";
         }
     }
@@ -335,25 +331,25 @@ bool Tableau::sauvegarder() const {
 	// Interactions !
 	do {
 		// Affichage
-		s_console->gotoLigCol(21, 50);
+		s_console->gotoLigCol(21, DROITE_PLATEAU);
 		std::cout << "Entrez un nom de fichier :";
 		std::cout.flush();
 
 		// Effacement du nom précédent
 		if (taille != 0) {
-			s_console->gotoLigCol(22, 50);
+			s_console->gotoLigCol(22, DROITE_PLATEAU);
 			for (int i = 0; i < taille; i++) std::cout << " ";
 		}
 
 		// Entrée
-		s_console->gotoLigCol(22, 50);
+		s_console->gotoLigCol(22, DROITE_PLATEAU);
 		std::getline(std::cin, nom);
 
 		// Effacement d'un eventuel message d'erreur
 		if (taille != 0) {
-			s_console->gotoLigCol(18, 50);
+			s_console->gotoLigCol(18, DROITE_PLATEAU);
 			for (int i = 0; i < taille; i++) std::cout << " ";
-			s_console->gotoLigCol(19, 50);
+			s_console->gotoLigCol(19, DROITE_PLATEAU);
 			for (int i = 0; i < taille; i++) std::cout << " ";
 			std::cout.flush();
 		}
@@ -361,7 +357,7 @@ bool Tableau::sauvegarder() const {
 		// Annulation (chaine vide)
 		if (nom == "") {
 			// Message d'annulation
-			s_console->gotoLigCol(24, 50);
+			s_console->gotoLigCol(24, DROITE_PLATEAU);
 			s_console->setColor(COLOR_YELLOW);
 			std::cout << "Annulé !" << std::endl;
 			s_console->setColor();
@@ -377,11 +373,11 @@ bool Tableau::sauvegarder() const {
 
 		// Cas d'erreur :
 		if (f.fail()) {
-			s_console->gotoLigCol(18, 50);
+			s_console->gotoLigCol(18, DROITE_PLATEAU);
 			s_console->setColor(COLOR_RED);
 			std::cout << "Erreur à l'ouverture de '" << nom << ".txt' :";
 
-			s_console->gotoLigCol(19, 50);
+			s_console->gotoLigCol(19, DROITE_PLATEAU);
 			std::cout << strerror(errno);
 
 			s_console->setColor();
@@ -407,7 +403,7 @@ bool Tableau::sauvegarder() const {
 		f.close();
 
         // Message de confirmation
-		s_console->gotoLigCol(24, 50);
+		s_console->gotoLigCol(24, DROITE_PLATEAU);
 		s_console->setColor(COLOR_GREEN);
 		std::cout << "Sauvegardé !" << std::endl;
 		s_console->setColor();
@@ -416,7 +412,7 @@ bool Tableau::sauvegarder() const {
 	} while (true);
 
     // Attente
-	s_console->gotoLigCol(25, 50);
+	s_console->gotoLigCol(25, DROITE_PLATEAU);
    	std::cout << "Appuyer sur [ENTREE]";
     std::cout.flush();
 
@@ -424,11 +420,11 @@ bool Tableau::sauvegarder() const {
 
 	// Effacage des affichages en cas d'annulation
 	if (annule) {
-		s_console->gotoLigCol(21, 50);
+		s_console->gotoLigCol(21, DROITE_PLATEAU);
 		std::cout << "                          ";
-		s_console->gotoLigCol(24, 50);
+		s_console->gotoLigCol(24, DROITE_PLATEAU);
 		std::cout << "        " << std::endl;
-		s_console->gotoLigCol(25, 50);
+		s_console->gotoLigCol(25, DROITE_PLATEAU);
 	   	std::cout << "                    ";
 	}
 

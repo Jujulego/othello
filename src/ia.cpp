@@ -9,20 +9,7 @@
 #include "etat.h"
 #include "ia.h"
 #include "console.h"
-
-#ifndef __gnu_linux__
-# define ENTREE 13
-# define FL_DROITE 57421
-# define FL_GAUCHE 57419
-# define FL_HAUT   57416
-# define FL_BAS    57424
-#else
-# define ENTREE 10
-# define FL_DROITE 1792835
-# define FL_GAUCHE 1792836
-# define FL_HAUT   1792833
-# define FL_BAS    1792834
-#endif // __gnu_linux__
+#include "macros.h"
 
 // Fonctions
 static bool cc(Pion const& c1, Pion const& c2) {
@@ -85,17 +72,17 @@ void IA::aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num
         std::cout << "O";
 
         s_console->gotoLigCol(7, (i*2) + 9);
-        std::cout << "\xc1";
+        std::cout << ANGLE_HDG;
         s_console->gotoLigCol(6, (i*2) + 9);
         if (i < noeud->size() / 2) {
-            std::cout << "\xda";
+            std::cout << ANGLE_BD;
             s_console->gotoLigCol(6, (i*2) + 10);
-            std::cout << "\xc4";
+            std::cout << BARRE_HORI;
         }
         else if (i >= noeud->size() / 2) {
-            std::cout << "\xbf";
+            std::cout << ANGLE_BG;
             s_console->gotoLigCol(6, (i*2) + 8);
-            std::cout << "\xc4";
+            std::cout << BARRE_HORI;
         }
     }
 
@@ -103,8 +90,9 @@ void IA::aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num
     s_console->gotoLigCol(4, noeud->size() + 9);
     std::cout << "O";
     s_console->gotoLigCol(5, noeud->size() + 9);
-    std::cout << "\xb3";
+    std::cout << BARRE_VERT;
     s_console->gotoLigCol(6, noeud->size() + 9);
+<<<<<<< HEAD
     if (noeud->size() == 1) std::cout << "\xb3";
     else std::cout << "\xc1";
 
@@ -115,6 +103,10 @@ void IA::aff_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num
     std::cout << "P : revenir au plateau";
     s_console->gotoLigCol(14, 9);
     std::cout << "ENTRER (sur un fils) : descendre dans la branche";
+=======
+    if (noeud->size() == 1) std::cout << BARRE_VERT;
+    else std::cout << ANGLE_HDG;
+>>>>>>> a9b99ae91f9ebc2e2d59c2e4e8d3c24ceedaf2e9
 }
 
 bool IA::gere_arbre(Console* s_console, std::shared_ptr<Noeud<PV>> noeud, int num_coup) {

@@ -4,21 +4,11 @@
  */
 
 // Importations
-#include <iostream>
-#include <memory>
-
 #include "menu.h"
-#include "plateau.h"
-#include "memia.h"
-#include "minmaxia.h"
-
-#define PROF_ALGO 3
 
 // Main
 int main() {
 	// Menu !!!
 	Menu m;
-	m.afficher();
-
-	return 0;
+	return m.init();
 }

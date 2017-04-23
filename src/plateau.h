@@ -17,7 +17,7 @@ class Tableau {
     private:
         Etat m_etat;
         std::map<COULEUR,std::shared_ptr<IA>> m_ias;
-        COULEUR m_col_ia;
+        COULEUR m_col_ia = VIDE;
 
     protected:
         Console* s_console = NULL;
