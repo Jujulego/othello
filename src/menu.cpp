@@ -124,15 +124,19 @@ void Menu::afficher() {
 		else            s_console.setColor();
 		std::cout << "- Joueur vs Joueur";
 
+
 		s_console.gotoLigCol(11, DECAL_MENU1);
 		if (choix == 1) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 		std::cout << "- Joueur vs Random";
 
+
+
 		s_console.gotoLigCol(12, DECAL_MENU1);
 		if (choix == 2) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 		std::cout << "- Joueur vs MinMax";
+
 
 		s_console.gotoLigCol(13, DECAL_MENU1);
 		if (choix == 3) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
@@ -144,25 +148,30 @@ void Menu::afficher() {
 		else            s_console.setColor();
 		std::cout << "- Joueur vs NegaMax";
 
+
 		s_console.gotoLigCol(15, DECAL_MENU1);
 		if (choix == 5) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 		std::cout << "- Joueur vs Memory";
+
 
 		s_console.gotoLigCol(16, DECAL_MENU1);
 		if (choix == 6) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 		std::cout << "- Memory vs Memory";
 
+
 		s_console.gotoLigCol(17, DECAL_MENU1);
 		if (choix == 7) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 		std::cout << "- Commandes";
 
+
 		s_console.gotoLigCol(18, DECAL_MENU1);
 		if (choix == 8) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else            s_console.setColor();
 		std::cout << "- Charger une sauvegarde";
+
 
 		s_console.gotoLigCol(19, DECAL_MENU1);
 		if (choix == 9) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
@@ -238,13 +247,15 @@ void Menu::afficher() {
 	        		v = tab.BoucleJeu();
 
         			// getion memias
+
     	    		if (v == BLANC) m_memia_blanche->gagne();
         			else m_memia_blanche->perdu();
         		} else {
         			tab = Tableau(m_memia_noire, nullptr);
 	        		v = tab.BoucleJeu();
 
-        			// getion memias
+			// getion memias
+
     	    		if (v == NOIR) m_memia_noire->gagne();
         			else m_memia_noire->perdu();
         		}
@@ -253,6 +264,7 @@ void Menu::afficher() {
 
         	case 6: // MIA vs MIA
         		tab = Tableau(m_memia_noire, m_memia_blanche);
+
 
         		// Gestion memia
         		if (tab.BoucleJeu() == NOIR) {
@@ -320,15 +332,18 @@ COULEUR Menu::choix_coul() const {
 		s_console.gotoLigCol(10, DECAL_MENU2);
 		std::cout << "Quelle couleur veux-tu etre ?";
 
+
 		s_console.gotoLigCol(12, DECAL_MENU1);
 		if (coul == NOIR) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else              s_console.setColor();
 		std::cout << "- Noir";
 
+
 		s_console.gotoLigCol(13, DECAL_MENU1);
 		if (coul == BLANC) s_console.setColor(COLOR_BLACK, COLOR_WHITE);
 		else               s_console.setColor();
 		std::cout << "- Blanc";
+
 
 		s_console.gotoLigCol(15, DECAL_MENU2);
 		s_console.setColor();
@@ -363,7 +378,7 @@ void Menu::regles() const {
 	std::cout << "Commandes :" << std::endl;
 	std::cout << std::endl;
 	std::cout << "    Z       ^" << std::endl;
-	std::cout << "  Q S D   < v >     Pour se déplacer sur le plateau" << std::endl;
+	std::cout << "  Q S D   < v >     Pour se de placer sur le plateau" << std::endl;
 	std::cout << std::endl;
 	std::cout << "             |" << std::endl;
 	std::cout << " ENTREE   <--+      Pour placer un pion" << std::endl;
