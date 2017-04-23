@@ -22,8 +22,10 @@ class Menu {
 		// Constructeur
 		Menu();
 		
+		// Méthode statique
+		static void entete();
+		
 		// Méthodes
-		void entete() const;
 		void afficher() const;
 		COULEUR choix_coul() const;
 		void regles() const;

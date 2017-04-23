@@ -15,21 +15,6 @@
 #include "negamaxia.h"
 #include "randomia.h"
 
-// Macros
-#define PROF_ALGO 3
-#define FICHIER_NOIR  "arbre_noir.txt"
-#define FICHIER_BLANC "arbre_blanc.txt"
-
-#ifndef __gnu_linux__
-# define ENTREE  13
-# define FL_HAUT 57416
-# define FL_BAS  57424
-#else
-# define ENTREE  10
-# define FL_HAUT 1792833
-# define FL_BAS  1792834
-#endif
-
 // Attributs statiques
 Console Menu::s_console;
 
@@ -40,7 +25,7 @@ Menu::Menu() :
 }
 
 // Méthodes
-void Menu::entete() const {
+void Menu::entete() {
 	// Affichage entête
 	s_console.clear();
 	s_console.gotoLigCol(2, 0);
