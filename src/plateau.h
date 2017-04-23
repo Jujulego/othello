@@ -22,7 +22,7 @@ class Tableau {
         COULEUR m_col_ia = VIDE;
 
     protected:
-        ///Pointeur sur console initialisé à NULL
+        /// Pointeur sur console initialisé à NULL
         Console* s_console = NULL;
 
     public:
@@ -31,19 +31,19 @@ class Tableau {
         Tableau(Etat&& etat, std::shared_ptr<IA> ia_noir, std::shared_ptr<IA> ia_blanc);
 
         // Méthodes
-        ///Création de la structure du tableau
+        /// Création de la structure du tableau
         void CreationTab();
 
-        ///Permet le déplacement des pions et la pose d'un pion
+        /// Permet le déplacement des pions et la pose d'un pion
         bool Jouer(int &x, int&y);
 
-        ///Permet de choisir la couleur des cases, quand elles sont vides ou avec un pion
+        /// Permet de choisir la couleur des cases, quand elles sont vides ou avec un pion
         void AfficherTab();
 
-        ///Permet la permutation des joueurs, affiche le score des joueurs
+        /// Permet la permutation des joueurs, affiche le score des joueurs
         COULEUR BoucleJeu();
 
-        ///
+        /// Sauvegarde de la partie
         bool sauvegarder() const;
 
         // Accesseurs

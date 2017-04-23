@@ -12,12 +12,15 @@ Etat \-
 .ti -1c
 .RI "std::vector< \fBPion\fP > \fBpions\fP (COULEUR c) const "
 .br
+.RI "\fIRenvoi les pions de la couleur donnée\&. \fP"
 .ti -1c
 .RI "bool \fBappliquer_coup\fP (\fBPion\fP const &p, bool fake=false)"
 .br
+.RI "\fIPermet après un coup de retourner les pions de l'adversaire\&. \fP"
 .ti -1c
 .RI "int \fBcoups_restant\fP (COULEUR c)"
 .br
+.RI "\fIRenvoie le nombre coups possible pour la couleur\&. \fP"
 .in -1c
 .SS "Attributs publics"
 
@@ -25,12 +28,14 @@ Etat \-
 .ti -1c
 .RI "COULEUR \fBjoueur\fP"
 .br
+.RI "\fIPermet de connaitre la couleur de joueur qui doit jouer\&. \fP"
 .ti -1c
 .RI "std::map< COULEUR, unsigned > \fBscores\fP"
 .br
 .ti -1c
 .RI "std::vector< std::vector< COULEUR > > \fBothellier\fP"
 .br
+.RI "\fIReprésentation générale du plateau\&. \fP"
 .in -1c
 
 .SH "Auteur"

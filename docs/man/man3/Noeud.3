@@ -17,12 +17,15 @@ Est dérivée de enable_shared_from_this< Noeud< T > >\&.
 .ti -1c
 .RI "\fBNoeud\fP< T > \fBoperator[]\fP (int i)"
 .br
+.RI "\fIPermet l'accès au fils i via les crochets\&. \fP"
 .ti -1c
 .RI "std::shared_ptr< \fBNoeud\fP< T > > \fBadd_fils\fP (T const &val)"
 .br
+.RI "\fIAjoute un fils contenant la valeur val\&. \fP"
 .ti -1c
 .RI "std::shared_ptr< \fBNoeud\fP< T > > \fBfils\fP (int i)"
 .br
+.RI "\fIPermet l'accès au fils i\&. \fP"
 .ti -1c
 .RI "std::shared_ptr< \fBNoeud\fP< T > > \fBpere\fP ()"
 .br
@@ -39,6 +42,7 @@ Est dérivée de enable_shared_from_this< Noeud< T > >\&.
 .ti -1c
 .RI "static std::shared_ptr< \fBNoeud\fP< T > > \fBcreer\fP (T const &val)"
 .br
+.RI "\fICrée un noeud de type T\&. \fP"
 .in -1c
 
 .SH "Auteur"

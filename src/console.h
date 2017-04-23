@@ -19,10 +19,10 @@ enum Color {
 };
 
 // Classe
+/// Gestion de la console
 class Console {
     private:
         // Méthodes privées
-        ///Permet les modifications des couleurs
         void _setColor(int front, int back);
 
     public:
@@ -33,19 +33,17 @@ class Console {
         ~Console();
 
         // Méthodes publiques
-        ///Permet le positionnement dans la console suivant les lignes et colonnes
+        /// Permet le positionnement dans la console suivant les lignes et colonnes
         void gotoLigCol(int lig, int col);
-        ///Nettoie la console
+        /// Nettoie la console
         void clear();
+        /// Renvoie 1 si on appuye sur une touche
         int  kbhit();
-        ///Récupere la touche du clavier
+        /// Récupere la touche du clavier
         int  getch();
 
-        #ifndef __gnu_linux__
+        /// Permet les modifications des couleurs
         void setColor(Color front=COLOR_DEFAULT, Color back=COLOR_DEFAULT_BACK);
-        #else
-        void setColor(Color front=COLOR_DEFAULT, Color back=COLOR_DEFAULT_BACK);
-        #endif
 };
 
 #endif // CONSOLE_H_INCLUDED

@@ -26,11 +26,13 @@ struct Etat {
     std::vector<std::vector<COULEUR>> othellier;
 
     // Méthodes
+    /// Renvoi les pions de la couleur donnée
     std::vector<Pion> pions(COULEUR c) const;
 
-    ///Permet après un coup de retourner les pions de l'adversaire
+    /// Permet après un coup de retourner les pions de l'adversaire
     bool appliquer_coup(Pion const& p, bool fake = false);
 
+	/// Renvoie le nombre coups possible pour la couleur
     int coups_restant(COULEUR c);
 };
 

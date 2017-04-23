@@ -2,6 +2,15 @@
 \label{classTableau}\index{Tableau@{Tableau}}
 
 
+Hérite de la classe console.  
+
+
+
+
+{\ttfamily \#include $<$plateau.\+h$>$}
+
+
+
 Graphe de collaboration de Tableau\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -18,21 +27,21 @@ Graphe de collaboration de Tableau\+:\nopagebreak
 {\bfseries Tableau} (\hyperlink{structEtat}{Etat} \&\&etat, std\+::shared\+\_\+ptr$<$ \hyperlink{classIA}{IA} $>$ ia\+\_\+noir, std\+::shared\+\_\+ptr$<$ \hyperlink{classIA}{IA} $>$ ia\+\_\+blanc)\hypertarget{classTableau_adc95e4c3d822d09af273e29294313ac4}{}\label{classTableau_adc95e4c3d822d09af273e29294313ac4}
 
 \item 
-void {\bfseries Creation\+Tab} ()\hypertarget{classTableau_a8e8311ab52129da568acc092598b22c7}{}\label{classTableau_a8e8311ab52129da568acc092598b22c7}
+void \hyperlink{classTableau_a8e8311ab52129da568acc092598b22c7}{Creation\+Tab} ()\hypertarget{classTableau_a8e8311ab52129da568acc092598b22c7}{}\label{classTableau_a8e8311ab52129da568acc092598b22c7}
 
-\item 
-bool {\bfseries Jouer} (int \&x, int \&y)\hypertarget{classTableau_a564072da82e057d02ad7edbee98e6e43}{}\label{classTableau_a564072da82e057d02ad7edbee98e6e43}
+\begin{DoxyCompactList}\small\item\em Création de la structure du tableau. \end{DoxyCompactList}\item 
+bool \hyperlink{classTableau_a564072da82e057d02ad7edbee98e6e43}{Jouer} (int \&x, int \&y)\hypertarget{classTableau_a564072da82e057d02ad7edbee98e6e43}{}\label{classTableau_a564072da82e057d02ad7edbee98e6e43}
 
-\item 
-void {\bfseries Afficher\+Tab} ()\hypertarget{classTableau_a422f7b27c74ca34d81ef3446e0d88bb7}{}\label{classTableau_a422f7b27c74ca34d81ef3446e0d88bb7}
+\begin{DoxyCompactList}\small\item\em Permet le déplacement des pions et la pose d\textquotesingle{}un pion. \end{DoxyCompactList}\item 
+void \hyperlink{classTableau_a422f7b27c74ca34d81ef3446e0d88bb7}{Afficher\+Tab} ()\hypertarget{classTableau_a422f7b27c74ca34d81ef3446e0d88bb7}{}\label{classTableau_a422f7b27c74ca34d81ef3446e0d88bb7}
 
-\item 
-C\+O\+U\+L\+E\+UR {\bfseries Boucle\+Jeu} ()\hypertarget{classTableau_aae276afa0929c10f4c9a37c61a6166a9}{}\label{classTableau_aae276afa0929c10f4c9a37c61a6166a9}
+\begin{DoxyCompactList}\small\item\em Permet de choisir la couleur des cases, quand elles sont vides ou avec un pion. \end{DoxyCompactList}\item 
+C\+O\+U\+L\+E\+UR \hyperlink{classTableau_aae276afa0929c10f4c9a37c61a6166a9}{Boucle\+Jeu} ()\hypertarget{classTableau_aae276afa0929c10f4c9a37c61a6166a9}{}\label{classTableau_aae276afa0929c10f4c9a37c61a6166a9}
 
-\item 
-bool {\bfseries sauvegarder} () const \hypertarget{classTableau_a7fe5d033577a970525067422053595ba}{}\label{classTableau_a7fe5d033577a970525067422053595ba}
+\begin{DoxyCompactList}\small\item\em Permet la permutation des joueurs, affiche le score des joueurs. \end{DoxyCompactList}\item 
+bool \hyperlink{classTableau_a7fe5d033577a970525067422053595ba}{sauvegarder} () const \hypertarget{classTableau_a7fe5d033577a970525067422053595ba}{}\label{classTableau_a7fe5d033577a970525067422053595ba}
 
-\item 
+\begin{DoxyCompactList}\small\item\em Sauvegarde de la partie. \end{DoxyCompactList}\item 
 std\+::map$<$ C\+O\+U\+L\+E\+UR, unsigned $>$ const {\bfseries scores} () const \hypertarget{classTableau_ac3c035ec5fcc5189b04392ff56d0441e}{}\label{classTableau_ac3c035ec5fcc5189b04392ff56d0441e}
 
 \item 
@@ -42,10 +51,13 @@ std\+::vector$<$ std\+::shared\+\_\+ptr$<$ \hyperlink{structPion}{Pion} $>$ $>$ 
 \subsection*{Attributs protégés}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classConsole}{Console} $\ast$ {\bfseries s\+\_\+console} = N\+U\+LL\hypertarget{classTableau_a2557f30daf3e8c13d803b3365be83a64}{}\label{classTableau_a2557f30daf3e8c13d803b3365be83a64}
+\hyperlink{classConsole}{Console} $\ast$ \hyperlink{classTableau_a2557f30daf3e8c13d803b3365be83a64}{s\+\_\+console} = N\+U\+LL\hypertarget{classTableau_a2557f30daf3e8c13d803b3365be83a64}{}\label{classTableau_a2557f30daf3e8c13d803b3365be83a64}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Pointeur sur console initialisé à N\+U\+LL. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\subsection{Description détaillée}
+Hérite de la classe console. 
 
 La documentation de cette classe a été générée à partir des fichiers suivants \+:\begin{DoxyCompactItemize}
 \item 

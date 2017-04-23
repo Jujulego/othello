@@ -1,8 +1,8 @@
 <map id="Graphe hiérarchique des classes" name="Graphe hiérarchique des classes">
-<area shape="rect" id="node1" href="$classIA.html" title="IA" alt="" coords="5,56,44,83"/>
+<area shape="rect" id="node1" href="$classIA.html" title="Classe mère de la partie IA. " alt="" coords="5,56,44,83"/>
 <area shape="rect" id="node2" href="$classMinMaxIA.html" title="MinMaxIA" alt="" coords="93,31,175,57"/>
 <area shape="rect" id="node6" href="$classRandomIA.html" title="RandomIA" alt="" coords="92,81,176,108"/>
 <area shape="rect" id="node3" href="$classAlphaBetaIA.html" title="AlphaBetaIA" alt="" coords="224,31,319,57"/>
-<area shape="rect" id="node4" href="$classMemIA.html" title="MemIA" alt="" coords="380,5,444,32"/>
+<area shape="rect" id="node4" href="$classMemIA.html" title="Hérite de la classe AlphaBetaIA. " alt="" coords="380,5,444,32"/>
 <area shape="rect" id="node5" href="$classNegaMaxIA.html" title="NegaMaxIA" alt="" coords="367,56,457,83"/>
 </map>

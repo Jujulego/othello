@@ -91,7 +91,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classIA.html" target="_top" xlink:title="{IA\n|# m_arbre\l|+ ~IA()\l+ id()\l+ jouer()\l+ get_coups()\l+ aff_arbre()\l+ gere_arbre()\l+ dess_plat()\l+ arbre()\l}">
+<g id="a_node2"><a xlink:href="classIA.html" target="_top" xlink:title="Classe mère de la partie IA. ">
 <polygon fill="white" stroke="black" points="49,-436.5 49,-570.5 126,-570.5 126,-436.5 49,-436.5"/>
 <text text-anchor="middle" x="87.5" y="-558.5" font-family="Helvetica,sans-Serif" font-size="10.00">IA</text>
 <polyline fill="none" stroke="black" points="49,-551.5 126,-551.5 "/>
@@ -115,7 +115,7 @@ var sectionId = 'dynsection-0';
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="classMemIA.html" target="_top" xlink:title="{MemIA\n||+ MemIA()\l+ id()\l+ jouer()\l+ gagne()\l+ perdu()\l+ set_prof()\l+ set_noeud()\l}">
+<g id="a_node4"><a xlink:href="classMemIA.html" target="_top" xlink:title="Hérite de la classe AlphaBetaIA. ">
 <polygon fill="white" stroke="black" points="0,-0.5 0,-123.5 77,-123.5 77,-0.5 0,-0.5"/>
 <text text-anchor="middle" x="38.5" y="-111.5" font-family="Helvetica,sans-Serif" font-size="10.00">MemIA</text>
 <polyline fill="none" stroke="black" points="0,-104.5 77,-104.5 "/>

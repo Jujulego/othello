@@ -2,10 +2,13 @@
 .ad l
 .nh
 .SH NAME
-IA \- 
+IA \- Classe mère de la partie \fBIA\fP\&.  
+
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <ia\&.h>\fP
 .PP
 Dérivée par \fBMinMaxIA\fP, et \fBRandomIA\fP\&.
 .SS "Classes"
@@ -21,21 +24,27 @@ Dérivée par \fBMinMaxIA\fP, et \fBRandomIA\fP\&.
 .ti -1c
 .RI "virtual std::string \fBid\fP () const =0"
 .br
+.RI "\fIMethode virtuel permetant de connaitre l'\fBIA\fP\&. \fP"
 .ti -1c
 .RI "virtual \fBPion\fP \fBjouer\fP (\fBEtat\fP plateau)=0"
 .br
+.RI "\fIMethode virtuel permettant aux différents \fBIA\fP de jouer en respectant les règles du jeu\&. \fP"
 .ti -1c
 .RI "std::set< \fBPion\fP, bool(&)(\fBPion\fP const &, \fBPion\fP const &)> \fBget_coups\fP (\fBEtat\fP const &plateau) const "
 .br
+.RI "\fIRenvoie tous les coups possible sur le plateau donné \fP"
 .ti -1c
 .RI "void \fBaff_arbre\fP (\fBConsole\fP *s_console, std::shared_ptr< \fBNoeud\fP< \fBPV\fP >> noeud, int num_coup)"
 .br
+.RI "\fIAffichage de l'abre et affichage des consignes pour se déplacer sur l'arbre\&. \fP"
 .ti -1c
-.RI "bool \fBgere_arbre\fP (\fBConsole\fP *s_console, std::shared_ptr< \fBNoeud\fP< \fBPV\fP >> noeud, int num_coup, std::vector< std::vector< COULEUR >> othellier)"
+.RI "bool \fBgere_arbre\fP (\fBConsole\fP *s_console, std::shared_ptr< \fBNoeud\fP< \fBPV\fP >> noeud, int num_coup, \fBEtat\fP etat)"
 .br
+.RI "\fIPermet la gestion global de l'arbre\&. \fP"
 .ti -1c
-.RI "void \fBdess_plat\fP (\fBConsole\fP *s_console, int x, int y, \fBPion\fP pion, std::vector< std::vector< COULEUR >> othellier, int val)"
+.RI "void \fBdess_plat\fP (\fBConsole\fP *s_console, int x, int y, \fBPion\fP pion, \fBEtat\fP etat, int val)"
 .br
+.RI "\fIDessine le plateau à coté de l'arbre\&. \fP"
 .ti -1c
 .RI "std::shared_ptr< \fBNoeud\fP< \fBPV\fP > > \fBarbre\fP () const "
 .br
@@ -47,6 +56,9 @@ Dérivée par \fBMinMaxIA\fP, et \fBRandomIA\fP\&.
 .RI "std::shared_ptr< \fBNoeud\fP< \fBPV\fP > > \fBm_arbre\fP"
 .br
 .in -1c
+.SH "Description détaillée"
+.PP 
+Classe mère de la partie \fBIA\fP\&. 
 
 .SH "Auteur"
 .PP 

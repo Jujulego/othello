@@ -91,6 +91,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence de la classe IA<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Classe mère de la partie <a class="el" href="classIA.html" title="Classe mère de la partie IA. ">IA</a>.  
+ <a href="classIA.html#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="ia_8h_source.html">ia.h</a>&gt;</code></p>
 <div class="dynheader">
 Graphe d'héritage de IA:</div>
 <div class="dyncontent">
@@ -110,23 +115,29 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a766f10d2cd5450868523e2fa184fdf93"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a766f10d2cd5450868523e2fa184fdf93"></a>
-virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>id</b> () const =0</td></tr>
+virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIA.html#a766f10d2cd5450868523e2fa184fdf93">id</a> () const =0</td></tr>
+<tr class="memdesc:a766f10d2cd5450868523e2fa184fdf93"><td class="mdescLeft">&#160;</td><td class="mdescRight">Methode virtuel permetant de connaitre l'<a class="el" href="classIA.html" title="Classe mère de la partie IA. ">IA</a>. <br /></td></tr>
 <tr class="separator:a766f10d2cd5450868523e2fa184fdf93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f40133e71c6bbe7fe7c72b4792dccb4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3f40133e71c6bbe7fe7c72b4792dccb4"></a>
-virtual <a class="el" href="structPion.html">Pion</a>&#160;</td><td class="memItemRight" valign="bottom"><b>jouer</b> (<a class="el" href="structEtat.html">Etat</a> plateau)=0</td></tr>
+virtual <a class="el" href="structPion.html">Pion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIA.html#a3f40133e71c6bbe7fe7c72b4792dccb4">jouer</a> (<a class="el" href="structEtat.html">Etat</a> plateau)=0</td></tr>
+<tr class="memdesc:a3f40133e71c6bbe7fe7c72b4792dccb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Methode virtuel permettant aux différents <a class="el" href="classIA.html" title="Classe mère de la partie IA. ">IA</a> de jouer en respectant les règles du jeu. <br /></td></tr>
 <tr class="separator:a3f40133e71c6bbe7fe7c72b4792dccb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a1a014ffa6b3dbf6c1f401ecfa55148"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a1a014ffa6b3dbf6c1f401ecfa55148"></a>
-std::set&lt; <a class="el" href="structPion.html">Pion</a>, bool(&amp;)(<a class="el" href="structPion.html">Pion</a> const &amp;, <a class="el" href="structPion.html">Pion</a> const &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_coups</b> (<a class="el" href="structEtat.html">Etat</a> const &amp;plateau) const </td></tr>
+std::set&lt; <a class="el" href="structPion.html">Pion</a>, bool(&amp;)(<a class="el" href="structPion.html">Pion</a> const &amp;, <a class="el" href="structPion.html">Pion</a> const &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIA.html#a6a1a014ffa6b3dbf6c1f401ecfa55148">get_coups</a> (<a class="el" href="structEtat.html">Etat</a> const &amp;plateau) const </td></tr>
+<tr class="memdesc:a6a1a014ffa6b3dbf6c1f401ecfa55148"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie tous les coups possible sur le plateau donné <br /></td></tr>
 <tr class="separator:a6a1a014ffa6b3dbf6c1f401ecfa55148"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca13a5971e87f358cd9e70188448b698"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca13a5971e87f358cd9e70188448b698"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>aff_arbre</b> (<a class="el" href="classConsole.html">Console</a> *s_console, std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class="el" href="structIA_1_1PV.html">PV</a> &gt;&gt; noeud, int num_coup)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIA.html#aca13a5971e87f358cd9e70188448b698">aff_arbre</a> (<a class="el" href="classConsole.html">Console</a> *s_console, std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class="el" href="structIA_1_1PV.html">PV</a> &gt;&gt; noeud, int num_coup)</td></tr>
+<tr class="memdesc:aca13a5971e87f358cd9e70188448b698"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affichage de l'abre et affichage des consignes pour se déplacer sur l'arbre. <br /></td></tr>
 <tr class="separator:aca13a5971e87f358cd9e70188448b698"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2896700500f380a77b8efc6dff9ed5e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2896700500f380a77b8efc6dff9ed5e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>gere_arbre</b> (<a class="el" href="classConsole.html">Console</a> *s_console, std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class="el" href="structIA_1_1PV.html">PV</a> &gt;&gt; noeud, int num_coup, std::vector&lt; std::vector&lt; COULEUR &gt;&gt; othellier)</td></tr>
-<tr class="separator:aa2896700500f380a77b8efc6dff9ed5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2bb3de5d20fb887a3e88d6b0d698c381"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bb3de5d20fb887a3e88d6b0d698c381"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>dess_plat</b> (<a class="el" href="classConsole.html">Console</a> *s_console, int x, int y, <a class="el" href="structPion.html">Pion</a> pion, std::vector&lt; std::vector&lt; COULEUR &gt;&gt; othellier, int val)</td></tr>
-<tr class="separator:a2bb3de5d20fb887a3e88d6b0d698c381"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51b5eba7eb3cb3fba5784d4688353018"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51b5eba7eb3cb3fba5784d4688353018"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIA.html#a51b5eba7eb3cb3fba5784d4688353018">gere_arbre</a> (<a class="el" href="classConsole.html">Console</a> *s_console, std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class="el" href="structIA_1_1PV.html">PV</a> &gt;&gt; noeud, int num_coup, <a class="el" href="structEtat.html">Etat</a> etat)</td></tr>
+<tr class="memdesc:a51b5eba7eb3cb3fba5784d4688353018"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet la gestion global de l'arbre. <br /></td></tr>
+<tr class="separator:a51b5eba7eb3cb3fba5784d4688353018"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a577fbb6c60b263de3d62b93052197db6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a577fbb6c60b263de3d62b93052197db6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIA.html#a577fbb6c60b263de3d62b93052197db6">dess_plat</a> (<a class="el" href="classConsole.html">Console</a> *s_console, int x, int y, <a class="el" href="structPion.html">Pion</a> pion, <a class="el" href="structEtat.html">Etat</a> etat, int val)</td></tr>
+<tr class="memdesc:a577fbb6c60b263de3d62b93052197db6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dessine le plateau à coté de l'arbre. <br /></td></tr>
+<tr class="separator:a577fbb6c60b263de3d62b93052197db6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27c2b1942849e7fbd4c77f4c0fa0d88d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27c2b1942849e7fbd4c77f4c0fa0d88d"></a>
 std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class="el" href="structIA_1_1PV.html">PV</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>arbre</b> () const </td></tr>
 <tr class="separator:a27c2b1942849e7fbd4c77f4c0fa0d88d"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -137,7 +148,9 @@ Attributs protégés</h2></td></tr>
 std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class="el" href="structIA_1_1PV.html">PV</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_arbre</b></td></tr>
 <tr class="separator:a6666e00b08d090ab464d1847c6b9db32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Classe mère de la partie <a class="el" href="classIA.html" title="Classe mère de la partie IA. ">IA</a>. </p>
+</div><hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
 <li><a class="el" href="ia_8h_source.html">ia.h</a></li>
 <li>ia.cpp</li>
 </ul>

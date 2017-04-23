@@ -2,10 +2,13 @@
 .ad l
 .nh
 .SH NAME
-Tableau \- 
+Tableau \- Hérite de la classe console\&.  
+
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <plateau\&.h>\fP
 .SS "Fonctions membres publiques"
 
 .in +1c
@@ -18,18 +21,23 @@ Tableau \-
 .ti -1c
 .RI "void \fBCreationTab\fP ()"
 .br
+.RI "\fICréation de la structure du tableau\&. \fP"
 .ti -1c
 .RI "bool \fBJouer\fP (int &x, int &y)"
 .br
+.RI "\fIPermet le déplacement des pions et la pose d'un pion\&. \fP"
 .ti -1c
 .RI "void \fBAfficherTab\fP ()"
 .br
+.RI "\fIPermet de choisir la couleur des cases, quand elles sont vides ou avec un pion\&. \fP"
 .ti -1c
 .RI "COULEUR \fBBoucleJeu\fP ()"
 .br
+.RI "\fIPermet la permutation des joueurs, affiche le score des joueurs\&. \fP"
 .ti -1c
 .RI "bool \fBsauvegarder\fP () const "
 .br
+.RI "\fISauvegarde de la partie\&. \fP"
 .ti -1c
 .RI "std::map< COULEUR, unsigned > const \fBscores\fP () const "
 .br
@@ -43,7 +51,11 @@ Tableau \-
 .ti -1c
 .RI "\fBConsole\fP * \fBs_console\fP = NULL"
 .br
+.RI "\fIPointeur sur console initialisé à NULL\&. \fP"
 .in -1c
+.SH "Description détaillée"
+.PP 
+Hérite de la classe console\&. 
 
 .SH "Auteur"
 .PP 

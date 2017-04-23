@@ -20,18 +20,23 @@ Est dérivée de enable_shared_from_this< Noeud >\&.
 .ti -1c
 .RI "std::weak_ptr< \fBNoeud\fP > \fBweak_from_this\fP ()"
 .br
+.RI "\fIRenvoie un weak_ptr sur this\&. \fP"
 .ti -1c
 .RI "std::ostream & \fBafficher\fP (std::ostream &stream) const "
 .br
+.RI "\fIPermet d'afficher le noeud\&. \fP"
 .ti -1c
 .RI "std::shared_ptr< \fBNoeud\fP > \fBadd_fils\fP (int val, std::tuple< int, int > const &coords)"
 .br
+.RI "\fICrée un fils avec la valeur et la coordonnée données\&. \fP"
 .ti -1c
 .RI "void \fBsave\fP ()"
 .br
+.RI "\fISauvegarde le noeud dans le fichier\&. \fP"
 .ti -1c
 .RI "bool \fBest_racine\fP () const "
 .br
+.RI "\fIRenvoie vrai si le noeud est une racine\&. \fP"
 .ti -1c
 .RI "int \fBval\fP () const "
 .br

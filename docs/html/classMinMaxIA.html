@@ -91,6 +91,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence de la classe MinMaxIA</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="minmaxia_8h_source.html">minmaxia.h</a>&gt;</code></p>
 <div class="dynheader">
 Graphe d'héritage de MinMaxIA:</div>
 <div class="dyncontent">
@@ -108,24 +110,30 @@ Fonctions membres publiques</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>MinMaxIA</b> (unsigned prof, COULEUR c)</td></tr>
 <tr class="separator:ab186638b8bf69698b86415555734a926"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace6db5b6ab7a0aaba72d2bf16a44f6f3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ace6db5b6ab7a0aaba72d2bf16a44f6f3"></a>
-virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><b>id</b> () const override</td></tr>
+virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMinMaxIA.html#ace6db5b6ab7a0aaba72d2bf16a44f6f3">id</a> () const override</td></tr>
+<tr class="memdesc:ace6db5b6ab7a0aaba72d2bf16a44f6f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie l'identifiant pour les sauvegardes. <br /></td></tr>
 <tr class="separator:ace6db5b6ab7a0aaba72d2bf16a44f6f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a829500a59568c81e902862933e4f9931"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a829500a59568c81e902862933e4f9931"></a>
-virtual <a class="el" href="structPion.html">Pion</a>&#160;</td><td class="memItemRight" valign="bottom"><b>jouer</b> (<a class="el" href="structEtat.html">Etat</a> plateau) override</td></tr>
+virtual <a class="el" href="structPion.html">Pion</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMinMaxIA.html#a829500a59568c81e902862933e4f9931">jouer</a> (<a class="el" href="structEtat.html">Etat</a> plateau) override</td></tr>
+<tr class="memdesc:a829500a59568c81e902862933e4f9931"><td class="mdescLeft">&#160;</td><td class="mdescRight">Executer l'algorithme. <br /></td></tr>
 <tr class="separator:a829500a59568c81e902862933e4f9931"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classIA"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classIA')"><img src="closed.png" alt="-"/>&#160;Fonctions membres publiques hérités de <a class="el" href="classIA.html">IA</a></td></tr>
 <tr class="memitem:a6a1a014ffa6b3dbf6c1f401ecfa55148 inherit pub_methods_classIA"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a1a014ffa6b3dbf6c1f401ecfa55148"></a>
-std::set&lt; <a class="el" href="structPion.html">Pion</a>, bool(&amp;)(<a class="el" href="structPion.html">Pion</a> const &amp;, <a class="el" href="structPion.html">Pion</a> const &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><b>get_coups</b> (<a class="el" href="structEtat.html">Etat</a> const &amp;plateau) const </td></tr>
+std::set&lt; <a class="el" href="structPion.html">Pion</a>, bool(&amp;)(<a class="el" href="structPion.html">Pion</a> const &amp;, <a class="el" href="structPion.html">Pion</a> const &amp;)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIA.html#a6a1a014ffa6b3dbf6c1f401ecfa55148">get_coups</a> (<a class="el" href="structEtat.html">Etat</a> const &amp;plateau) const </td></tr>
+<tr class="memdesc:a6a1a014ffa6b3dbf6c1f401ecfa55148 inherit pub_methods_classIA"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renvoie tous les coups possible sur le plateau donné <br /></td></tr>
 <tr class="separator:a6a1a014ffa6b3dbf6c1f401ecfa55148 inherit pub_methods_classIA"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca13a5971e87f358cd9e70188448b698 inherit pub_methods_classIA"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aca13a5971e87f358cd9e70188448b698"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>aff_arbre</b> (<a class="el" href="classConsole.html">Console</a> *s_console, std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class="el" href="structIA_1_1PV.html">PV</a> &gt;&gt; noeud, int num_coup)</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIA.html#aca13a5971e87f358cd9e70188448b698">aff_arbre</a> (<a class="el" href="classConsole.html">Console</a> *s_console, std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class="el" href="structIA_1_1PV.html">PV</a> &gt;&gt; noeud, int num_coup)</td></tr>
+<tr class="memdesc:aca13a5971e87f358cd9e70188448b698 inherit pub_methods_classIA"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affichage de l'abre et affichage des consignes pour se déplacer sur l'arbre. <br /></td></tr>
 <tr class="separator:aca13a5971e87f358cd9e70188448b698 inherit pub_methods_classIA"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2896700500f380a77b8efc6dff9ed5e inherit pub_methods_classIA"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa2896700500f380a77b8efc6dff9ed5e"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>gere_arbre</b> (<a class="el" href="classConsole.html">Console</a> *s_console, std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class="el" href="structIA_1_1PV.html">PV</a> &gt;&gt; noeud, int num_coup, std::vector&lt; std::vector&lt; COULEUR &gt;&gt; othellier)</td></tr>
-<tr class="separator:aa2896700500f380a77b8efc6dff9ed5e inherit pub_methods_classIA"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2bb3de5d20fb887a3e88d6b0d698c381 inherit pub_methods_classIA"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2bb3de5d20fb887a3e88d6b0d698c381"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>dess_plat</b> (<a class="el" href="classConsole.html">Console</a> *s_console, int x, int y, <a class="el" href="structPion.html">Pion</a> pion, std::vector&lt; std::vector&lt; COULEUR &gt;&gt; othellier, int val)</td></tr>
-<tr class="separator:a2bb3de5d20fb887a3e88d6b0d698c381 inherit pub_methods_classIA"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51b5eba7eb3cb3fba5784d4688353018 inherit pub_methods_classIA"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a51b5eba7eb3cb3fba5784d4688353018"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIA.html#a51b5eba7eb3cb3fba5784d4688353018">gere_arbre</a> (<a class="el" href="classConsole.html">Console</a> *s_console, std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class="el" href="structIA_1_1PV.html">PV</a> &gt;&gt; noeud, int num_coup, <a class="el" href="structEtat.html">Etat</a> etat)</td></tr>
+<tr class="memdesc:a51b5eba7eb3cb3fba5784d4688353018 inherit pub_methods_classIA"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet la gestion global de l'arbre. <br /></td></tr>
+<tr class="separator:a51b5eba7eb3cb3fba5784d4688353018 inherit pub_methods_classIA"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a577fbb6c60b263de3d62b93052197db6 inherit pub_methods_classIA"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a577fbb6c60b263de3d62b93052197db6"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIA.html#a577fbb6c60b263de3d62b93052197db6">dess_plat</a> (<a class="el" href="classConsole.html">Console</a> *s_console, int x, int y, <a class="el" href="structPion.html">Pion</a> pion, <a class="el" href="structEtat.html">Etat</a> etat, int val)</td></tr>
+<tr class="memdesc:a577fbb6c60b263de3d62b93052197db6 inherit pub_methods_classIA"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dessine le plateau à coté de l'arbre. <br /></td></tr>
+<tr class="separator:a577fbb6c60b263de3d62b93052197db6 inherit pub_methods_classIA"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a27c2b1942849e7fbd4c77f4c0fa0d88d inherit pub_methods_classIA"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27c2b1942849e7fbd4c77f4c0fa0d88d"></a>
 std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class="el" href="structIA_1_1PV.html">PV</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>arbre</b> () const </td></tr>
 <tr class="separator:a27c2b1942849e7fbd4c77f4c0fa0d88d inherit pub_methods_classIA"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -133,10 +141,12 @@ std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class=
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Fonctions membres protégées</h2></td></tr>
 <tr class="memitem:a3261d2cb9a7105d930a0e67722f4289f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3261d2cb9a7105d930a0e67722f4289f"></a>
-virtual int&#160;</td><td class="memItemRight" valign="bottom"><b>heuristique</b> (<a class="el" href="structEtat.html">Etat</a> &amp;&amp;etat) final</td></tr>
+virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMinMaxIA.html#a3261d2cb9a7105d930a0e67722f4289f">heuristique</a> (<a class="el" href="structEtat.html">Etat</a> &amp;&amp;etat) final</td></tr>
+<tr class="memdesc:a3261d2cb9a7105d930a0e67722f4289f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fonction permettant la qualification d'un plateau de jeu. <br /></td></tr>
 <tr class="separator:a3261d2cb9a7105d930a0e67722f4289f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15caae3b6117d717bb6c72dd97acc7c6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a15caae3b6117d717bb6c72dd97acc7c6"></a>
-virtual <a class="el" href="structIA_1_1PV.html">PV</a>&#160;</td><td class="memItemRight" valign="bottom"><b>minmax</b> (<a class="el" href="structEtat.html">Etat</a> &amp;&amp;etat, unsigned prof, std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class="el" href="structIA_1_1PV.html">PV</a> &gt;&gt; noeud)</td></tr>
+virtual <a class="el" href="structIA_1_1PV.html">PV</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classMinMaxIA.html#a15caae3b6117d717bb6c72dd97acc7c6">minmax</a> (<a class="el" href="structEtat.html">Etat</a> &amp;&amp;etat, unsigned prof, std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class="el" href="structIA_1_1PV.html">PV</a> &gt;&gt; noeud)</td></tr>
+<tr class="memdesc:a15caae3b6117d717bb6c72dd97acc7c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">L'algorithme en lui meme. <br /></td></tr>
 <tr class="separator:a15caae3b6117d717bb6c72dd97acc7c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
@@ -152,7 +162,9 @@ COULEUR&#160;</td><td class="memItemRight" valign="bottom"><b>m_couleur</b></td>
 std::shared_ptr&lt; <a class="el" href="classNoeud.html">Noeud</a>&lt; <a class="el" href="structIA_1_1PV.html">PV</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>m_arbre</b></td></tr>
 <tr class="separator:a6666e00b08d090ab464d1847c6b9db32 inherit pro_attribs_classIA"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p><a class="el" href="classIA.html" title="Classe mère de la partie IA. ">IA</a> basée sur l'algorithme MinMax plus d'information sur ce lien : <a href="https://fr.wikipedia.org/wiki/Algorithme_minimax">https://fr.wikipedia.org/wiki/Algorithme_minimax</a> </p>
+</div><hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
 <li><a class="el" href="minmaxia_8h_source.html">minmaxia.h</a></li>
 <li>minmaxia.cpp</li>
 </ul>

@@ -18,6 +18,7 @@ Dérivée par \fBMemIA\fP, et \fBNegaMaxIA\fP\&.
 .ti -1c
 .RI "\fBAlphaBetaIA\fP (unsigned prof, COULEUR c)"
 .br
+.RI "\fIConstructeur\&. \fP"
 .ti -1c
 .RI "virtual std::string \fBid\fP () const override"
 .br
@@ -31,7 +32,7 @@ Dérivée par \fBMemIA\fP, et \fBNegaMaxIA\fP\&.
 
 .in +1c
 .ti -1c
-.RI "virtual \fBMinMaxIA::PV\fP \fBalphabeta\fP (\fBEtat\fP &&etat, unsigned prof, int alpha, int beta)"
+.RI "virtual \fBMinMaxIA::PV\fP \fBalphabeta\fP (\fBEtat\fP &&etat, unsigned prof, int alpha, int beta, std::shared_ptr< \fBNoeud\fP< \fBMinMaxIA::PV\fP >> noeud)"
 .br
 .RI "\fIL'algorithme en lui-même\&. \fP"
 .in -1c

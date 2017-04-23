@@ -6,27 +6,35 @@ Menu \-
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <menu\&.h>\fP
 .SS "Fonctions membres publiques"
 
 .in +1c
 .ti -1c
 .RI "int \fBinit\fP ()"
 .br
+.RI "\fIPermet le chargement du jeu et prevenir si une erreur à eu lieu\&. \fP"
 .ti -1c
 .RI "void \fBafficher\fP ()"
 .br
+.RI "\fIAffichage du menu et application des choix effectués\&. \fP"
 .ti -1c
 .RI "COULEUR \fBchoix_coul\fP () const "
 .br
+.RI "\fIAffichage du menu pour le choix des couleurs et application des choix effectués\&. \fP"
 .ti -1c
 .RI "void \fBregles\fP () const "
 .br
+.RI "\fIAffichage des règles du jeu\&. \fP"
 .ti -1c
 .RI "bool \fBcharger\fP (\fBTableau\fP &tab, bool &memia_noire, bool &memia_blanche) const "
 .br
+.RI "\fIPermet de charger un fichier sauvergarder sous forme de fichier texte\&. \fP"
 .ti -1c
 .RI "void \fBparams\fP ()"
 .br
+.RI "\fIModifie la profondeur de l'abre dans les IAs\&. \fP"
 .in -1c
 .SS "Fonctions membres publiques statiques"
 
@@ -34,7 +42,11 @@ Menu \-
 .ti -1c
 .RI "static void \fBentete\fP ()"
 .br
+.RI "\fIAffichage de caractères\&. \fP"
 .in -1c
+.SH "Description détaillée"
+.PP 
+Hérite de Permet l'affichage des different menus en console 
 
 .SH "Auteur"
 .PP 

@@ -17,6 +17,7 @@ class MemIA : public AlphaBetaIA {
         std::shared_ptr<MemArbre::Noeud> m_noeud;
 
         // Méthodes
+        /// Algorithme de Memia, basé sur AlphaBeta
         virtual MinMaxIA::PV memia(Etat&& etat, unsigned prof, int alpha, int beta, std::shared_ptr<MemArbre::Noeud> memnoeud, std::shared_ptr<Noeud<MinMaxIA::PV>> noeud);
 
     public:
@@ -27,13 +28,15 @@ class MemIA : public AlphaBetaIA {
         virtual std::string id() const override;
         virtual Pion jouer(Etat plateau) override;
 
-    ///Incrémentation de la valeur du noeud
+        /// Incrémentation de la valeur du noeud
         void gagne();
 
-    /// décrémentation de la valeur du noeud
+        /// décrémentation de la valeur du noeud
         void perdu();
 
+		/// Modifie la profondeur de recherche
         void set_prof(unsigned prof);
+        /// Modifie le noeud actuel du MemIA
         void set_noeud(int pos);
 };
 

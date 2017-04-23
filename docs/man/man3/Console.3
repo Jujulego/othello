@@ -2,29 +2,40 @@
 .ad l
 .nh
 .SH NAME
-Console \- 
+Console \- Gestion de la console\&.  
+
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <console\&.h>\fP
 .SS "Fonctions membres publiques"
 
 .in +1c
 .ti -1c
 .RI "void \fBgotoLigCol\fP (int lig, int col)"
 .br
+.RI "\fIPermet le positionnement dans la console suivant les lignes et colonnes\&. \fP"
 .ti -1c
 .RI "void \fBclear\fP ()"
 .br
+.RI "\fINettoie la console\&. \fP"
 .ti -1c
 .RI "int \fBkbhit\fP ()"
 .br
+.RI "\fIRenvoie 1 si on appuye sur une touche\&. \fP"
 .ti -1c
 .RI "int \fBgetch\fP ()"
 .br
+.RI "\fIRécupere la touche du clavier\&. \fP"
 .ti -1c
 .RI "void \fBsetColor\fP (Color front=COLOR_DEFAULT, Color back=COLOR_DEFAULT_BACK)"
 .br
+.RI "\fIPermet les modifications des couleurs\&. \fP"
 .in -1c
+.SH "Description détaillée"
+.PP 
+Gestion de la console\&. 
 
 .SH "Auteur"
 .PP 

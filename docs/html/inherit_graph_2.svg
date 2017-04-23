@@ -11,7 +11,7 @@
 <polygon fill="white" stroke="none" points="-4,4 -4,-81 343,-81 343,4 -4,4"/>
 <!-- Node1 -->
 <g id="node1" class="node"><title>Node1</title>
-<g id="a_node1"><a xlink:href="classIA.html" target="_top" xlink:title="IA">
+<g id="a_node1"><a xlink:href="classIA.html" target="_top" xlink:title="Classe mère de la partie IA. ">
 <polygon fill="white" stroke="black" points="0,-19.5 0,-38.5 29,-38.5 29,-19.5 0,-19.5"/>
 <text text-anchor="middle" x="14.5" y="-26.5" font-family="Helvetica,sans-Serif" font-size="10.00">IA</text>
 </a>
@@ -58,7 +58,7 @@
 </g>
 <!-- Node4 -->
 <g id="node4" class="node"><title>Node4</title>
-<g id="a_node4"><a xlink:href="classMemIA.html" target="_top" xlink:title="MemIA">
+<g id="a_node4"><a xlink:href="classMemIA.html" target="_top" xlink:title="Hérite de la classe AlphaBetaIA. ">
 <polygon fill="white" stroke="black" points="281,-57.5 281,-76.5 329,-76.5 329,-57.5 281,-57.5"/>
 <text text-anchor="middle" x="305" y="-64.5" font-family="Helvetica,sans-Serif" font-size="10.00">MemIA</text>
 </a>

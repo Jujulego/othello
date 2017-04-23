@@ -21,7 +21,7 @@
 </g>
 <!-- Node2 -->
 <g id="node2" class="node"><title>Node2</title>
-<g id="a_node2"><a xlink:href="classIA.html" target="_top" xlink:title="{IA\n|# m_arbre\l|+ ~IA()\l+ id()\l+ jouer()\l+ get_coups()\l+ aff_arbre()\l+ gere_arbre()\l+ dess_plat()\l+ arbre()\l}">
+<g id="a_node2"><a xlink:href="classIA.html" target="_top" xlink:title="Classe mère de la partie IA. ">
 <polygon fill="white" stroke="black" points="0,-105.5 0,-239.5 77,-239.5 77,-105.5 0,-105.5"/>
 <text text-anchor="middle" x="38.5" y="-227.5" font-family="Helvetica,sans-Serif" font-size="10.00">IA</text>
 <polyline fill="none" stroke="black" points="0,-220.5 77,-220.5 "/>

@@ -7,6 +7,8 @@ MinMaxIA \-
 .br
 .PP
 .PP
+\fC#include <minmaxia\&.h>\fP
+.PP
 Est dérivée de \fBIA\fP\&.
 .PP
 Dérivée par \fBAlphaBetaIA\fP\&.
@@ -19,9 +21,11 @@ Dérivée par \fBAlphaBetaIA\fP\&.
 .ti -1c
 .RI "virtual std::string \fBid\fP () const override"
 .br
+.RI "\fIRenvoie l'identifiant pour les sauvegardes\&. \fP"
 .ti -1c
 .RI "virtual \fBPion\fP \fBjouer\fP (\fBEtat\fP plateau) override"
 .br
+.RI "\fIExecuter l'algorithme\&. \fP"
 .in -1c
 .SS "Fonctions membres protégées"
 
@@ -29,9 +33,11 @@ Dérivée par \fBAlphaBetaIA\fP\&.
 .ti -1c
 .RI "virtual int \fBheuristique\fP (\fBEtat\fP &&etat) final"
 .br
+.RI "\fIFonction permettant la qualification d'un plateau de jeu\&. \fP"
 .ti -1c
 .RI "virtual \fBPV\fP \fBminmax\fP (\fBEtat\fP &&etat, unsigned prof, std::shared_ptr< \fBNoeud\fP< \fBPV\fP >> noeud)"
 .br
+.RI "\fIL'algorithme en lui meme\&. \fP"
 .in -1c
 .SS "Attributs protégés"
 
@@ -43,6 +49,9 @@ Dérivée par \fBAlphaBetaIA\fP\&.
 .RI "COULEUR \fBm_couleur\fP"
 .br
 .in -1c
+.SH "Description détaillée"
+.PP 
+\fBIA\fP basée sur l'algorithme MinMax plus d'information sur ce lien : https://fr.wikipedia.org/wiki/Algorithme_minimax 
 
 .SH "Auteur"
 .PP 

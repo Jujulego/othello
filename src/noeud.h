@@ -26,16 +26,19 @@ class Noeud : public std::enable_shared_from_this<Noeud<T>> {
         }
 
         // Méthodes statiques
+        /// Crée un noeud de type T
         static std::shared_ptr<Noeud<T>> creer(T const& val) {
             return std::make_shared<Noeud<T>>(val, std::weak_ptr<Noeud<T>>());
         }
 
         // Opérateurs
+        /// Permet l'accès au fils i via les crochets
         Noeud<T> operator [] (int i) {
             return fils(i);
         }
 
         // Méthodes
+        /// Ajoute un fils contenant la valeur val
         std::shared_ptr<Noeud<T>> add_fils(T const& val) {
             // Création du noeud !
             std::shared_ptr<Noeud<T>> pt = std::make_shared<Noeud<T>>(val, weak_from_this());
@@ -43,6 +46,7 @@ class Noeud : public std::enable_shared_from_this<Noeud<T>> {
             return pt; // ref sur le dernier !
         }
 
+		/// Permet l'accès au fils i
         std::shared_ptr<Noeud<T>> fils(int i) {
             return m_fils[i];
         }

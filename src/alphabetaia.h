@@ -24,7 +24,7 @@ class AlphaBetaIA : public MinMaxIA {
         virtual MinMaxIA::PV alphabeta(Etat&& etat, unsigned prof, int alpha, int beta, std::shared_ptr<Noeud<MinMaxIA::PV>> noeud);
 
     public:
-        // Constructeur
+        /// Constructeur
         AlphaBetaIA(unsigned prof, COULEUR c);
 
         // Méthodes

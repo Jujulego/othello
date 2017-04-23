@@ -90,6 +90,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence de la classe Tableau</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Hérite de la classe console.  
+ <a href="classTableau.html#details">Plus de détails...</a></p>
+
+<p><code>#include &lt;<a class="el" href="plateau_8h_source.html">plateau.h</a>&gt;</code></p>
 <div class="dynheader">
 Graphe de collaboration de Tableau:</div>
 <div class="dyncontent">
@@ -105,19 +110,24 @@ Fonctions membres publiques</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><b>Tableau</b> (<a class="el" href="structEtat.html">Etat</a> &amp;&amp;etat, std::shared_ptr&lt; <a class="el" href="classIA.html">IA</a> &gt; ia_noir, std::shared_ptr&lt; <a class="el" href="classIA.html">IA</a> &gt; ia_blanc)</td></tr>
 <tr class="separator:adc95e4c3d822d09af273e29294313ac4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8e8311ab52129da568acc092598b22c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8e8311ab52129da568acc092598b22c7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>CreationTab</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableau.html#a8e8311ab52129da568acc092598b22c7">CreationTab</a> ()</td></tr>
+<tr class="memdesc:a8e8311ab52129da568acc092598b22c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Création de la structure du tableau. <br /></td></tr>
 <tr class="separator:a8e8311ab52129da568acc092598b22c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a564072da82e057d02ad7edbee98e6e43"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a564072da82e057d02ad7edbee98e6e43"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>Jouer</b> (int &amp;x, int &amp;y)</td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableau.html#a564072da82e057d02ad7edbee98e6e43">Jouer</a> (int &amp;x, int &amp;y)</td></tr>
+<tr class="memdesc:a564072da82e057d02ad7edbee98e6e43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet le déplacement des pions et la pose d'un pion. <br /></td></tr>
 <tr class="separator:a564072da82e057d02ad7edbee98e6e43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a422f7b27c74ca34d81ef3446e0d88bb7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a422f7b27c74ca34d81ef3446e0d88bb7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>AfficherTab</b> ()</td></tr>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableau.html#a422f7b27c74ca34d81ef3446e0d88bb7">AfficherTab</a> ()</td></tr>
+<tr class="memdesc:a422f7b27c74ca34d81ef3446e0d88bb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet de choisir la couleur des cases, quand elles sont vides ou avec un pion. <br /></td></tr>
 <tr class="separator:a422f7b27c74ca34d81ef3446e0d88bb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae276afa0929c10f4c9a37c61a6166a9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aae276afa0929c10f4c9a37c61a6166a9"></a>
-COULEUR&#160;</td><td class="memItemRight" valign="bottom"><b>BoucleJeu</b> ()</td></tr>
+COULEUR&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableau.html#aae276afa0929c10f4c9a37c61a6166a9">BoucleJeu</a> ()</td></tr>
+<tr class="memdesc:aae276afa0929c10f4c9a37c61a6166a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet la permutation des joueurs, affiche le score des joueurs. <br /></td></tr>
 <tr class="separator:aae276afa0929c10f4c9a37c61a6166a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7fe5d033577a970525067422053595ba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7fe5d033577a970525067422053595ba"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>sauvegarder</b> () const </td></tr>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableau.html#a7fe5d033577a970525067422053595ba">sauvegarder</a> () const </td></tr>
+<tr class="memdesc:a7fe5d033577a970525067422053595ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sauvegarde de la partie. <br /></td></tr>
 <tr class="separator:a7fe5d033577a970525067422053595ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac3c035ec5fcc5189b04392ff56d0441e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac3c035ec5fcc5189b04392ff56d0441e"></a>
 std::map&lt; COULEUR, unsigned &gt; const&#160;</td><td class="memItemRight" valign="bottom"><b>scores</b> () const </td></tr>
@@ -129,10 +139,13 @@ std::vector&lt; std::shared_ptr&lt; <a class="el" href="structPion.html">Pion</a
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Attributs protégés</h2></td></tr>
 <tr class="memitem:a2557f30daf3e8c13d803b3365be83a64"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2557f30daf3e8c13d803b3365be83a64"></a>
-<a class="el" href="classConsole.html">Console</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>s_console</b> = NULL</td></tr>
+<a class="el" href="classConsole.html">Console</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTableau.html#a2557f30daf3e8c13d803b3365be83a64">s_console</a> = NULL</td></tr>
+<tr class="memdesc:a2557f30daf3e8c13d803b3365be83a64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointeur sur console initialisé à NULL. <br /></td></tr>
 <tr class="separator:a2557f30daf3e8c13d803b3365be83a64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
+<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<div class="textblock"><p>Hérite de la classe console. </p>
+</div><hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
 <li><a class="el" href="plateau_8h_source.html">plateau.h</a></li>
 <li>plateau.cpp</li>
 </ul>

@@ -24,6 +24,7 @@ class MemArbre : public std::enable_shared_from_this<MemArbre> {
 				std::weak_ptr<MemArbre> m_arbre;
 
 				// Méthodes
+				/// Ajoute le fils donné
 				void add_fils(std::shared_ptr<MemArbre::Noeud> const& fils);
 
 				friend class MemArbre;
@@ -34,12 +35,17 @@ class MemArbre : public std::enable_shared_from_this<MemArbre> {
 				Noeud(int val, std::tuple<int,int> const& coords, int pos, std::shared_ptr<MemArbre> const& arbre, std::shared_ptr<Noeud> const& pere);
 
 				// Méthodes
+				/// Renvoie un weak_ptr sur this
 				std::weak_ptr<Noeud> weak_from_this();
 
+				/// Permet d'afficher le noeud
 				std::ostream& afficher(std::ostream& stream) const;
+				/// Crée un fils avec la valeur et la coordonnée données
 				std::shared_ptr<Noeud> add_fils(int val, std::tuple<int,int> const& coords);
+				/// Sauvegarde le noeud dans le fichier
 				void save();
 
+				/// Renvoie vrai si le noeud est une racine
 				bool est_racine() const;
 
 				// Accesseurs
@@ -58,7 +64,9 @@ class MemArbre : public std::enable_shared_from_this<MemArbre> {
 		std::map<int,std::shared_ptr<Noeud>> m_noeuds;
 
 		// Méthodes
+		/// Sauvegarde du noeud (sérialisé dans un string)
 		void save(int& pos, std::string const& data);
+		/// Sauvegarde le noeud donné
 		void save(std::shared_ptr<MemArbre::Noeud> const& n);
 
 	public:
@@ -72,11 +80,15 @@ class MemArbre : public std::enable_shared_from_this<MemArbre> {
 		~MemArbre();
 
 		// Méthodes
+		/// Lance le chargement de l'arbre
 		void charger();
+		/// ajoute une racine au fichier
 		std::shared_ptr<Noeud> add_racine(int val, std::tuple<int,int> const& coords);
+		/// Renvoie les racines
 		std::set<std::shared_ptr<Noeud>> racines() const;
 		iterateur begin() const;
 		iterateur end() const;
+		/// Renvoie le noeud à la position donnée
 		std::shared_ptr<Noeud> noeud(int pos) const;
 };
 

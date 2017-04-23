@@ -2,6 +2,10 @@
 \label{classMinMaxIA}\index{Min\+Max\+IA@{Min\+Max\+IA}}
 
 
+{\ttfamily \#include $<$minmaxia.\+h$>$}
+
+
+
 Graphe d\textquotesingle{}héritage de Min\+Max\+IA\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -24,21 +28,21 @@ Graphe de collaboration de Min\+Max\+IA\+:\nopagebreak
 {\bfseries Min\+Max\+IA} (unsigned prof, C\+O\+U\+L\+E\+UR c)\hypertarget{classMinMaxIA_ab186638b8bf69698b86415555734a926}{}\label{classMinMaxIA_ab186638b8bf69698b86415555734a926}
 
 \item 
-virtual std\+::string {\bfseries id} () const override\hypertarget{classMinMaxIA_ace6db5b6ab7a0aaba72d2bf16a44f6f3}{}\label{classMinMaxIA_ace6db5b6ab7a0aaba72d2bf16a44f6f3}
+virtual std\+::string \hyperlink{classMinMaxIA_ace6db5b6ab7a0aaba72d2bf16a44f6f3}{id} () const override\hypertarget{classMinMaxIA_ace6db5b6ab7a0aaba72d2bf16a44f6f3}{}\label{classMinMaxIA_ace6db5b6ab7a0aaba72d2bf16a44f6f3}
 
-\item 
-virtual \hyperlink{structPion}{Pion} {\bfseries jouer} (\hyperlink{structEtat}{Etat} plateau) override\hypertarget{classMinMaxIA_a829500a59568c81e902862933e4f9931}{}\label{classMinMaxIA_a829500a59568c81e902862933e4f9931}
+\begin{DoxyCompactList}\small\item\em Renvoie l\textquotesingle{}identifiant pour les sauvegardes. \end{DoxyCompactList}\item 
+virtual \hyperlink{structPion}{Pion} \hyperlink{classMinMaxIA_a829500a59568c81e902862933e4f9931}{jouer} (\hyperlink{structEtat}{Etat} plateau) override\hypertarget{classMinMaxIA_a829500a59568c81e902862933e4f9931}{}\label{classMinMaxIA_a829500a59568c81e902862933e4f9931}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Executer l\textquotesingle{}algorithme. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Fonctions membres protégées}
 \begin{DoxyCompactItemize}
 \item 
-virtual int {\bfseries heuristique} (\hyperlink{structEtat}{Etat} \&\&etat) final\hypertarget{classMinMaxIA_a3261d2cb9a7105d930a0e67722f4289f}{}\label{classMinMaxIA_a3261d2cb9a7105d930a0e67722f4289f}
+virtual int \hyperlink{classMinMaxIA_a3261d2cb9a7105d930a0e67722f4289f}{heuristique} (\hyperlink{structEtat}{Etat} \&\&etat) final\hypertarget{classMinMaxIA_a3261d2cb9a7105d930a0e67722f4289f}{}\label{classMinMaxIA_a3261d2cb9a7105d930a0e67722f4289f}
 
-\item 
-virtual \hyperlink{structIA_1_1PV}{PV} {\bfseries minmax} (\hyperlink{structEtat}{Etat} \&\&etat, unsigned prof, std\+::shared\+\_\+ptr$<$ \hyperlink{classNoeud}{Noeud}$<$ \hyperlink{structIA_1_1PV}{PV} $>$$>$ noeud)\hypertarget{classMinMaxIA_a15caae3b6117d717bb6c72dd97acc7c6}{}\label{classMinMaxIA_a15caae3b6117d717bb6c72dd97acc7c6}
+\begin{DoxyCompactList}\small\item\em Fonction permettant la qualification d\textquotesingle{}un plateau de jeu. \end{DoxyCompactList}\item 
+virtual \hyperlink{structIA_1_1PV}{PV} \hyperlink{classMinMaxIA_a15caae3b6117d717bb6c72dd97acc7c6}{minmax} (\hyperlink{structEtat}{Etat} \&\&etat, unsigned prof, std\+::shared\+\_\+ptr$<$ \hyperlink{classNoeud}{Noeud}$<$ \hyperlink{structIA_1_1PV}{PV} $>$$>$ noeud)\hypertarget{classMinMaxIA_a15caae3b6117d717bb6c72dd97acc7c6}{}\label{classMinMaxIA_a15caae3b6117d717bb6c72dd97acc7c6}
 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em L\textquotesingle{}algorithme en lui meme. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Attributs protégés}
 \begin{DoxyCompactItemize}
 \item 
@@ -49,6 +53,9 @@ C\+O\+U\+L\+E\+UR {\bfseries m\+\_\+couleur}\hypertarget{classMinMaxIA_a9dd148bf
 
 \end{DoxyCompactItemize}
 
+
+\subsection{Description détaillée}
+\hyperlink{classIA}{IA} basée sur l\textquotesingle{}algorithme Min\+Max plus d\textquotesingle{}information sur ce lien \+: \href{https://fr.wikipedia.org/wiki/Algorithme_minimax}{\tt https\+://fr.\+wikipedia.\+org/wiki/\+Algorithme\+\_\+minimax} 
 
 La documentation de cette classe a été générée à partir des fichiers suivants \+:\begin{DoxyCompactItemize}
 \item 

@@ -2,10 +2,13 @@
 .ad l
 .nh
 .SH NAME
-MemIA \- 
+MemIA \- Hérite de la classe \fBAlphaBetaIA\fP\&.  
+
 .SH SYNOPSIS
 .br
 .PP
+.PP
+\fC#include <memia\&.h>\fP
 .PP
 Est dérivée de \fBAlphaBetaIA\fP\&.
 .SS "Fonctions membres publiques"
@@ -25,18 +28,24 @@ Est dérivée de \fBAlphaBetaIA\fP\&.
 .ti -1c
 .RI "void \fBgagne\fP ()"
 .br
+.RI "\fIIncrémentation de la valeur du noeud\&. \fP"
 .ti -1c
 .RI "void \fBperdu\fP ()"
 .br
+.RI "\fIdécrémentation de la valeur du noeud \fP"
 .ti -1c
 .RI "void \fBset_prof\fP (unsigned prof)"
 .br
+.RI "\fIModifie la profondeur de recherche\&. \fP"
 .ti -1c
 .RI "void \fBset_noeud\fP (int pos)"
 .br
+.RI "\fIModifie le noeud actuel du \fBMemIA\fP\&. \fP"
 .in -1c
 .SS "Membres hérités additionnels"
-
+.SH "Description détaillée"
+.PP 
+Hérite de la classe \fBAlphaBetaIA\fP\&. 
 
 .SH "Auteur"
 .PP 
