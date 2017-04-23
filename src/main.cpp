@@ -12,8 +12,6 @@
 #include "memia.h"
 #include "minmaxia.h"
 
-#define PROF_ALGO 3
-
 // Main
 int main() {
 	// Menu !!!

@@ -31,7 +31,7 @@ class Noeud : public std::enable_shared_from_this<Noeud<T>> {
         }
 
         // Opérateurs
-        Noeud<T>& operator [] (int i) {
+        Noeud<T> operator [] (int i) {
             return fils(i);
         }
 

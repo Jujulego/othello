@@ -16,7 +16,7 @@
 #include "randomia.h"
 
 // Macros
-#define PROF_ALGO 5
+#define PROF_ALGO 3
 #define FICHIER_NOIR  "arbre_noir.txt"
 #define FICHIER_BLANC "arbre_blanc.txt"
 
@@ -322,6 +322,8 @@ void Menu::regles() const {
 	std::cout << "        E           Pour quitter la partie" << std::endl;
 	std::cout << std::endl;
 	std::cout << "        F           Pour sauvegarder la partie" << std::endl;
+	std::cout << std::endl;
+	std::cout << "        A           Pour parcourir l'arbre de décision de l'IA" << std::endl;
 	std::cout << std::endl;
 	std::cout << "Appuyez sur [ENTREE]" << std::endl;
 	std::cout.flush();

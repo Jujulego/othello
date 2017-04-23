@@ -32,3 +32,11 @@ run
 *.exe
 *.out
 *.app
+
+# Autres
+call\.svg
+call\.png
+parse\.py
+perf\.data
+perf\.data\.old
+src\.zip

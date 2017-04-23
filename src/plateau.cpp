@@ -44,8 +44,8 @@ Tableau::Tableau(std::shared_ptr<IA> ia_noir, std::shared_ptr<IA> ia_blanc) {
     m_ias[NOIR]  = ia_noir;
     m_ias[BLANC] = ia_blanc;
 
-    if (!m_ias[NOIR]) m_col_ia = BLANC;
-    else if (!m_ias[BLANC]) m_col_ia = NOIR;
+    if (m_ias[NOIR] != nullptr) m_col_ia = NOIR;
+    else if (m_ias[BLANC] != nullptr) m_col_ia = BLANC;
 
     // Init etat
     m_etat.joueur = NOIR;    // tjs le noir qui commence
@@ -109,13 +109,20 @@ void Tableau::CreationTab() {
     std::cout << "   " << LIGNE_BAS << std::endl;
     std::cout << "     A    B    C    D    E    F    G    H" << std::endl;
 
-    if (m_ias[m_col_ia]->id() == "minmax") {
-        s_console->gotoLigCol(20, 50);
+    int off = 0;
+    s_console->gotoLigCol(5, 50);
+    std::cout << "Commandes :";
+    
+    if ((m_col_ia != VIDE) && (m_ias[m_col_ia]->id() == "minmax")) {
+        s_console->gotoLigCol(6, 50);
         std::cout << "a : Montrer le graphe d'etat";
+        
+        off++;
     }
-    s_console->gotoLigCol(21, 50);
+    
+    s_console->gotoLigCol(6+off, 50);
     std::cout << "f : Sauvegarder";
-    s_console->gotoLigCol(22, 50);
+    s_console->gotoLigCol(7+off, 50);
     std::cout << "e : Quitter";
 
     AfficherTab();
@@ -243,7 +250,7 @@ COULEUR Tableau::BoucleJeu() {
         // Execution de l'IA
         if (m_ias[m_etat.joueur] != nullptr) {
         	// On va dormir un peu
-        	//std::this_thread::sleep_for(TIMEOUT);
+        	std::this_thread::sleep_for(TIMEOUT);
         	m_etat.appliquer_coup(m_ias[m_etat.joueur]->jouer(m_etat));
         } else {
             // Interaction
